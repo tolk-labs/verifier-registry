@@ -1,0 +1,370 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "Doom",
+  "author": "ton-doom",
+  "version": "0.2.0",
+  "description": "Doom E1M1 rendered on-chain; frames are external-out messages",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Tick"
+    },
+    {
+      "kind": "uintN",
+      "n": 8
+    },
+    {
+      "kind": "remaining"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "FrameEvent"
+    },
+    {
+      "kind": "uintN",
+      "n": 16
+    },
+    {
+      "kind": "intN",
+      "n": 16
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Storage"
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 3
+    },
+    {
+      "kind": "intN",
+      "n": 8
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Continue"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Withdraw"
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        1,
+        1
+      ]
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "Storage",
+      "ty_idx": 18,
+      "fields": [
+        {
+          "name": "frameNo",
+          "ty_idx": 9
+        },
+        {
+          "name": "px",
+          "ty_idx": 8
+        },
+        {
+          "name": "py",
+          "ty_idx": 8
+        },
+        {
+          "name": "angle",
+          "ty_idx": 16
+        },
+        {
+          "name": "lastBatch",
+          "ty_idx": 9
+        },
+        {
+          "name": "qpos",
+          "ty_idx": 13
+        },
+        {
+          "name": "queue",
+          "ty_idx": 19
+        },
+        {
+          "name": "held",
+          "ty_idx": 19
+        },
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "auto",
+          "ty_idx": 5
+        },
+        {
+          "name": "turnDir",
+          "ty_idx": 20
+        },
+        {
+          "name": "rnd",
+          "ty_idx": 9
+        },
+        {
+          "name": "lastStep",
+          "ty_idx": 9
+        },
+        {
+          "name": "gun",
+          "ty_idx": 13
+        },
+        {
+          "name": "monsters",
+          "ty_idx": 3
+        },
+        {
+          "name": "level",
+          "ty_idx": 3
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Tick",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 1146048333,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "batchId",
+          "ty_idx": 9
+        },
+        {
+          "name": "count",
+          "ty_idx": 13
+        },
+        {
+          "name": "inputs",
+          "ty_idx": 14
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "FrameEvent",
+      "ty_idx": 15,
+      "prefix": {
+        "prefix_num": 1179795789,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "frameNo",
+          "ty_idx": 9
+        },
+        {
+          "name": "w",
+          "ty_idx": 16
+        },
+        {
+          "name": "h",
+          "ty_idx": 16
+        },
+        {
+          "name": "px",
+          "ty_idx": 8
+        },
+        {
+          "name": "py",
+          "ty_idx": 8
+        },
+        {
+          "name": "angle",
+          "ty_idx": 16
+        },
+        {
+          "name": "viewz",
+          "ty_idx": 17
+        },
+        {
+          "name": "flags",
+          "ty_idx": 13
+        },
+        {
+          "name": "queued",
+          "ty_idx": 16
+        },
+        {
+          "name": "kills",
+          "ty_idx": 13
+        },
+        {
+          "name": "pixels",
+          "ty_idx": 3
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Continue",
+      "ty_idx": 21,
+      "prefix": {
+        "prefix_num": 1129270868,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "hop",
+          "ty_idx": 9
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Withdraw",
+      "ty_idx": 22,
+      "prefix": {
+        "prefix_num": 1464095319,
+        "prefix_len": 32
+      },
+      "fields": []
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 18
+  },
+  "incoming_messages": [],
+  "incoming_external": [
+    {
+      "body_ty_idx": 12
+    }
+  ],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 21
+    },
+    {
+      "body_ty_idx": 22
+    }
+  ],
+  "emitted_events": [
+    {
+      "body_ty_idx": 15
+    }
+  ],
+  "get_methods": [
+    {
+      "tvm_method_id": 117803,
+      "name": "frameNo",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 70814,
+      "name": "player",
+      "parameters": [],
+      "return_ty_idx": 23
+    },
+    {
+      "tvm_method_id": 77951,
+      "name": "queued",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 87314,
+      "name": "lastBatch",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 70569,
+      "name": "autoState",
+      "parameters": [],
+      "return_ty_idx": 23
+    },
+    {
+      "tvm_method_id": 128023,
+      "name": "targets",
+      "parameters": [],
+      "return_ty_idx": 23
+    },
+    {
+      "tvm_method_id": 121411,
+      "name": "screen",
+      "parameters": [],
+      "return_ty_idx": 24
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "constant",
+      "name": "ERR_BAD_OP",
+      "err_code": 130
+    },
+    {
+      "kind": "constant",
+      "name": "ERR_BAD_COUNT",
+      "err_code": 131
+    },
+    {
+      "kind": "constant",
+      "name": "ERR_OLD_BATCH",
+      "err_code": 132
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.4.2"
+}
