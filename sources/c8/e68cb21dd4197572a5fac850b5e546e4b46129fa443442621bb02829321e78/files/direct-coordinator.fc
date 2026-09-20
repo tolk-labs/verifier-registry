@@ -1,0 +1,230 @@
+;; Direct, draw-bound ECVRF coordinator for Gifts Vault.
+;;
+;; This is a new coordinator source. It is not compatible with, and does not
+;; mutate, the deployed generic subscription coordinator. Each request has one
+;; draw_id, one pre-randomness snapshot hash, one consumer, and one fulfillment.
+
+#include "ecvrf.fc";
+
+const int OP_DIRECT_REQUEST = 0x44524351;     ;; "DRCQ"
+const int OP_DIRECT_FULFILLED = 0x4452464C;   ;; "DRFL"
+const int ALPHA_DOMAIN = 0x47564431;          ;; "GVD1"
+const int AUTH_DOMAIN = 0x47564131;           ;; "GVA1"
+
+;; A fulfillment is an external transaction: its compute fees and the fixed
+;; receipt transfer are paid from this coordinator. Keep enough starting
+;; balance to deliver the receipt and retain an operational/storage cushion.
+;; If the reserve is unavailable, leave the request unfulfilled so the oracle
+;; can retry only after a deliberate top-up; never record an undeliverable
+;; fulfillment as complete.
+const int MIN_REQUEST_VALUE = 50000000;
+const int MIN_FULFILLMENT_START_BALANCE = 80000000;
+
+(slice, int) dict_get?(cell dict, int key_len, slice index) asm(index dict key_len) "DICTGET" "NULLSWAPIFNOT";
+
+slice draw_key(int draw_id) inline {
+  return begin_cell().store_uint(draw_id, 64).end_cell().begin_parse();
+}
+
+(int, slice) load_bounced_sender(cell in_msg) inline {
+  slice s = in_msg.begin_parse();
+  int bounced = s~load_uint(4) & 1;
+  return (bounced, s~load_msg_addr());
+}
+
+;; Request dictionary value:
+;; snapshot_hash:uint256 consumer:MsgAddressInt fulfilled:Bool output:uint256
+;; The output is meaningful only when fulfilled is 1.
+(cell, slice, slice, int, int, int) load_contract() inline {
+  slice ds = get_data().begin_parse();
+  cell requests = ds~load_dict();
+  slice identities = ds~load_ref().begin_parse();
+  slice owner = identities~load_msg_addr();
+  slice requester = identities~load_msg_addr();
+  int public_key_ecvrf = identities~load_uint(256);
+  slice verification = ds~load_ref().begin_parse();
+  int public_key_replay = verification~load_uint(256);
+  int verifier_version = verification~load_uint(32);
+  return (requests, owner, requester, public_key_ecvrf, public_key_replay, verifier_version);
+}
+
+() save_contract(cell requests, slice owner, slice requester,
+                 int public_key_ecvrf, int public_key_replay, int verifier_version) impure inline {
+  cell identities = begin_cell()
+    .store_slice(owner)
+    .store_slice(requester)
+    .store_uint(public_key_ecvrf, 256)
+    .end_cell();
+  cell verification = begin_cell()
+    .store_uint(public_key_replay, 256)
+    .store_uint(verifier_version, 32)
+    .end_cell();
+  set_data(begin_cell()
+    .store_dict(requests)
+    .store_ref(identities)
+    .store_ref(verification)
+    .end_cell());
+}
+
+builder alpha_builder(int draw_id, int snapshot_hash, slice consumer, int verifier_version) inline {
+  cell context = begin_cell()
+    .store_uint(draw_id, 64)
+    .store_uint(snapshot_hash, 256)
+    .store_slice(consumer)
+    .store_uint(verifier_version, 32)
+    .end_cell();
+  return begin_cell()
+    .store_uint(ALPHA_DOMAIN, 32)
+    .store_uint(context.cell_hash(), 256);
+}
+
+int auth_hash(int draw_id, int snapshot_hash, int verifier_version) inline {
+  return begin_cell()
+    .store_uint(AUTH_DOMAIN, 32)
+    .store_uint(draw_id, 64)
+    .store_uint(snapshot_hash, 256)
+    .store_uint(verifier_version, 32)
+    .end_cell().cell_hash();
+}
+
+;; request_random#44524351 draw_id:uint64 snapshot_hash:uint256 consumer:MsgAddressInt
+() recv_internal(int msg_balance, cell in_msg, slice body) impure {
+  if (body.slice_bits() < 32) { return (); }
+  (int bounced, slice sender) = load_bounced_sender(in_msg);
+  if (bounced) { return (); }
+  int op = body~load_uint(32);
+  if (op != OP_DIRECT_REQUEST) { return (); }
+
+  (cell requests, slice owner, slice requester, int public_key_ecvrf,
+   int public_key_replay, int verifier_version) = load_contract();
+  throw_unless(211, equal_slices(sender, requester));
+  throw_unless(212, msg_balance >= MIN_REQUEST_VALUE);
+
+  int draw_id = body~load_uint(64);
+  int snapshot_hash = body~load_uint(256);
+  slice consumer = body~load_msg_addr();
+  ;; `dict_get?` returns a true -1/0 flag, so `~ exists` is well defined here.
+  ;; It is still written as an explicit comparison to keep every guard in this
+  ;; contract on one unambiguous convention.
+  (_, int exists) = requests.dict_get?(64, draw_key(draw_id));
+  throw_unless(213, exists == 0);
+
+  cell request = begin_cell()
+    .store_uint(snapshot_hash, 256)
+    .store_slice(consumer)
+    .store_uint(0, 1)
+    .store_uint(0, 256)
+    .end_cell();
+  requests~dict_set_builder(64, draw_key(draw_id), begin_cell().store_ref(request));
+  save_contract(requests, owner, requester, public_key_ecvrf, public_key_replay, verifier_version);
+}
+
+;; External body:
+;; draw_id:uint64 snapshot_hash:uint256 ^pi:Cell ^replay_signature:bits512
+() recv_external(slice body) impure {
+  (cell requests, slice owner, slice requester, int public_key_ecvrf,
+   int public_key_replay, int verifier_version) = load_contract();
+  int draw_id = body~load_uint(64);
+  int snapshot_hash = body~load_uint(256);
+  (slice request_ref, int found) = requests.dict_get?(64, draw_key(draw_id));
+  throw_unless(220, found);
+  slice entry = request_ref~load_ref().begin_parse();
+
+  int expected_snapshot_hash = entry~load_uint(256);
+  slice consumer = entry~load_msg_addr();
+  int fulfilled = entry~load_uint(1);
+  throw_unless(221, expected_snapshot_hash == snapshot_hash);
+  ;; `fulfilled` is a stored uint1, so it holds 1/0 rather than FunC's -1/0
+  ;; boolean. Bitwise `~ fulfilled` would yield -2 for a fulfilled request,
+  ;; which is truthy, and the replay guard would never fire. Compare the value
+  ;; explicitly so a second fulfillment for the same draw is always rejected.
+  throw_unless(222, fulfilled == 0);
+
+  cell proof_cell = body~load_ref();
+  slice signature = body~load_ref().begin_parse();
+  throw_unless(223, check_signature(auth_hash(draw_id, snapshot_hash, verifier_version), signature, public_key_replay));
+  accept_message();
+  [int balance, cell extra_currencies] = get_balance();
+  throw_unless(224, balance >= MIN_FULFILLMENT_START_BALANCE);
+
+  slice alpha = alpha_builder(draw_id, snapshot_hash, consumer, verifier_version).end_cell().begin_parse();
+  int output = ecvrf::rist255::verify_and_hash(public_key_ecvrf, alpha, proof_cell.begin_parse()).begin_parse().preload_uint(256);
+  int proof_hash = proof_cell.cell_hash();
+
+  cell fulfilled_request = begin_cell()
+    .store_uint(snapshot_hash, 256)
+    .store_slice(consumer)
+    .store_uint(1, 1)
+    .store_uint(output, 256)
+    .end_cell();
+  requests~dict_set_builder(64, draw_key(draw_id), begin_cell().store_ref(fulfilled_request));
+  save_contract(requests, owner, requester, public_key_ecvrf, public_key_replay, verifier_version);
+
+  cell receipt = begin_cell()
+    .store_uint(OP_DIRECT_FULFILLED, 32)
+    .store_uint(draw_id, 64)
+    .store_uint(snapshot_hash, 256)
+    .store_uint(output, 256)
+    .store_uint(proof_hash, 256)
+    .store_uint(verifier_version, 32)
+    .end_cell();
+  send_raw_message(begin_cell()
+    .store_uint(0x18, 6)
+    .store_slice(consumer)
+    .store_coins(30000000)
+    .store_uint(1, 107)
+    .store_ref(receipt)
+    .end_cell(), 2);
+}
+
+slice get_alpha_for(int draw_id) method_id {
+  (cell requests, slice owner, slice requester, int public_key_ecvrf,
+   int public_key_replay, int verifier_version) = load_contract();
+  (slice request_ref, int found) = requests.dict_get?(64, draw_key(draw_id));
+  throw_unless(230, found);
+  slice entry = request_ref~load_ref().begin_parse();
+  int snapshot_hash = entry~load_uint(256);
+  slice consumer = entry~load_msg_addr();
+  return alpha_builder(draw_id, snapshot_hash, consumer, verifier_version).end_cell().begin_parse();
+}
+
+int get_request_snapshot_hash(int draw_id) method_id {
+  (cell requests, slice owner, slice requester, int public_key_ecvrf,
+   int public_key_replay, int verifier_version) = load_contract();
+  (slice request_ref, int found) = requests.dict_get?(64, draw_key(draw_id));
+  throw_unless(231, found);
+  slice entry = request_ref~load_ref().begin_parse();
+  return entry~load_uint(256);
+}
+
+int get_request_fulfilled(int draw_id) method_id {
+  (cell requests, slice owner, slice requester, int public_key_ecvrf,
+   int public_key_replay, int verifier_version) = load_contract();
+  (slice request_ref, int found) = requests.dict_get?(64, draw_key(draw_id));
+  throw_unless(232, found);
+  slice entry = request_ref~load_ref().begin_parse();
+  entry~skip_bits(256);
+  entry~load_msg_addr();
+  return entry~load_uint(1);
+}
+
+int get_request_output(int draw_id) method_id {
+  (cell requests, slice owner, slice requester, int public_key_ecvrf,
+   int public_key_replay, int verifier_version) = load_contract();
+  (slice request_ref, int found) = requests.dict_get?(64, draw_key(draw_id));
+  throw_unless(233, found);
+  slice entry = request_ref~load_ref().begin_parse();
+  entry~skip_bits(256);
+  entry~load_msg_addr();
+  entry~skip_bits(1);
+  return entry~load_uint(256);
+}
+
+int get_verifier_version() method_id {
+  (cell requests, slice owner, slice requester, int public_key_ecvrf,
+   int public_key_replay, int verifier_version) = load_contract();
+  return verifier_version;
+}
+
+int get_get_public_key(int x) method_id { return ecvrf::rist255::get_public_key(x); }
+slice get_prove(int x, slice alpha) method_id { return ecvrf::rist255::prove(x, alpha); }

@@ -1,0 +1,37 @@
+{
+  "code_hash": "c8e68cb21dd4197572a5fac850b5e546e4b46129fa443442621bb02829321e78",
+  "source_bundle_hash": "5cc4f2454cc4674e4da41948890c5fd214205b5d9fdd8ae77d95d14be11e0e89",
+  "payment_tx_hash": "170237fe176837a332e65f4061251511bed09229f0b91a38ae753d32ebd4c169",
+  "verified_at": 1789892114,
+  "compiler": {
+    "language": "func",
+    "version": "0.4.6-wasmfix.0",
+    "entrypoint": "direct-coordinator.fc",
+    "params": {
+      "compiler_version": "0.4.6-wasmfix.0"
+    }
+  },
+  "source_map": null,
+  "files": [
+    {
+      "path": "direct-coordinator.fc",
+      "content_hash": "1001aafa1f524ce79f8b8db381b53145e8e9646548d6362a1f3a9d435b93b902",
+      "include_in_command": true
+    },
+    {
+      "path": "ecvrf.fc",
+      "content_hash": "ef9e943d39bd0bbdea5e45bb6fd894ec3d03120c899c086d9a0c809fe08886d4",
+      "include_in_command": true
+    },
+    {
+      "path": "exotic.fif.fc",
+      "content_hash": "021945e2b5437966c99f71e670b47455480f7c6ac68ce3ea7d030a0c6791f2b9",
+      "include_in_command": true
+    },
+    {
+      "path": "stdlib.fc",
+      "content_hash": "530abb6bac8ce7777f93e24472daf65ee5a1b35a6eb2ec68721e122bd386b060",
+      "include_in_command": true
+    }
+  ]
+}

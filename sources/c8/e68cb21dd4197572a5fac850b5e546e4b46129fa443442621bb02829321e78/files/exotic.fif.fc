@@ -1,0 +1,24 @@
+() __init_exotic_fift() impure asm """
+x{CF23} @Defop ENDXC
+x{F90400} @Defop HASHEXT_SHA256
+x{F90401} @Defop HASHEXT_SHA512
+x{F920} @Defop RIST255_FROMHASH
+x{F921} @Defop RIST255_VALIDATE
+x{F922} @Defop RIST255_ADD
+x{F923} @Defop RIST255_SUB
+x{F924} @Defop RIST255_MUL
+x{F925} @Defop RIST255_MULBASE
+x{F926} @Defop RIST255_PUSHL
+x{B7F921} @Defop RIST255_QVALIDATE
+x{B7F922} @Defop RIST255_QADD
+x{B7F923} @Defop RIST255_QSUB
+x{B7F924} @Defop RIST255_QMUL
+x{B7F925} @Defop RIST255_QMULBASE
+x{02} @Defop TWO
+x{03} @Defop THREE
+""";
+
+int depends_on_tvm_upgrade() method_id {
+    __init_exotic_fift();
+    return -1;
+}

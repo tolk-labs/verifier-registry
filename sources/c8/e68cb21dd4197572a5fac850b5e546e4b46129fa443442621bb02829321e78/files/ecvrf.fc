@@ -1,0 +1,332 @@
+;; ============================================================================
+;; ecvrf-compliant.fc
+;;
+;; RFC 9381 ECVRF using the ECVRF-RISTRETTO255-SHA512 ciphersuite
+;; (https://c2sp.org/vrf-r255), implemented for TON on top of the 2024 TVM
+;; Ristretto255 / HASHEXT opcodes. Written from scratch to match
+;; str4d/vrf-r255 (lib.rs) byte-for-byte. Reuses only the RIST255_* / HASHEXT
+;; opcode wrappers (defined in exotic.fif.fc).
+;;
+;; This module is intentionally free of main()/recv_internal() so it can be
+;; #include'd by a contract (e.g. coordinator.fc) without clashing with the
+;; stdlib auto-defined main/recv_internal.
+;;
+;; ---------------------------------------------------------------------------
+;; ENDIANNESS CONTRACT (money-critical; verified on-chain in probe tests):
+;;   * Ristretto255 POINTS are big-endian uint256 on TON. RIST255_MULBASE /
+;;     RIST255_FROMHASH return the 32-byte point encoding as a big-endian
+;;     integer, and RIST255_MUL / RIST255_VALIDATE accept it the same way.
+;;     (Verified: MULBASE(x) and FROMHASH match noble toRawBytes() in BE.)
+;;   * SCALARS (x, k, s) and the CHALLENGE c are LITTLE-ENDIAN byte strings in
+;;     RFC 9381 / vrf-r255 (str4d uses Scalar::{from,to}_canonical_bytes, LE;
+;;     the challenge is the first 16 hash bytes read as the LOW 16 bytes of a
+;;     32-byte LE scalar). Therefore scalar/challenge byte strings are
+;;     byte-reversed at the cell store/load boundary. See reverse_bytes_*.
+;;   * HASHEXT_SHA512 leaves a tuple [hi, lo] of two 256-bit INTEGERS on the
+;;     stack (hi = first 32 bytes of the digest, big-endian). It is unpacked
+;;     with the stdlib tuple `unpair`. (Verified: SHA512("abc") matches Node.)
+;; ============================================================================
+
+;; ---- opcode wrappers -------------------------------------------------------
+() rist255::validate_pkey(int public_key) impure asm "RIST255_VALIDATE";
+int rist255::qvalidate_pkey(int public_key) asm "RIST255_QVALIDATE";
+int rist255::multiply(int point, int value) asm "RIST255_MUL";
+int rist255::base(int value) asm "RIST255_MULBASE";
+int rist255::add(int, int) asm "RIST255_ADD";
+int rist255::sub(int, int) asm "RIST255_SUB";
+int rist255::order() asm "RIST255_PUSHL";
+;; Hash a builder with SHA-512 and map the 64-byte digest onto Ristretto255
+;; (the RFC 9496 / c2sp.org one-way map = ristretto255 from_uniform_bytes over
+;; the two 256-bit halves). Returns the point as a big-endian uint256.
+int rist255::sha512::hash_and_curve(builder data) asm "ONE HASHEXT_SHA512 UNPAIR RIST255_FROMHASH";
+;; Raw SHA-512 of a builder -> tuple [hi, lo] of two big-endian 256-bit ints.
+[int, int] sha512::raw(builder data) asm "ONE HASHEXT_SHA512";
+;; Raw SHA-512 of TWO builders concatenated (data1 || data2). Multi-part hashing
+;; is required because a single TON cell holds at most 1023 bits, while the
+;; challenge preimage is 162 bytes (1296 bits). `TWO` is defined in exotic.fif.fc.
+[int, int] sha512::raw2(builder data1, builder data2) asm "TWO HASHEXT_SHA512";
+
+;; ---- lengths ---------------------------------------------------------------
+const int PT_LEN = 32;    ;; point bytes
+const int C_LEN = 16;     ;; challenge bytes
+const int Q_LEN = 32;     ;; scalar bytes
+const int H_LEN = 64;     ;; hash output bytes
+
+;; ---- domain separators (single bytes, from RFC 9381 / c2sp.org/vrf-r255) ---
+const int DS_NONCE      = 0x81;
+const int DS_E2C        = 0x82;
+const int DS_CHAL_FRONT = 0x02;
+const int DS_CHAL_BACK  = 0x00;
+const int DS_P2H_FRONT  = 0x03;
+const int DS_P2H_BACK   = 0x00;
+
+;; SUITE = 0xFF || "c2sp.org/vrf-r255"  (15 bytes = 120 bits, big-endian).
+;; NOTE: FunC `const int` is a 257-bit *signed* integer, and this func-js build's
+;; store_uint overflows for literals wider than ~96 bits. A single 120-bit literal
+;; starting with 0xFF would also be parsed as a negative number. We therefore emit
+;; SUITE in <=96-bit chunks via store_suite().
+;;   0xFF "c2sp.o"  = 7 bytes = 56 bits   (0xFF633273702e6f)
+;;   "rg/vrf-r2"    = 9 bytes = 72 bits   (0x72672f7672662d7232)
+;;   "55"           = 2 bytes = 16 bits   (0x3535)
+builder store_suite(builder b) inline {
+    return b
+        .store_uint(0xFF633273702e6f, 56)      ;; 0xFF || "c2sp.o"
+        .store_uint(0x72672f7672662d7232, 72)  ;; "rg/vrf-r2"
+        .store_uint(0x3535, 16);               ;; "55"
+}
+
+;; ---------------------------------------------------------------------------
+;; reverse_bytes: load `byte_len` whole bytes from slice `s` and re-store them
+;; in reverse order into a fresh builder. Used to convert a fixed-width integer
+;; between TON's big-endian store/load and the little-endian byte layout the
+;; spec requires for scalars and the challenge.
+;; ---------------------------------------------------------------------------
+builder reverse_bytes_from(slice s, int byte_len) inline {
+    builder b = begin_cell();
+    int i = 0;
+    while (i < byte_len) {
+        slice t = s;                       ;; copy cursor (original is untouched)
+        t~skip_bits((byte_len - 1 - i) * 8);
+        b = b.store_uint(t~load_uint(8), 8);
+        i += 1;
+    }
+    return b;
+}
+;; store `value` (a `byte_len`-byte unsigned int) little-endian-ified: we store
+;; the int big-endian then byte-reverse, which yields the LE byte string.
+builder store_uint_le(builder b, int value, int byte_len) inline {
+    slice be = begin_cell().store_uint(value, byte_len * 8).end_cell().begin_parse();
+    return b.store_builder(reverse_bytes_from(be, byte_len));
+}
+;; load a `byte_len`-byte little-endian field: read the raw bytes, reverse to
+;; big-endian, then parse. For 32-byte (256-bit) scalars use a signed load and
+;; map negatives back into [0, 2^256); shorter fields (the 16-byte challenge)
+;; never reach bit 255 so a plain unsigned load is fine.
+;; Load a `byte_len`-byte little-endian field from the FRONT of slice `s`.
+;; Returns (advanced_slice, value): FunC inline functions receive slices by value,
+;; so a `s~skip_bits` inside here would NOT advance the caller's cursor; we must
+;; return the advanced slice and let the caller thread it explicitly.
+;; For 32-byte (256-bit) scalars use a signed load and map negatives back into
+;; [0, 2^256); shorter fields (the 16-byte challenge) never reach bit 255.
+(slice, int) load_uint_le(slice s, int byte_len) inline {
+    builder rb = reverse_bytes_from(s, byte_len);   ;; reads first byte_len bytes
+    s~skip_bits(byte_len * 8);                       ;; local cursor now advanced
+    slice r = rb.end_cell().begin_parse();
+    if (byte_len == 32) {
+        int v = r~load_int(256);
+        if (v < 0) { v += (1 << 255); v += (1 << 255); }
+        return (s, v);
+    }
+    return (s, r~load_uint(byte_len * 8));
+}
+;; reduce the 64-byte SHA-512 digest (delivered as [hi, lo] big-endian ints) to
+;; a scalar mod q using the spec's little-endian wide reduction. We avoid a
+;; 512-bit load (FunC/store_uint caps at ~256 bits) by reducing the two 256-bit
+;; halves with a linear combination. The digest bytes are h[0..31] (=hi, the
+;; first half) and l[0..31] (=lo). The LE integer value is
+;;   LE = sum digest[i] 256^i = LE(h) + 256^32 * LE(l),
+;; where LE(x) is the little-endian value of a 32-byte buffer = the big-endian
+;; value of the byte-reversed buffer. With
+;;   a = BE_int(reverse(hi_bytes)) = LE(h),   b = BE_int(reverse(lo_bytes)) = LE(l)
+;; we get  k = ( a + (2^256 mod q) * b ) mod q.  All operands stay <= 256 bits.
+int rev32_to_int(int be_int) inline {
+    slice be = begin_cell().store_uint(be_int, 256).end_cell().begin_parse();
+    slice le = reverse_bytes_from(be, 32).end_cell().begin_parse();
+    int v = le~load_int(256);              ;; signed load (top bit => negative)
+    if (v < 0) { v += (1 << 255); v += (1 << 255); }  ;; +2^256 -> back to unsigned range
+    return v;
+}
+;; Reduce the 64-byte SHA-512 digest ([hi, lo] big-endian ints) to a scalar mod q
+;; via the spec's little-endian wide reduction: k = LE_int(digest) mod q, where
+;; LE_int(digest) = sum_{i=0}^{63} digest[i] * 256^i (digest[0] = first byte = the
+;; high byte of `hi`). We evaluate this with Horner's method from the LAST byte
+;; back to the first:  acc = 0; for i = 63..0: acc = (acc*256 + digest[i]) mod q.
+;; Every intermediate acc*256 + b is < q*256 + 255 < 2^252 * 2^8 = 2^260 ... but we
+;; reduce each factor first so no product exceeds ~2^252+8 = 2^260. FunC ints are
+;; 257-bit signed, so we reduce acc mod q each step (acc < q < 2^252) making
+;; acc*256 < 2^260 which still overflows! So instead reduce the *256 using a
+;; precomputed (256 mod q) is unnecessary -- we multiply a value < q (< 2^252) by
+;; 256 (< 2^9), giving < 2^261. To stay strictly within 257-bit signed range we
+;; note acc < q < 2^252 so acc*256 < 2^260; that overflows 2^256. We therefore do
+;; acc = ((acc << 3) mod q ... ) -- no. Simplest correct: keep acc < 2^248 by
+;; reducing twice. Actually q < 2^252 and acc < q, so acc*256 < 2^260 which DOES
+;; exceed the 257-bit signed max (2^256). We must avoid acc*256 directly.
+;;
+;; Robust approach: acc stays in [0, q). To multiply by 256 without overflow we
+;; use shift-add with modular reduction at each bit is overkill; instead observe
+;;   acc*256 mod q = ((acc mod ceil(q/256))*256 + (acc div ceil(q/256))*((256*ceil(q/256)) ... )) -- messy.
+;; Cleanest: 256 = 2^8, and q < 2^252, so acc*2^8 overflows only when acc >= 2^248.
+;; Split acc: acc = a1*2^244 + a0 with a0 < 2^244, a1 < 2^8. Then
+;;   acc*256 = a1*2^252 + a0*256;  a1*2^252 < 2^8 * 2^252 = 2^260 -- still big.
+;; Final decision: process the digest a byte at a time but reduce mod q at each
+;; step using the identity acc*256 + b computed as
+;;   t = (acc * 256)  -- safe ONLY if acc < 2^248.
+;; We guarantee acc < 2^248 by taking acc mod 2^248 each iteration is WRONG mod q.
+;;
+;; => Use the mathematically clean per-byte reduction that never exceeds 2^255:
+;;    maintain acc in [0, q). Each step:
+;;      acc16 = acc * 2  (safe: < 2^253), 8 times with a mod after each doubling
+;;    i.e. acc = (((acc*2) mod q)*2 ... ) then add b. A doubling of a value < q
+;;    (< 2^252) is < 2^253 < 2^256, always safe. 8 doublings = *256. Then + b (<256).
+;;    After +b, acc < q + 255; one conditional subtract q restores [0,q).
+int digest_to_scalar_mod_q([int, int] d) inline {
+    (int hi, int lo) = unpair(d);
+    slice be = begin_cell().store_uint(hi, 256).store_uint(lo, 256).end_cell().begin_parse();
+    int q = rist255::order();
+    int acc = 0;
+    ;; Horner from the LAST byte (i=63) back to the first (i=0):
+    ;;   LE value = sum digest[i] 256^i  =>  process digest[63] first.
+    int i = 63;
+    while (i >= 0) {
+        slice t = be;                        ;; copy cursor over the 64-byte digest
+        t~skip_bits(i * 8);
+        int byte = t~load_uint(8);
+        ;; acc = (acc * 256 + byte) mod q, computed via 8 safe doublings.
+        repeat (8) { acc = (acc + acc) % q; }
+        acc = (acc + byte) % q;
+        i -= 1;
+    }
+    return acc;
+}
+
+;; ---------------------------------------------------------------------------
+;; get_public_key: Y = x * B.  Input x is the scalar VALUE (bigint). Returns the
+;; 32-byte point encoding as a big-endian uint256.
+;; ---------------------------------------------------------------------------
+int ecvrf::rist255::get_public_key(int secret) inline {
+    return rist255::base(secret);
+}
+
+;; ---------------------------------------------------------------------------
+;; encode_to_curve(salt = PK_bytes, alpha):
+;;   hash_string = SHA512( SUITE || 0x82 || PK_bytes(32) || alpha )
+;;   H = ristretto255_one_way_map(hash_string)
+;; `pk` is the BE uint256 point encoding; `alpha` is a slice whose whole bit
+;; content is the alpha string (we hash its remaining bits, which must be a
+;; whole number of bytes). Returns H as a BE uint256 point.
+;; ---------------------------------------------------------------------------
+int ecvrf::rist255::encode_to_curve(int pk, slice alpha) inline {
+    return store_suite(begin_cell())
+        .store_uint(DS_E2C, 8)
+        .store_uint(pk, 256)
+        .store_slice(alpha)
+        .rist255::sha512::hash_and_curve();
+}
+
+;; ---------------------------------------------------------------------------
+;; generate_nonce(x, H):
+;;   k_string = SHA512( SUITE || 0x81 || x_LE(32) || H_bytes(32) )
+;;   k = LE_int(k_string) mod q
+;; x is the scalar value; h_point is the BE uint256 point encoding of H.
+;; ---------------------------------------------------------------------------
+int ecvrf::rist255::generate_nonce(int secret, int h_point) inline {
+    builder b = store_suite(begin_cell())
+        .store_uint(DS_NONCE, 8);
+    b = b.store_uint_le(secret, 32);          ;; x as 32 little-endian bytes
+    b = b.store_uint(h_point, 256);           ;; H_bytes (point encoding is BE)
+    return digest_to_scalar_mod_q(sha512::raw(b));
+}
+
+;; ---------------------------------------------------------------------------
+;; challenge(Y, H, Gamma, U, V):
+;;   c_string = SHA512( SUITE || 0x02 || Y||H||Gamma||U||V || 0x00 )
+;;   c = the FIRST 16 bytes of c_string, read as the low 16 bytes of a 32-byte
+;;       little-endian scalar (== LE_int(c_string[0..16])).
+;; All five points are BE uint256. Returns c as a (value) bigint (< 2^128).
+;; ---------------------------------------------------------------------------
+int ecvrf::rist255::challenge(int y_point, int h_point, int gamma_point,
+        int u_point, int v_point) inline {
+    ;; The preimage is SUITE(15) || 0x02 || Y||H||Gamma||U||V (5*32) || 0x00
+    ;; = 162 bytes = 1296 bits > 1023, so it cannot fit one cell. We split it
+    ;; across two builders and hash them concatenated with TWO HASHEXT_SHA512:
+    ;;   part1 = SUITE || 0x02 || Y || H || Gamma      (48 bytes)
+    ;;   part2 = U || V || 0x00                        (65 bytes)
+    builder p1 = store_suite(begin_cell())
+        .store_uint(DS_CHAL_FRONT, 8)
+        .store_uint(y_point, 256)
+        .store_uint(h_point, 256)
+        .store_uint(gamma_point, 256);
+    builder p2 = begin_cell()
+        .store_uint(u_point, 256)
+        .store_uint(v_point, 256)
+        .store_uint(DS_CHAL_BACK, 8);
+    [int, int] d = sha512::raw2(p1, p2);
+    (int hi, int lo) = unpair(d);            ;; hi = first 32 bytes of c_string
+    slice hs = begin_cell().store_uint(hi, 256).end_cell().begin_parse();
+    (slice hs2, int c) = load_uint_le(hs, 16); ;; first 16 bytes, little-endian
+    return c;
+}
+
+;; ---------------------------------------------------------------------------
+;; prove(x, alpha):
+;;   H = encode_to_curve(Y_bytes, alpha)         (Y = x*B)
+;;   Gamma = x * H
+;;   k = generate_nonce(x, H)
+;;   U = k*B ; V = k*H
+;;   c = challenge(Y, H, Gamma, U, V)
+;;   s = (k + c*x) mod q
+;;   proof = Gamma(32, BE point) || c(16, LE) || s(32, LE)   -> 80 bytes
+;; Returns the proof as a slice.
+;; ---------------------------------------------------------------------------
+;; Overflow-safe (k + c*x) mod q. A direct `c * x` overflows FunC's 257-bit
+;; signed integer (c is ~128-bit, x ~252-bit, product ~380-bit). We therefore
+;; reduce with shift-and-add over the 128 bits of c, doubling mod q each step.
+;; Doubling a value < q (< 2^252) yields < 2^253, which fits; adding x (< q <
+;; 2^252) yields < 2^254, which fits. Everything stays within 257-bit signed.
+int ecvrf::mulmod_scalar(int c, int x) inline {
+    int q = rist255::order();
+    int acc = 0;
+    int xx = x % q;
+    int i = 0;
+    while (i < 128) {                        ;; c is a 128-bit challenge
+        acc = (acc + acc) % q;               ;; acc *= 2
+        if ((c >> (127 - i)) & 1) { acc = (acc + xx) % q; }
+        i += 1;
+    }
+    return acc;
+}
+
+slice ecvrf::rist255::prove(int secret, slice alpha) inline {
+    int public_key = rist255::base(secret);
+    int h = ecvrf::rist255::encode_to_curve(public_key, alpha);
+    int gamma = rist255::multiply(h, secret);
+    int k = ecvrf::rist255::generate_nonce(secret, h);
+    int c = ecvrf::rist255::challenge(public_key, h, gamma,
+        rist255::base(k), rist255::multiply(h, k));
+    int cx = ecvrf::mulmod_scalar(c, secret);        ;; (c * x) mod q, no overflow
+    int s = (k + cx) % rist255::order();
+    builder b = begin_cell().store_uint(gamma, 256);
+    b = b.store_uint_le(c, 16);
+    b = b.store_uint_le(s, 32);
+    return b.end_cell().begin_parse();
+}
+
+;; ---------------------------------------------------------------------------
+;; verify_and_hash(pk, alpha, pi):
+;;   validate pk & Gamma are valid non-identity Ristretto255 points
+;;   parse pi = Gamma(32 BE) || c(16 LE) || s(32 LE)
+;;   H = encode_to_curve(pk, alpha)
+;;   U = s*B - c*Y ;  V = s*H - c*Gamma
+;;   c' = challenge(Y, H, Gamma, U, V) ;  require c == c'
+;;   beta = SHA512( SUITE || 0x03 || Gamma_bytes || 0x00 )   (64 bytes)
+;; Returns the 64-byte beta as a cell. Throws 101 if the proof is invalid,
+;; 100 if pk is not a valid point. (RIST255_VALIDATE aborts on invalid/identity.)
+;; ---------------------------------------------------------------------------
+cell ecvrf::rist255::verify_and_hash(int public_key, slice alpha, slice pi) inline {
+    rist255::validate_pkey(public_key);
+    int gamma = pi~load_uint(256);                       ;; point encoding is BE
+    rist255::validate_pkey(gamma);
+    (slice pi2, int c) = load_uint_le(pi, 16);           ;; c is 16 LE bytes
+    (slice pi3, int s) = load_uint_le(pi2, 32);          ;; s is 32 LE bytes
+    int h = ecvrf::rist255::encode_to_curve(public_key, alpha);
+    int U = rist255::sub(rist255::base(s), rist255::multiply(public_key, c));
+    int V = rist255::sub(rist255::multiply(h, s), rist255::multiply(gamma, c));
+    int c' = ecvrf::rist255::challenge(public_key, h, gamma, U, V);
+    throw_unless(101, c == c');
+    [int, int] beta = sha512::raw(store_suite(begin_cell())
+        .store_uint(DS_P2H_FRONT, 8)
+        .store_uint(gamma, 256)
+        .store_uint(DS_P2H_BACK, 8));
+    (int bhi, int blo) = unpair(beta);
+    return begin_cell().store_uint(bhi, 256).store_uint(blo, 256).end_cell();
+}
