@@ -1,0 +1,231 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "InheritanceJettonFactory",
+  "author": "ton-inheritance",
+  "version": "1.0.0",
+  "description": "Factory contract that deploys per-inheritance jetton vaults (Phase 2 / Plan 01).",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "AliasRef",
+      "alias_name": "JettonFactoryMessage"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "DeployJettonVault"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "JettonFactoryStorage"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "JettonVaultCreated"
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "alias",
+      "name": "JettonFactoryMessage",
+      "ty_idx": 12,
+      "target_ty_idx": 13
+    },
+    {
+      "kind": "struct",
+      "name": "JettonFactoryStorage",
+      "ty_idx": 14,
+      "fields": [
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "deployCount",
+          "ty_idx": 11
+        },
+        {
+          "name": "vaultCode",
+          "ty_idx": 3
+        },
+        {
+          "name": "jettonMaster",
+          "ty_idx": 7
+        },
+        {
+          "name": "jettonWalletCode",
+          "ty_idx": 3
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "DeployJettonVault",
+      "ty_idx": 13,
+      "prefix": {
+        "prefix_num": 414146416,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "heir",
+          "ty_idx": 7
+        },
+        {
+          "name": "heartbeatPeriod",
+          "ty_idx": 11
+        },
+        {
+          "name": "initialDeadline",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "JettonVaultCreated",
+      "ty_idx": 15,
+      "prefix": {
+        "prefix_num": 1267543697,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "vault",
+          "ty_idx": 7
+        },
+        {
+          "name": "expectedJettonWallet",
+          "ty_idx": 7
+        },
+        {
+          "name": "jettonMaster",
+          "ty_idx": 7
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 14
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [],
+  "emitted_events": [
+    {
+      "body_ty_idx": 15
+    }
+  ],
+  "get_methods": [
+    {
+      "tvm_method_id": 110720,
+      "name": "getDeployCount",
+      "parameters": [],
+      "return_ty_idx": 11
+    },
+    {
+      "tvm_method_id": 83229,
+      "name": "owner",
+      "parameters": [],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 111405,
+      "name": "predictedVaultAddress",
+      "parameters": [
+        {
+          "name": "sender",
+          "ty_idx": 7
+        },
+        {
+          "name": "heir",
+          "ty_idx": 7
+        },
+        {
+          "name": "heartbeatPeriod",
+          "ty_idx": 11
+        },
+        {
+          "name": "initialDeadline",
+          "ty_idx": 11
+        }
+      ],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 113118,
+      "name": "jettonMaster",
+      "parameters": [],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 84150,
+      "name": "jettonWalletCode",
+      "parameters": [],
+      "return_ty_idx": 3
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "JettonErrors.FakeJettonSender",
+      "err_code": 200
+    },
+    {
+      "kind": "enum_member",
+      "name": "JettonErrors.DepositAlreadyReceived",
+      "err_code": 201
+    },
+    {
+      "kind": "enum_member",
+      "name": "JettonErrors.RefundNotAllowed",
+      "err_code": 202
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.4.2"
+}

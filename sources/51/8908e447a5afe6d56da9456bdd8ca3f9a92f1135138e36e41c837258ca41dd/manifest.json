@@ -1,0 +1,7309 @@
+{
+  "code_hash": "518908e447a5afe6d56da9456bdd8ca3f9a92f1135138e36e41c837258ca41dd",
+  "source_bundle_hash": "92ae1736f9e97c66d23201d9f70b8d04d84c53a9a8a815cda05427b6b126b159",
+  "payment_tx_hash": "38d3342e1964dfec16549014ba82096e9c7b828ed549e60361032ac78b19c1fa",
+  "verified_at": 1790000220,
+  "compiler": {
+    "language": "tolk",
+    "version": "1.4.2",
+    "entrypoint": "contracts/InheritanceJettonFactory.tolk",
+    "params": {
+      "compiler_version": "1.4.2",
+      "import_mappings": {
+        "@acton": ".acton",
+        "@contracts": "contracts",
+        "@gen": "gen",
+        "@tests": "tests",
+        "@wrappers": "wrappers"
+      }
+    }
+  },
+  "source_map": {
+    "code_boc64": "te6ccgECDgEAAaAAART/APSkE/S88sgLAQIBYgIDAS7Q+JGRMOAgxwCRMODXLCDFevuE4wLyPwQCASAGBwH++kjTP9cLP/iSI8cF8tDIIYIBUYC+8uDJIYIJ4TOAu/LgyfgjIqAhu/Lgyu1E0PpI0z8g1PpI10xc+JICyPpSzMkByPpSGvpSz4QgF8s/F8s/z4WAF8zJUwbIz4TQzMz5FsjPigBAy//PUFRwZcjPhCAT+lL6UszJUAbIz4TQzAUA0sz5FsjPigBAy//PUIIQBfXhAMjPiQgBUznIz4TQzMz5Fs8L/wH6AoEAjM8LcBjMzMlw+wDIz5EuNLpGFPpSFfpSE/pSycjPjxgABIIQS40ukc8L93HPC2HMyXD7AAKkAcj6Uss/zsntVAICdAgJAgJzCgsAEa6O9qJofSQYQAATrFt2omhqGOumQAIBSAwNAB2s73aiaH0kGOmfmP0kGEAAFaUB2omh9JBjrhZ/AHemW9qJofSQY6Z+Y6n0ka6YA5H0pZmSC5H0pCn0pZ8IQZZ/ln+fCwAlmZIDkZ8JoZmZ8i2RnxQAgZf/nqE=",
+    "symbol_types_json": {
+      "alias_instantiations": [],
+      "declarations": [
+        {
+          "fields": [
+            {
+              "name": "skipBitsNValidation",
+              "ty_idx": 5
+            }
+          ],
+          "ident_loc": [
+            0,
+            439,
+            8,
+            439,
+            19
+          ],
+          "kind": "struct",
+          "name": "PackOptions",
+          "ty_idx": 17
+        },
+        {
+          "ident_loc": [
+            0,
+            1596,
+            6,
+            1596,
+            24
+          ],
+          "kind": "alias",
+          "name": "ExtraCurrenciesMap",
+          "target_ty_idx": 37,
+          "ty_idx": 35
+        },
+        {
+          "fields": [
+            {
+              "name": "code",
+              "ty_idx": 3
+            },
+            {
+              "name": "data",
+              "ty_idx": 3
+            }
+          ],
+          "ident_loc": [
+            0,
+            1600,
+            8,
+            1600,
+            21
+          ],
+          "kind": "struct",
+          "name": "ContractState",
+          "ty_idx": 20
+        },
+        {
+          "fields": [
+            {
+              "name": "fixedPrefixLength",
+              "ty_idx": 25
+            },
+            {
+              "name": "closeTo",
+              "ty_idx": 7
+            }
+          ],
+          "ident_loc": [
+            0,
+            1607,
+            8,
+            1607,
+            30
+          ],
+          "kind": "struct",
+          "name": "AddressShardingOptions",
+          "ty_idx": 24
+        },
+        {
+          "fields": [
+            {
+              "name": "workchain",
+              "ty_idx": 22
+            },
+            {
+              "name": "stateInit",
+              "ty_idx": 23
+            },
+            {
+              "name": "toShard",
+              "ty_idx": 26
+            }
+          ],
+          "ident_loc": [
+            0,
+            1629,
+            8,
+            1629,
+            25
+          ],
+          "kind": "struct",
+          "name": "AutoDeployAddress",
+          "ty_idx": 21
+        },
+        {
+          "encoded_as_ty_idx": 32,
+          "ident_loc": [
+            0,
+            1685,
+            6,
+            1685,
+            16
+          ],
+          "kind": "enum",
+          "members": [
+            {
+              "name": "NoBounce",
+              "value": "0"
+            },
+            {
+              "name": "Only256BitsOfBody",
+              "value": "1"
+            },
+            {
+              "name": "RichBounce",
+              "value": "2"
+            },
+            {
+              "name": "RichBounceOnlyRootCell",
+              "value": "3"
+            }
+          ],
+          "name": "BounceMode",
+          "ty_idx": 31
+        },
+        {
+          "ident_loc": [
+            0,
+            1695,
+            6,
+            1695,
+            19
+          ],
+          "kind": "alias",
+          "name": "OldBounceMode",
+          "target_ty_idx": 5,
+          "ty_idx": 33
+        },
+        {
+          "fields": [
+            {
+              "name": "bounce",
+              "ty_idx": 34
+            },
+            {
+              "name": "value",
+              "ty_idx": 39
+            },
+            {
+              "name": "dest",
+              "ty_idx": 42
+            },
+            {
+              "name": "body",
+              "ty_idx": 43
+            }
+          ],
+          "ident_loc": [
+            0,
+            1699,
+            8,
+            1699,
+            28
+          ],
+          "kind": "struct",
+          "name": "CreateMessageOptions",
+          "ty_idx": 44,
+          "type_params": [
+            "TBody"
+          ]
+        },
+        {
+          "fields": [
+            {
+              "name": "topic",
+              "ty_idx": 51
+            }
+          ],
+          "ident_loc": [
+            0,
+            1743,
+            15,
+            1743,
+            30
+          ],
+          "kind": "struct",
+          "name": "ExtOutLogBucket",
+          "prefix": {
+            "prefix_len": 8,
+            "prefix_num": 0
+          },
+          "ty_idx": 48
+        },
+        {
+          "fields": [
+            {
+              "name": "dest",
+              "ty_idx": 52
+            },
+            {
+              "name": "body",
+              "ty_idx": 43
+            }
+          ],
+          "ident_loc": [
+            0,
+            1749,
+            8,
+            1749,
+            39
+          ],
+          "kind": "struct",
+          "name": "CreateExternalLogMessageOptions",
+          "ty_idx": 53,
+          "type_params": [
+            "TBody"
+          ]
+        },
+        {
+          "fields": [
+            {
+              "name": "messageCell",
+              "ty_idx": 3
+            }
+          ],
+          "ident_loc": [
+            0,
+            1796,
+            8,
+            1796,
+            18
+          ],
+          "kind": "struct",
+          "name": "OutMessage",
+          "ty_idx": 29
+        },
+        {
+          "ident_loc": [
+            1,
+            27,
+            6,
+            27,
+            26
+          ],
+          "kind": "alias",
+          "name": "JettonFactoryMessage",
+          "target_ty_idx": 13,
+          "ty_idx": 12
+        },
+        {
+          "fields": [
+            {
+              "name": "jettonMaster",
+              "ty_idx": 7
+            },
+            {
+              "name": "jettonWalletCode",
+              "ty_idx": 3
+            }
+          ],
+          "ident_loc": [
+            2,
+            28,
+            8,
+            28,
+            24
+          ],
+          "kind": "struct",
+          "name": "JettonVaultExtra",
+          "ty_idx": 15
+        },
+        {
+          "fields": [
+            {
+              "name": "balance",
+              "ty_idx": 6
+            },
+            {
+              "name": "owner",
+              "ty_idx": 7
+            },
+            {
+              "name": "master",
+              "ty_idx": 7
+            },
+            {
+              "name": "walletCode",
+              "ty_idx": 3
+            }
+          ],
+          "ident_loc": [
+            2,
+            38,
+            8,
+            38,
+            32
+          ],
+          "kind": "struct",
+          "name": "StandardJettonWalletData",
+          "ty_idx": 27
+        },
+        {
+          "fields": [
+            {
+              "name": "owner",
+              "ty_idx": 7
+            },
+            {
+              "name": "heir",
+              "ty_idx": 7
+            },
+            {
+              "name": "amount",
+              "ty_idx": 6
+            },
+            {
+              "name": "deadline",
+              "ty_idx": 11
+            },
+            {
+              "name": "heartbeatPeriod",
+              "ty_idx": 11
+            },
+            {
+              "name": "isActive",
+              "ty_idx": 5
+            },
+            {
+              "name": "depositPending",
+              "ty_idx": 5
+            },
+            {
+              "name": "extra",
+              "ty_idx": 3
+            }
+          ],
+          "ident_loc": [
+            2,
+            68,
+            8,
+            68,
+            26
+          ],
+          "kind": "struct",
+          "name": "JettonVaultStorage",
+          "ty_idx": 18
+        },
+        {
+          "fields": [
+            {
+              "name": "owner",
+              "ty_idx": 7
+            },
+            {
+              "name": "deployCount",
+              "ty_idx": 11
+            },
+            {
+              "name": "vaultCode",
+              "ty_idx": 3
+            },
+            {
+              "name": "jettonMaster",
+              "ty_idx": 7
+            },
+            {
+              "name": "jettonWalletCode",
+              "ty_idx": 3
+            }
+          ],
+          "ident_loc": [
+            2,
+            100,
+            8,
+            100,
+            28
+          ],
+          "kind": "struct",
+          "name": "JettonFactoryStorage",
+          "ty_idx": 14
+        },
+        {
+          "fields": [
+            {
+              "name": "heir",
+              "ty_idx": 7
+            },
+            {
+              "name": "heartbeatPeriod",
+              "ty_idx": 11
+            },
+            {
+              "name": "initialDeadline",
+              "ty_idx": 11
+            }
+          ],
+          "ident_loc": [
+            2,
+            197,
+            21,
+            197,
+            38
+          ],
+          "kind": "struct",
+          "name": "DeployJettonVault",
+          "prefix": {
+            "prefix_len": 32,
+            "prefix_num": 414146416
+          },
+          "ty_idx": 13
+        },
+        {
+          "fields": [
+            {
+              "name": "vault",
+              "ty_idx": 7
+            },
+            {
+              "name": "expectedJettonWallet",
+              "ty_idx": 7
+            },
+            {
+              "name": "jettonMaster",
+              "ty_idx": 7
+            }
+          ],
+          "ident_loc": [
+            2,
+            215,
+            21,
+            215,
+            39
+          ],
+          "kind": "struct",
+          "name": "JettonVaultCreated",
+          "prefix": {
+            "prefix_len": 32,
+            "prefix_num": 1267543697
+          },
+          "ty_idx": 45
+        }
+      ],
+      "files": [
+        {
+          "file_id": 0,
+          "file_name": "@stdlib/common.tolk",
+          "imports": [],
+          "size_chars": 75314
+        },
+        {
+          "file_id": 1,
+          "file_name": "contracts/InheritanceJettonFactory.tolk",
+          "imports": [
+            2
+          ],
+          "size_chars": 8250
+        },
+        {
+          "file_id": 2,
+          "file_name": "contracts/jetton_types.tolk",
+          "imports": [],
+          "size_chars": 12276
+        }
+      ],
+      "functions": [
+        {
+          "end_loc": [
+            1,
+            130,
+            1,
+            130,
+            2
+          ],
+          "f_idx": 0,
+          "ident_loc": [
+            1,
+            29,
+            5,
+            29,
+            22
+          ],
+          "name": "onInternalMessage",
+          "num_params": 1,
+          "params": [
+            {
+              "name": "in.body",
+              "ty_idx": 2
+            }
+          ],
+          "return_ty_idx": 0
+        },
+        {
+          "end_loc": [
+            1,
+            132,
+            46,
+            132,
+            47
+          ],
+          "f_idx": 1,
+          "ident_loc": [
+            1,
+            132,
+            5,
+            132,
+            21
+          ],
+          "name": "onBouncedMessage",
+          "num_params": 1,
+          "params": [
+            {
+              "name": "in.body",
+              "ty_idx": 2
+            }
+          ],
+          "return_ty_idx": 0
+        },
+        {
+          "end_loc": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "f_idx": 2,
+          "ident_loc": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "name": "JettonVaultExtra.toCell",
+          "num_params": 2,
+          "params": [
+            {
+              "name": "self",
+              "ty_idx": 15
+            },
+            {
+              "name": "options",
+              "ty_idx": 17
+            }
+          ],
+          "return_ty_idx": 16
+        },
+        {
+          "end_loc": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "f_idx": 3,
+          "ident_loc": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "name": "JettonVaultStorage.toCell",
+          "num_params": 2,
+          "params": [
+            {
+              "name": "self",
+              "ty_idx": 18
+            },
+            {
+              "name": "options",
+              "ty_idx": 17
+            }
+          ],
+          "return_ty_idx": 19
+        },
+        {
+          "end_loc": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "f_idx": 4,
+          "ident_loc": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "name": "AutoDeployAddress.calculateAddress",
+          "num_params": 1,
+          "params": [
+            {
+              "name": "self",
+              "ty_idx": 21
+            }
+          ],
+          "return_ty_idx": 7
+        },
+        {
+          "end_loc": [
+            2,
+            64,
+            1,
+            64,
+            2
+          ],
+          "f_idx": 5,
+          "ident_loc": [
+            2,
+            48,
+            5,
+            48,
+            31
+          ],
+          "name": "computeJettonWalletAddress",
+          "num_params": 3,
+          "params": [
+            {
+              "name": "walletCode",
+              "ty_idx": 3
+            },
+            {
+              "name": "master",
+              "ty_idx": 7
+            },
+            {
+              "name": "walletOwner",
+              "ty_idx": 7
+            }
+          ],
+          "return_ty_idx": 7
+        },
+        {
+          "end_loc": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "f_idx": 6,
+          "ident_loc": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "name": "StandardJettonWalletData.toCell",
+          "num_params": 2,
+          "params": [
+            {
+              "name": "self",
+              "ty_idx": 27
+            },
+            {
+              "name": "options",
+              "ty_idx": 17
+            }
+          ],
+          "return_ty_idx": 28
+        },
+        {
+          "end_loc": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "f_idx": 7,
+          "ident_loc": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "name": "createMessage<void>",
+          "num_params": 1,
+          "params": [
+            {
+              "name": "options",
+              "ty_idx": 30
+            }
+          ],
+          "return_ty_idx": 29
+        },
+        {
+          "end_loc": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "f_idx": 8,
+          "ident_loc": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "name": "createExternalLogMessage<JettonVaultCreated>",
+          "num_params": 1,
+          "params": [
+            {
+              "name": "options",
+              "ty_idx": 46
+            }
+          ],
+          "return_ty_idx": 29
+        },
+        {
+          "end_loc": [
+            2,
+            114,
+            1,
+            114,
+            2
+          ],
+          "f_idx": 9,
+          "ident_loc": [
+            2,
+            112,
+            26,
+            112,
+            30
+          ],
+          "name": "JettonFactoryStorage.save",
+          "num_params": 1,
+          "params": [
+            {
+              "name": "self",
+              "ty_idx": 14
+            }
+          ],
+          "return_ty_idx": 0
+        },
+        {
+          "end_loc": [
+            1,
+            137,
+            1,
+            137,
+            2
+          ],
+          "f_idx": 10,
+          "ident_loc": [
+            1,
+            134,
+            9,
+            134,
+            23
+          ],
+          "name": "getDeployCount",
+          "num_params": 0,
+          "params": [],
+          "return_ty_idx": 11
+        },
+        {
+          "end_loc": [
+            1,
+            142,
+            1,
+            142,
+            2
+          ],
+          "f_idx": 11,
+          "ident_loc": [
+            1,
+            139,
+            9,
+            139,
+            14
+          ],
+          "name": "owner",
+          "num_params": 0,
+          "params": [],
+          "return_ty_idx": 7
+        },
+        {
+          "end_loc": [
+            1,
+            185,
+            1,
+            185,
+            2
+          ],
+          "f_idx": 12,
+          "ident_loc": [
+            1,
+            158,
+            9,
+            158,
+            30
+          ],
+          "name": "predictedVaultAddress",
+          "num_params": 4,
+          "params": [
+            {
+              "name": "sender",
+              "ty_idx": 7
+            },
+            {
+              "name": "heir",
+              "ty_idx": 7
+            },
+            {
+              "name": "heartbeatPeriod",
+              "ty_idx": 11
+            },
+            {
+              "name": "initialDeadline",
+              "ty_idx": 11
+            }
+          ],
+          "return_ty_idx": 7
+        },
+        {
+          "end_loc": [
+            1,
+            193,
+            1,
+            193,
+            2
+          ],
+          "f_idx": 13,
+          "ident_loc": [
+            1,
+            190,
+            9,
+            190,
+            21
+          ],
+          "name": "jettonMaster",
+          "num_params": 0,
+          "params": [],
+          "return_ty_idx": 7
+        },
+        {
+          "end_loc": [
+            1,
+            198,
+            1,
+            198,
+            2
+          ],
+          "f_idx": 14,
+          "ident_loc": [
+            1,
+            195,
+            9,
+            195,
+            25
+          ],
+          "name": "jettonWalletCode",
+          "num_params": 0,
+          "params": [],
+          "return_ty_idx": 3
+        }
+      ],
+      "struct_instantiations": [
+        {
+          "monomorphic_fields_ty_idx": [
+            34,
+            39,
+            42,
+            0
+          ],
+          "struct_name": "CreateMessageOptions<void>",
+          "ty_idx": 30
+        },
+        {
+          "monomorphic_fields_ty_idx": [
+            52,
+            45
+          ],
+          "struct_name": "CreateExternalLogMessageOptions<JettonVaultCreated>",
+          "ty_idx": 46
+        }
+      ],
+      "unique_types": [
+        {
+          "kind": "void"
+        },
+        {
+          "kind": "int"
+        },
+        {
+          "kind": "slice"
+        },
+        {
+          "kind": "cell"
+        },
+        {
+          "kind": "builder"
+        },
+        {
+          "kind": "bool"
+        },
+        {
+          "kind": "coins"
+        },
+        {
+          "kind": "address"
+        },
+        {
+          "kind": "intN",
+          "n": 32
+        },
+        {
+          "kind": "uintN",
+          "n": 32
+        },
+        {
+          "kind": "intN",
+          "n": 64
+        },
+        {
+          "kind": "uintN",
+          "n": 64
+        },
+        {
+          "alias_name": "JettonFactoryMessage",
+          "kind": "AliasRef"
+        },
+        {
+          "kind": "StructRef",
+          "struct_name": "DeployJettonVault"
+        },
+        {
+          "kind": "StructRef",
+          "struct_name": "JettonFactoryStorage"
+        },
+        {
+          "kind": "StructRef",
+          "struct_name": "JettonVaultExtra"
+        },
+        {
+          "inner_ty_idx": 15,
+          "kind": "cellOf"
+        },
+        {
+          "kind": "StructRef",
+          "struct_name": "PackOptions"
+        },
+        {
+          "kind": "StructRef",
+          "struct_name": "JettonVaultStorage"
+        },
+        {
+          "inner_ty_idx": 18,
+          "kind": "cellOf"
+        },
+        {
+          "kind": "StructRef",
+          "struct_name": "ContractState"
+        },
+        {
+          "kind": "StructRef",
+          "struct_name": "AutoDeployAddress"
+        },
+        {
+          "kind": "intN",
+          "n": 8
+        },
+        {
+          "kind": "union",
+          "stack_width": 3,
+          "variants": [
+            {
+              "is_prefix_implicit": true,
+              "prefix_len": 1,
+              "prefix_num": 0,
+              "stack_type_id": 129,
+              "stack_width": 2,
+              "variant_ty_idx": 20
+            },
+            {
+              "is_prefix_implicit": true,
+              "prefix_len": 1,
+              "prefix_num": 1,
+              "stack_type_id": 3,
+              "stack_width": 1,
+              "variant_ty_idx": 3
+            }
+          ]
+        },
+        {
+          "kind": "StructRef",
+          "struct_name": "AddressShardingOptions"
+        },
+        {
+          "kind": "uintN",
+          "n": 5
+        },
+        {
+          "inner_ty_idx": 24,
+          "kind": "nullable",
+          "stack_type_id": 130,
+          "stack_width": 3
+        },
+        {
+          "kind": "StructRef",
+          "struct_name": "StandardJettonWalletData"
+        },
+        {
+          "inner_ty_idx": 27,
+          "kind": "cellOf"
+        },
+        {
+          "kind": "StructRef",
+          "struct_name": "OutMessage"
+        },
+        {
+          "kind": "StructRef",
+          "struct_name": "CreateMessageOptions",
+          "type_args_ty_idx": [
+            0
+          ]
+        },
+        {
+          "enum_name": "BounceMode",
+          "kind": "EnumRef"
+        },
+        {
+          "kind": "uintN",
+          "n": 2
+        },
+        {
+          "alias_name": "OldBounceMode",
+          "kind": "AliasRef"
+        },
+        {
+          "kind": "union",
+          "stack_width": 2,
+          "variants": [
+            {
+              "is_prefix_implicit": true,
+              "prefix_len": 1,
+              "prefix_num": 0,
+              "stack_type_id": 131,
+              "stack_width": 1,
+              "variant_ty_idx": 31
+            },
+            {
+              "is_prefix_implicit": true,
+              "prefix_len": 1,
+              "prefix_num": 1,
+              "stack_type_id": 2,
+              "stack_width": 1,
+              "variant_ty_idx": 33
+            }
+          ]
+        },
+        {
+          "alias_name": "ExtraCurrenciesMap",
+          "kind": "AliasRef"
+        },
+        {
+          "kind": "varuintN",
+          "n": 32
+        },
+        {
+          "key_ty_idx": 8,
+          "kind": "mapKV",
+          "value_ty_idx": 36
+        },
+        {
+          "items_ty_idx": [
+            6,
+            35
+          ],
+          "kind": "tensor"
+        },
+        {
+          "kind": "union",
+          "stack_width": 3,
+          "variants": [
+            {
+              "is_prefix_implicit": true,
+              "prefix_len": 1,
+              "prefix_num": 0,
+              "stack_type_id": 17,
+              "stack_width": 1,
+              "variant_ty_idx": 6
+            },
+            {
+              "is_prefix_implicit": true,
+              "prefix_len": 1,
+              "prefix_num": 1,
+              "stack_type_id": 135,
+              "stack_width": 2,
+              "variant_ty_idx": 38
+            }
+          ]
+        },
+        {
+          "kind": "uintN",
+          "n": 256
+        },
+        {
+          "items_ty_idx": [
+            22,
+            40
+          ],
+          "kind": "tensor"
+        },
+        {
+          "kind": "union",
+          "stack_width": 8,
+          "variants": [
+            {
+              "is_prefix_implicit": true,
+              "prefix_len": 2,
+              "prefix_num": 0,
+              "stack_type_id": 8,
+              "stack_width": 1,
+              "variant_ty_idx": 7
+            },
+            {
+              "is_prefix_implicit": true,
+              "prefix_len": 2,
+              "prefix_num": 1,
+              "stack_type_id": 5,
+              "stack_width": 1,
+              "variant_ty_idx": 4
+            },
+            {
+              "is_prefix_implicit": true,
+              "prefix_len": 2,
+              "prefix_num": 2,
+              "stack_type_id": 136,
+              "stack_width": 2,
+              "variant_ty_idx": 41
+            },
+            {
+              "is_prefix_implicit": true,
+              "prefix_len": 2,
+              "prefix_num": 3,
+              "stack_type_id": 132,
+              "stack_width": 7,
+              "variant_ty_idx": 21
+            }
+          ]
+        },
+        {
+          "kind": "genericT",
+          "name_t": "TBody"
+        },
+        {
+          "kind": "StructRef",
+          "struct_name": "CreateMessageOptions",
+          "type_args_ty_idx": [
+            43
+          ]
+        },
+        {
+          "kind": "StructRef",
+          "struct_name": "JettonVaultCreated"
+        },
+        {
+          "kind": "StructRef",
+          "struct_name": "CreateExternalLogMessageOptions",
+          "type_args_ty_idx": [
+            45
+          ]
+        },
+        {
+          "kind": "addressAny"
+        },
+        {
+          "kind": "StructRef",
+          "struct_name": "ExtOutLogBucket"
+        },
+        {
+          "kind": "uintN",
+          "n": 248
+        },
+        {
+          "kind": "bitsN",
+          "n": 248
+        },
+        {
+          "kind": "union",
+          "stack_width": 2,
+          "variants": [
+            {
+              "is_prefix_implicit": true,
+              "prefix_len": 1,
+              "prefix_num": 0,
+              "stack_type_id": 133,
+              "stack_width": 1,
+              "variant_ty_idx": 49
+            },
+            {
+              "is_prefix_implicit": true,
+              "prefix_len": 1,
+              "prefix_num": 1,
+              "stack_type_id": 137,
+              "stack_width": 1,
+              "variant_ty_idx": 50
+            }
+          ]
+        },
+        {
+          "kind": "union",
+          "stack_width": 3,
+          "variants": [
+            {
+              "is_prefix_implicit": true,
+              "prefix_len": 2,
+              "prefix_num": 0,
+              "stack_type_id": 9,
+              "stack_width": 1,
+              "variant_ty_idx": 47
+            },
+            {
+              "is_prefix_implicit": true,
+              "prefix_len": 2,
+              "prefix_num": 1,
+              "stack_type_id": 5,
+              "stack_width": 1,
+              "variant_ty_idx": 4
+            },
+            {
+              "is_prefix_implicit": true,
+              "prefix_len": 2,
+              "prefix_num": 2,
+              "stack_type_id": 134,
+              "stack_width": 2,
+              "variant_ty_idx": 48
+            }
+          ]
+        },
+        {
+          "kind": "StructRef",
+          "struct_name": "CreateExternalLogMessageOptions",
+          "type_args_ty_idx": [
+            43
+          ]
+        }
+      ]
+    },
+    "debug_marks_json": [
+      {
+        "f_idx": 0,
+        "f_name": "onInternalMessage",
+        "ir_import": [
+          0
+        ],
+        "is_builtin": false,
+        "is_inlined": false,
+        "kind": "enter_fun",
+        "mark_id": 0,
+        "range": [
+          1,
+          29,
+          5,
+          29,
+          22
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 1,
+        "stack": [
+          0
+        ]
+      },
+      {
+        "ir_slots": [
+          0
+        ],
+        "is_parameter": true,
+        "kind": "var",
+        "mark_id": 2,
+        "ty_idx": 2,
+        "var_name": "in.body"
+      },
+      {
+        "kind": "loc",
+        "mark_id": 3,
+        "range": [
+          1,
+          29,
+          5,
+          29,
+          22
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 4,
+        "stack": [
+          0,
+          1
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 5,
+        "range": [
+          1,
+          29,
+          5,
+          29,
+          22
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 6,
+        "stack": [
+          0
+        ]
+      },
+      {
+        "f_idx": 1,
+        "f_name": "onBouncedMessage",
+        "ir_import": [
+          0
+        ],
+        "is_builtin": false,
+        "is_inlined": true,
+        "kind": "enter_fun",
+        "mark_id": 7,
+        "range": [
+          1,
+          29,
+          5,
+          29,
+          22
+        ]
+      },
+      {
+        "ir_slots": [
+          0
+        ],
+        "is_parameter": true,
+        "kind": "var",
+        "mark_id": 8,
+        "ty_idx": 2,
+        "var_name": "in.body"
+      },
+      {
+        "f_idx": 1,
+        "f_name": "onBouncedMessage",
+        "ir_return": [],
+        "kind": "leave_fun",
+        "mark_id": 9,
+        "range": [
+          1,
+          132,
+          46,
+          132,
+          47
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 10,
+        "stack": []
+      },
+      {
+        "f_idx": 0,
+        "f_name": "onInternalMessage",
+        "ir_return": [],
+        "kind": "leave_fun",
+        "mark_id": 11,
+        "range": [
+          1,
+          130,
+          1,
+          130,
+          2
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 12,
+        "stack": [
+          0
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 13,
+        "range": [
+          1,
+          30,
+          5,
+          30,
+          7
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 14,
+        "stack": [
+          0,
+          0
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 15,
+        "range": [
+          1,
+          30,
+          17,
+          30,
+          24
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 16,
+        "stack": [
+          0,
+          3
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 17,
+        "range": [
+          1,
+          30,
+          5,
+          33,
+          6
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 18,
+        "stack": [
+          0
+        ]
+      },
+      {
+        "kind": "scope_start",
+        "mark_id": 19,
+        "range": [
+          1,
+          30,
+          28,
+          33,
+          6
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 20,
+        "stack": []
+      },
+      {
+        "f_idx": 0,
+        "f_name": "onInternalMessage",
+        "ir_return": [],
+        "kind": "leave_fun",
+        "mark_id": 21,
+        "range": [
+          1,
+          130,
+          1,
+          130,
+          2
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 22,
+        "stack": [
+          0
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 23,
+        "stack": [
+          4
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 24,
+        "range": [
+          1,
+          35,
+          9,
+          35,
+          12
+        ]
+      },
+      {
+        "ir_lazy_slice": 4,
+        "ir_slots": [
+          8,
+          9,
+          10
+        ],
+        "is_parameter": false,
+        "kind": "var",
+        "mark_id": 25,
+        "ty_idx": 12,
+        "var_name": "msg"
+      },
+      {
+        "kind": "loc",
+        "mark_id": 26,
+        "range": [
+          1,
+          37,
+          5,
+          129,
+          6
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 27,
+        "stack": [
+          4,
+          11
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 28,
+        "range": [
+          1,
+          37,
+          5,
+          129,
+          6
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 29,
+        "stack": [
+          4
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 30,
+        "range": [
+          1,
+          40,
+          13,
+          42,
+          50
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 31,
+        "stack": [
+          14,
+          4
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 32,
+        "stack": [
+          8,
+          4
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 33,
+        "range": [
+          1,
+          40,
+          13,
+          42,
+          50
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 34,
+        "stack": [
+          8,
+          16,
+          4
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 35,
+        "stack": [
+          8,
+          9,
+          4
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 36,
+        "range": [
+          1,
+          40,
+          13,
+          42,
+          50
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 37,
+        "stack": [
+          8,
+          9,
+          18
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 38,
+        "stack": [
+          8,
+          9,
+          10
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 39,
+        "range": [
+          1,
+          41,
+          29,
+          41,
+          45
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 40,
+        "stack": [
+          8,
+          9,
+          10,
+          20
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 41,
+        "stack": [
+          8,
+          9,
+          10,
+          20,
+          8
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 42,
+        "range": [
+          1,
+          41,
+          17,
+          41,
+          45
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 43,
+        "stack": [
+          8,
+          9,
+          10,
+          22
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 44,
+        "range": [
+          1,
+          40,
+          13,
+          42,
+          50
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 45,
+        "stack": [
+          8,
+          9,
+          10
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 46,
+        "range": [
+          1,
+          46,
+          40,
+          46,
+          60
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 47,
+        "range": [
+          1,
+          46,
+          40,
+          46,
+          60
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 48,
+        "stack": [
+          8,
+          9,
+          10,
+          9,
+          24
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 49,
+        "range": [
+          1,
+          46,
+          17,
+          46,
+          60
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 50,
+        "stack": [
+          8,
+          9,
+          10,
+          25
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 51,
+        "range": [
+          1,
+          45,
+          13,
+          47,
+          56
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 52,
+        "stack": [
+          8,
+          9,
+          10
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 53,
+        "range": [
+          1,
+          49,
+          40,
+          49,
+          60
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 54,
+        "range": [
+          1,
+          49,
+          40,
+          49,
+          60
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 55,
+        "stack": [
+          8,
+          9,
+          10,
+          9,
+          27
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 56,
+        "range": [
+          1,
+          49,
+          17,
+          49,
+          60
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 57,
+        "stack": [
+          8,
+          9,
+          10,
+          28
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 58,
+        "range": [
+          1,
+          48,
+          13,
+          50,
+          56
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 59,
+        "stack": [
+          8,
+          9,
+          10
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 60,
+        "range": [
+          1,
+          54,
+          40,
+          54,
+          56
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 61,
+        "stack": [
+          8,
+          9,
+          10,
+          30
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 62,
+        "stack": [
+          8,
+          9,
+          10,
+          30,
+          9
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 63,
+        "range": [
+          1,
+          54,
+          40,
+          54,
+          78
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 64,
+        "stack": [
+          8,
+          9,
+          10,
+          31
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 65,
+        "stack": [
+          8,
+          9,
+          10,
+          31,
+          10
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 66,
+        "range": [
+          1,
+          54,
+          17,
+          54,
+          78
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 67,
+        "stack": [
+          8,
+          9,
+          10,
+          32
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 68,
+        "range": [
+          1,
+          53,
+          13,
+          55,
+          50
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 69,
+        "stack": [
+          8,
+          9,
+          10
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 70,
+        "range": [
+          1,
+          61,
+          21,
+          61,
+          53
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 71,
+        "stack": [
+          8,
+          9,
+          10,
+          34
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 72,
+        "range": [
+          1,
+          61,
+          21,
+          61,
+          53
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 73,
+        "stack": [
+          8,
+          9,
+          10,
+          33
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 74,
+        "range": [
+          1,
+          61,
+          17,
+          61,
+          18
+        ]
+      },
+      {
+        "ir_lazy_slice": 33,
+        "ir_slots": [
+          38,
+          39,
+          40,
+          41,
+          42
+        ],
+        "is_parameter": false,
+        "kind": "var",
+        "mark_id": 75,
+        "ty_idx": 14,
+        "var_name": "s"
+      },
+      {
+        "kind": "loc",
+        "mark_id": 76,
+        "range": [
+          1,
+          65,
+          13,
+          68,
+          14
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 77,
+        "stack": [
+          8,
+          9,
+          10,
+          43,
+          33
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 78,
+        "range": [
+          1,
+          65,
+          13,
+          68,
+          14
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 79,
+        "stack": [
+          8,
+          9,
+          10,
+          43,
+          45,
+          33
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 80,
+        "stack": [
+          8,
+          9,
+          10,
+          43,
+          39,
+          33
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 81,
+        "stack": [
+          8,
+          9,
+          10,
+          43,
+          39,
+          46,
+          33
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 82,
+        "range": [
+          1,
+          65,
+          13,
+          68,
+          14
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 83,
+        "stack": [
+          8,
+          9,
+          10,
+          43,
+          39,
+          46,
+          47,
+          33
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 84,
+        "stack": [
+          8,
+          9,
+          10,
+          43,
+          39,
+          46,
+          40,
+          33
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 85,
+        "range": [
+          1,
+          65,
+          13,
+          68,
+          14
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 86,
+        "stack": [
+          8,
+          9,
+          10,
+          43,
+          39,
+          46,
+          40,
+          48,
+          33
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 87,
+        "stack": [
+          8,
+          9,
+          10,
+          43,
+          39,
+          46,
+          40,
+          41,
+          33
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 88,
+        "range": [
+          1,
+          65,
+          13,
+          68,
+          14
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 89,
+        "stack": [
+          8,
+          9,
+          10,
+          43,
+          39,
+          46,
+          40,
+          41,
+          49
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 90,
+        "stack": [
+          8,
+          9,
+          10,
+          43,
+          39,
+          46,
+          40,
+          41,
+          42
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 91,
+        "range": [
+          1,
+          66,
+          17,
+          66,
+          45
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 92,
+        "range": [
+          1,
+          67,
+          17,
+          67,
+          53
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 93,
+        "range": [
+          1,
+          65,
+          17,
+          65,
+          45
+        ]
+      },
+      {
+        "ir_slots": [
+          50,
+          51
+        ],
+        "is_parameter": false,
+        "kind": "var",
+        "mark_id": 94,
+        "ty_idx": 15,
+        "var_name": "vaultExtra"
+      },
+      {
+        "kind": "stack",
+        "mark_id": 95,
+        "stack": [
+          8,
+          9,
+          10,
+          43,
+          39,
+          46,
+          40,
+          41,
+          42,
+          50,
+          51
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 96,
+        "range": [
+          1,
+          70,
+          24,
+          70,
+          40
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 97,
+        "stack": [
+          8,
+          9,
+          10,
+          43,
+          39,
+          46,
+          40,
+          41,
+          42,
+          50,
+          51,
+          52
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 98,
+        "range": [
+          1,
+          70,
+          17,
+          70,
+          40
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 99,
+        "range": [
+          1,
+          71,
+          17,
+          71,
+          31
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 100,
+        "range": [
+          1,
+          72,
+          17,
+          72,
+          26
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 101,
+        "range": [
+          1,
+          73,
+          17,
+          73,
+          46
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 102,
+        "range": [
+          1,
+          74,
+          17,
+          74,
+          53
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 103,
+        "range": [
+          1,
+          75,
+          17,
+          75,
+          32
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 104,
+        "range": [
+          1,
+          76,
+          17,
+          76,
+          37
+        ]
+      },
+      {
+        "f_idx": 2,
+        "f_name": "JettonVaultExtra.toCell",
+        "ir_import": [
+          50,
+          51,
+          57
+        ],
+        "is_builtin": true,
+        "is_inlined": true,
+        "kind": "enter_fun",
+        "mark_id": 105,
+        "range": [
+          1,
+          77,
+          24,
+          77,
+          43
+        ]
+      },
+      {
+        "ir_slots": [
+          50,
+          51
+        ],
+        "is_parameter": true,
+        "kind": "var",
+        "mark_id": 106,
+        "ty_idx": 15,
+        "var_name": "self"
+      },
+      {
+        "ir_slots": [
+          57
+        ],
+        "is_parameter": true,
+        "kind": "var",
+        "mark_id": 107,
+        "ty_idx": 17,
+        "var_name": "options"
+      },
+      {
+        "kind": "loc",
+        "mark_id": 108,
+        "range": [
+          1,
+          77,
+          24,
+          77,
+          43
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 109,
+        "stack": [
+          8,
+          9,
+          10,
+          43,
+          39,
+          46,
+          40,
+          41,
+          42,
+          52,
+          51,
+          50,
+          58
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 110,
+        "range": [
+          1,
+          77,
+          24,
+          77,
+          43
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 111,
+        "stack": [
+          8,
+          9,
+          10,
+          43,
+          39,
+          46,
+          40,
+          41,
+          42,
+          52,
+          51,
+          58
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 112,
+        "range": [
+          1,
+          77,
+          24,
+          77,
+          43
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 113,
+        "stack": [
+          8,
+          9,
+          10,
+          43,
+          39,
+          46,
+          40,
+          41,
+          42,
+          52,
+          58
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 114,
+        "range": [
+          1,
+          77,
+          24,
+          77,
+          43
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 115,
+        "stack": [
+          8,
+          9,
+          10,
+          43,
+          39,
+          46,
+          40,
+          41,
+          42,
+          52,
+          59
+        ]
+      },
+      {
+        "f_idx": 2,
+        "f_name": "JettonVaultExtra.toCell",
+        "ir_return": [
+          59
+        ],
+        "kind": "leave_fun",
+        "mark_id": 116,
+        "range": [
+          1,
+          77,
+          24,
+          77,
+          43
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 117,
+        "range": [
+          1,
+          77,
+          17,
+          77,
+          43
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 118,
+        "range": [
+          1,
+          69,
+          17,
+          69,
+          49
+        ]
+      },
+      {
+        "ir_slots": [
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67
+        ],
+        "is_parameter": false,
+        "kind": "var",
+        "mark_id": 119,
+        "ty_idx": 18,
+        "var_name": "vaultStorage"
+      },
+      {
+        "kind": "stack",
+        "mark_id": 120,
+        "stack": [
+          61,
+          64,
+          63,
+          43,
+          39,
+          46,
+          40,
+          41,
+          42,
+          60,
+          67
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 121,
+        "range": [
+          1,
+          82,
+          17,
+          82,
+          34
+        ]
+      },
+      {
+        "f_idx": 3,
+        "f_name": "JettonVaultStorage.toCell",
+        "ir_import": [
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68
+        ],
+        "is_builtin": true,
+        "is_inlined": true,
+        "kind": "enter_fun",
+        "mark_id": 122,
+        "range": [
+          1,
+          83,
+          23,
+          83,
+          44
+        ]
+      },
+      {
+        "ir_slots": [
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67
+        ],
+        "is_parameter": true,
+        "kind": "var",
+        "mark_id": 123,
+        "ty_idx": 18,
+        "var_name": "self"
+      },
+      {
+        "ir_slots": [
+          68
+        ],
+        "is_parameter": true,
+        "kind": "var",
+        "mark_id": 124,
+        "ty_idx": 17,
+        "var_name": "options"
+      },
+      {
+        "kind": "loc",
+        "mark_id": 125,
+        "range": [
+          1,
+          83,
+          23,
+          83,
+          44
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 126,
+        "stack": [
+          61,
+          64,
+          63,
+          43,
+          39,
+          46,
+          40,
+          41,
+          42,
+          67,
+          60,
+          69
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 127,
+        "range": [
+          1,
+          83,
+          23,
+          83,
+          44
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 128,
+        "stack": [
+          61,
+          64,
+          63,
+          43,
+          39,
+          46,
+          40,
+          41,
+          42,
+          67,
+          69
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 129,
+        "stack": [
+          67,
+          64,
+          63,
+          43,
+          39,
+          46,
+          40,
+          41,
+          42,
+          61,
+          69
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 130,
+        "range": [
+          1,
+          83,
+          23,
+          83,
+          44
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 131,
+        "stack": [
+          67,
+          64,
+          63,
+          43,
+          39,
+          46,
+          40,
+          41,
+          42,
+          69
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 132,
+        "range": [
+          1,
+          83,
+          23,
+          83,
+          44
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 133,
+        "stack": [
+          67,
+          64,
+          63,
+          43,
+          39,
+          46,
+          40,
+          41,
+          42,
+          69
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 134,
+        "stack": [
+          67,
+          64,
+          42,
+          43,
+          39,
+          46,
+          40,
+          41,
+          63,
+          69
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 135,
+        "range": [
+          1,
+          83,
+          23,
+          83,
+          44
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 136,
+        "stack": [
+          67,
+          64,
+          42,
+          43,
+          39,
+          46,
+          40,
+          41,
+          69
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 137,
+        "stack": [
+          67,
+          41,
+          42,
+          43,
+          39,
+          46,
+          40,
+          64,
+          69
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 138,
+        "range": [
+          1,
+          83,
+          23,
+          83,
+          44
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 139,
+        "stack": [
+          67,
+          41,
+          42,
+          43,
+          39,
+          46,
+          40,
+          69
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 140,
+        "range": [
+          1,
+          83,
+          23,
+          83,
+          44
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 141,
+        "stack": [
+          67,
+          41,
+          42,
+          43,
+          39,
+          46,
+          40,
+          69
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 142,
+        "stack": [
+          40,
+          41,
+          42,
+          43,
+          39,
+          46,
+          67,
+          69
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 143,
+        "range": [
+          1,
+          83,
+          23,
+          83,
+          44
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 144,
+        "stack": [
+          40,
+          41,
+          42,
+          43,
+          39,
+          46,
+          69
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 145,
+        "range": [
+          1,
+          83,
+          23,
+          83,
+          44
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 146,
+        "stack": [
+          40,
+          41,
+          42,
+          43,
+          39,
+          46,
+          72
+        ]
+      },
+      {
+        "f_idx": 3,
+        "f_name": "JettonVaultStorage.toCell",
+        "ir_return": [
+          72
+        ],
+        "kind": "leave_fun",
+        "mark_id": 147,
+        "range": [
+          1,
+          83,
+          23,
+          83,
+          44
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 148,
+        "range": [
+          1,
+          83,
+          17,
+          83,
+          44
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 149,
+        "range": [
+          1,
+          81,
+          17,
+          81,
+          27
+        ]
+      },
+      {
+        "ir_slots": [
+          73,
+          74
+        ],
+        "is_parameter": false,
+        "kind": "var",
+        "mark_id": 150,
+        "ty_idx": 20,
+        "var_name": "vaultState"
+      },
+      {
+        "kind": "stack",
+        "mark_id": 151,
+        "stack": [
+          73,
+          41,
+          42,
+          43,
+          39,
+          46,
+          74
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 152,
+        "range": [
+          1,
+          87,
+          55,
+          87,
+          76
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 153,
+        "range": [
+          1,
+          87,
+          17,
+          87,
+          32
+        ]
+      },
+      {
+        "ir_slots": [
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86
+        ],
+        "is_parameter": false,
+        "kind": "var",
+        "mark_id": 154,
+        "ty_idx": 21,
+        "var_name": "vaultAutoDeploy"
+      },
+      {
+        "kind": "stack",
+        "mark_id": 155,
+        "stack": [
+          81,
+          41,
+          42,
+          43,
+          39,
+          46,
+          82
+        ]
+      },
+      {
+        "f_idx": 4,
+        "f_name": "AutoDeployAddress.calculateAddress",
+        "ir_import": [
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86
+        ],
+        "is_builtin": true,
+        "is_inlined": true,
+        "kind": "enter_fun",
+        "mark_id": 156,
+        "range": [
+          1,
+          88,
+          32,
+          88,
+          66
+        ]
+      },
+      {
+        "ir_slots": [
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86
+        ],
+        "is_parameter": true,
+        "kind": "var",
+        "mark_id": 157,
+        "ty_idx": 21,
+        "var_name": "self"
+      },
+      {
+        "kind": "stack",
+        "mark_id": 158,
+        "stack": [
+          81,
+          41,
+          42,
+          43,
+          39,
+          46,
+          82,
+          82,
+          81
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 159,
+        "range": [
+          1,
+          88,
+          32,
+          88,
+          66
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 160,
+        "range": [
+          1,
+          88,
+          32,
+          88,
+          66
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 161,
+        "range": [
+          1,
+          88,
+          32,
+          88,
+          66
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 162,
+        "range": [
+          1,
+          88,
+          32,
+          88,
+          66
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 163,
+        "range": [
+          1,
+          88,
+          32,
+          88,
+          66
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 164,
+        "stack": [
+          81,
+          41,
+          42,
+          43,
+          39,
+          46,
+          82,
+          88
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 165,
+        "range": [
+          1,
+          88,
+          32,
+          88,
+          66
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 166,
+        "stack": [
+          81,
+          41,
+          42,
+          43,
+          39,
+          46,
+          82,
+          88,
+          87
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 167,
+        "range": [
+          1,
+          88,
+          32,
+          88,
+          66
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 168,
+        "stack": [
+          81,
+          41,
+          42,
+          43,
+          39,
+          46,
+          82,
+          88,
+          87
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 169,
+        "range": [
+          1,
+          88,
+          32,
+          88,
+          66
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 170,
+        "stack": [
+          81,
+          41,
+          42,
+          43,
+          39,
+          46,
+          82,
+          87
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 171,
+        "range": [
+          1,
+          88,
+          32,
+          88,
+          66
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 172,
+        "stack": [
+          81,
+          41,
+          42,
+          43,
+          39,
+          46,
+          82,
+          87
+        ]
+      },
+      {
+        "f_idx": 4,
+        "f_name": "AutoDeployAddress.calculateAddress",
+        "ir_return": [
+          87
+        ],
+        "kind": "leave_fun",
+        "mark_id": 173,
+        "range": [
+          1,
+          88,
+          32,
+          88,
+          66
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 174,
+        "range": [
+          1,
+          88,
+          17,
+          88,
+          29
+        ]
+      },
+      {
+        "ir_slots": [
+          113
+        ],
+        "is_parameter": false,
+        "kind": "var",
+        "mark_id": 175,
+        "ty_idx": 7,
+        "var_name": "vaultAddress"
+      },
+      {
+        "kind": "stack",
+        "mark_id": 176,
+        "stack": [
+          81,
+          41,
+          42,
+          43,
+          39,
+          46,
+          82,
+          113
+        ]
+      },
+      {
+        "f_idx": 5,
+        "f_name": "computeJettonWalletAddress",
+        "ir_import": [
+          42,
+          41,
+          113
+        ],
+        "is_builtin": false,
+        "is_inlined": true,
+        "kind": "enter_fun",
+        "mark_id": 177,
+        "range": [
+          1,
+          94,
+          40,
+          98,
+          14
+        ]
+      },
+      {
+        "ir_slots": [
+          42
+        ],
+        "is_parameter": true,
+        "kind": "var",
+        "mark_id": 178,
+        "ty_idx": 3,
+        "var_name": "walletCode"
+      },
+      {
+        "ir_slots": [
+          41
+        ],
+        "is_parameter": true,
+        "kind": "var",
+        "mark_id": 179,
+        "ty_idx": 7,
+        "var_name": "master"
+      },
+      {
+        "ir_slots": [
+          113
+        ],
+        "is_parameter": true,
+        "kind": "var",
+        "mark_id": 180,
+        "ty_idx": 7,
+        "var_name": "walletOwner"
+      },
+      {
+        "kind": "loc",
+        "mark_id": 181,
+        "range": [
+          2,
+          54,
+          9,
+          54,
+          19
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 182,
+        "range": [
+          2,
+          55,
+          9,
+          55,
+          27
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 183,
+        "range": [
+          2,
+          56,
+          9,
+          56,
+          15
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 184,
+        "range": [
+          2,
+          57,
+          9,
+          57,
+          19
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 185,
+        "range": [
+          2,
+          53,
+          9,
+          53,
+          39
+        ]
+      },
+      {
+        "ir_slots": [
+          116,
+          117,
+          118,
+          119
+        ],
+        "is_parameter": false,
+        "kind": "var",
+        "mark_id": 186,
+        "ty_idx": 27,
+        "var_name": "data"
+      },
+      {
+        "kind": "stack",
+        "mark_id": 187,
+        "stack": [
+          81,
+          41,
+          42,
+          43,
+          39,
+          46,
+          82,
+          113,
+          117,
+          118,
+          119
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 188,
+        "range": [
+          2,
+          60,
+          9,
+          60,
+          25
+        ]
+      },
+      {
+        "f_idx": 6,
+        "f_name": "StandardJettonWalletData.toCell",
+        "ir_import": [
+          116,
+          117,
+          118,
+          119,
+          120
+        ],
+        "is_builtin": true,
+        "is_inlined": true,
+        "kind": "enter_fun",
+        "mark_id": 189,
+        "range": [
+          2,
+          61,
+          15,
+          61,
+          28
+        ]
+      },
+      {
+        "ir_slots": [
+          116,
+          117,
+          118,
+          119
+        ],
+        "is_parameter": true,
+        "kind": "var",
+        "mark_id": 190,
+        "ty_idx": 27,
+        "var_name": "self"
+      },
+      {
+        "ir_slots": [
+          120
+        ],
+        "is_parameter": true,
+        "kind": "var",
+        "mark_id": 191,
+        "ty_idx": 17,
+        "var_name": "options"
+      },
+      {
+        "kind": "loc",
+        "mark_id": 192,
+        "range": [
+          2,
+          61,
+          15,
+          61,
+          28
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 193,
+        "stack": [
+          81,
+          41,
+          42,
+          43,
+          39,
+          46,
+          82,
+          113,
+          117,
+          118,
+          119,
+          121
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 194,
+        "range": [
+          2,
+          61,
+          15,
+          61,
+          28
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 195,
+        "stack": [
+          81,
+          41,
+          42,
+          43,
+          39,
+          46,
+          82,
+          113,
+          117,
+          118,
+          119,
+          121
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 196,
+        "stack": [
+          81,
+          41,
+          42,
+          43,
+          39,
+          46,
+          82,
+          113,
+          119,
+          118,
+          117,
+          121
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 197,
+        "range": [
+          2,
+          61,
+          15,
+          61,
+          28
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 198,
+        "stack": [
+          81,
+          41,
+          42,
+          43,
+          39,
+          46,
+          82,
+          113,
+          119,
+          118,
+          121
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 199,
+        "range": [
+          2,
+          61,
+          15,
+          61,
+          28
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 200,
+        "stack": [
+          81,
+          41,
+          42,
+          43,
+          39,
+          46,
+          82,
+          113,
+          119,
+          121
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 201,
+        "range": [
+          2,
+          61,
+          15,
+          61,
+          28
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 202,
+        "stack": [
+          81,
+          41,
+          42,
+          43,
+          39,
+          46,
+          82,
+          113,
+          121
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 203,
+        "range": [
+          2,
+          61,
+          15,
+          61,
+          28
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 204,
+        "stack": [
+          81,
+          41,
+          42,
+          43,
+          39,
+          46,
+          82,
+          113,
+          122
+        ]
+      },
+      {
+        "f_idx": 6,
+        "f_name": "StandardJettonWalletData.toCell",
+        "ir_return": [
+          122
+        ],
+        "kind": "leave_fun",
+        "mark_id": 205,
+        "range": [
+          2,
+          61,
+          15,
+          61,
+          28
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 206,
+        "range": [
+          2,
+          61,
+          9,
+          61,
+          28
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 207,
+        "range": [
+          2,
+          59,
+          9,
+          59,
+          14
+        ]
+      },
+      {
+        "ir_slots": [
+          123,
+          124
+        ],
+        "is_parameter": false,
+        "kind": "var",
+        "mark_id": 208,
+        "ty_idx": 20,
+        "var_name": "state"
+      },
+      {
+        "kind": "stack",
+        "mark_id": 209,
+        "stack": [
+          81,
+          41,
+          123,
+          43,
+          39,
+          46,
+          82,
+          113,
+          124
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 210,
+        "range": [
+          2,
+          63,
+          32,
+          63,
+          48
+        ]
+      },
+      {
+        "f_idx": 4,
+        "f_name": "AutoDeployAddress.calculateAddress",
+        "ir_import": [
+          125,
+          123,
+          124,
+          126,
+          127,
+          128,
+          129
+        ],
+        "is_builtin": true,
+        "is_inlined": true,
+        "kind": "enter_fun",
+        "mark_id": 211,
+        "range": [
+          2,
+          63,
+          12,
+          63,
+          69
+        ]
+      },
+      {
+        "ir_slots": [
+          125,
+          123,
+          124,
+          126,
+          127,
+          128,
+          129
+        ],
+        "is_parameter": true,
+        "kind": "var",
+        "mark_id": 212,
+        "ty_idx": 21,
+        "var_name": "self"
+      },
+      {
+        "kind": "stack",
+        "mark_id": 213,
+        "stack": [
+          81,
+          41,
+          113,
+          43,
+          39,
+          46,
+          82,
+          124,
+          123
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 214,
+        "range": [
+          2,
+          63,
+          12,
+          63,
+          69
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 215,
+        "range": [
+          2,
+          63,
+          12,
+          63,
+          69
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 216,
+        "range": [
+          2,
+          63,
+          12,
+          63,
+          69
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 217,
+        "range": [
+          2,
+          63,
+          12,
+          63,
+          69
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 218,
+        "range": [
+          2,
+          63,
+          12,
+          63,
+          69
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 219,
+        "stack": [
+          81,
+          41,
+          113,
+          43,
+          39,
+          46,
+          82,
+          131
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 220,
+        "range": [
+          2,
+          63,
+          12,
+          63,
+          69
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 221,
+        "stack": [
+          81,
+          41,
+          113,
+          43,
+          39,
+          46,
+          82,
+          131,
+          130
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 222,
+        "range": [
+          2,
+          63,
+          12,
+          63,
+          69
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 223,
+        "stack": [
+          81,
+          41,
+          113,
+          43,
+          39,
+          46,
+          82,
+          131,
+          130
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 224,
+        "range": [
+          2,
+          63,
+          12,
+          63,
+          69
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 225,
+        "stack": [
+          81,
+          41,
+          113,
+          43,
+          39,
+          46,
+          82,
+          130
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 226,
+        "range": [
+          2,
+          63,
+          12,
+          63,
+          69
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 227,
+        "stack": [
+          81,
+          41,
+          113,
+          43,
+          39,
+          46,
+          82,
+          130
+        ]
+      },
+      {
+        "f_idx": 4,
+        "f_name": "AutoDeployAddress.calculateAddress",
+        "ir_return": [
+          130
+        ],
+        "kind": "leave_fun",
+        "mark_id": 228,
+        "range": [
+          2,
+          63,
+          12,
+          63,
+          69
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 229,
+        "stack": [
+          81,
+          41,
+          113,
+          43,
+          39,
+          46,
+          82,
+          114
+        ]
+      },
+      {
+        "f_idx": 5,
+        "f_name": "computeJettonWalletAddress",
+        "ir_return": [
+          114
+        ],
+        "kind": "leave_fun",
+        "mark_id": 230,
+        "range": [
+          2,
+          63,
+          5,
+          63,
+          69
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 231,
+        "range": [
+          1,
+          94,
+          17,
+          94,
+          37
+        ]
+      },
+      {
+        "ir_slots": [
+          156
+        ],
+        "is_parameter": false,
+        "kind": "var",
+        "mark_id": 232,
+        "ty_idx": 7,
+        "var_name": "expectedJettonWallet"
+      },
+      {
+        "kind": "stack",
+        "mark_id": 233,
+        "stack": [
+          81,
+          41,
+          113,
+          43,
+          39,
+          46,
+          82,
+          156
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 234,
+        "range": [
+          1,
+          102,
+          17,
+          102,
+          44
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 235,
+        "range": [
+          1,
+          103,
+          24,
+          103,
+          42
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 236,
+        "stack": [
+          81,
+          41,
+          113,
+          43,
+          39,
+          46,
+          82,
+          156,
+          159
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 237,
+        "range": [
+          1,
+          103,
+          17,
+          103,
+          42
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 238,
+        "range": [
+          1,
+          104,
+          17,
+          104,
+          38
+        ]
+      },
+      {
+        "f_idx": 7,
+        "f_name": "createMessage<void>",
+        "ir_import": [
+          157,
+          158,
+          160,
+          159,
+          161,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          162
+        ],
+        "is_builtin": true,
+        "is_inlined": true,
+        "kind": "enter_fun",
+        "mark_id": 239,
+        "range": [
+          1,
+          101,
+          29,
+          105,
+          15
+        ]
+      },
+      {
+        "ir_slots": [
+          157,
+          158,
+          160,
+          159,
+          161,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          162
+        ],
+        "is_parameter": true,
+        "kind": "var",
+        "mark_id": 240,
+        "ty_idx": 30,
+        "var_name": "options"
+      },
+      {
+        "kind": "loc",
+        "mark_id": 241,
+        "range": [
+          1,
+          101,
+          29,
+          105,
+          15
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 242,
+        "stack": [
+          81,
+          41,
+          113,
+          43,
+          39,
+          46,
+          82,
+          156,
+          159,
+          171
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 243,
+        "range": [
+          1,
+          101,
+          29,
+          105,
+          15
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 244,
+        "stack": [
+          81,
+          41,
+          113,
+          43,
+          39,
+          46,
+          82,
+          156,
+          159,
+          171
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 245,
+        "stack": [
+          81,
+          41,
+          113,
+          43,
+          39,
+          46,
+          82,
+          156,
+          159,
+          171,
+          82,
+          81
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 246,
+        "range": [
+          1,
+          101,
+          29,
+          105,
+          15
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 247,
+        "range": [
+          1,
+          101,
+          29,
+          105,
+          15
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 248,
+        "range": [
+          1,
+          101,
+          29,
+          105,
+          15
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 249,
+        "range": [
+          1,
+          101,
+          29,
+          105,
+          15
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 250,
+        "range": [
+          1,
+          101,
+          29,
+          105,
+          15
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 251,
+        "stack": [
+          81,
+          41,
+          113,
+          43,
+          39,
+          46,
+          82,
+          156,
+          159,
+          171,
+          183
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 252,
+        "range": [
+          1,
+          101,
+          29,
+          105,
+          15
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 253,
+        "stack": [
+          81,
+          41,
+          113,
+          43,
+          39,
+          46,
+          82,
+          156,
+          159,
+          171
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 254,
+        "stack": [
+          81,
+          41,
+          113,
+          43,
+          39,
+          46,
+          82,
+          156,
+          171,
+          159
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 255,
+        "range": [
+          1,
+          101,
+          29,
+          105,
+          15
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 256,
+        "stack": [
+          81,
+          41,
+          113,
+          43,
+          39,
+          46,
+          82,
+          156,
+          171
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 257,
+        "range": [
+          1,
+          101,
+          29,
+          105,
+          15
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 258,
+        "range": [
+          1,
+          101,
+          29,
+          105,
+          15
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 259,
+        "stack": [
+          81,
+          41,
+          113,
+          43,
+          39,
+          46,
+          82,
+          156,
+          171
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 260,
+        "stack": [
+          156,
+          41,
+          113,
+          43,
+          39,
+          46,
+          82,
+          81,
+          171
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 261,
+        "range": [
+          1,
+          101,
+          29,
+          105,
+          15
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 262,
+        "stack": [
+          156,
+          41,
+          113,
+          43,
+          39,
+          46,
+          82,
+          171
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 263,
+        "range": [
+          1,
+          101,
+          29,
+          105,
+          15
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 264,
+        "stack": [
+          156,
+          41,
+          113,
+          43,
+          39,
+          46,
+          171
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 265,
+        "range": [
+          1,
+          101,
+          29,
+          105,
+          15
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 266,
+        "stack": [
+          156,
+          41,
+          113,
+          43,
+          39,
+          46,
+          226
+        ]
+      },
+      {
+        "f_idx": 7,
+        "f_name": "createMessage<void>",
+        "ir_return": [
+          226
+        ],
+        "kind": "leave_fun",
+        "mark_id": 267,
+        "range": [
+          1,
+          101,
+          29,
+          105,
+          15
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 268,
+        "range": [
+          1,
+          101,
+          17,
+          101,
+          26
+        ]
+      },
+      {
+        "ir_slots": [
+          227
+        ],
+        "is_parameter": false,
+        "kind": "var",
+        "mark_id": 269,
+        "ty_idx": 29,
+        "var_name": "deployMsg"
+      },
+      {
+        "kind": "stack",
+        "mark_id": 270,
+        "stack": [
+          156,
+          41,
+          113,
+          43,
+          39,
+          46,
+          227
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 271,
+        "range": [
+          1,
+          106,
+          28,
+          106,
+          45
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 272,
+        "stack": [
+          156,
+          41,
+          113,
+          43,
+          39,
+          46,
+          227,
+          228
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 273,
+        "range": [
+          1,
+          106,
+          23,
+          106,
+          27
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 274,
+        "stack": [
+          156,
+          41,
+          113,
+          43,
+          39,
+          46
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 275,
+        "range": [
+          1,
+          111,
+          17,
+          111,
+          60
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 276,
+        "range": [
+          1,
+          113,
+          21,
+          113,
+          40
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 277,
+        "range": [
+          1,
+          114,
+          21,
+          114,
+          41
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 278,
+        "range": [
+          1,
+          115,
+          21,
+          115,
+          49
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 279,
+        "range": [
+          1,
+          112,
+          17,
+          116,
+          18
+        ]
+      },
+      {
+        "f_idx": 8,
+        "f_name": "createExternalLogMessage<JettonVaultCreated>",
+        "ir_import": [
+          229,
+          230,
+          231,
+          113,
+          156,
+          41
+        ],
+        "is_builtin": true,
+        "is_inlined": true,
+        "kind": "enter_fun",
+        "mark_id": 280,
+        "range": [
+          1,
+          110,
+          30,
+          117,
+          15
+        ]
+      },
+      {
+        "ir_slots": [
+          229,
+          230,
+          231,
+          113,
+          156,
+          41
+        ],
+        "is_parameter": true,
+        "kind": "var",
+        "mark_id": 281,
+        "ty_idx": 46,
+        "var_name": "options"
+      },
+      {
+        "kind": "loc",
+        "mark_id": 282,
+        "range": [
+          1,
+          110,
+          30,
+          117,
+          15
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 283,
+        "stack": [
+          156,
+          41,
+          113,
+          43,
+          39,
+          46,
+          238
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 284,
+        "range": [
+          1,
+          110,
+          30,
+          117,
+          15
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 285,
+        "stack": [
+          156,
+          41,
+          113,
+          43,
+          39,
+          46,
+          238
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 286,
+        "stack": [
+          156,
+          41,
+          46,
+          43,
+          39,
+          113,
+          238
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 287,
+        "range": [
+          1,
+          110,
+          30,
+          117,
+          15
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 288,
+        "stack": [
+          156,
+          41,
+          46,
+          43,
+          39,
+          238
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 289,
+        "stack": [
+          39,
+          41,
+          46,
+          43,
+          156,
+          238
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 290,
+        "range": [
+          1,
+          110,
+          30,
+          117,
+          15
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 291,
+        "stack": [
+          39,
+          41,
+          46,
+          43,
+          238
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 292,
+        "stack": [
+          39,
+          43,
+          46,
+          41,
+          238
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 293,
+        "range": [
+          1,
+          110,
+          30,
+          117,
+          15
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 294,
+        "stack": [
+          39,
+          43,
+          46,
+          238
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 295,
+        "range": [
+          1,
+          110,
+          30,
+          117,
+          15
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 296,
+        "stack": [
+          39,
+          43,
+          46,
+          241
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 297,
+        "range": [
+          1,
+          110,
+          30,
+          117,
+          15
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 298,
+        "stack": [
+          39,
+          43,
+          46,
+          241,
+          242
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 299,
+        "range": [
+          1,
+          110,
+          30,
+          117,
+          15
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 300,
+        "stack": [
+          39,
+          43,
+          46,
+          241,
+          242
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 301,
+        "range": [
+          1,
+          110,
+          30,
+          117,
+          15
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 302,
+        "range": [
+          1,
+          110,
+          30,
+          117,
+          15
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 303,
+        "stack": [
+          39,
+          43,
+          46,
+          241,
+          242
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 304,
+        "range": [
+          1,
+          110,
+          30,
+          117,
+          15
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 305,
+        "range": [
+          1,
+          110,
+          30,
+          117,
+          15
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 306,
+        "stack": [
+          39,
+          43,
+          46,
+          241,
+          242
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 307,
+        "range": [
+          1,
+          110,
+          30,
+          117,
+          15
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 308,
+        "stack": [
+          39,
+          43,
+          46,
+          242
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 309,
+        "range": [
+          1,
+          110,
+          30,
+          117,
+          15
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 310,
+        "stack": [
+          39,
+          43,
+          46,
+          263
+        ]
+      },
+      {
+        "f_idx": 8,
+        "f_name": "createExternalLogMessage<JettonVaultCreated>",
+        "ir_return": [
+          263
+        ],
+        "kind": "leave_fun",
+        "mark_id": 311,
+        "range": [
+          1,
+          110,
+          30,
+          117,
+          15
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 312,
+        "range": [
+          1,
+          110,
+          17,
+          110,
+          27
+        ]
+      },
+      {
+        "ir_slots": [
+          264
+        ],
+        "is_parameter": false,
+        "kind": "var",
+        "mark_id": 313,
+        "ty_idx": 29,
+        "var_name": "createdLog"
+      },
+      {
+        "kind": "stack",
+        "mark_id": 314,
+        "stack": [
+          39,
+          43,
+          46,
+          264
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 315,
+        "range": [
+          1,
+          118,
+          29,
+          118,
+          46
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 316,
+        "stack": [
+          39,
+          43,
+          46,
+          264,
+          265
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 317,
+        "range": [
+          1,
+          118,
+          24,
+          118,
+          28
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 318,
+        "stack": [
+          39,
+          43,
+          46
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 319,
+        "stack": [
+          46,
+          43,
+          39
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 320,
+        "range": [
+          1,
+          121,
+          13,
+          121,
+          31
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 321,
+        "stack": [
+          46,
+          43,
+          267
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 322,
+        "range": [
+          1,
+          121,
+          13,
+          121,
+          26
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 323,
+        "stack": [
+          46,
+          43,
+          39
+        ]
+      },
+      {
+        "f_idx": 9,
+        "f_name": "JettonFactoryStorage.save",
+        "ir_import": [
+          38,
+          39,
+          40,
+          41,
+          42
+        ],
+        "is_builtin": false,
+        "is_inlined": true,
+        "kind": "enter_fun",
+        "mark_id": 324,
+        "range": [
+          1,
+          127,
+          15,
+          127,
+          19
+        ]
+      },
+      {
+        "ir_lazy_slice": 33,
+        "ir_slots": [
+          38,
+          39,
+          40,
+          41,
+          42
+        ],
+        "is_parameter": true,
+        "kind": "var",
+        "mark_id": 325,
+        "ty_idx": 14,
+        "var_name": "self"
+      },
+      {
+        "kind": "loc",
+        "mark_id": 326,
+        "range": [
+          2,
+          113,
+          22,
+          113,
+          35
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 327,
+        "stack": [
+          46,
+          39,
+          43,
+          269
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 328,
+        "range": [
+          2,
+          113,
+          22,
+          113,
+          35
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 329,
+        "stack": [
+          46,
+          39,
+          269
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 330,
+        "range": [
+          2,
+          113,
+          22,
+          113,
+          35
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 331,
+        "stack": [
+          46,
+          269
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 332,
+        "range": [
+          2,
+          113,
+          22,
+          113,
+          35
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 333,
+        "stack": [
+          269
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 334,
+        "range": [
+          2,
+          113,
+          22,
+          113,
+          35
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 335,
+        "stack": [
+          271
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 336,
+        "range": [
+          2,
+          113,
+          5,
+          113,
+          36
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 337,
+        "stack": []
+      },
+      {
+        "f_idx": 9,
+        "f_name": "JettonFactoryStorage.save",
+        "ir_return": [],
+        "kind": "leave_fun",
+        "mark_id": 338,
+        "range": [
+          2,
+          114,
+          1,
+          114,
+          2
+        ]
+      },
+      {
+        "f_idx": 0,
+        "f_name": "onInternalMessage",
+        "ir_return": [],
+        "kind": "leave_fun",
+        "mark_id": 339,
+        "range": [
+          1,
+          130,
+          1,
+          130,
+          2
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 340,
+        "stack": [
+          4
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 341,
+        "range": [
+          1,
+          37,
+          5,
+          129,
+          6
+        ]
+      },
+      {
+        "f_idx": 10,
+        "f_name": "getDeployCount",
+        "ir_import": [],
+        "is_builtin": false,
+        "is_inlined": false,
+        "kind": "enter_fun",
+        "mark_id": 342,
+        "range": [
+          1,
+          134,
+          9,
+          134,
+          23
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 343,
+        "stack": []
+      },
+      {
+        "kind": "loc",
+        "mark_id": 344,
+        "range": [
+          1,
+          135,
+          13,
+          135,
+          45
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 345,
+        "stack": [
+          1
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 346,
+        "range": [
+          1,
+          135,
+          13,
+          135,
+          45
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 347,
+        "stack": [
+          0
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 348,
+        "range": [
+          1,
+          135,
+          9,
+          135,
+          10
+        ]
+      },
+      {
+        "ir_lazy_slice": 0,
+        "ir_slots": [
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "is_parameter": false,
+        "kind": "var",
+        "mark_id": 349,
+        "ty_idx": 14,
+        "var_name": "s"
+      },
+      {
+        "kind": "loc",
+        "mark_id": 350,
+        "range": [
+          1,
+          136,
+          5,
+          136,
+          25
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 351,
+        "stack": [
+          10,
+          0
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 352,
+        "stack": [
+          0
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 353,
+        "range": [
+          1,
+          136,
+          5,
+          136,
+          25
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 354,
+        "stack": [
+          12
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 355,
+        "stack": [
+          6
+        ]
+      },
+      {
+        "f_idx": 10,
+        "f_name": "getDeployCount",
+        "ir_return": [
+          6
+        ],
+        "kind": "leave_fun",
+        "mark_id": 356,
+        "range": [
+          1,
+          136,
+          5,
+          136,
+          25
+        ]
+      },
+      {
+        "f_idx": 11,
+        "f_name": "owner",
+        "ir_import": [],
+        "is_builtin": false,
+        "is_inlined": false,
+        "kind": "enter_fun",
+        "mark_id": 357,
+        "range": [
+          1,
+          139,
+          9,
+          139,
+          14
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 358,
+        "stack": []
+      },
+      {
+        "kind": "loc",
+        "mark_id": 359,
+        "range": [
+          1,
+          140,
+          13,
+          140,
+          45
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 360,
+        "stack": [
+          1
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 361,
+        "range": [
+          1,
+          140,
+          13,
+          140,
+          45
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 362,
+        "stack": [
+          0
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 363,
+        "range": [
+          1,
+          140,
+          9,
+          140,
+          10
+        ]
+      },
+      {
+        "ir_lazy_slice": 0,
+        "ir_slots": [
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "is_parameter": false,
+        "kind": "var",
+        "mark_id": 364,
+        "ty_idx": 14,
+        "var_name": "s"
+      },
+      {
+        "kind": "loc",
+        "mark_id": 365,
+        "range": [
+          1,
+          141,
+          5,
+          141,
+          19
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 366,
+        "stack": [
+          10,
+          0
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 367,
+        "stack": [
+          10
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 368,
+        "stack": [
+          5
+        ]
+      },
+      {
+        "f_idx": 11,
+        "f_name": "owner",
+        "ir_return": [
+          5
+        ],
+        "kind": "leave_fun",
+        "mark_id": 369,
+        "range": [
+          1,
+          141,
+          5,
+          141,
+          19
+        ]
+      },
+      {
+        "f_idx": 12,
+        "f_name": "predictedVaultAddress",
+        "ir_import": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "is_builtin": false,
+        "is_inlined": false,
+        "kind": "enter_fun",
+        "mark_id": 370,
+        "range": [
+          1,
+          158,
+          9,
+          158,
+          30
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 371,
+        "stack": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "ir_slots": [
+          0
+        ],
+        "is_parameter": true,
+        "kind": "var",
+        "mark_id": 372,
+        "ty_idx": 7,
+        "var_name": "sender"
+      },
+      {
+        "ir_slots": [
+          1
+        ],
+        "is_parameter": true,
+        "kind": "var",
+        "mark_id": 373,
+        "ty_idx": 7,
+        "var_name": "heir"
+      },
+      {
+        "ir_slots": [
+          2
+        ],
+        "is_parameter": true,
+        "kind": "var",
+        "mark_id": 374,
+        "ty_idx": 11,
+        "var_name": "heartbeatPeriod"
+      },
+      {
+        "ir_slots": [
+          3
+        ],
+        "is_parameter": true,
+        "kind": "var",
+        "mark_id": 375,
+        "ty_idx": 11,
+        "var_name": "initialDeadline"
+      },
+      {
+        "kind": "loc",
+        "mark_id": 376,
+        "range": [
+          1,
+          164,
+          13,
+          164,
+          45
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 377,
+        "stack": [
+          0,
+          1,
+          2,
+          3,
+          5
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 378,
+        "range": [
+          1,
+          164,
+          13,
+          164,
+          45
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 379,
+        "stack": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 380,
+        "range": [
+          1,
+          164,
+          9,
+          164,
+          10
+        ]
+      },
+      {
+        "ir_lazy_slice": 4,
+        "ir_slots": [
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "is_parameter": false,
+        "kind": "var",
+        "mark_id": 381,
+        "ty_idx": 14,
+        "var_name": "s"
+      },
+      {
+        "kind": "loc",
+        "mark_id": 382,
+        "range": [
+          1,
+          166,
+          5,
+          169,
+          6
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 383,
+        "stack": [
+          0,
+          1,
+          2,
+          3,
+          14,
+          4
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 384,
+        "stack": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 385,
+        "range": [
+          1,
+          166,
+          5,
+          169,
+          6
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 386,
+        "range": [
+          1,
+          166,
+          5,
+          169,
+          6
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 387,
+        "stack": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 388,
+        "range": [
+          1,
+          166,
+          5,
+          169,
+          6
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 389,
+        "stack": [
+          0,
+          1,
+          2,
+          3,
+          16,
+          4
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 390,
+        "stack": [
+          0,
+          1,
+          2,
+          3,
+          11,
+          4
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 391,
+        "range": [
+          1,
+          166,
+          5,
+          169,
+          6
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 392,
+        "stack": [
+          0,
+          1,
+          2,
+          3,
+          11,
+          17,
+          4
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 393,
+        "stack": [
+          0,
+          1,
+          2,
+          3,
+          11,
+          12,
+          4
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 394,
+        "range": [
+          1,
+          166,
+          5,
+          169,
+          6
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 395,
+        "stack": [
+          0,
+          1,
+          2,
+          3,
+          11,
+          12,
+          18
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 396,
+        "stack": [
+          0,
+          1,
+          2,
+          3,
+          11,
+          12,
+          13
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 397,
+        "range": [
+          1,
+          167,
+          9,
+          167,
+          37
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 398,
+        "range": [
+          1,
+          168,
+          9,
+          168,
+          45
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 399,
+        "range": [
+          1,
+          166,
+          9,
+          166,
+          37
+        ]
+      },
+      {
+        "ir_slots": [
+          19,
+          20
+        ],
+        "is_parameter": false,
+        "kind": "var",
+        "mark_id": 400,
+        "ty_idx": 15,
+        "var_name": "vaultExtra"
+      },
+      {
+        "kind": "stack",
+        "mark_id": 401,
+        "stack": [
+          0,
+          1,
+          2,
+          3,
+          11,
+          19,
+          20
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 402,
+        "range": [
+          1,
+          171,
+          9,
+          171,
+          22
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 403,
+        "range": [
+          1,
+          172,
+          9,
+          172,
+          13
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 404,
+        "range": [
+          1,
+          173,
+          9,
+          173,
+          18
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 405,
+        "range": [
+          1,
+          174,
+          9,
+          174,
+          34
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 406,
+        "range": [
+          1,
+          175,
+          9,
+          175,
+          24
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 407,
+        "range": [
+          1,
+          176,
+          9,
+          176,
+          24
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 408,
+        "range": [
+          1,
+          177,
+          9,
+          177,
+          29
+        ]
+      },
+      {
+        "f_idx": 2,
+        "f_name": "JettonVaultExtra.toCell",
+        "ir_import": [
+          19,
+          20,
+          24
+        ],
+        "is_builtin": true,
+        "is_inlined": true,
+        "kind": "enter_fun",
+        "mark_id": 409,
+        "range": [
+          1,
+          178,
+          16,
+          178,
+          35
+        ]
+      },
+      {
+        "ir_slots": [
+          19,
+          20
+        ],
+        "is_parameter": true,
+        "kind": "var",
+        "mark_id": 410,
+        "ty_idx": 15,
+        "var_name": "self"
+      },
+      {
+        "ir_slots": [
+          24
+        ],
+        "is_parameter": true,
+        "kind": "var",
+        "mark_id": 411,
+        "ty_idx": 17,
+        "var_name": "options"
+      },
+      {
+        "kind": "loc",
+        "mark_id": 412,
+        "range": [
+          1,
+          178,
+          16,
+          178,
+          35
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 413,
+        "stack": [
+          0,
+          1,
+          2,
+          3,
+          11,
+          20,
+          19,
+          25
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 414,
+        "range": [
+          1,
+          178,
+          16,
+          178,
+          35
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 415,
+        "stack": [
+          0,
+          1,
+          2,
+          3,
+          11,
+          20,
+          25
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 416,
+        "range": [
+          1,
+          178,
+          16,
+          178,
+          35
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 417,
+        "stack": [
+          0,
+          1,
+          2,
+          3,
+          11,
+          25
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 418,
+        "range": [
+          1,
+          178,
+          16,
+          178,
+          35
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 419,
+        "stack": [
+          0,
+          1,
+          2,
+          3,
+          11,
+          26
+        ]
+      },
+      {
+        "f_idx": 2,
+        "f_name": "JettonVaultExtra.toCell",
+        "ir_return": [
+          26
+        ],
+        "kind": "leave_fun",
+        "mark_id": 420,
+        "range": [
+          1,
+          178,
+          16,
+          178,
+          35
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 421,
+        "range": [
+          1,
+          178,
+          9,
+          178,
+          35
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 422,
+        "range": [
+          1,
+          170,
+          9,
+          170,
+          41
+        ]
+      },
+      {
+        "ir_slots": [
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34
+        ],
+        "is_parameter": false,
+        "kind": "var",
+        "mark_id": 423,
+        "ty_idx": 18,
+        "var_name": "vaultStorage"
+      },
+      {
+        "kind": "stack",
+        "mark_id": 424,
+        "stack": [
+          27,
+          28,
+          31,
+          30,
+          11,
+          34
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 425,
+        "range": [
+          1,
+          181,
+          9,
+          181,
+          26
+        ]
+      },
+      {
+        "f_idx": 3,
+        "f_name": "JettonVaultStorage.toCell",
+        "ir_import": [
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35
+        ],
+        "is_builtin": true,
+        "is_inlined": true,
+        "kind": "enter_fun",
+        "mark_id": 426,
+        "range": [
+          1,
+          182,
+          15,
+          182,
+          36
+        ]
+      },
+      {
+        "ir_slots": [
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34
+        ],
+        "is_parameter": true,
+        "kind": "var",
+        "mark_id": 427,
+        "ty_idx": 18,
+        "var_name": "self"
+      },
+      {
+        "ir_slots": [
+          35
+        ],
+        "is_parameter": true,
+        "kind": "var",
+        "mark_id": 428,
+        "ty_idx": 17,
+        "var_name": "options"
+      },
+      {
+        "kind": "loc",
+        "mark_id": 429,
+        "range": [
+          1,
+          182,
+          15,
+          182,
+          36
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 430,
+        "stack": [
+          34,
+          28,
+          31,
+          30,
+          11,
+          27,
+          36
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 431,
+        "range": [
+          1,
+          182,
+          15,
+          182,
+          36
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 432,
+        "stack": [
+          34,
+          28,
+          31,
+          30,
+          11,
+          36
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 433,
+        "stack": [
+          34,
+          11,
+          31,
+          30,
+          28,
+          36
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 434,
+        "range": [
+          1,
+          182,
+          15,
+          182,
+          36
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 435,
+        "stack": [
+          34,
+          11,
+          31,
+          30,
+          36
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 436,
+        "range": [
+          1,
+          182,
+          15,
+          182,
+          36
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 437,
+        "stack": [
+          34,
+          11,
+          31,
+          30,
+          36
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 438,
+        "range": [
+          1,
+          182,
+          15,
+          182,
+          36
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 439,
+        "stack": [
+          34,
+          11,
+          31,
+          36
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 440,
+        "range": [
+          1,
+          182,
+          15,
+          182,
+          36
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 441,
+        "stack": [
+          34,
+          11,
+          36
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 442,
+        "range": [
+          1,
+          182,
+          15,
+          182,
+          36
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 443,
+        "stack": [
+          34,
+          11,
+          36
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 444,
+        "stack": [
+          11,
+          34,
+          36
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 445,
+        "range": [
+          1,
+          182,
+          15,
+          182,
+          36
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 446,
+        "stack": [
+          11,
+          36
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 447,
+        "range": [
+          1,
+          182,
+          15,
+          182,
+          36
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 448,
+        "stack": [
+          11,
+          39
+        ]
+      },
+      {
+        "f_idx": 3,
+        "f_name": "JettonVaultStorage.toCell",
+        "ir_return": [
+          39
+        ],
+        "kind": "leave_fun",
+        "mark_id": 449,
+        "range": [
+          1,
+          182,
+          15,
+          182,
+          36
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 450,
+        "range": [
+          1,
+          182,
+          9,
+          182,
+          36
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 451,
+        "range": [
+          1,
+          180,
+          9,
+          180,
+          19
+        ]
+      },
+      {
+        "ir_slots": [
+          40,
+          41
+        ],
+        "is_parameter": false,
+        "kind": "var",
+        "mark_id": 452,
+        "ty_idx": 20,
+        "var_name": "vaultState"
+      },
+      {
+        "kind": "stack",
+        "mark_id": 453,
+        "stack": [
+          40,
+          41
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 454,
+        "range": [
+          1,
+          184,
+          32,
+          184,
+          53
+        ]
+      },
+      {
+        "f_idx": 4,
+        "f_name": "AutoDeployAddress.calculateAddress",
+        "ir_import": [
+          42,
+          40,
+          41,
+          43,
+          44,
+          45,
+          46
+        ],
+        "is_builtin": true,
+        "is_inlined": true,
+        "kind": "enter_fun",
+        "mark_id": 455,
+        "range": [
+          1,
+          184,
+          12,
+          184,
+          74
+        ]
+      },
+      {
+        "ir_slots": [
+          42,
+          40,
+          41,
+          43,
+          44,
+          45,
+          46
+        ],
+        "is_parameter": true,
+        "kind": "var",
+        "mark_id": 456,
+        "ty_idx": 21,
+        "var_name": "self"
+      },
+      {
+        "kind": "stack",
+        "mark_id": 457,
+        "stack": [
+          41,
+          40
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 458,
+        "range": [
+          1,
+          184,
+          12,
+          184,
+          74
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 459,
+        "range": [
+          1,
+          184,
+          12,
+          184,
+          74
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 460,
+        "range": [
+          1,
+          184,
+          12,
+          184,
+          74
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 461,
+        "range": [
+          1,
+          184,
+          12,
+          184,
+          74
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 462,
+        "range": [
+          1,
+          184,
+          12,
+          184,
+          74
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 463,
+        "stack": [
+          48
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 464,
+        "range": [
+          1,
+          184,
+          12,
+          184,
+          74
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 465,
+        "stack": [
+          48,
+          47
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 466,
+        "range": [
+          1,
+          184,
+          12,
+          184,
+          74
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 467,
+        "stack": [
+          48,
+          47
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 468,
+        "range": [
+          1,
+          184,
+          12,
+          184,
+          74
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 469,
+        "stack": [
+          47
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 470,
+        "range": [
+          1,
+          184,
+          12,
+          184,
+          74
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 471,
+        "stack": [
+          47
+        ]
+      },
+      {
+        "f_idx": 4,
+        "f_name": "AutoDeployAddress.calculateAddress",
+        "ir_return": [
+          47
+        ],
+        "kind": "leave_fun",
+        "mark_id": 472,
+        "range": [
+          1,
+          184,
+          12,
+          184,
+          74
+        ]
+      },
+      {
+        "f_idx": 12,
+        "f_name": "predictedVaultAddress",
+        "ir_return": [
+          47
+        ],
+        "kind": "leave_fun",
+        "mark_id": 473,
+        "range": [
+          1,
+          184,
+          5,
+          184,
+          74
+        ]
+      },
+      {
+        "f_idx": 13,
+        "f_name": "jettonMaster",
+        "ir_import": [],
+        "is_builtin": false,
+        "is_inlined": false,
+        "kind": "enter_fun",
+        "mark_id": 474,
+        "range": [
+          1,
+          190,
+          9,
+          190,
+          21
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 475,
+        "stack": []
+      },
+      {
+        "kind": "loc",
+        "mark_id": 476,
+        "range": [
+          1,
+          191,
+          13,
+          191,
+          45
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 477,
+        "stack": [
+          1
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 478,
+        "range": [
+          1,
+          191,
+          13,
+          191,
+          45
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 479,
+        "stack": [
+          0
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 480,
+        "range": [
+          1,
+          191,
+          9,
+          191,
+          10
+        ]
+      },
+      {
+        "ir_lazy_slice": 0,
+        "ir_slots": [
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "is_parameter": false,
+        "kind": "var",
+        "mark_id": 481,
+        "ty_idx": 14,
+        "var_name": "s"
+      },
+      {
+        "kind": "loc",
+        "mark_id": 482,
+        "range": [
+          1,
+          192,
+          5,
+          192,
+          26
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 483,
+        "stack": [
+          10,
+          0
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 484,
+        "stack": [
+          0
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 485,
+        "range": [
+          1,
+          192,
+          5,
+          192,
+          26
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 486,
+        "range": [
+          1,
+          192,
+          5,
+          192,
+          26
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 487,
+        "stack": [
+          0
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 488,
+        "range": [
+          1,
+          192,
+          5,
+          192,
+          26
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 489,
+        "stack": [
+          12,
+          0
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 490,
+        "stack": [
+          12
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 491,
+        "stack": [
+          8
+        ]
+      },
+      {
+        "f_idx": 13,
+        "f_name": "jettonMaster",
+        "ir_return": [
+          8
+        ],
+        "kind": "leave_fun",
+        "mark_id": 492,
+        "range": [
+          1,
+          192,
+          5,
+          192,
+          26
+        ]
+      },
+      {
+        "f_idx": 14,
+        "f_name": "jettonWalletCode",
+        "ir_import": [],
+        "is_builtin": false,
+        "is_inlined": false,
+        "kind": "enter_fun",
+        "mark_id": 493,
+        "range": [
+          1,
+          195,
+          9,
+          195,
+          25
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 494,
+        "stack": []
+      },
+      {
+        "kind": "loc",
+        "mark_id": 495,
+        "range": [
+          1,
+          196,
+          13,
+          196,
+          45
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 496,
+        "stack": [
+          1
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 497,
+        "range": [
+          1,
+          196,
+          13,
+          196,
+          45
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 498,
+        "stack": [
+          0
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 499,
+        "range": [
+          1,
+          196,
+          9,
+          196,
+          10
+        ]
+      },
+      {
+        "ir_lazy_slice": 0,
+        "ir_slots": [
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "is_parameter": false,
+        "kind": "var",
+        "mark_id": 500,
+        "ty_idx": 14,
+        "var_name": "s"
+      },
+      {
+        "kind": "loc",
+        "mark_id": 501,
+        "range": [
+          1,
+          197,
+          5,
+          197,
+          30
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 502,
+        "stack": [
+          10,
+          0
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 503,
+        "stack": [
+          0
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 504,
+        "range": [
+          1,
+          197,
+          5,
+          197,
+          30
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 505,
+        "stack": [
+          11
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 506,
+        "stack": [
+          9
+        ]
+      },
+      {
+        "f_idx": 14,
+        "f_name": "jettonWalletCode",
+        "ir_return": [
+          9
+        ],
+        "kind": "leave_fun",
+        "mark_id": 507,
+        "range": [
+          1,
+          197,
+          5,
+          197,
+          30
+        ]
+      }
+    ],
+    "debug_marks_base64": "te6ccgICAmUAAQAAD94AAAIBIAABAAICAVgAAwAEAgEgAHoAewIDfoIABQAGAUO/bq4Xd69raNY1NRU4FKBvQpQv4k0h0WD4FMbxvbCEK+zAAHABQb2ExTPhvN8c+bpIYJVRMYHr8Pe9fY0ed6SrTq6M9erfYAAHAgEgAAwADQIDy8AACAAJAgHHAAoACwIDnVQBRQFFAgEgABEAEgIBIAAWABcBQb1zov2ZrlQjplvr+C4PP9c/h2o3SrSL0yxOfalS5yrwwAAfAUG9ckVb4SxGVYAVnS3c/DaS/P72t9DEX1SiNftvHNw+pMAADgIImAAAAQAPABACAe4AJgCtAgEgACgAKQIBIAAnAHYCASAAEwAUAgEgAk8BLAIBIAAVAlUCASACUgJSAgEgABgAGQIBIAAbABwCASAAGgCwAgEgAD4AHQIBIAJZAlkCASAAHQAeAQHUAL4CASACYAJgAgEgAmAAvQIJmwAAAXAAIAAhAgEgACIAIwIBzgJXAlcCAVgAoABzAgEgAHYAJAIBIAJPACUCASACUgJXAgEgAkMAJwIBIABzAHMCASAAKgArAgFIADAAMQIBIAAsAC0CASAALgAvAgEgADsAPAIBIABBAEICASAASQBKAgEgAFQAVQIBIABlAGYCASAAMgAzAgEgADQANQIB1AA5ADkCASAANgA3AgEgAYsAOAIBIADfAYECASABgQGMAgEgAZAAOQEBIAA6AASp0AIBIAJOAD0CASAAPwBDAgEgATUAPgIBIAE3ATcCASACXgBAAgEgAmMARgIBIABDAEMCASAAQwBEAgEgAEUARQIBIAE6AEgCASAARgBGAQEgAEcABKhwAgEgATwAvQIBIABLAE4CASAATgBPAgEgAEwATQIBIAC9AL8CASAAvwFFAgEgAUMBQwIBIABQAFECASABRQFHAgEgAFIAUgEBIABTAASosAIBIABWAFcCASAAXgBfAgEgAFgAWQIBIABaAFsCASABSwFNAgEgAU0AXAIBIABcAVMCASABUwBiAQEgAF0ABKjYAgEgAGAAYQIBIABkANQCASAAYgFZAgEgAVkBXQEBIABjAASpAAIBIAFlAWUCASAAZwBnAgEgAGkAagIBIABoAGgCASABawFrAgEgAGsAbAIBIAFxAG8CASABawBtAgEgAG0A1gEBIABuAASpSAIBIADZAN8CCZsAAAHwAHEAcgIBbgCgAHMCASAAdAB1AgEgAkcCRwIBIAB2AHcCAUgAeQEuAgEgASsCTwIBIAJPAHgCASABLwJSAgEgAlIBMQFDv6DqzJZ21OE9W63pMgDu4nNLrwrSJW307hmDxebOKcOI4AB8AgEgAH4AfwIJnQAAABQCQwB9AgFIAIkAiQIBIACAAIECAUgAlwCYAUK/Bih2UcQt2MhUFoUJGOwA8f5brwn5F0l7hxeR5CadbUEAqQFCvwara1iEJENDcynlDyng4MzwOenx2xS6m5ttIkSaPUYLAIICA8vAAIMAhAIBbgCFAIYCAUgAjwCQAgFuAIcAiAIBIACNAI4CAVgAiQJRAgEgAIsAjAEBIACKAASoCAIBIAJRAS8CASABLwJZAgEgALEAsgIBIAC3ALgCASAAkQCSAgFIAQ0BDgIBIACTAJQCASAAlQCWAgEgANAA0QIBIADhAOICASAA7QDuAgEgAP4A/wFBvts8IbfqmB+Q/EsfLsRcYdktF2RBIIMGZXbjsFvtqFW/AJkBQb7QCyEDOiKTFAI/npDXwBZBLSUDCStC8VzpXiV/Rmw5iwJAAgPMQACaAJsCASAAnACdAgEgAbcBuAIBIACeAJ8CASAAowCkAgHuAKACRQIBIAChAKIBAVgCSAIBIAEnASgCASABPwFAAgEgAKUApgIBIACnAKgCASABXwFgAgEgAXsBfAIBIAGSAZMCASABowGkAgmaAAABYACqAKsCAVgArACtAgFiAK4ArwIB9AJHAkcCASACRAJNAgEgAlUAsAEB1AJhAgEgAl8CXwIBIACzALUCASAAtQC2AgEgALQBNgIBIAJZATcCASACXgJeAgEgALsAuwIBIAC5ALoCASAAxwDIAgEgALsAvAIBIADBAMICASAAvQC9AgEgAL8AvwEBIAC+AASokAEBIADAAASomAIBIADDAU0CASABTQDFAQEgAMQABKi4AQEgAMYABKjQAgEgAMkAygIBIADNAVgCASAAywFTAgEgAVUAzgEBIADMAASo6AIBIADOAVoBASAAzwAEqQgCASAA0gDTAgEgANsA3AIBIADUANUCASABcgDYAgEgAWcBZwIBIADWAXMBASAA1wAEqVACASAA2QDZAQEgANoABKl4AgEgAN0A3gIBIADeAN4CASABeQF5AgEgAN8A3wEBIADgAASpiAIBIADjAOQCASAA5gDnAgEgAOUBhQIBIAGFAYUCASABgQGBAgEgAYUA6AIBIADpAOoCASABhwDrAgEgAOsBmwIBIAGfAZ8BASAA7AAEqagCASAA7wDwAgEgAPkA+gIBIADxAPICASAA9QD2AgEgAPMBqAIBIAGoAbEBASAA9AAEqfACASABsgGyAgEgAPcA9wEBIAD4AASqIAIBIAD7APwCASAA/QHoAgEgAdQB1AIBIAHWAdYCASAB2wHbAgEgAQABAQIBIAEGAQcCASABAgEDAgEgAfkBCAIBIAHrAe4CASABBAEEAQEgAQUABKrAAgEgAQgBCAIBIAEJAQoCASACBAIEAgEgAQsBCwIBIAIFAggBASABDAAEqtgCASABDwEQAgFiASEBIgIBIAERARICASABFwEYAgEgAgMBEwIBIAETARQCASACCQIJAgEgARUCDgEBIAEWAASrAAIBIAEZARoCASABHQEeAgEgAg4BGwIBIAEbAR8BASABHAAEqxgCASABHwIVAgEgAhUBIwEBIAEgAASrKAIBIAEjASUCASABJQElAQEgASQABKs4AQEgASYABKtIAgEgASkBKgIBIAEzATQCASABKwEsAgEgAS0BLgIBIAJJAkkCASABLwEvAgEgAS8BMQIBIAExATEBASABMAAEqCABASABMgAEqDgCASABNQE2AgEgATkBOgIBIAJfATcCASABNwJjAQEgATgABKhQAgEgAmMBOwIBIAE7ATwBASABPQEBIAE+AASoeAAEqIACASABQQFCAgEgAU8BUAIBIAFDAUQCASABSQFKAgEgAUUBRQIBIAFHAUcBASABRgAEqKABASABSAAEqKgCASABSwFLAgEgAU0BUwEBIAFMAASowAEBIAFOAASoyAIBIAFRAVICASABVwFYAgEgAVMBVQIBIAFVAVkBASABVAAEqPABASABVgAEqPgCASABWQFaAgEgAV0BXQEBIAFbAQEgAVwABKkQAASpIAEBIAFeAASpKAIBIAFhAWICASABbwFwAgEgAWMBZAIBIAFpAWoCASABZQFnAgEgAWcBawEBIAFmAASpMAEBIAFoAASpOAIBIAFrAW0CASABbQFzAQEgAWwABKlAAQEgAW4ABKlYAgEgAXEBcgIBIAF1AXYCASABcwF3AgEgAXcBdwEBIAF0AASpaAIBIAF3AXkCASABeQGBAQEgAXgABKlwAQEgAXoABKmAAgEgAX0BfgIBIAGJAYoCASABfwGAAgEgAYUBhgIBIAGBAYMCASABgwGHAQEgAYIABKmQAQEgAYQABKmYAgEgAYcBhwIBIAGMAYwBASABiAAEqaACASABiwGOAgEgAY4BjwIBIAGMAZABASABjQAEqbACASABkAGQAgEgAZABlgEBIAGRAASpwAIBIAGUAZgCASABmAGZAgEgAZUBmgIBIAGWAZsBASABlwAEqcgCASABmgGaAgEgAZ0BngIBIAGbAZsBASABnAAEqdgCASABnwGhAgEgAaEBqAEBIAGgAASp4AEBIAGiAASp6AIBIAGlAawCASABrAGtAgEgAaYBpwIBIAGoAaoCASABqgGxAQEgAakABKn4AQEgAasABKoAAgEgAa4BrgIBIAGvAbACASABsQGxAgEgAbEBsgIBIAG1AbUBASABswEBIAG0AASqCAAEqhABASABtgAEqhgCASABuQG6AgFIAb8BwAIBIAG7AbwCASABvQG+AgEgAc4BzwIBIAHwAfECASAB/gH/AgEgAhkCGgIBIAIjAiQCASABwQHCAgEgAjYBwwIB1AHKAcsCASABxAHFAgEgAj4BxgIBIAHGAccBASAByAEBIAHJAASr0AAEq9gBASABzAEBIAHNAASr8AAEq/gCASAB0AHRAgEgAeAB4QIBIAHSAdMCASAB2AHZAgEgAdQB1gIBIAHWAdoBASAB1QAEqigBASAB1wAEqjACASAB2gHbAgEgAd4B3gEBIAHcAQEgAd0ABKpAAASqWAEBIAHfAASqYAIBIAHiAeMCASAB6AHpAgEgAeQB5gIBIAHmAeoBASAB5QAEqnABASAB5wAEqngCASAB6gHrAgEgAe4B7gEBIAHsAQEgAe0ABKqIAASqoAEBIAHvAASqqAIBIAHyAfYCASAB9gH3AgEgAfMB+AIBIAH0AfQBASAB9QAEqrACASAB+AH4AgEgAfgB+QIBIAH6AfoCASAB/AH8AQEgAfsABKq4AQEgAf0ABKrIAgEgAgACAQIBIAISAhsCASACAgIDAgEgAgwCDQIBIAIEAgUCASACCAIJAQEgAgYBASACBwAEqtAABKroAQEgAgoBASACCwAEqvAABKr4AgEgAg4CDgIBIAIQAhABASACDwAEqwgBASACEQAEqxACASACEwIUAgEgAhUCFQIBIAIXAhcBASACFgAEqzABASACGAAEq0ACASACGwIbAgEgAhwCHQIBIAIeAh4CASACHgIfAgEgAiICIgIBIAIgAiACASACIAIpAQEgAiEABKtQAgEgAikCKQIBIAIlAiYCASACNQI2AgEgAicCKAIBIAIvAjACASACKQIrAgEgAisCLAEBIAIqAASraAEBIAItAQEgAi4ABKtwAASriAIBIAIxAjECASACMwIzAQEgAjIABKuQAQEgAjQABKugAgEgAjcCOAIBIAI9Aj0CASACOQI5AgEgAjsCOwEBIAI6AASrsAEBIAI8AASruAIBIAI+Aj4BASACPwAEq8ACCZoAAAHgAkECQgIBbgJDAkQCAUgCSwJMAgFYAkcCRwIBIAJFAkYCASACRwJJAgEgAkkCUQEBIAJIAAHVAQEgAkoABKgQAgEgAk0CTgIBIAJbAlwCASACTwJQAgEgAlUCVgIBIAJRAlECASACUQJSAQEgAlMBASACVAAEqBgABKgoAgEgAlcCVwIBIAJZAl8BASACWAAEqDABASACWgAEqEACASACXQJeAQHUAmQCASACXwJgAgEgAmMCYwEBIAJhAQEgAmIABKhIAASoWAEBIAJkAASoYA=="
+  },
+  "files": [
+    {
+      "path": "contracts/InheritanceJettonFactory.tolk",
+      "content_hash": "f5ccdd1e461730b53fedf0416f12a32d3d7349340ad39fa0759e10ab91ace24f",
+      "include_in_command": true,
+      "is_stdlib": false,
+      "has_include_directives": true
+    },
+    {
+      "path": "contracts/jetton_types.tolk",
+      "content_hash": "89ef3e1116c9715e87a3b61109acdc4ab942107e292939a209fbe5ccf28bc36f",
+      "include_in_command": true,
+      "is_stdlib": false,
+      "has_include_directives": true
+    },
+    {
+      "path": "output/InheritanceJettonFactory.abi.json",
+      "content_hash": "4be2ca1686edf57698b0f263a3bfaeff90885e7f658256c1639eb93cf45b68ba"
+    }
+  ]
+}
