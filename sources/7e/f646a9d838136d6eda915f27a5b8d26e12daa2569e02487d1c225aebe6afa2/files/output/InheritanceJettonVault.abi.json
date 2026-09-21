@@ -1,0 +1,481 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "InheritanceJettonVault",
+  "author": "ton-inheritance",
+  "version": "1.0.0",
+  "description": "Per-inheritance immutable jetton vault (Phase 2 / Plan 01).",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TransferNotification"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Excesses"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "JettonHeartbeat"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Withdraw"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Claim"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Refund"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "JettonVaultStorage"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "JettonDepositReceived"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "JettonHeartbeatReceived"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "JettonWithdrawn"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "JettonTransfer"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "JettonClaimed"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "JettonRefunded"
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "JettonVaultStorage",
+      "ty_idx": 18,
+      "fields": [
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "heir",
+          "ty_idx": 7
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "deadline",
+          "ty_idx": 11
+        },
+        {
+          "name": "heartbeatPeriod",
+          "ty_idx": 11
+        },
+        {
+          "name": "isActive",
+          "ty_idx": 5
+        },
+        {
+          "name": "depositPending",
+          "ty_idx": 5
+        },
+        {
+          "name": "extra",
+          "ty_idx": 3
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TransferNotification",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 1935855772,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "sender",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Excesses",
+      "ty_idx": 13,
+      "prefix": {
+        "prefix_num": 3576854235,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "JettonTransfer",
+      "ty_idx": 22,
+      "prefix": {
+        "prefix_num": 260734629,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "destination",
+          "ty_idx": 7
+        },
+        {
+          "name": "responseDestination",
+          "ty_idx": 7
+        },
+        {
+          "name": "customPayload",
+          "ty_idx": 5
+        },
+        {
+          "name": "forwardTonAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 5
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "JettonHeartbeat",
+      "ty_idx": 14,
+      "prefix": {
+        "prefix_num": 2831494007,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "Refund",
+      "ty_idx": 17,
+      "prefix": {
+        "prefix_num": 474627741,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "sweepAmount",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Withdraw",
+      "ty_idx": 15,
+      "prefix": {
+        "prefix_num": 3051249566,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "Claim",
+      "ty_idx": 16,
+      "prefix": {
+        "prefix_num": 1305195944,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "JettonRefunded",
+      "ty_idx": 24,
+      "prefix": {
+        "prefix_num": 2597617174,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "vault",
+          "ty_idx": 7
+        },
+        {
+          "name": "owner",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "JettonDepositReceived",
+      "ty_idx": 19,
+      "prefix": {
+        "prefix_num": 1553938946,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "vault",
+          "ty_idx": 7
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "ts",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "JettonHeartbeatReceived",
+      "ty_idx": 20,
+      "prefix": {
+        "prefix_num": 1839287059,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "vault",
+          "ty_idx": 7
+        },
+        {
+          "name": "ts",
+          "ty_idx": 11
+        },
+        {
+          "name": "newDeadline",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "JettonWithdrawn",
+      "ty_idx": 21,
+      "prefix": {
+        "prefix_num": 2125618212,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "vault",
+          "ty_idx": 7
+        },
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "depositedAmount",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "JettonClaimed",
+      "ty_idx": 23,
+      "prefix": {
+        "prefix_num": 2411949365,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "vault",
+          "ty_idx": 7
+        },
+        {
+          "name": "heir",
+          "ty_idx": 7
+        },
+        {
+          "name": "depositedAmount",
+          "ty_idx": 6
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 18
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 13
+    },
+    {
+      "body_ty_idx": 14
+    },
+    {
+      "body_ty_idx": 15
+    },
+    {
+      "body_ty_idx": 16
+    },
+    {
+      "body_ty_idx": 17
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 22
+    }
+  ],
+  "emitted_events": [
+    {
+      "body_ty_idx": 19
+    },
+    {
+      "body_ty_idx": 20
+    },
+    {
+      "body_ty_idx": 21
+    },
+    {
+      "body_ty_idx": 23
+    },
+    {
+      "body_ty_idx": 24
+    }
+  ],
+  "get_methods": [
+    {
+      "tvm_method_id": 114667,
+      "name": "getVaultData",
+      "parameters": [],
+      "return_ty_idx": 18
+    },
+    {
+      "tvm_method_id": 83229,
+      "name": "owner",
+      "parameters": [],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 82925,
+      "name": "heir",
+      "parameters": [],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 82798,
+      "name": "isActive",
+      "parameters": [],
+      "return_ty_idx": 5
+    },
+    {
+      "tvm_method_id": 128030,
+      "name": "depositPending",
+      "parameters": [],
+      "return_ty_idx": 5
+    },
+    {
+      "tvm_method_id": 93834,
+      "name": "expectedJettonWallet",
+      "parameters": [],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 113118,
+      "name": "jettonMaster",
+      "parameters": [],
+      "return_ty_idx": 7
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "JettonErrors.FakeJettonSender",
+      "err_code": 200
+    },
+    {
+      "kind": "enum_member",
+      "name": "JettonErrors.DepositAlreadyReceived",
+      "err_code": 201
+    },
+    {
+      "kind": "enum_member",
+      "name": "JettonErrors.RefundNotAllowed",
+      "err_code": 202
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.4.2"
+}
