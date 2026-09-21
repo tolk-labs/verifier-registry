@@ -1,0 +1,293 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "InheritanceVault",
+  "author": "ton-inheritance",
+  "version": "1.0.0",
+  "description": "Per-inheritance immutable vault contract (Phase 1 / Plan 02).",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Heartbeat"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Withdraw"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Claim"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "VaultStorage"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "HeartbeatReceived"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Withdrawn"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Claimed"
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "VaultStorage",
+      "ty_idx": 15,
+      "fields": [
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "heir",
+          "ty_idx": 7
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "deadline",
+          "ty_idx": 11
+        },
+        {
+          "name": "heartbeatPeriod",
+          "ty_idx": 11
+        },
+        {
+          "name": "isActive",
+          "ty_idx": 5
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Heartbeat",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 3576854235,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "Withdraw",
+      "ty_idx": 13,
+      "prefix": {
+        "prefix_num": 3051249566,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "Claim",
+      "ty_idx": 14,
+      "prefix": {
+        "prefix_num": 1305195944,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "HeartbeatReceived",
+      "ty_idx": 16,
+      "prefix": {
+        "prefix_num": 1848254212,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "vault",
+          "ty_idx": 7
+        },
+        {
+          "name": "ts",
+          "ty_idx": 11
+        },
+        {
+          "name": "newDeadline",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Withdrawn",
+      "ty_idx": 17,
+      "prefix": {
+        "prefix_num": 2102344842,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "vault",
+          "ty_idx": 7
+        },
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "depositedAmount",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Claimed",
+      "ty_idx": 18,
+      "prefix": {
+        "prefix_num": 746829214,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "vault",
+          "ty_idx": 7
+        },
+        {
+          "name": "heir",
+          "ty_idx": 7
+        },
+        {
+          "name": "depositedAmount",
+          "ty_idx": 6
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 15
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 13
+    },
+    {
+      "body_ty_idx": 14
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [],
+  "emitted_events": [
+    {
+      "body_ty_idx": 16
+    },
+    {
+      "body_ty_idx": 17
+    },
+    {
+      "body_ty_idx": 18
+    }
+  ],
+  "get_methods": [
+    {
+      "tvm_method_id": 114667,
+      "name": "getVaultData",
+      "parameters": [],
+      "return_ty_idx": 15
+    },
+    {
+      "tvm_method_id": 83229,
+      "name": "owner",
+      "parameters": [],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 82925,
+      "name": "heir",
+      "parameters": [],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 82798,
+      "name": "isActive",
+      "parameters": [],
+      "return_ty_idx": 5
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotOwner",
+      "err_code": 101
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotHeir",
+      "err_code": 102
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.DeadlineNotPassed",
+      "err_code": 103
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.AlreadyInactive",
+      "err_code": 104
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.DeadlinePassed",
+      "err_code": 105
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.4.2"
+}
