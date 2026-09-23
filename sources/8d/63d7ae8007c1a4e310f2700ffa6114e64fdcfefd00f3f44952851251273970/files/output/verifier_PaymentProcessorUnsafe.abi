@@ -1,0 +1,1846 @@
+{
+  "name": "PaymentProcessorUnsafe",
+  "types": [
+    {
+      "name": "DataSize",
+      "header": null,
+      "fields": [
+        {
+          "name": "cells",
+          "type": {
+            "kind": "simple",
+            "type": "int",
+            "optional": false,
+            "format": 257
+          }
+        },
+        {
+          "name": "bits",
+          "type": {
+            "kind": "simple",
+            "type": "int",
+            "optional": false,
+            "format": 257
+          }
+        },
+        {
+          "name": "refs",
+          "type": {
+            "kind": "simple",
+            "type": "int",
+            "optional": false,
+            "format": 257
+          }
+        }
+      ]
+    },
+    {
+      "name": "SignedBundle",
+      "header": null,
+      "fields": [
+        {
+          "name": "signature",
+          "type": {
+            "kind": "simple",
+            "type": "fixed-bytes",
+            "optional": false,
+            "format": 64
+          }
+        },
+        {
+          "name": "signedData",
+          "type": {
+            "kind": "simple",
+            "type": "slice",
+            "optional": false,
+            "format": "remainder"
+          }
+        }
+      ]
+    },
+    {
+      "name": "StateInit",
+      "header": null,
+      "fields": [
+        {
+          "name": "code",
+          "type": {
+            "kind": "simple",
+            "type": "cell",
+            "optional": false
+          }
+        },
+        {
+          "name": "data",
+          "type": {
+            "kind": "simple",
+            "type": "cell",
+            "optional": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "Context",
+      "header": null,
+      "fields": [
+        {
+          "name": "bounceable",
+          "type": {
+            "kind": "simple",
+            "type": "bool",
+            "optional": false
+          }
+        },
+        {
+          "name": "sender",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "value",
+          "type": {
+            "kind": "simple",
+            "type": "int",
+            "optional": false,
+            "format": 257
+          }
+        },
+        {
+          "name": "raw",
+          "type": {
+            "kind": "simple",
+            "type": "slice",
+            "optional": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "SendParameters",
+      "header": null,
+      "fields": [
+        {
+          "name": "mode",
+          "type": {
+            "kind": "simple",
+            "type": "int",
+            "optional": false,
+            "format": 257
+          }
+        },
+        {
+          "name": "body",
+          "type": {
+            "kind": "simple",
+            "type": "cell",
+            "optional": true
+          }
+        },
+        {
+          "name": "code",
+          "type": {
+            "kind": "simple",
+            "type": "cell",
+            "optional": true
+          }
+        },
+        {
+          "name": "data",
+          "type": {
+            "kind": "simple",
+            "type": "cell",
+            "optional": true
+          }
+        },
+        {
+          "name": "value",
+          "type": {
+            "kind": "simple",
+            "type": "int",
+            "optional": false,
+            "format": 257
+          }
+        },
+        {
+          "name": "to",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "bounce",
+          "type": {
+            "kind": "simple",
+            "type": "bool",
+            "optional": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "MessageParameters",
+      "header": null,
+      "fields": [
+        {
+          "name": "mode",
+          "type": {
+            "kind": "simple",
+            "type": "int",
+            "optional": false,
+            "format": 257
+          }
+        },
+        {
+          "name": "body",
+          "type": {
+            "kind": "simple",
+            "type": "cell",
+            "optional": true
+          }
+        },
+        {
+          "name": "value",
+          "type": {
+            "kind": "simple",
+            "type": "int",
+            "optional": false,
+            "format": 257
+          }
+        },
+        {
+          "name": "to",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "bounce",
+          "type": {
+            "kind": "simple",
+            "type": "bool",
+            "optional": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "DeployParameters",
+      "header": null,
+      "fields": [
+        {
+          "name": "mode",
+          "type": {
+            "kind": "simple",
+            "type": "int",
+            "optional": false,
+            "format": 257
+          }
+        },
+        {
+          "name": "body",
+          "type": {
+            "kind": "simple",
+            "type": "cell",
+            "optional": true
+          }
+        },
+        {
+          "name": "value",
+          "type": {
+            "kind": "simple",
+            "type": "int",
+            "optional": false,
+            "format": 257
+          }
+        },
+        {
+          "name": "bounce",
+          "type": {
+            "kind": "simple",
+            "type": "bool",
+            "optional": false
+          }
+        },
+        {
+          "name": "init",
+          "type": {
+            "kind": "simple",
+            "type": "StateInit",
+            "optional": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "StdAddress",
+      "header": null,
+      "fields": [
+        {
+          "name": "workchain",
+          "type": {
+            "kind": "simple",
+            "type": "int",
+            "optional": false,
+            "format": 8
+          }
+        },
+        {
+          "name": "address",
+          "type": {
+            "kind": "simple",
+            "type": "uint",
+            "optional": false,
+            "format": 256
+          }
+        }
+      ]
+    },
+    {
+      "name": "VarAddress",
+      "header": null,
+      "fields": [
+        {
+          "name": "workchain",
+          "type": {
+            "kind": "simple",
+            "type": "int",
+            "optional": false,
+            "format": 32
+          }
+        },
+        {
+          "name": "address",
+          "type": {
+            "kind": "simple",
+            "type": "slice",
+            "optional": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "BasechainAddress",
+      "header": null,
+      "fields": [
+        {
+          "name": "hash",
+          "type": {
+            "kind": "simple",
+            "type": "int",
+            "optional": true,
+            "format": 257
+          }
+        }
+      ]
+    },
+    {
+      "name": "ChangeOwner",
+      "header": 2174598809,
+      "fields": [
+        {
+          "name": "queryId",
+          "type": {
+            "kind": "simple",
+            "type": "uint",
+            "optional": false,
+            "format": 64
+          }
+        },
+        {
+          "name": "newOwner",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "ChangeOwnerOk",
+      "header": 846932810,
+      "fields": [
+        {
+          "name": "queryId",
+          "type": {
+            "kind": "simple",
+            "type": "uint",
+            "optional": false,
+            "format": 64
+          }
+        },
+        {
+          "name": "newOwner",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "Transfer",
+      "header": 1120014203,
+      "fields": [
+        {
+          "name": "req",
+          "type": {
+            "kind": "simple",
+            "type": "PaymentRequest",
+            "optional": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "PaymentRequest",
+      "header": null,
+      "fields": [
+        {
+          "name": "buyer",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "seller",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "amount",
+          "type": {
+            "kind": "simple",
+            "type": "int",
+            "optional": false,
+            "format": 257
+          }
+        },
+        {
+          "name": "buyerPaysCommission",
+          "type": {
+            "kind": "simple",
+            "type": "bool",
+            "optional": false
+          }
+        },
+        {
+          "name": "optionalCommissionWallet",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "SetPlatformCommissionBps",
+      "header": 4004194512,
+      "fields": [
+        {
+          "name": "newBps",
+          "type": {
+            "kind": "simple",
+            "type": "int",
+            "optional": false,
+            "format": 257
+          }
+        }
+      ]
+    },
+    {
+      "name": "WithdrawAll",
+      "header": 3794127834,
+      "fields": [
+        {
+          "name": "to",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "SetPaused",
+      "header": 439041034,
+      "fields": [
+        {
+          "name": "paused",
+          "type": {
+            "kind": "simple",
+            "type": "bool",
+            "optional": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "SetOwner",
+      "header": 3266583875,
+      "fields": [
+        {
+          "name": "newOwner",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "WithdrawAllJettons",
+      "header": 439041036,
+      "fields": [
+        {
+          "name": "to",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "amount",
+          "type": {
+            "kind": "simple",
+            "type": "uint",
+            "optional": false,
+            "format": "coins"
+          }
+        },
+        {
+          "name": "jettonWallet",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "OptionalWalletTransfer",
+      "header": 439041035,
+      "fields": []
+    },
+    {
+      "name": "Preview",
+      "header": null,
+      "fields": [
+        {
+          "name": "commission",
+          "type": {
+            "kind": "simple",
+            "type": "int",
+            "optional": false,
+            "format": 257
+          }
+        },
+        {
+          "name": "totalPay",
+          "type": {
+            "kind": "simple",
+            "type": "int",
+            "optional": false,
+            "format": 257
+          }
+        }
+      ]
+    },
+    {
+      "name": "ConfigResponse",
+      "header": null,
+      "fields": [
+        {
+          "name": "owner",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "mainCommissionWallet",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "nftCollection",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "platformCommissionBps",
+          "type": {
+            "kind": "simple",
+            "type": "int",
+            "optional": false,
+            "format": 257
+          }
+        },
+        {
+          "name": "minimalPlatformCommission",
+          "type": {
+            "kind": "simple",
+            "type": "int",
+            "optional": false,
+            "format": 257
+          }
+        },
+        {
+          "name": "paused",
+          "type": {
+            "kind": "simple",
+            "type": "bool",
+            "optional": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "TokenTransfer",
+      "header": 260734629,
+      "fields": [
+        {
+          "name": "queryId",
+          "type": {
+            "kind": "simple",
+            "type": "uint",
+            "optional": false,
+            "format": 64
+          }
+        },
+        {
+          "name": "amount",
+          "type": {
+            "kind": "simple",
+            "type": "uint",
+            "optional": false,
+            "format": "coins"
+          }
+        },
+        {
+          "name": "destination",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "response_destination",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "custom_payload",
+          "type": {
+            "kind": "simple",
+            "type": "cell",
+            "optional": true
+          }
+        },
+        {
+          "name": "forward_ton_amount",
+          "type": {
+            "kind": "simple",
+            "type": "uint",
+            "optional": false,
+            "format": "coins"
+          }
+        },
+        {
+          "name": "forward_payload",
+          "type": {
+            "kind": "simple",
+            "type": "cell",
+            "optional": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "JettonTransferNotification",
+      "header": 1935855772,
+      "fields": [
+        {
+          "name": "queryId",
+          "type": {
+            "kind": "simple",
+            "type": "uint",
+            "optional": false,
+            "format": 64
+          }
+        },
+        {
+          "name": "amount",
+          "type": {
+            "kind": "simple",
+            "type": "uint",
+            "optional": false,
+            "format": "coins"
+          }
+        },
+        {
+          "name": "sender",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "forwardPayload",
+          "type": {
+            "kind": "simple",
+            "type": "slice",
+            "optional": false,
+            "format": "remainder"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Excess",
+      "header": 3576854235,
+      "fields": [
+        {
+          "name": "queryId",
+          "type": {
+            "kind": "simple",
+            "type": "uint",
+            "optional": false,
+            "format": 64
+          }
+        }
+      ]
+    },
+    {
+      "name": "JettonConfigResponse",
+      "header": null,
+      "fields": [
+        {
+          "name": "owner",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "mainCommissionWallet",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "nftCollection",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "platformCommissionBps",
+          "type": {
+            "kind": "simple",
+            "type": "int",
+            "optional": false,
+            "format": 257
+          }
+        },
+        {
+          "name": "minimalPlatformCommission",
+          "type": {
+            "kind": "simple",
+            "type": "int",
+            "optional": false,
+            "format": 257
+          }
+        },
+        {
+          "name": "jettonMaster",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "jettonWallet",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "paused",
+          "type": {
+            "kind": "simple",
+            "type": "bool",
+            "optional": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "IncrementSuccessfulTx",
+      "header": 3087249549,
+      "fields": [
+        {
+          "name": "wallet",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "RegisterPartnerShare",
+      "header": 1347572295,
+      "fields": [
+        {
+          "name": "wallet",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "shareBps",
+          "type": {
+            "kind": "simple",
+            "type": "int",
+            "optional": true,
+            "format": 257
+          }
+        }
+      ]
+    },
+    {
+      "name": "UnregisterPartnerShare",
+      "header": 1347573070,
+      "fields": [
+        {
+          "name": "wallet",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "AddSeller",
+      "header": 439041025,
+      "fields": [
+        {
+          "name": "seller",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "RemoveSeller",
+      "header": 439041026,
+      "fields": [
+        {
+          "name": "seller",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "RegisterSeller",
+      "header": 439041027,
+      "fields": [
+        {
+          "name": "deadline",
+          "type": {
+            "kind": "simple",
+            "type": "uint",
+            "optional": false,
+            "format": 64
+          }
+        },
+        {
+          "name": "signature",
+          "type": {
+            "kind": "simple",
+            "type": "slice",
+            "optional": false,
+            "format": "remainder"
+          }
+        }
+      ]
+    },
+    {
+      "name": "SetPartnerCollection",
+      "header": 439041028,
+      "fields": [
+        {
+          "name": "collection",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "SetMinimalPlatformCommission",
+      "header": 439041029,
+      "fields": [
+        {
+          "name": "amount",
+          "type": {
+            "kind": "simple",
+            "type": "uint",
+            "optional": false,
+            "format": "coins"
+          }
+        }
+      ]
+    },
+    {
+      "name": "SetOwnerWithKey",
+      "header": 439041031,
+      "fields": [
+        {
+          "name": "newOwner",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "newPublicKey",
+          "type": {
+            "kind": "simple",
+            "type": "uint",
+            "optional": false,
+            "format": 256
+          }
+        }
+      ]
+    },
+    {
+      "name": "SetIncrementGas",
+      "header": 439041032,
+      "fields": [
+        {
+          "name": "amount",
+          "type": {
+            "kind": "simple",
+            "type": "uint",
+            "optional": false,
+            "format": "coins"
+          }
+        }
+      ]
+    },
+    {
+      "name": "SetJettonWallet",
+      "header": 439041033,
+      "fields": [
+        {
+          "name": "wallet",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "PaymentProcessed",
+      "header": null,
+      "fields": [
+        {
+          "name": "buyer",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "seller",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "amount",
+          "type": {
+            "kind": "simple",
+            "type": "uint",
+            "optional": false,
+            "format": "coins"
+          }
+        },
+        {
+          "name": "commission",
+          "type": {
+            "kind": "simple",
+            "type": "uint",
+            "optional": false,
+            "format": "coins"
+          }
+        },
+        {
+          "name": "partnerWallet",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": true
+          }
+        },
+        {
+          "name": "partnerShare",
+          "type": {
+            "kind": "simple",
+            "type": "uint",
+            "optional": false,
+            "format": "coins"
+          }
+        }
+      ]
+    },
+    {
+      "name": "SellerWhitelistChanged",
+      "header": null,
+      "fields": [
+        {
+          "name": "seller",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "added",
+          "type": {
+            "kind": "simple",
+            "type": "bool",
+            "optional": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "OptionalWalletPaid",
+      "header": null,
+      "fields": [
+        {
+          "name": "wallet",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "amount",
+          "type": {
+            "kind": "simple",
+            "type": "uint",
+            "optional": false,
+            "format": "coins"
+          }
+        }
+      ]
+    },
+    {
+      "name": "OptionalWalletTransferFailed",
+      "header": null,
+      "fields": [
+        {
+          "name": "wallet",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "amount",
+          "type": {
+            "kind": "simple",
+            "type": "uint",
+            "optional": false,
+            "format": "coins"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PartnerCounterFailed",
+      "header": null,
+      "fields": [
+        {
+          "name": "wallet",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "CommissionBpsUpdated",
+      "header": null,
+      "fields": [
+        {
+          "name": "oldBps",
+          "type": {
+            "kind": "simple",
+            "type": "int",
+            "optional": false,
+            "format": 257
+          }
+        },
+        {
+          "name": "newBps",
+          "type": {
+            "kind": "simple",
+            "type": "int",
+            "optional": false,
+            "format": 257
+          }
+        }
+      ]
+    },
+    {
+      "name": "MinimalCommissionUpdated",
+      "header": null,
+      "fields": [
+        {
+          "name": "oldMinimal",
+          "type": {
+            "kind": "simple",
+            "type": "uint",
+            "optional": false,
+            "format": "coins"
+          }
+        },
+        {
+          "name": "newMinimal",
+          "type": {
+            "kind": "simple",
+            "type": "uint",
+            "optional": false,
+            "format": "coins"
+          }
+        }
+      ]
+    },
+    {
+      "name": "NftCollectionUpdated",
+      "header": null,
+      "fields": [
+        {
+          "name": "oldCollection",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "newCollection",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "Withdrawn",
+      "header": null,
+      "fields": [
+        {
+          "name": "jettonWallet",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": true
+          }
+        },
+        {
+          "name": "to",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "amount",
+          "type": {
+            "kind": "simple",
+            "type": "uint",
+            "optional": false,
+            "format": "coins"
+          }
+        }
+      ]
+    },
+    {
+      "name": "JettonTransferFailed",
+      "header": null,
+      "fields": [
+        {
+          "name": "queryId",
+          "type": {
+            "kind": "simple",
+            "type": "uint",
+            "optional": false,
+            "format": 64
+          }
+        }
+      ]
+    },
+    {
+      "name": "PartnerSyncFailed",
+      "header": null,
+      "fields": [
+        {
+          "name": "wallet",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "PartnerNftMinted",
+      "header": null,
+      "fields": [
+        {
+          "name": "to",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "tokenId",
+          "type": {
+            "kind": "simple",
+            "type": "int",
+            "optional": false,
+            "format": 257
+          }
+        },
+        {
+          "name": "shareBps",
+          "type": {
+            "kind": "simple",
+            "type": "int",
+            "optional": false,
+            "format": 257
+          }
+        }
+      ]
+    },
+    {
+      "name": "PartnerNftBurned",
+      "header": null,
+      "fields": [
+        {
+          "name": "owner",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "tokenId",
+          "type": {
+            "kind": "simple",
+            "type": "int",
+            "optional": false,
+            "format": 257
+          }
+        }
+      ]
+    },
+    {
+      "name": "WalletWhitelistUpdated",
+      "header": null,
+      "fields": [
+        {
+          "name": "wallet",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "isWhitelisted",
+          "type": {
+            "kind": "simple",
+            "type": "bool",
+            "optional": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "TxProcessorUpdated",
+      "header": null,
+      "fields": [
+        {
+          "name": "processor",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "allowed",
+          "type": {
+            "kind": "simple",
+            "type": "bool",
+            "optional": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "SuccessfulTxIncremented",
+      "header": null,
+      "fields": [
+        {
+          "name": "wallet",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "tokenId",
+          "type": {
+            "kind": "simple",
+            "type": "int",
+            "optional": false,
+            "format": 257
+          }
+        },
+        {
+          "name": "newCount",
+          "type": {
+            "kind": "simple",
+            "type": "int",
+            "optional": false,
+            "format": 257
+          }
+        }
+      ]
+    },
+    {
+      "name": "UnauthorizedIncrement",
+      "header": null,
+      "fields": [
+        {
+          "name": "processor",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "wallet",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "PartnerShareSynced",
+      "header": null,
+      "fields": [
+        {
+          "name": "processor",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "wallet",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "PaymentProcessorUnsafe$Data",
+      "header": null,
+      "fields": [
+        {
+          "name": "owner",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "platformCommissionBps",
+          "type": {
+            "kind": "simple",
+            "type": "int",
+            "optional": false,
+            "format": 257
+          }
+        },
+        {
+          "name": "minimalPlatformCommission",
+          "type": {
+            "kind": "simple",
+            "type": "uint",
+            "optional": false,
+            "format": "coins"
+          }
+        },
+        {
+          "name": "mainCommissionWallet",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "partnerCollection",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        },
+        {
+          "name": "partnerShareBps",
+          "type": {
+            "kind": "dict",
+            "key": "address",
+            "value": "int"
+          }
+        },
+        {
+          "name": "nonces",
+          "type": {
+            "kind": "dict",
+            "key": "address",
+            "value": "int"
+          }
+        },
+        {
+          "name": "incrementGas",
+          "type": {
+            "kind": "simple",
+            "type": "uint",
+            "optional": false,
+            "format": "coins"
+          }
+        },
+        {
+          "name": "paused",
+          "type": {
+            "kind": "simple",
+            "type": "bool",
+            "optional": false
+          }
+        }
+      ]
+    }
+  ],
+  "receivers": [
+    {
+      "receiver": "internal",
+      "message": {
+        "kind": "typed",
+        "type": "Transfer"
+      }
+    },
+    {
+      "receiver": "internal",
+      "message": {
+        "kind": "empty"
+      }
+    },
+    {
+      "receiver": "internal",
+      "message": {
+        "kind": "typed",
+        "type": "SetOwner"
+      }
+    },
+    {
+      "receiver": "internal",
+      "message": {
+        "kind": "typed",
+        "type": "SetPlatformCommissionBps"
+      }
+    },
+    {
+      "receiver": "internal",
+      "message": {
+        "kind": "typed",
+        "type": "SetMinimalPlatformCommission"
+      }
+    },
+    {
+      "receiver": "internal",
+      "message": {
+        "kind": "typed",
+        "type": "SetPartnerCollection"
+      }
+    },
+    {
+      "receiver": "internal",
+      "message": {
+        "kind": "typed",
+        "type": "SetIncrementGas"
+      }
+    },
+    {
+      "receiver": "internal",
+      "message": {
+        "kind": "typed",
+        "type": "SetPaused"
+      }
+    },
+    {
+      "receiver": "internal",
+      "message": {
+        "kind": "typed",
+        "type": "WithdrawAll"
+      }
+    },
+    {
+      "receiver": "internal",
+      "message": {
+        "kind": "typed",
+        "type": "WithdrawAllJettons"
+      }
+    },
+    {
+      "receiver": "internal",
+      "message": {
+        "kind": "typed",
+        "type": "Excess"
+      }
+    },
+    {
+      "receiver": "internal",
+      "message": {
+        "kind": "typed",
+        "type": "RegisterPartnerShare"
+      }
+    },
+    {
+      "receiver": "internal",
+      "message": {
+        "kind": "typed",
+        "type": "UnregisterPartnerShare"
+      }
+    }
+  ],
+  "getters": [
+    {
+      "name": "get_version",
+      "methodId": 82320,
+      "arguments": [],
+      "returnType": {
+        "kind": "simple",
+        "type": "int",
+        "optional": false,
+        "format": 257
+      }
+    },
+    {
+      "name": "getConfig",
+      "methodId": 93770,
+      "arguments": [],
+      "returnType": {
+        "kind": "simple",
+        "type": "ConfigResponse",
+        "optional": false
+      }
+    },
+    {
+      "name": "previewPayment",
+      "methodId": 113058,
+      "arguments": [
+        {
+          "name": "amount",
+          "type": {
+            "kind": "simple",
+            "type": "int",
+            "optional": false,
+            "format": 257
+          }
+        },
+        {
+          "name": "buyerPaysCommission",
+          "type": {
+            "kind": "simple",
+            "type": "bool",
+            "optional": false
+          }
+        }
+      ],
+      "returnType": {
+        "kind": "simple",
+        "type": "Preview",
+        "optional": false
+      }
+    },
+    {
+      "name": "nonceOf",
+      "methodId": 93946,
+      "arguments": [
+        {
+          "name": "account",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        }
+      ],
+      "returnType": {
+        "kind": "simple",
+        "type": "int",
+        "optional": false,
+        "format": 257
+      }
+    },
+    {
+      "name": "partnerShareOf",
+      "methodId": 128421,
+      "arguments": [
+        {
+          "name": "wallet",
+          "type": {
+            "kind": "simple",
+            "type": "address",
+            "optional": false
+          }
+        }
+      ],
+      "returnType": {
+        "kind": "simple",
+        "type": "int",
+        "optional": false,
+        "format": 257
+      }
+    },
+    {
+      "name": "isPaused",
+      "methodId": 126174,
+      "arguments": [],
+      "returnType": {
+        "kind": "simple",
+        "type": "bool",
+        "optional": false
+      }
+    },
+    {
+      "name": "owner",
+      "methodId": 83229,
+      "arguments": [],
+      "returnType": {
+        "kind": "simple",
+        "type": "address",
+        "optional": false
+      }
+    }
+  ],
+  "errors": {
+    "2": {
+      "message": "Stack underflow"
+    },
+    "3": {
+      "message": "Stack overflow"
+    },
+    "4": {
+      "message": "Integer overflow"
+    },
+    "5": {
+      "message": "Integer out of expected range"
+    },
+    "6": {
+      "message": "Invalid opcode"
+    },
+    "7": {
+      "message": "Type check error"
+    },
+    "8": {
+      "message": "Cell overflow"
+    },
+    "9": {
+      "message": "Cell underflow"
+    },
+    "10": {
+      "message": "Dictionary error"
+    },
+    "11": {
+      "message": "'Unknown' error"
+    },
+    "12": {
+      "message": "Fatal error"
+    },
+    "13": {
+      "message": "Out of gas error"
+    },
+    "14": {
+      "message": "Virtualization error"
+    },
+    "32": {
+      "message": "Action list is invalid"
+    },
+    "33": {
+      "message": "Action list is too long"
+    },
+    "34": {
+      "message": "Action is invalid or not supported"
+    },
+    "35": {
+      "message": "Invalid source address in outbound message"
+    },
+    "36": {
+      "message": "Invalid destination address in outbound message"
+    },
+    "37": {
+      "message": "Not enough Toncoin"
+    },
+    "38": {
+      "message": "Not enough extra currencies"
+    },
+    "39": {
+      "message": "Outbound message does not fit into a cell after rewriting"
+    },
+    "40": {
+      "message": "Cannot process a message"
+    },
+    "41": {
+      "message": "Library reference is null"
+    },
+    "42": {
+      "message": "Library change action error"
+    },
+    "43": {
+      "message": "Exceeded maximum number of cells in the library or the maximum depth of the Merkle tree"
+    },
+    "50": {
+      "message": "Account state size exceeded limits"
+    },
+    "128": {
+      "message": "Null reference exception"
+    },
+    "129": {
+      "message": "Invalid serialization prefix"
+    },
+    "130": {
+      "message": "Invalid incoming message"
+    },
+    "131": {
+      "message": "Constraints error"
+    },
+    "132": {
+      "message": "Access denied"
+    },
+    "133": {
+      "message": "Contract stopped"
+    },
+    "134": {
+      "message": "Invalid argument"
+    },
+    "135": {
+      "message": "Code of a contract was not found"
+    },
+    "136": {
+      "message": "Invalid standard address"
+    },
+    "138": {
+      "message": "Not a basechain address"
+    }
+  },
+  "interfaces": [
+    "org.ton.introspection.v0",
+    "org.ton.abi.ipfs.v0",
+    "org.ton.deploy.lazy.v0",
+    "org.ton.ownable"
+  ]
+}

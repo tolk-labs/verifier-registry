@@ -1,0 +1,72 @@
+{
+  "code_hash": "8d63d7ae8007c1a4e310f2700ffa6114e64fdcfefd00f3f44952851251273970",
+  "source_bundle_hash": "90e45eb4c77b10f311cb64ae27846c5bec9d50faadd9cdefe02852788b1b675c",
+  "payment_tx_hash": "bb3e77394697a532be9c51b37008ea048a7ccaebc6770b20a71d8225b0269df7",
+  "verified_at": 1790164945,
+  "compiler": {
+    "language": "tact",
+    "version": "1.6.13",
+    "entrypoint": "contracts/PaymentProcessorUnsafe.tact",
+    "params": {
+      "compiler_version": "1.6.13"
+    }
+  },
+  "source_map": null,
+  "files": [
+    {
+      "path": "build/transfer-unsafe/PaymentProcessorUnsafe_PaymentProcessorUnsafe.pkg",
+      "content_hash": "920ff17cb223870d85654660d76fa5d1514c3fc5058fb2e00d33f266725309cb",
+      "include_in_command": true,
+      "is_stdlib": false,
+      "has_include_directives": false
+    },
+    {
+      "path": "contract/contracts/Constants.tact",
+      "content_hash": "f4a97c85fe419cf7336ddc2e68cf13844631de69df2a9d33b6b926a0f1cf47fe"
+    },
+    {
+      "path": "contract/contracts/Errors.tact",
+      "content_hash": "e404bea5dafd0c806c9462b5f63df50178dcb192beef120b50739cded487b571"
+    },
+    {
+      "path": "contract/contracts/PaymentProcessorUnsafe.tact",
+      "content_hash": "b8a2cf63beb6316c35b8f6b92d0780250ab0d77cfc0ddae94c86c0f154bb516d"
+    },
+    {
+      "path": "contract/contracts/messages.tact",
+      "content_hash": "d59b88d0229b1368b0d92a67c5c7b7342dacfdc44f0a9deeb93a759a3ecef463"
+    },
+    {
+      "path": "contract/contracts/payment/JettonMessages.tact",
+      "content_hash": "3115f343a93f89011b9c33bf92b99e625848dd8d135848e3ee2e696f75426c60"
+    },
+    {
+      "path": "contract/contracts/payment/PaymentMessages.tact",
+      "content_hash": "c9bedc9df67b525dd67996919f841de23d2acc6204d17fc4710b422c0c23ec24"
+    },
+    {
+      "path": "contract/contracts/payment/PaymentProcessorBase.tact",
+      "content_hash": "5138c9e4fe0e88d82fba6350d1ad7a3c7170c4ca9484383d1fa34c04601eb46e"
+    },
+    {
+      "path": "contract/contracts/payment/TonPaymentBase.tact",
+      "content_hash": "c0f1242ca043305e88008113067444c7c43f7a4a7b7cbf020213a4073645cd4b"
+    },
+    {
+      "path": "output/PaymentProcessorUnsafe.abi.json",
+      "content_hash": "a1056ca890a51de6b97c448e4cadda5568477a8e832586ce78bcb0f3f6f18c30"
+    },
+    {
+      "path": "output/PaymentProcessorUnsafe.types.tolk",
+      "content_hash": "06e32c804477fbf4e61c100c95b0ba9763403abb4f8b80189cc71d8449466d5f"
+    },
+    {
+      "path": "output/verifier_PaymentProcessorUnsafe.abi",
+      "content_hash": "52df5528ec86ef63db4b5c88d085646a6da3cdd08ae74ff7e8c3cf6d63fedb3d"
+    },
+    {
+      "path": "output/verifier_PaymentProcessorUnsafe.pkg",
+      "content_hash": "442286c114fe29c12eb51eb7d1d75409b647d14b727d70ebe3b706f143806f48"
+    }
+  ]
+}

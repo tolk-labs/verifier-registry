@@ -1,0 +1,1022 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "PaymentProcessorUnsafe",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PaymentProcessorUnsafeTransfer"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PaymentProcessorUnsafePaymentRequest"
+    },
+    {
+      "kind": "intN",
+      "n": 257
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PaymentProcessorUnsafePaymentRequestContinuation"
+    },
+    {
+      "kind": "addressOpt"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 15
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PaymentProcessorUnsafeSetOwner"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PaymentProcessorUnsafeSetPlatformCommissionBps"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PaymentProcessorUnsafeSetMinimalPlatformCommission"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PaymentProcessorUnsafeSetPartnerCollection"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PaymentProcessorUnsafeSetIncrementGas"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PaymentProcessorUnsafeSetPaused"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PaymentProcessorUnsafeWithdrawAll"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PaymentProcessorUnsafeWithdrawAllJettons"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PaymentProcessorUnsafeExcess"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PaymentProcessorUnsafeRegisterPartnerShare"
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 14
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PaymentProcessorUnsafeUnregisterPartnerShare"
+    },
+    {
+      "kind": "EnumRef",
+      "enum_name": "PaymentProcessorUnsafeErrors"
+    },
+    {
+      "kind": "uintN",
+      "n": 8
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PaymentProcessorUnsafeData"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PaymentProcessorUnsafeDataContinuation"
+    },
+    {
+      "kind": "mapKV",
+      "key_ty_idx": 7,
+      "value_ty_idx": 14
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 33
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PaymentProcessorUnsafeConfigResponse"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PaymentProcessorUnsafeConfigResponseContinuation"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 37
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PaymentProcessorUnsafePreview"
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "PaymentProcessorUnsafeTransfer",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 1120014203,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "req",
+          "ty_idx": 13
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PaymentProcessorUnsafePaymentRequest",
+      "ty_idx": 13,
+      "fields": [
+        {
+          "name": "buyer",
+          "ty_idx": 7
+        },
+        {
+          "name": "seller",
+          "ty_idx": 7
+        },
+        {
+          "name": "amount",
+          "ty_idx": 14
+        },
+        {
+          "name": "buyerPaysCommission",
+          "ty_idx": 5
+        },
+        {
+          "name": "tactContinuation",
+          "ty_idx": 17
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PaymentProcessorUnsafePaymentRequestContinuation",
+      "ty_idx": 15,
+      "fields": [
+        {
+          "name": "optionalCommissionWallet",
+          "ty_idx": 16
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PaymentProcessorUnsafeSetPlatformCommissionBps",
+      "ty_idx": 19,
+      "prefix": {
+        "prefix_num": 4004194512,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "newBps",
+          "ty_idx": 14
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PaymentProcessorUnsafeWithdrawAll",
+      "ty_idx": 24,
+      "prefix": {
+        "prefix_num": 3794127834,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "to",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PaymentProcessorUnsafeSetPaused",
+      "ty_idx": 23,
+      "prefix": {
+        "prefix_num": 439041034,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "paused",
+          "ty_idx": 5
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PaymentProcessorUnsafeSetOwner",
+      "ty_idx": 18,
+      "prefix": {
+        "prefix_num": 3266583875,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "newOwner",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PaymentProcessorUnsafeWithdrawAllJettons",
+      "ty_idx": 25,
+      "prefix": {
+        "prefix_num": 439041036,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "to",
+          "ty_idx": 7
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "jettonWallet",
+          "ty_idx": 16
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PaymentProcessorUnsafePreview",
+      "ty_idx": 39,
+      "fields": [
+        {
+          "name": "commission",
+          "ty_idx": 14
+        },
+        {
+          "name": "totalPay",
+          "ty_idx": 14
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PaymentProcessorUnsafeConfigResponse",
+      "ty_idx": 36,
+      "fields": [
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "mainCommissionWallet",
+          "ty_idx": 7
+        },
+        {
+          "name": "nftCollection",
+          "ty_idx": 7
+        },
+        {
+          "name": "tactContinuation",
+          "ty_idx": 38
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PaymentProcessorUnsafeConfigResponseContinuation",
+      "ty_idx": 37,
+      "fields": [
+        {
+          "name": "platformCommissionBps",
+          "ty_idx": 14
+        },
+        {
+          "name": "minimalPlatformCommission",
+          "ty_idx": 14
+        },
+        {
+          "name": "paused",
+          "ty_idx": 5
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PaymentProcessorUnsafeExcess",
+      "ty_idx": 26,
+      "prefix": {
+        "prefix_num": 3576854235,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PaymentProcessorUnsafeRegisterPartnerShare",
+      "ty_idx": 27,
+      "prefix": {
+        "prefix_num": 1347572295,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "wallet",
+          "ty_idx": 7
+        },
+        {
+          "name": "shareBps",
+          "ty_idx": 28
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PaymentProcessorUnsafeUnregisterPartnerShare",
+      "ty_idx": 29,
+      "prefix": {
+        "prefix_num": 1347573070,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "wallet",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PaymentProcessorUnsafeSetPartnerCollection",
+      "ty_idx": 21,
+      "prefix": {
+        "prefix_num": 439041028,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "collection",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PaymentProcessorUnsafeSetMinimalPlatformCommission",
+      "ty_idx": 20,
+      "prefix": {
+        "prefix_num": 439041029,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "amount",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PaymentProcessorUnsafeSetIncrementGas",
+      "ty_idx": 22,
+      "prefix": {
+        "prefix_num": 439041032,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "amount",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PaymentProcessorUnsafeData",
+      "ty_idx": 32,
+      "fields": [
+        {
+          "name": "tactDeploymentCompleted",
+          "ty_idx": 5
+        },
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "platformCommissionBps",
+          "ty_idx": 14
+        },
+        {
+          "name": "minimalPlatformCommission",
+          "ty_idx": 6
+        },
+        {
+          "name": "mainCommissionWallet",
+          "ty_idx": 7
+        },
+        {
+          "name": "tactContinuation",
+          "ty_idx": 35
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PaymentProcessorUnsafeDataContinuation",
+      "ty_idx": 33,
+      "fields": [
+        {
+          "name": "partnerCollection",
+          "ty_idx": 7
+        },
+        {
+          "name": "partnerShareBps",
+          "ty_idx": 34
+        },
+        {
+          "name": "nonces",
+          "ty_idx": 34
+        },
+        {
+          "name": "incrementGas",
+          "ty_idx": 6
+        },
+        {
+          "name": "paused",
+          "ty_idx": 5
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": "PaymentProcessorUnsafeErrors",
+      "ty_idx": 30,
+      "encoded_as_ty_idx": 31,
+      "members": [
+        {
+          "name": "StackUnderflow",
+          "value": "2",
+          "description": "Stack underflow"
+        },
+        {
+          "name": "StackOverflow",
+          "value": "3",
+          "description": "Stack overflow"
+        },
+        {
+          "name": "IntegerOverflow",
+          "value": "4",
+          "description": "Integer overflow"
+        },
+        {
+          "name": "IntegerOutOfExpectedRange",
+          "value": "5",
+          "description": "Integer out of expected range"
+        },
+        {
+          "name": "InvalidOpcode",
+          "value": "6",
+          "description": "Invalid opcode"
+        },
+        {
+          "name": "TypeCheckError",
+          "value": "7",
+          "description": "Type check error"
+        },
+        {
+          "name": "CellOverflow",
+          "value": "8",
+          "description": "Cell overflow"
+        },
+        {
+          "name": "CellUnderflow",
+          "value": "9",
+          "description": "Cell underflow"
+        },
+        {
+          "name": "DictionaryError",
+          "value": "10",
+          "description": "Dictionary error"
+        },
+        {
+          "name": "UnknownError",
+          "value": "11",
+          "description": "'Unknown' error"
+        },
+        {
+          "name": "FatalError",
+          "value": "12",
+          "description": "Fatal error"
+        },
+        {
+          "name": "OutOfGasError",
+          "value": "13",
+          "description": "Out of gas error"
+        },
+        {
+          "name": "VirtualizationError",
+          "value": "14",
+          "description": "Virtualization error"
+        },
+        {
+          "name": "ActionListIsInvalid",
+          "value": "32",
+          "description": "Action list is invalid"
+        },
+        {
+          "name": "ActionListIsTooLong",
+          "value": "33",
+          "description": "Action list is too long"
+        },
+        {
+          "name": "ActionIsInvalidOrNotSupported",
+          "value": "34",
+          "description": "Action is invalid or not supported"
+        },
+        {
+          "name": "InvalidSourceAddressInOutboundMessage",
+          "value": "35",
+          "description": "Invalid source address in outbound message"
+        },
+        {
+          "name": "InvalidDestinationAddressInOutboundMessage",
+          "value": "36",
+          "description": "Invalid destination address in outbound message"
+        },
+        {
+          "name": "NotEnoughToncoin",
+          "value": "37",
+          "description": "Not enough Toncoin"
+        },
+        {
+          "name": "NotEnoughExtraCurrencies",
+          "value": "38",
+          "description": "Not enough extra currencies"
+        },
+        {
+          "name": "OutboundMessageDoesNotFitIntoACellAfterRewriting",
+          "value": "39",
+          "description": "Outbound message does not fit into a cell after rewriting"
+        },
+        {
+          "name": "CannotProcessAMessage",
+          "value": "40",
+          "description": "Cannot process a message"
+        },
+        {
+          "name": "LibraryReferenceIsNull",
+          "value": "41",
+          "description": "Library reference is null"
+        },
+        {
+          "name": "LibraryChangeActionError",
+          "value": "42",
+          "description": "Library change action error"
+        },
+        {
+          "name": "ExceededMaximumNumberOfCellsInTheLibraryOrTheMaximumDepthOfTheMerkleTree",
+          "value": "43",
+          "description": "Exceeded maximum number of cells in the library or the maximum depth of the Merkle tree"
+        },
+        {
+          "name": "AccountStateSizeExceededLimits",
+          "value": "50",
+          "description": "Account state size exceeded limits"
+        },
+        {
+          "name": "NullReferenceException",
+          "value": "128",
+          "description": "Null reference exception"
+        },
+        {
+          "name": "InvalidSerializationPrefix",
+          "value": "129",
+          "description": "Invalid serialization prefix"
+        },
+        {
+          "name": "InvalidIncomingMessage",
+          "value": "130",
+          "description": "Invalid incoming message"
+        },
+        {
+          "name": "ConstraintsError",
+          "value": "131",
+          "description": "Constraints error"
+        },
+        {
+          "name": "AccessDenied",
+          "value": "132",
+          "description": "Access denied"
+        },
+        {
+          "name": "ContractStopped",
+          "value": "133",
+          "description": "Contract stopped"
+        },
+        {
+          "name": "InvalidArgument",
+          "value": "134",
+          "description": "Invalid argument"
+        },
+        {
+          "name": "CodeOfAContractWasNotFound",
+          "value": "135",
+          "description": "Code of a contract was not found"
+        },
+        {
+          "name": "InvalidStandardAddress",
+          "value": "136",
+          "description": "Invalid standard address"
+        },
+        {
+          "name": "NotABasechainAddress",
+          "value": "138",
+          "description": "Not a basechain address"
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 32
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 18
+    },
+    {
+      "body_ty_idx": 19
+    },
+    {
+      "body_ty_idx": 20
+    },
+    {
+      "body_ty_idx": 21
+    },
+    {
+      "body_ty_idx": 22
+    },
+    {
+      "body_ty_idx": 23
+    },
+    {
+      "body_ty_idx": 24
+    },
+    {
+      "body_ty_idx": 25
+    },
+    {
+      "body_ty_idx": 26
+    },
+    {
+      "body_ty_idx": 27
+    },
+    {
+      "body_ty_idx": 29
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 82320,
+      "name": "get_version",
+      "parameters": [],
+      "return_ty_idx": 14
+    },
+    {
+      "tvm_method_id": 93770,
+      "name": "getConfig",
+      "parameters": [],
+      "return_ty_idx": 36
+    },
+    {
+      "tvm_method_id": 113058,
+      "name": "previewPayment",
+      "parameters": [
+        {
+          "name": "amount",
+          "ty_idx": 14
+        },
+        {
+          "name": "buyerPaysCommission",
+          "ty_idx": 5
+        }
+      ],
+      "return_ty_idx": 39
+    },
+    {
+      "tvm_method_id": 93946,
+      "name": "nonceOf",
+      "parameters": [
+        {
+          "name": "account",
+          "ty_idx": 7
+        }
+      ],
+      "return_ty_idx": 14
+    },
+    {
+      "tvm_method_id": 128421,
+      "name": "partnerShareOf",
+      "parameters": [
+        {
+          "name": "wallet",
+          "ty_idx": 7
+        }
+      ],
+      "return_ty_idx": 14
+    },
+    {
+      "tvm_method_id": 126174,
+      "name": "isPaused",
+      "parameters": [],
+      "return_ty_idx": 5
+    },
+    {
+      "tvm_method_id": 83229,
+      "name": "owner",
+      "parameters": [],
+      "return_ty_idx": 7
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.StackUnderflow",
+      "description": "Stack underflow",
+      "err_code": 2
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.StackOverflow",
+      "description": "Stack overflow",
+      "err_code": 3
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.IntegerOverflow",
+      "description": "Integer overflow",
+      "err_code": 4
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.IntegerOutOfExpectedRange",
+      "description": "Integer out of expected range",
+      "err_code": 5
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.InvalidOpcode",
+      "description": "Invalid opcode",
+      "err_code": 6
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.TypeCheckError",
+      "description": "Type check error",
+      "err_code": 7
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.CellOverflow",
+      "description": "Cell overflow",
+      "err_code": 8
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.CellUnderflow",
+      "description": "Cell underflow",
+      "err_code": 9
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.DictionaryError",
+      "description": "Dictionary error",
+      "err_code": 10
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.UnknownError",
+      "description": "'Unknown' error",
+      "err_code": 11
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.FatalError",
+      "description": "Fatal error",
+      "err_code": 12
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.OutOfGasError",
+      "description": "Out of gas error",
+      "err_code": 13
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.VirtualizationError",
+      "description": "Virtualization error",
+      "err_code": 14
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.ActionListIsInvalid",
+      "description": "Action list is invalid",
+      "err_code": 32
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.ActionListIsTooLong",
+      "description": "Action list is too long",
+      "err_code": 33
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.ActionIsInvalidOrNotSupported",
+      "description": "Action is invalid or not supported",
+      "err_code": 34
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.InvalidSourceAddressInOutboundMessage",
+      "description": "Invalid source address in outbound message",
+      "err_code": 35
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.InvalidDestinationAddressInOutboundMessage",
+      "description": "Invalid destination address in outbound message",
+      "err_code": 36
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.NotEnoughToncoin",
+      "description": "Not enough Toncoin",
+      "err_code": 37
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.NotEnoughExtraCurrencies",
+      "description": "Not enough extra currencies",
+      "err_code": 38
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.OutboundMessageDoesNotFitIntoACellAfterRewriting",
+      "description": "Outbound message does not fit into a cell after rewriting",
+      "err_code": 39
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.CannotProcessAMessage",
+      "description": "Cannot process a message",
+      "err_code": 40
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.LibraryReferenceIsNull",
+      "description": "Library reference is null",
+      "err_code": 41
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.LibraryChangeActionError",
+      "description": "Library change action error",
+      "err_code": 42
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.ExceededMaximumNumberOfCellsInTheLibraryOrTheMaximumDepthOfTheMerkleTree",
+      "description": "Exceeded maximum number of cells in the library or the maximum depth of the Merkle tree",
+      "err_code": 43
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.AccountStateSizeExceededLimits",
+      "description": "Account state size exceeded limits",
+      "err_code": 50
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.NullReferenceException",
+      "description": "Null reference exception",
+      "err_code": 128
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.InvalidSerializationPrefix",
+      "description": "Invalid serialization prefix",
+      "err_code": 129
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.InvalidIncomingMessage",
+      "description": "Invalid incoming message",
+      "err_code": 130
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.ConstraintsError",
+      "description": "Constraints error",
+      "err_code": 131
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.AccessDenied",
+      "description": "Access denied",
+      "err_code": 132
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.ContractStopped",
+      "description": "Contract stopped",
+      "err_code": 133
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.InvalidArgument",
+      "description": "Invalid argument",
+      "err_code": 134
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.CodeOfAContractWasNotFound",
+      "description": "Code of a contract was not found",
+      "err_code": 135
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.InvalidStandardAddress",
+      "description": "Invalid standard address",
+      "err_code": 136
+    },
+    {
+      "kind": "enum_member",
+      "name": "PaymentProcessorUnsafeErrors.NotABasechainAddress",
+      "description": "Not a basechain address",
+      "err_code": 138
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.4.2"
+}
