@@ -1,0 +1,552 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "NftCollection",
+  "author": "therenovatio",
+  "version": "1.0.0",
+  "description": "Standard NFT Collection. TEP-62 and TEP-64 compliant",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RequestRoyaltyParams"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Mint"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Withdraw"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ChangeCollectionAdmin"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "EditContent"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CollectionContent"
+    },
+    {
+      "kind": "string"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 17
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "NftCollectionStorage"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RoyaltyParams"
+    },
+    {
+      "kind": "uintN",
+      "n": 16
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 21
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "NftItemInitAtDeployment"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ArtSeed"
+    },
+    {
+      "kind": "uintN",
+      "n": 256
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 25
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ReturnExcessesBack"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ResponseRoyaltyParams"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CollectionDataReply"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "MintInfoReply"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OffchainMetadataReply"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 32
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "NftItemInitAtDeployment",
+      "ty_idx": 24,
+      "fields": [
+        {
+          "name": "ownerAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "content",
+          "ty_idx": 27
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "RequestRoyaltyParams",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 1765620048,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ResponseRoyaltyParams",
+      "ty_idx": 29,
+      "prefix": {
+        "prefix_num": 2831876269,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "royaltyParams",
+          "ty_idx": 21
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Mint",
+      "ty_idx": 13,
+      "prefix": {
+        "prefix_num": 1296649812,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ],
+      "description": "Public mint: pay `mintPrice + MINT_OVERHEAD` (or more) to receive a new item; excess is refunded"
+    },
+    {
+      "kind": "struct",
+      "name": "Withdraw",
+      "ty_idx": 14,
+      "prefix": {
+        "prefix_num": 2003399784,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ],
+      "description": "Admin only: send the collection balance above MIN_COLLECTION_BALANCE to the admin"
+    },
+    {
+      "kind": "struct",
+      "name": "ChangeCollectionAdmin",
+      "ty_idx": 15,
+      "prefix": {
+        "prefix_num": 3,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "newAdminAddress",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "EditContent",
+      "ty_idx": 16,
+      "prefix": {
+        "prefix_num": 4,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "content",
+          "ty_idx": 19
+        }
+      ],
+      "description": "Admin only, and only before the first mint: replace the collection content. Same opcode as\nop 4 of the reference nft-collection-editable.fc, but unlike it the body carries only the\ncontent cell and never touches the royalty params, which are fixed at deployment.\nThe admin is trusted for the URL and text values: the cell structure is validated\n(a malformed cell fails with InvalidContent), but the URL semantics are not.\nThe first mint seals whatever content is stored at that moment.\nSend it with contracts/scripts/edit-content.tolk (`acton run nft-edit-content`)."
+    },
+    {
+      "kind": "struct",
+      "name": "ReturnExcessesBack",
+      "ty_idx": 28,
+      "prefix": {
+        "prefix_num": 3576854235,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "RoyaltyParams",
+      "ty_idx": 21,
+      "fields": [
+        {
+          "name": "numerator",
+          "ty_idx": 22
+        },
+        {
+          "name": "denominator",
+          "ty_idx": 22
+        },
+        {
+          "name": "royaltyAddress",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ArtSeed",
+      "ty_idx": 25,
+      "fields": [
+        {
+          "name": "seed",
+          "ty_idx": 26
+        },
+        {
+          "name": "mintedAt",
+          "ty_idx": 9
+        }
+      ],
+      "description": "Individual content of an NFT item: the generative art seed and the mint timestamp"
+    },
+    {
+      "kind": "struct",
+      "name": "NftCollectionStorage",
+      "ty_idx": 20,
+      "fields": [
+        {
+          "name": "adminAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "nextItemIndex",
+          "ty_idx": 11
+        },
+        {
+          "name": "content",
+          "ty_idx": 19
+        },
+        {
+          "name": "nftItemCode",
+          "ty_idx": 3
+        },
+        {
+          "name": "royaltyParams",
+          "ty_idx": 23
+        },
+        {
+          "name": "mintPrice",
+          "ty_idx": 6
+        },
+        {
+          "name": "maxSupply",
+          "ty_idx": 11,
+          "description": "maximum number of items that can be minted; 0 means unlimited"
+        },
+        {
+          "name": "mintUntil",
+          "ty_idx": 9,
+          "description": "unix time after which minting is closed; 0 means no deadline"
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CollectionContent",
+      "ty_idx": 17,
+      "fields": [
+        {
+          "name": "collectionMetadata",
+          "ty_idx": 3
+        },
+        {
+          "name": "commonContent",
+          "ty_idx": 18
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CollectionDataReply",
+      "ty_idx": 30,
+      "fields": [
+        {
+          "name": "nextItemIndex",
+          "ty_idx": 1
+        },
+        {
+          "name": "collectionMetadata",
+          "ty_idx": 3
+        },
+        {
+          "name": "adminAddress",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "MintInfoReply",
+      "ty_idx": 31,
+      "fields": [
+        {
+          "name": "mintPrice",
+          "ty_idx": 6
+        },
+        {
+          "name": "maxSupply",
+          "ty_idx": 11
+        },
+        {
+          "name": "mintUntil",
+          "ty_idx": 9
+        },
+        {
+          "name": "nextItemIndex",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "OffchainMetadataReply",
+      "ty_idx": 32,
+      "prefix": {
+        "prefix_num": 1,
+        "prefix_len": 8
+      },
+      "fields": [
+        {
+          "name": "string",
+          "ty_idx": 18
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 20
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 13
+    },
+    {
+      "body_ty_idx": 14
+    },
+    {
+      "body_ty_idx": 15
+    },
+    {
+      "body_ty_idx": 16
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 24
+    },
+    {
+      "body_ty_idx": 28
+    },
+    {
+      "body_ty_idx": 29
+    }
+  ],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 102491,
+      "name": "get_collection_data",
+      "parameters": [],
+      "return_ty_idx": 30
+    },
+    {
+      "tvm_method_id": 92067,
+      "name": "get_nft_address_by_index",
+      "parameters": [
+        {
+          "name": "itemIndex",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 85719,
+      "name": "royalty_params",
+      "parameters": [],
+      "return_ty_idx": 21
+    },
+    {
+      "tvm_method_id": 120521,
+      "name": "mint_info",
+      "parameters": [],
+      "return_ty_idx": 31
+    },
+    {
+      "tvm_method_id": 68445,
+      "name": "get_nft_content",
+      "parameters": [
+        {
+          "name": "itemIndex",
+          "ty_idx": 1
+        },
+        {
+          "name": "individualContent",
+          "ty_idx": 27
+        }
+      ],
+      "return_ty_idx": 33
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidWorkchain",
+      "description": "sender is not a basechain address (mint sender, new owner, or excesses receiver)",
+      "err_code": 333
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotFromAdmin",
+      "description": "collection: sender is not the collection admin",
+      "err_code": 401
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InsufficientMintValue",
+      "description": "collection: attached value is less than mintPrice + MINT_OVERHEAD",
+      "err_code": 410
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.SoldOut",
+      "description": "collection: maxSupply is set and nextItemIndex is past it (indexes start at 1, so a cap of\nN allows items 1..N)",
+      "err_code": 411
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.MintClosed",
+      "description": "collection: mintUntil is set and the current time is past it",
+      "err_code": 412
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.CollectionSealed",
+      "description": "collection: content can no longer be edited because at least one item has been minted\n(nextItemIndex > 1)",
+      "err_code": 413
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidContent",
+      "description": "collection: the EditContent content cell is not a well-formed CollectionContent",
+      "err_code": 414
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.4.2"
+}
