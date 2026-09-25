@@ -1,0 +1,727 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "Lottery",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LotteryBuyTicket"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LotteryDeploy"
+    },
+    {
+      "kind": "EnumRef",
+      "enum_name": "LotteryErrors"
+    },
+    {
+      "kind": "uintN",
+      "n": 16
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LotteryData"
+    },
+    {
+      "kind": "intN",
+      "n": 257
+    },
+    {
+      "kind": "mapKV",
+      "key_ty_idx": 17,
+      "value_ty_idx": 7
+    },
+    {
+      "kind": "mapKV",
+      "key_ty_idx": 7,
+      "value_ty_idx": 5
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "LotteryDeploy",
+      "ty_idx": 13,
+      "prefix": {
+        "prefix_num": 2490013878,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "LotteryBuyTicket",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 3031985754,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "LotteryData",
+      "ty_idx": 16,
+      "fields": [
+        {
+          "name": "tactDeploymentCompleted",
+          "ty_idx": 5
+        },
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "round",
+          "ty_idx": 9
+        },
+        {
+          "name": "nextDrawTs",
+          "ty_idx": 11
+        },
+        {
+          "name": "participantsCount",
+          "ty_idx": 9
+        },
+        {
+          "name": "participants",
+          "ty_idx": 18
+        },
+        {
+          "name": "joined",
+          "ty_idx": 19
+        },
+        {
+          "name": "lastWinner",
+          "ty_idx": 7
+        },
+        {
+          "name": "lastReward",
+          "ty_idx": 6
+        },
+        {
+          "name": "lastRound",
+          "ty_idx": 9
+        },
+        {
+          "name": "totalRounds",
+          "ty_idx": 9
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": "LotteryErrors",
+      "ty_idx": 14,
+      "encoded_as_ty_idx": 15,
+      "members": [
+        {
+          "name": "StackUnderflow",
+          "value": "2",
+          "description": "Stack underflow"
+        },
+        {
+          "name": "StackOverflow",
+          "value": "3",
+          "description": "Stack overflow"
+        },
+        {
+          "name": "IntegerOverflow",
+          "value": "4",
+          "description": "Integer overflow"
+        },
+        {
+          "name": "IntegerOutOfExpectedRange",
+          "value": "5",
+          "description": "Integer out of expected range"
+        },
+        {
+          "name": "InvalidOpcode",
+          "value": "6",
+          "description": "Invalid opcode"
+        },
+        {
+          "name": "TypeCheckError",
+          "value": "7",
+          "description": "Type check error"
+        },
+        {
+          "name": "CellOverflow",
+          "value": "8",
+          "description": "Cell overflow"
+        },
+        {
+          "name": "CellUnderflow",
+          "value": "9",
+          "description": "Cell underflow"
+        },
+        {
+          "name": "DictionaryError",
+          "value": "10",
+          "description": "Dictionary error"
+        },
+        {
+          "name": "UnknownError",
+          "value": "11",
+          "description": "'Unknown' error"
+        },
+        {
+          "name": "FatalError",
+          "value": "12",
+          "description": "Fatal error"
+        },
+        {
+          "name": "OutOfGasError",
+          "value": "13",
+          "description": "Out of gas error"
+        },
+        {
+          "name": "VirtualizationError",
+          "value": "14",
+          "description": "Virtualization error"
+        },
+        {
+          "name": "ActionListIsInvalid",
+          "value": "32",
+          "description": "Action list is invalid"
+        },
+        {
+          "name": "ActionListIsTooLong",
+          "value": "33",
+          "description": "Action list is too long"
+        },
+        {
+          "name": "ActionIsInvalidOrNotSupported",
+          "value": "34",
+          "description": "Action is invalid or not supported"
+        },
+        {
+          "name": "InvalidSourceAddressInOutboundMessage",
+          "value": "35",
+          "description": "Invalid source address in outbound message"
+        },
+        {
+          "name": "InvalidDestinationAddressInOutboundMessage",
+          "value": "36",
+          "description": "Invalid destination address in outbound message"
+        },
+        {
+          "name": "NotEnoughToncoin",
+          "value": "37",
+          "description": "Not enough Toncoin"
+        },
+        {
+          "name": "NotEnoughExtraCurrencies",
+          "value": "38",
+          "description": "Not enough extra currencies"
+        },
+        {
+          "name": "OutboundMessageDoesNotFitIntoACellAfterRewriting",
+          "value": "39",
+          "description": "Outbound message does not fit into a cell after rewriting"
+        },
+        {
+          "name": "CannotProcessAMessage",
+          "value": "40",
+          "description": "Cannot process a message"
+        },
+        {
+          "name": "LibraryReferenceIsNull",
+          "value": "41",
+          "description": "Library reference is null"
+        },
+        {
+          "name": "LibraryChangeActionError",
+          "value": "42",
+          "description": "Library change action error"
+        },
+        {
+          "name": "ExceededMaximumNumberOfCellsInTheLibraryOrTheMaximumDepthOfTheMerkleTree",
+          "value": "43",
+          "description": "Exceeded maximum number of cells in the library or the maximum depth of the Merkle tree"
+        },
+        {
+          "name": "AccountStateSizeExceededLimits",
+          "value": "50",
+          "description": "Account state size exceeded limits"
+        },
+        {
+          "name": "NullReferenceException",
+          "value": "128",
+          "description": "Null reference exception"
+        },
+        {
+          "name": "InvalidSerializationPrefix",
+          "value": "129",
+          "description": "Invalid serialization prefix"
+        },
+        {
+          "name": "InvalidIncomingMessage",
+          "value": "130",
+          "description": "Invalid incoming message"
+        },
+        {
+          "name": "ConstraintsError",
+          "value": "131",
+          "description": "Constraints error"
+        },
+        {
+          "name": "AccessDenied",
+          "value": "132",
+          "description": "Access denied"
+        },
+        {
+          "name": "ContractStopped",
+          "value": "133",
+          "description": "Contract stopped"
+        },
+        {
+          "name": "InvalidArgument",
+          "value": "134",
+          "description": "Invalid argument"
+        },
+        {
+          "name": "CodeOfAContractWasNotFound",
+          "value": "135",
+          "description": "Code of a contract was not found"
+        },
+        {
+          "name": "InvalidStandardAddress",
+          "value": "136",
+          "description": "Invalid standard address"
+        },
+        {
+          "name": "NotABasechainAddress",
+          "value": "138",
+          "description": "Not a basechain address"
+        },
+        {
+          "name": "InsufficientBalanceForReward",
+          "value": "4191",
+          "description": "Insufficient balance for reward"
+        },
+        {
+          "name": "ThisWalletAlreadyHasATicketInCurrentRound",
+          "value": "8646",
+          "description": "This wallet already has a ticket in current round"
+        },
+        {
+          "name": "TicketSaleClosedWaitForNextRound",
+          "value": "28918",
+          "description": "Ticket sale closed; wait for next round"
+        },
+        {
+          "name": "SendAtLeast1TONTicketGasBuffer",
+          "value": "35961",
+          "description": "Send at least 1 TON (ticket + gas buffer)"
+        },
+        {
+          "name": "DrawTimeNotReached",
+          "value": "62768",
+          "description": "Draw time not reached"
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 16
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 13
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 83229,
+      "name": "owner",
+      "parameters": [],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 123846,
+      "name": "round",
+      "parameters": [],
+      "return_ty_idx": 17
+    },
+    {
+      "tvm_method_id": 122302,
+      "name": "nextDrawTs",
+      "parameters": [],
+      "return_ty_idx": 17
+    },
+    {
+      "tvm_method_id": 89176,
+      "name": "participantsCount",
+      "parameters": [],
+      "return_ty_idx": 17
+    },
+    {
+      "tvm_method_id": 105452,
+      "name": "totalRounds",
+      "parameters": [],
+      "return_ty_idx": 17
+    },
+    {
+      "tvm_method_id": 89749,
+      "name": "ticketPrice",
+      "parameters": [],
+      "return_ty_idx": 17
+    },
+    {
+      "tvm_method_id": 108880,
+      "name": "minPayment",
+      "parameters": [],
+      "return_ty_idx": 17
+    },
+    {
+      "tvm_method_id": 75095,
+      "name": "hasJoined",
+      "parameters": [
+        {
+          "name": "addr",
+          "ty_idx": 7
+        }
+      ],
+      "return_ty_idx": 5
+    },
+    {
+      "tvm_method_id": 87633,
+      "name": "participantAt",
+      "parameters": [
+        {
+          "name": "idx",
+          "ty_idx": 17
+        }
+      ],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 88620,
+      "name": "lastWinner",
+      "parameters": [],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 114420,
+      "name": "lastReward",
+      "parameters": [],
+      "return_ty_idx": 17
+    },
+    {
+      "tvm_method_id": 95218,
+      "name": "lastRound",
+      "parameters": [],
+      "return_ty_idx": 17
+    },
+    {
+      "tvm_method_id": 110221,
+      "name": "contractBalance",
+      "parameters": [],
+      "return_ty_idx": 17
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.StackUnderflow",
+      "description": "Stack underflow",
+      "err_code": 2
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.StackOverflow",
+      "description": "Stack overflow",
+      "err_code": 3
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.IntegerOverflow",
+      "description": "Integer overflow",
+      "err_code": 4
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.IntegerOutOfExpectedRange",
+      "description": "Integer out of expected range",
+      "err_code": 5
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.InvalidOpcode",
+      "description": "Invalid opcode",
+      "err_code": 6
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.TypeCheckError",
+      "description": "Type check error",
+      "err_code": 7
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.CellOverflow",
+      "description": "Cell overflow",
+      "err_code": 8
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.CellUnderflow",
+      "description": "Cell underflow",
+      "err_code": 9
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.DictionaryError",
+      "description": "Dictionary error",
+      "err_code": 10
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.UnknownError",
+      "description": "'Unknown' error",
+      "err_code": 11
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.FatalError",
+      "description": "Fatal error",
+      "err_code": 12
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.OutOfGasError",
+      "description": "Out of gas error",
+      "err_code": 13
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.VirtualizationError",
+      "description": "Virtualization error",
+      "err_code": 14
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.ActionListIsInvalid",
+      "description": "Action list is invalid",
+      "err_code": 32
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.ActionListIsTooLong",
+      "description": "Action list is too long",
+      "err_code": 33
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.ActionIsInvalidOrNotSupported",
+      "description": "Action is invalid or not supported",
+      "err_code": 34
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.InvalidSourceAddressInOutboundMessage",
+      "description": "Invalid source address in outbound message",
+      "err_code": 35
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.InvalidDestinationAddressInOutboundMessage",
+      "description": "Invalid destination address in outbound message",
+      "err_code": 36
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.NotEnoughToncoin",
+      "description": "Not enough Toncoin",
+      "err_code": 37
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.NotEnoughExtraCurrencies",
+      "description": "Not enough extra currencies",
+      "err_code": 38
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.OutboundMessageDoesNotFitIntoACellAfterRewriting",
+      "description": "Outbound message does not fit into a cell after rewriting",
+      "err_code": 39
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.CannotProcessAMessage",
+      "description": "Cannot process a message",
+      "err_code": 40
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.LibraryReferenceIsNull",
+      "description": "Library reference is null",
+      "err_code": 41
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.LibraryChangeActionError",
+      "description": "Library change action error",
+      "err_code": 42
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.ExceededMaximumNumberOfCellsInTheLibraryOrTheMaximumDepthOfTheMerkleTree",
+      "description": "Exceeded maximum number of cells in the library or the maximum depth of the Merkle tree",
+      "err_code": 43
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.AccountStateSizeExceededLimits",
+      "description": "Account state size exceeded limits",
+      "err_code": 50
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.NullReferenceException",
+      "description": "Null reference exception",
+      "err_code": 128
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.InvalidSerializationPrefix",
+      "description": "Invalid serialization prefix",
+      "err_code": 129
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.InvalidIncomingMessage",
+      "description": "Invalid incoming message",
+      "err_code": 130
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.ConstraintsError",
+      "description": "Constraints error",
+      "err_code": 131
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.AccessDenied",
+      "description": "Access denied",
+      "err_code": 132
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.ContractStopped",
+      "description": "Contract stopped",
+      "err_code": 133
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.InvalidArgument",
+      "description": "Invalid argument",
+      "err_code": 134
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.CodeOfAContractWasNotFound",
+      "description": "Code of a contract was not found",
+      "err_code": 135
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.InvalidStandardAddress",
+      "description": "Invalid standard address",
+      "err_code": 136
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.NotABasechainAddress",
+      "description": "Not a basechain address",
+      "err_code": 138
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.InsufficientBalanceForReward",
+      "description": "Insufficient balance for reward",
+      "err_code": 4191
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.ThisWalletAlreadyHasATicketInCurrentRound",
+      "description": "This wallet already has a ticket in current round",
+      "err_code": 8646
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.TicketSaleClosedWaitForNextRound",
+      "description": "Ticket sale closed; wait for next round",
+      "err_code": 28918
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.SendAtLeast1TONTicketGasBuffer",
+      "description": "Send at least 1 TON (ticket + gas buffer)",
+      "err_code": 35961
+    },
+    {
+      "kind": "enum_member",
+      "name": "LotteryErrors.DrawTimeNotReached",
+      "description": "Draw time not reached",
+      "err_code": 62768
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.4.2"
+}
