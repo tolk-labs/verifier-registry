@@ -1,0 +1,317 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "DigitalTwin",
+  "author": "Prgnstctr",
+  "version": "1.0.0",
+  "description": "DIGITAL TWIN DNA SETUP",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "AliasRef",
+      "alias_name": "AllowedMessage"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PopulateMessage"
+    },
+    {
+      "kind": "arrayOf",
+      "inner_ty_idx": 8
+    },
+    {
+      "kind": "arrayOf",
+      "inner_ty_idx": 14
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Storage"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CalculationRecord"
+    },
+    {
+      "kind": "uintN",
+      "n": 256
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "MatrixEntry"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "MatrixIndex"
+    },
+    {
+      "kind": "uintN",
+      "n": 8
+    },
+    {
+      "kind": "arrayOf",
+      "inner_ty_idx": 19
+    },
+    {
+      "kind": "arrayOf",
+      "inner_ty_idx": 17
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "alias",
+      "name": "AllowedMessage",
+      "ty_idx": 12,
+      "target_ty_idx": 13
+    },
+    {
+      "kind": "struct",
+      "name": "CalculationRecord",
+      "ty_idx": 17,
+      "fields": [
+        {
+          "name": "timestamp",
+          "ty_idx": 11
+        },
+        {
+          "name": "matrixHash",
+          "ty_idx": 18
+        },
+        {
+          "name": "entriesAbove",
+          "ty_idx": 22
+        },
+        {
+          "name": "isValid",
+          "ty_idx": 5
+        },
+        {
+          "name": "prevHead",
+          "ty_idx": 3
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "MatrixIndex",
+      "ty_idx": 20,
+      "fields": [
+        {
+          "name": "row",
+          "ty_idx": 21
+        },
+        {
+          "name": "col",
+          "ty_idx": 21
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "MatrixEntry",
+      "ty_idx": 19,
+      "fields": [
+        {
+          "name": "index",
+          "ty_idx": 20
+        },
+        {
+          "name": "value",
+          "ty_idx": 8
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Storage",
+      "ty_idx": 16,
+      "fields": [
+        {
+          "name": "id",
+          "ty_idx": 9
+        },
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "calculations",
+          "ty_idx": 23
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PopulateMessage",
+      "ty_idx": 13,
+      "fields": [
+        {
+          "name": "matrix",
+          "ty_idx": 15
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 16
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 109116,
+      "name": "getStorageSize",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 123003,
+      "name": "getCalculations",
+      "parameters": [],
+      "return_ty_idx": 23
+    },
+    {
+      "tvm_method_id": 90859,
+      "name": "getLatestCalculation",
+      "parameters": [],
+      "return_ty_idx": 17
+    },
+    {
+      "tvm_method_id": 102025,
+      "name": "getOwner",
+      "parameters": [],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 66593,
+      "name": "getId",
+      "parameters": [],
+      "return_ty_idx": 9
+    },
+    {
+      "tvm_method_id": 77870,
+      "name": "getCalculationsCount",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 66294,
+      "name": "getEntriesAboveThreshold",
+      "parameters": [
+        {
+          "name": "index",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 22
+    },
+    {
+      "tvm_method_id": 74224,
+      "name": "getLatestEntriesCount",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 82503,
+      "name": "isLatestValid",
+      "parameters": [],
+      "return_ty_idx": 5
+    },
+    {
+      "tvm_method_id": 108305,
+      "name": "getMatrixHash",
+      "parameters": [
+        {
+          "name": "index",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 18
+    },
+    {
+      "tvm_method_id": 126194,
+      "name": "getCalculationTimestamp",
+      "parameters": [
+        {
+          "name": "index",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 11
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidMatrix",
+      "err_code": 16776961
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidMessage",
+      "err_code": 16776962
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidIndex",
+      "err_code": 16776963
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.EmptyCalculations",
+      "err_code": 16776964
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.UnauthorizedSender",
+      "err_code": 16776965
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.4.2"
+}
