@@ -1,0 +1,52 @@
+{
+  "code_hash": "09396bc699056f3a30998cb09de23fa98451a821f385ad973efb259bdcccf53b",
+  "source_bundle_hash": "682fea2be8ca476829be5255df2cccb97c6502055b64705347607757e87e7424",
+  "payment_tx_hash": "e93a60dc5fd2fce4a04ae369464802c6984406fda170479963ea3382e9ccee4e",
+  "verified_at": 1790362509,
+  "compiler": {
+    "language": "tact",
+    "version": "1.6.13",
+    "entrypoint": "contracts/game_token.tact",
+    "params": {
+      "compiler_version": "1.6.13"
+    }
+  },
+  "source_map": null,
+  "files": [
+    {
+      "path": "build/GameToken/GameToken_GameToken.pkg",
+      "content_hash": "e4e55ddae470b2f8fd25fec4f8b47ceed71bf66f2f5981232e39f8fd41cd45a0",
+      "include_in_command": true,
+      "is_stdlib": false,
+      "has_include_directives": false
+    },
+    {
+      "path": "contract/contracts/game_token.tact",
+      "content_hash": "5bda356a0291bfbf93b598d5e350b13b897580ad0afaed4b9de13f31cea8fb89"
+    },
+    {
+      "path": "output/GameToken.abi.json",
+      "content_hash": "4510b4b11d7fabd717021dac8c8feedfae4a4e787107b6ed54392efe66285601"
+    },
+    {
+      "path": "output/GameToken.types.tolk",
+      "content_hash": "349e8af143a3d43d2250fc4ddf37bedd0a30743469fc2c21f16d8a6bb8ea3109"
+    },
+    {
+      "path": "output/verifier_GameToken.abi",
+      "content_hash": "210f211ba12740126f9eba3ecce212d2eadf628ed5beb7d0b0b7c2b00d59816c"
+    },
+    {
+      "path": "output/verifier_GameToken.pkg",
+      "content_hash": "65ccd46ae23098ede15030e421146e1774e8b6dbcebd6d4e134c66f0991bcf7f"
+    },
+    {
+      "path": "output/verifier_GameTokenWallet.abi",
+      "content_hash": "1cbf8cee863588116e46f7c5d2bd466e3addc36c107dceeb52e03abaf3914107"
+    },
+    {
+      "path": "output/verifier_GameTokenWallet.pkg",
+      "content_hash": "ba279d90a602f7e7b5117598a65bba2c2d33ef3e50ff92c456fcf8f39a8d5191"
+    }
+  ]
+}

@@ -1,0 +1,815 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "GameToken",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "GameTokenRequestTokenWalletBinding"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "GameTokenMintGenesis"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "GameTokenJettonBurnNotification"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "GameTokenUpdateContent"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "GameTokenDeploy"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "GameTokenChangeOwner"
+    },
+    {
+      "kind": "EnumRef",
+      "enum_name": "GameTokenErrors"
+    },
+    {
+      "kind": "uintN",
+      "n": 16
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "GameTokenData"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "GameTokenJettonData"
+    },
+    {
+      "kind": "intN",
+      "n": 257
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "GameTokenChangeOwner",
+      "ty_idx": 17,
+      "prefix": {
+        "prefix_num": 2174598809,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "newOwner",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "GameTokenDeploy",
+      "ty_idx": 16,
+      "prefix": {
+        "prefix_num": 2490013878,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "GameTokenMintGenesis",
+      "ty_idx": 13,
+      "prefix": {
+        "prefix_num": 3936856392,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "receiver",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "GameTokenRequestTokenWalletBinding",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 3919310297,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "owner",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "GameTokenJettonBurnNotification",
+      "ty_idx": 14,
+      "prefix": {
+        "prefix_num": 2078119902,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "sender",
+          "ty_idx": 7
+        },
+        {
+          "name": "responseDestination",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "GameTokenJettonData",
+      "ty_idx": 21,
+      "fields": [
+        {
+          "name": "totalSupply",
+          "ty_idx": 6
+        },
+        {
+          "name": "mintable",
+          "ty_idx": 5
+        },
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "content",
+          "ty_idx": 3
+        },
+        {
+          "name": "walletCode",
+          "ty_idx": 3
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "GameTokenUpdateContent",
+      "ty_idx": 15,
+      "prefix": {
+        "prefix_num": 4251083203,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "content",
+          "ty_idx": 3
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "GameTokenData",
+      "ty_idx": 20,
+      "fields": [
+        {
+          "name": "tactSystemCell",
+          "ty_idx": 3
+        },
+        {
+          "name": "tactDeploymentCompleted",
+          "ty_idx": 5
+        },
+        {
+          "name": "totalSupply",
+          "ty_idx": 6
+        },
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "mintable",
+          "ty_idx": 5
+        },
+        {
+          "name": "content",
+          "ty_idx": 3
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": "GameTokenErrors",
+      "ty_idx": 18,
+      "encoded_as_ty_idx": 19,
+      "members": [
+        {
+          "name": "StackUnderflow",
+          "value": "2",
+          "description": "Stack underflow"
+        },
+        {
+          "name": "StackOverflow",
+          "value": "3",
+          "description": "Stack overflow"
+        },
+        {
+          "name": "IntegerOverflow",
+          "value": "4",
+          "description": "Integer overflow"
+        },
+        {
+          "name": "IntegerOutOfExpectedRange",
+          "value": "5",
+          "description": "Integer out of expected range"
+        },
+        {
+          "name": "InvalidOpcode",
+          "value": "6",
+          "description": "Invalid opcode"
+        },
+        {
+          "name": "TypeCheckError",
+          "value": "7",
+          "description": "Type check error"
+        },
+        {
+          "name": "CellOverflow",
+          "value": "8",
+          "description": "Cell overflow"
+        },
+        {
+          "name": "CellUnderflow",
+          "value": "9",
+          "description": "Cell underflow"
+        },
+        {
+          "name": "DictionaryError",
+          "value": "10",
+          "description": "Dictionary error"
+        },
+        {
+          "name": "UnknownError",
+          "value": "11",
+          "description": "'Unknown' error"
+        },
+        {
+          "name": "FatalError",
+          "value": "12",
+          "description": "Fatal error"
+        },
+        {
+          "name": "OutOfGasError",
+          "value": "13",
+          "description": "Out of gas error"
+        },
+        {
+          "name": "VirtualizationError",
+          "value": "14",
+          "description": "Virtualization error"
+        },
+        {
+          "name": "ActionListIsInvalid",
+          "value": "32",
+          "description": "Action list is invalid"
+        },
+        {
+          "name": "ActionListIsTooLong",
+          "value": "33",
+          "description": "Action list is too long"
+        },
+        {
+          "name": "ActionIsInvalidOrNotSupported",
+          "value": "34",
+          "description": "Action is invalid or not supported"
+        },
+        {
+          "name": "InvalidSourceAddressInOutboundMessage",
+          "value": "35",
+          "description": "Invalid source address in outbound message"
+        },
+        {
+          "name": "InvalidDestinationAddressInOutboundMessage",
+          "value": "36",
+          "description": "Invalid destination address in outbound message"
+        },
+        {
+          "name": "NotEnoughToncoin",
+          "value": "37",
+          "description": "Not enough Toncoin"
+        },
+        {
+          "name": "NotEnoughExtraCurrencies",
+          "value": "38",
+          "description": "Not enough extra currencies"
+        },
+        {
+          "name": "OutboundMessageDoesNotFitIntoACellAfterRewriting",
+          "value": "39",
+          "description": "Outbound message does not fit into a cell after rewriting"
+        },
+        {
+          "name": "CannotProcessAMessage",
+          "value": "40",
+          "description": "Cannot process a message"
+        },
+        {
+          "name": "LibraryReferenceIsNull",
+          "value": "41",
+          "description": "Library reference is null"
+        },
+        {
+          "name": "LibraryChangeActionError",
+          "value": "42",
+          "description": "Library change action error"
+        },
+        {
+          "name": "ExceededMaximumNumberOfCellsInTheLibraryOrTheMaximumDepthOfTheMerkleTree",
+          "value": "43",
+          "description": "Exceeded maximum number of cells in the library or the maximum depth of the Merkle tree"
+        },
+        {
+          "name": "AccountStateSizeExceededLimits",
+          "value": "50",
+          "description": "Account state size exceeded limits"
+        },
+        {
+          "name": "NullReferenceException",
+          "value": "128",
+          "description": "Null reference exception"
+        },
+        {
+          "name": "InvalidSerializationPrefix",
+          "value": "129",
+          "description": "Invalid serialization prefix"
+        },
+        {
+          "name": "InvalidIncomingMessage",
+          "value": "130",
+          "description": "Invalid incoming message"
+        },
+        {
+          "name": "ConstraintsError",
+          "value": "131",
+          "description": "Constraints error"
+        },
+        {
+          "name": "AccessDenied",
+          "value": "132",
+          "description": "Access denied"
+        },
+        {
+          "name": "ContractStopped",
+          "value": "133",
+          "description": "Contract stopped"
+        },
+        {
+          "name": "InvalidArgument",
+          "value": "134",
+          "description": "Invalid argument"
+        },
+        {
+          "name": "CodeOfAContractWasNotFound",
+          "value": "135",
+          "description": "Code of a contract was not found"
+        },
+        {
+          "name": "InvalidStandardAddress",
+          "value": "136",
+          "description": "Invalid standard address"
+        },
+        {
+          "name": "NotABasechainAddress",
+          "value": "138",
+          "description": "Not a basechain address"
+        },
+        {
+          "name": "BurnExceedsSupply",
+          "value": "14024",
+          "description": "burn exceeds supply"
+        },
+        {
+          "name": "InsufficientValueForForward",
+          "value": "18373",
+          "description": "insufficient value for forward"
+        },
+        {
+          "name": "InsufficientBalance",
+          "value": "19364",
+          "description": "insufficient balance"
+        },
+        {
+          "name": "GenesisSupplyAlreadyIssued",
+          "value": "28227",
+          "description": "genesis supply already issued"
+        },
+        {
+          "name": "MetadataIsImmutableAfterGenesis",
+          "value": "34247",
+          "description": "metadata is immutable after genesis"
+        },
+        {
+          "name": "NotOwner",
+          "value": "49280",
+          "description": "not owner"
+        },
+        {
+          "name": "BindingRequesterMustBeWalletOwner",
+          "value": "50738",
+          "description": "binding requester must be wallet owner"
+        },
+        {
+          "name": "NotAValidWallet",
+          "value": "52637",
+          "description": "not a valid wallet"
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 20
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 13
+    },
+    {
+      "body_ty_idx": 14
+    },
+    {
+      "body_ty_idx": 15
+    },
+    {
+      "body_ty_idx": 16
+    },
+    {
+      "body_ty_idx": 17
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 103289,
+      "name": "get_wallet_address",
+      "parameters": [
+        {
+          "name": "owner",
+          "ty_idx": 7
+        }
+      ],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 106029,
+      "name": "get_jetton_data",
+      "parameters": [],
+      "return_ty_idx": 21
+    },
+    {
+      "tvm_method_id": 102571,
+      "name": "max_supply",
+      "parameters": [],
+      "return_ty_idx": 22
+    },
+    {
+      "tvm_method_id": 83229,
+      "name": "owner",
+      "parameters": [],
+      "return_ty_idx": 7
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.StackUnderflow",
+      "description": "Stack underflow",
+      "err_code": 2
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.StackOverflow",
+      "description": "Stack overflow",
+      "err_code": 3
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.IntegerOverflow",
+      "description": "Integer overflow",
+      "err_code": 4
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.IntegerOutOfExpectedRange",
+      "description": "Integer out of expected range",
+      "err_code": 5
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.InvalidOpcode",
+      "description": "Invalid opcode",
+      "err_code": 6
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.TypeCheckError",
+      "description": "Type check error",
+      "err_code": 7
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.CellOverflow",
+      "description": "Cell overflow",
+      "err_code": 8
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.CellUnderflow",
+      "description": "Cell underflow",
+      "err_code": 9
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.DictionaryError",
+      "description": "Dictionary error",
+      "err_code": 10
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.UnknownError",
+      "description": "'Unknown' error",
+      "err_code": 11
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.FatalError",
+      "description": "Fatal error",
+      "err_code": 12
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.OutOfGasError",
+      "description": "Out of gas error",
+      "err_code": 13
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.VirtualizationError",
+      "description": "Virtualization error",
+      "err_code": 14
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.ActionListIsInvalid",
+      "description": "Action list is invalid",
+      "err_code": 32
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.ActionListIsTooLong",
+      "description": "Action list is too long",
+      "err_code": 33
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.ActionIsInvalidOrNotSupported",
+      "description": "Action is invalid or not supported",
+      "err_code": 34
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.InvalidSourceAddressInOutboundMessage",
+      "description": "Invalid source address in outbound message",
+      "err_code": 35
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.InvalidDestinationAddressInOutboundMessage",
+      "description": "Invalid destination address in outbound message",
+      "err_code": 36
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.NotEnoughToncoin",
+      "description": "Not enough Toncoin",
+      "err_code": 37
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.NotEnoughExtraCurrencies",
+      "description": "Not enough extra currencies",
+      "err_code": 38
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.OutboundMessageDoesNotFitIntoACellAfterRewriting",
+      "description": "Outbound message does not fit into a cell after rewriting",
+      "err_code": 39
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.CannotProcessAMessage",
+      "description": "Cannot process a message",
+      "err_code": 40
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.LibraryReferenceIsNull",
+      "description": "Library reference is null",
+      "err_code": 41
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.LibraryChangeActionError",
+      "description": "Library change action error",
+      "err_code": 42
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.ExceededMaximumNumberOfCellsInTheLibraryOrTheMaximumDepthOfTheMerkleTree",
+      "description": "Exceeded maximum number of cells in the library or the maximum depth of the Merkle tree",
+      "err_code": 43
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.AccountStateSizeExceededLimits",
+      "description": "Account state size exceeded limits",
+      "err_code": 50
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.NullReferenceException",
+      "description": "Null reference exception",
+      "err_code": 128
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.InvalidSerializationPrefix",
+      "description": "Invalid serialization prefix",
+      "err_code": 129
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.InvalidIncomingMessage",
+      "description": "Invalid incoming message",
+      "err_code": 130
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.ConstraintsError",
+      "description": "Constraints error",
+      "err_code": 131
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.AccessDenied",
+      "description": "Access denied",
+      "err_code": 132
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.ContractStopped",
+      "description": "Contract stopped",
+      "err_code": 133
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.InvalidArgument",
+      "description": "Invalid argument",
+      "err_code": 134
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.CodeOfAContractWasNotFound",
+      "description": "Code of a contract was not found",
+      "err_code": 135
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.InvalidStandardAddress",
+      "description": "Invalid standard address",
+      "err_code": 136
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.NotABasechainAddress",
+      "description": "Not a basechain address",
+      "err_code": 138
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.BurnExceedsSupply",
+      "description": "burn exceeds supply",
+      "err_code": 14024
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.InsufficientValueForForward",
+      "description": "insufficient value for forward",
+      "err_code": 18373
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.InsufficientBalance",
+      "description": "insufficient balance",
+      "err_code": 19364
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.GenesisSupplyAlreadyIssued",
+      "description": "genesis supply already issued",
+      "err_code": 28227
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.MetadataIsImmutableAfterGenesis",
+      "description": "metadata is immutable after genesis",
+      "err_code": 34247
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.NotOwner",
+      "description": "not owner",
+      "err_code": 49280
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.BindingRequesterMustBeWalletOwner",
+      "description": "binding requester must be wallet owner",
+      "err_code": 50738
+    },
+    {
+      "kind": "enum_member",
+      "name": "GameTokenErrors.NotAValidWallet",
+      "description": "not a valid wallet",
+      "err_code": 52637
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.4.2"
+}
