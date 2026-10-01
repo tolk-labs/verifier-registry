@@ -1,0 +1,684 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "DaoRoot",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CreateProposal"
+    },
+    {
+      "kind": "EnumRef",
+      "enum_name": "ProposalType"
+    },
+    {
+      "kind": "uintN",
+      "n": 8
+    },
+    {
+      "kind": "uintN",
+      "n": 256
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SetProposer"
+    },
+    {
+      "kind": "EnumRef",
+      "enum_name": "Role"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RemoveProposer"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CancelProposal"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SetParams"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Params"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 21
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TransferAdmin"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "AcceptAdmin"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RenounceAdmin"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "DaoStorage"
+    },
+    {
+      "kind": "addressOpt"
+    },
+    {
+      "kind": "mapKV",
+      "key_ty_idx": 7,
+      "value_ty_idx": 17
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "AdminActionEvent"
+    },
+    {
+      "kind": "EnumRef",
+      "enum_name": "AdminAction"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "InitProposal"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ProposalDetails"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 32
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ProposalCreatedEvent"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CancelByDao"
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        9,
+        9,
+        9,
+        9,
+        9
+      ]
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "enum",
+      "name": "ProposalType",
+      "ty_idx": 13,
+      "encoded_as_ty_idx": 14,
+      "members": [
+        {
+          "name": "Pressing",
+          "value": "0"
+        },
+        {
+          "name": "Repress",
+          "value": "1"
+        },
+        {
+          "name": "Treasury",
+          "value": "2"
+        },
+        {
+          "name": "Governance",
+          "value": "3"
+        },
+        {
+          "name": "Community",
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": "Role",
+      "ty_idx": 17,
+      "encoded_as_ty_idx": 14,
+      "members": [
+        {
+          "name": "Label",
+          "value": "1"
+        },
+        {
+          "name": "Team",
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Params",
+      "ty_idx": 21,
+      "fields": [
+        {
+          "name": "votingDelay",
+          "ty_idx": 9
+        },
+        {
+          "name": "minDuration",
+          "ty_idx": 9
+        },
+        {
+          "name": "maxDuration",
+          "ty_idx": 9
+        },
+        {
+          "name": "minVotesFloor",
+          "ty_idx": 9
+        },
+        {
+          "name": "minVotesCeil",
+          "ty_idx": 9
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "DaoStorage",
+      "ty_idx": 26,
+      "fields": [
+        {
+          "name": "admin",
+          "ty_idx": 27
+        },
+        {
+          "name": "pendingAdmin",
+          "ty_idx": 27
+        },
+        {
+          "name": "params",
+          "ty_idx": 22
+        },
+        {
+          "name": "proposers",
+          "ty_idx": 28
+        },
+        {
+          "name": "nextProposalId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ProposalDetails",
+      "ty_idx": 32,
+      "fields": [
+        {
+          "name": "author",
+          "ty_idx": 7
+        },
+        {
+          "name": "kind",
+          "ty_idx": 13
+        },
+        {
+          "name": "createdAt",
+          "ty_idx": 9
+        },
+        {
+          "name": "startAt",
+          "ty_idx": 9
+        },
+        {
+          "name": "endAt",
+          "ty_idx": 9
+        },
+        {
+          "name": "minVotes",
+          "ty_idx": 9
+        },
+        {
+          "name": "textHash",
+          "ty_idx": 15
+        },
+        {
+          "name": "forumUrl",
+          "ty_idx": 3
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CreateProposal",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 1145110529,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "kind",
+          "ty_idx": 13
+        },
+        {
+          "name": "duration",
+          "ty_idx": 9
+        },
+        {
+          "name": "minVotes",
+          "ty_idx": 9
+        },
+        {
+          "name": "textHash",
+          "ty_idx": 15
+        },
+        {
+          "name": "forumUrl",
+          "ty_idx": 3
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "InitProposal",
+      "ty_idx": 31,
+      "prefix": {
+        "prefix_num": 1145110530,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "details",
+          "ty_idx": 33
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CancelProposal",
+      "ty_idx": 19,
+      "prefix": {
+        "prefix_num": 1145110533,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "id",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CancelByDao",
+      "ty_idx": 35,
+      "prefix": {
+        "prefix_num": 1145110534,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "replyTo",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "SetProposer",
+      "ty_idx": 16,
+      "prefix": {
+        "prefix_num": 1145110536,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "wallet",
+          "ty_idx": 7
+        },
+        {
+          "name": "role",
+          "ty_idx": 17
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "RemoveProposer",
+      "ty_idx": 18,
+      "prefix": {
+        "prefix_num": 1145110537,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "wallet",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "SetParams",
+      "ty_idx": 20,
+      "prefix": {
+        "prefix_num": 1145110538,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "params",
+          "ty_idx": 22
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TransferAdmin",
+      "ty_idx": 23,
+      "prefix": {
+        "prefix_num": 1145110539,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "newAdmin",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "AcceptAdmin",
+      "ty_idx": 24,
+      "prefix": {
+        "prefix_num": 1145110542,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "RenounceAdmin",
+      "ty_idx": 25,
+      "prefix": {
+        "prefix_num": 1145110540,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "ProposalCreatedEvent",
+      "ty_idx": 34,
+      "prefix": {
+        "prefix_num": 1145143297,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "id",
+          "ty_idx": 11
+        },
+        {
+          "name": "author",
+          "ty_idx": 7
+        },
+        {
+          "name": "kind",
+          "ty_idx": 13
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": "AdminAction",
+      "ty_idx": 30,
+      "encoded_as_ty_idx": 14,
+      "members": [
+        {
+          "name": "SetProposer",
+          "value": "1"
+        },
+        {
+          "name": "RemoveProposer",
+          "value": "2"
+        },
+        {
+          "name": "CancelProposal",
+          "value": "3"
+        },
+        {
+          "name": "SetParams",
+          "value": "4"
+        },
+        {
+          "name": "TransferAdmin",
+          "value": "5"
+        },
+        {
+          "name": "RenounceAdmin",
+          "value": "6"
+        },
+        {
+          "name": "AcceptAdmin",
+          "value": "7"
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "AdminActionEvent",
+      "ty_idx": 29,
+      "prefix": {
+        "prefix_num": 1145143299,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "action",
+          "ty_idx": 30
+        },
+        {
+          "name": "subject",
+          "ty_idx": 27
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 26
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 16
+    },
+    {
+      "body_ty_idx": 18
+    },
+    {
+      "body_ty_idx": 19
+    },
+    {
+      "body_ty_idx": 20
+    },
+    {
+      "body_ty_idx": 23
+    },
+    {
+      "body_ty_idx": 24
+    },
+    {
+      "body_ty_idx": 25
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 31
+    },
+    {
+      "body_ty_idx": 35
+    }
+  ],
+  "emitted_events": [
+    {
+      "body_ty_idx": 29
+    },
+    {
+      "body_ty_idx": 34
+    }
+  ],
+  "get_methods": [
+    {
+      "tvm_method_id": 116046,
+      "name": "admin",
+      "parameters": [],
+      "return_ty_idx": 27
+    },
+    {
+      "tvm_method_id": 129720,
+      "name": "pendingAdmin",
+      "parameters": [],
+      "return_ty_idx": 27
+    },
+    {
+      "tvm_method_id": 116437,
+      "name": "params",
+      "parameters": [],
+      "return_ty_idx": 36
+    },
+    {
+      "tvm_method_id": 97465,
+      "name": "nextProposalId",
+      "parameters": [],
+      "return_ty_idx": 11
+    },
+    {
+      "tvm_method_id": 80164,
+      "name": "proposerRole",
+      "parameters": [
+        {
+          "name": "wallet",
+          "ty_idx": 7
+        }
+      ],
+      "return_ty_idx": 14
+    },
+    {
+      "tvm_method_id": 108997,
+      "name": "proposalAddress",
+      "parameters": [
+        {
+          "name": "id",
+          "ty_idx": 11
+        }
+      ],
+      "return_ty_idx": 7
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotAdmin",
+      "err_code": 100
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotProposer",
+      "err_code": 101
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.TypeNotAllowed",
+      "err_code": 102
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.TypeDisabled",
+      "err_code": 103
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.BadDuration",
+      "err_code": 104
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.BadMinVotes",
+      "err_code": 105
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.BadParams",
+      "err_code": 117
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotEnoughValue",
+      "err_code": 118
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.UnknownProposal",
+      "err_code": 119
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotPendingAdmin",
+      "err_code": 120
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidMessage",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.4.2"
+}
