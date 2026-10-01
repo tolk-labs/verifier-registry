@@ -1,0 +1,178 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "Ballot",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "AliasRef",
+      "alias_name": "AllowedBallotMessage"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CastVote"
+    },
+    {
+      "kind": "EnumRef",
+      "enum_name": "Choice"
+    },
+    {
+      "kind": "uintN",
+      "n": 8
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "BallotStorage"
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "alias",
+      "name": "AllowedBallotMessage",
+      "ty_idx": 12,
+      "target_ty_idx": 13
+    },
+    {
+      "kind": "enum",
+      "name": "Choice",
+      "ty_idx": 14,
+      "encoded_as_ty_idx": 15,
+      "members": [
+        {
+          "name": "Yes",
+          "value": "0"
+        },
+        {
+          "name": "No",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "BallotStorage",
+      "ty_idx": 16,
+      "fields": [
+        {
+          "name": "proposal",
+          "ty_idx": 7
+        },
+        {
+          "name": "voter",
+          "ty_idx": 7
+        },
+        {
+          "name": "hasVoted",
+          "ty_idx": 5
+        },
+        {
+          "name": "choice",
+          "ty_idx": 14
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CastVote",
+      "ty_idx": 13,
+      "prefix": {
+        "prefix_num": 1145110541,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "voter",
+          "ty_idx": 7
+        },
+        {
+          "name": "choice",
+          "ty_idx": 14
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 16
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 105179,
+      "name": "hasVoted",
+      "parameters": [],
+      "return_ty_idx": 5
+    },
+    {
+      "tvm_method_id": 90293,
+      "name": "choice",
+      "parameters": [],
+      "return_ty_idx": 14
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "Errors.AlreadyVoted",
+      "err_code": 111
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotFromProposal",
+      "err_code": 112
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidMessage",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.4.2"
+}
