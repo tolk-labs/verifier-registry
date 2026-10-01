@@ -1,0 +1,527 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "Proposal",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "InitProposal"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ProposalDetails"
+    },
+    {
+      "kind": "EnumRef",
+      "enum_name": "ProposalType"
+    },
+    {
+      "kind": "uintN",
+      "n": 8
+    },
+    {
+      "kind": "uintN",
+      "n": 256
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 13
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Vote"
+    },
+    {
+      "kind": "EnumRef",
+      "enum_name": "Choice"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Withdraw"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CancelByDao"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Finalize"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ProposalStorage"
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 17
+    },
+    {
+      "kind": "EnumRef",
+      "enum_name": "Status"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ProposalClosedEvent"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CastVote"
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        9,
+        9
+      ]
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        9,
+        9,
+        9
+      ]
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        7,
+        14,
+        9
+      ]
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "enum",
+      "name": "ProposalType",
+      "ty_idx": 14,
+      "encoded_as_ty_idx": 15,
+      "members": [
+        {
+          "name": "Pressing",
+          "value": "0"
+        },
+        {
+          "name": "Repress",
+          "value": "1"
+        },
+        {
+          "name": "Treasury",
+          "value": "2"
+        },
+        {
+          "name": "Governance",
+          "value": "3"
+        },
+        {
+          "name": "Community",
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": "Choice",
+      "ty_idx": 19,
+      "encoded_as_ty_idx": 15,
+      "members": [
+        {
+          "name": "Yes",
+          "value": "0"
+        },
+        {
+          "name": "No",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": "Status",
+      "ty_idx": 25,
+      "encoded_as_ty_idx": 15,
+      "members": [
+        {
+          "name": "Open",
+          "value": "0"
+        },
+        {
+          "name": "Cancelled",
+          "value": "1"
+        },
+        {
+          "name": "Withdrawn",
+          "value": "2"
+        },
+        {
+          "name": "Passed",
+          "value": "3"
+        },
+        {
+          "name": "Failed",
+          "value": "4"
+        },
+        {
+          "name": "NoQuorum",
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ProposalDetails",
+      "ty_idx": 13,
+      "fields": [
+        {
+          "name": "author",
+          "ty_idx": 7
+        },
+        {
+          "name": "kind",
+          "ty_idx": 14
+        },
+        {
+          "name": "createdAt",
+          "ty_idx": 9
+        },
+        {
+          "name": "startAt",
+          "ty_idx": 9
+        },
+        {
+          "name": "endAt",
+          "ty_idx": 9
+        },
+        {
+          "name": "minVotes",
+          "ty_idx": 9
+        },
+        {
+          "name": "textHash",
+          "ty_idx": 16
+        },
+        {
+          "name": "forumUrl",
+          "ty_idx": 3
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ProposalStorage",
+      "ty_idx": 23,
+      "fields": [
+        {
+          "name": "dao",
+          "ty_idx": 7
+        },
+        {
+          "name": "id",
+          "ty_idx": 11
+        },
+        {
+          "name": "details",
+          "ty_idx": 24
+        },
+        {
+          "name": "votesYes",
+          "ty_idx": 9
+        },
+        {
+          "name": "votesNo",
+          "ty_idx": 9
+        },
+        {
+          "name": "status",
+          "ty_idx": 25
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "InitProposal",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 1145110530,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "details",
+          "ty_idx": 17
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Vote",
+      "ty_idx": 18,
+      "prefix": {
+        "prefix_num": 1145110531,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "choice",
+          "ty_idx": 19
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CastVote",
+      "ty_idx": 27,
+      "prefix": {
+        "prefix_num": 1145110541,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "voter",
+          "ty_idx": 7
+        },
+        {
+          "name": "choice",
+          "ty_idx": 19
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Withdraw",
+      "ty_idx": 20,
+      "prefix": {
+        "prefix_num": 1145110532,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "CancelByDao",
+      "ty_idx": 21,
+      "prefix": {
+        "prefix_num": 1145110534,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "replyTo",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Finalize",
+      "ty_idx": 22,
+      "prefix": {
+        "prefix_num": 1145110535,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "ProposalClosedEvent",
+      "ty_idx": 26,
+      "prefix": {
+        "prefix_num": 1145143298,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "id",
+          "ty_idx": 11
+        },
+        {
+          "name": "status",
+          "ty_idx": 25
+        },
+        {
+          "name": "votesYes",
+          "ty_idx": 9
+        },
+        {
+          "name": "votesNo",
+          "ty_idx": 9
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 23
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 18
+    },
+    {
+      "body_ty_idx": 20
+    },
+    {
+      "body_ty_idx": 21
+    },
+    {
+      "body_ty_idx": 22
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 27
+    }
+  ],
+  "emitted_events": [
+    {
+      "body_ty_idx": 26
+    }
+  ],
+  "get_methods": [
+    {
+      "tvm_method_id": 102812,
+      "name": "results",
+      "parameters": [],
+      "return_ty_idx": 28
+    },
+    {
+      "tvm_method_id": 101642,
+      "name": "status",
+      "parameters": [],
+      "return_ty_idx": 25
+    },
+    {
+      "tvm_method_id": 68815,
+      "name": "isInitialized",
+      "parameters": [],
+      "return_ty_idx": 5
+    },
+    {
+      "tvm_method_id": 82786,
+      "name": "ballotAddress",
+      "parameters": [
+        {
+          "name": "voter",
+          "ty_idx": 7
+        }
+      ],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 108975,
+      "name": "schedule",
+      "parameters": [],
+      "return_ty_idx": 29
+    },
+    {
+      "tvm_method_id": 71178,
+      "name": "info",
+      "parameters": [],
+      "return_ty_idx": 30
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotFromDao",
+      "err_code": 106
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.AlreadyInitialized",
+      "err_code": 107
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotInitialized",
+      "err_code": 108
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.VotingNotStarted",
+      "err_code": 109
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.VotingEnded",
+      "err_code": 110
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotAuthor",
+      "err_code": 113
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.AlreadyStarted",
+      "err_code": 114
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotOpen",
+      "err_code": 115
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.VotingNotEnded",
+      "err_code": 116
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotEnoughValue",
+      "err_code": 118
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidMessage",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.4.2"
+}
