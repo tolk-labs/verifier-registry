@@ -1,0 +1,859 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "BondingCurveMasterV2",
+  "author": "bonding-curve-contracts",
+  "version": "2.0.0",
+  "description": "Factory for bonding-curve launchpads on TON",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CreateLaunch"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LaunchOptions"
+    },
+    {
+      "kind": "uintN",
+      "n": 16
+    },
+    {
+      "kind": "uintN",
+      "n": 8
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "FeeBeneficiaries"
+    },
+    {
+      "kind": "mapKV",
+      "key_ty_idx": 7,
+      "value_ty_idx": 14
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 16
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 18
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 13
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ConfirmLaunch"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CancelLaunchFees"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ChangeMasterAdmin"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ClaimMasterAdmin"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ChangeTreasury"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "WithdrawProtocolFees"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "DepositProtocolFees"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ReinitializeCurve"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TopUpTons"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "MasterStorage"
+    },
+    {
+      "kind": "addressOpt"
+    },
+    {
+      "kind": "uintN",
+      "n": 256
+    },
+    {
+      "kind": "uintN",
+      "n": 2
+    },
+    {
+      "kind": "mapKV",
+      "key_ty_idx": 32,
+      "value_ty_idx": 33
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "InitializeCurve"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LaunchCreatedEvent"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ReturnExcessesBack"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TreasuryPayout"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LaunchRolledBackEvent"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "MasterDataReply"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LaunchPreview"
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "CreateLaunch",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 2694885377,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "metadata",
+          "ty_idx": 3
+        },
+        {
+          "name": "salt",
+          "ty_idx": 11
+        },
+        {
+          "name": "options",
+          "ty_idx": 20
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ChangeMasterAdmin",
+      "ty_idx": 23,
+      "prefix": {
+        "prefix_num": 2694881282,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "newAdmin",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ClaimMasterAdmin",
+      "ty_idx": 24,
+      "prefix": {
+        "prefix_num": 2694881283,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ChangeTreasury",
+      "ty_idx": 25,
+      "prefix": {
+        "prefix_num": 2694881284,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "newTreasury",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "WithdrawProtocolFees",
+      "ty_idx": 26,
+      "prefix": {
+        "prefix_num": 2694881285,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "DepositProtocolFees",
+      "ty_idx": 27,
+      "prefix": {
+        "prefix_num": 2694885382,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "creator",
+          "ty_idx": 7
+        },
+        {
+          "name": "salt",
+          "ty_idx": 11
+        },
+        {
+          "name": "options",
+          "ty_idx": 20
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ReinitializeCurve",
+      "ty_idx": 28,
+      "prefix": {
+        "prefix_num": 2694881300,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "creator",
+          "ty_idx": 7
+        },
+        {
+          "name": "salt",
+          "ty_idx": 11
+        },
+        {
+          "name": "metadata",
+          "ty_idx": 3
+        },
+        {
+          "name": "options",
+          "ty_idx": 20
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TreasuryPayout",
+      "ty_idx": 38,
+      "prefix": {
+        "prefix_num": 2694881301,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "InitializeCurve",
+      "ty_idx": 35,
+      "prefix": {
+        "prefix_num": 2694881296,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "jettonMinter",
+          "ty_idx": 7
+        },
+        {
+          "name": "refundTo",
+          "ty_idx": 31
+        },
+        {
+          "name": "protocolTreasury",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "LaunchCreatedEvent",
+      "ty_idx": 36,
+      "fields": [
+        {
+          "name": "creator",
+          "ty_idx": 7
+        },
+        {
+          "name": "salt",
+          "ty_idx": 11
+        },
+        {
+          "name": "curveAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "minterAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "virtualTonReserve",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "LaunchRolledBackEvent",
+      "ty_idx": 39,
+      "fields": [
+        {
+          "name": "refundTo",
+          "ty_idx": 7
+        },
+        {
+          "name": "curveAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "refundSent",
+          "ty_idx": 5
+        },
+        {
+          "name": "refundAmount",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CancelLaunchFees",
+      "ty_idx": 22,
+      "prefix": {
+        "prefix_num": 2694885426,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "creator",
+          "ty_idx": 7
+        },
+        {
+          "name": "salt",
+          "ty_idx": 11
+        },
+        {
+          "name": "options",
+          "ty_idx": 20
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ConfirmLaunch",
+      "ty_idx": 21,
+      "prefix": {
+        "prefix_num": 2694885427,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "creator",
+          "ty_idx": 7
+        },
+        {
+          "name": "salt",
+          "ty_idx": 11
+        },
+        {
+          "name": "options",
+          "ty_idx": 20
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "LaunchOptions",
+      "ty_idx": 13,
+      "fields": [
+        {
+          "name": "supply",
+          "ty_idx": 6
+        },
+        {
+          "name": "creatorFeeBps",
+          "ty_idx": 14
+        },
+        {
+          "name": "devBuyAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "minDevTokens",
+          "ty_idx": 6
+        },
+        {
+          "name": "graduationThreshold",
+          "ty_idx": 6,
+          "default_value": {
+            "kind": "castTo",
+            "inner": {
+              "kind": "int",
+              "v": "2000000000000"
+            },
+            "cast_to_ty_idx": 6
+          }
+        },
+        {
+          "name": "reserveRatio",
+          "ty_idx": 15,
+          "default_value": {
+            "kind": "int",
+            "v": "5"
+          }
+        },
+        {
+          "name": "minBuyBps",
+          "ty_idx": 14,
+          "default_value": {
+            "kind": "int",
+            "v": "0"
+          }
+        },
+        {
+          "name": "maxBuyBps",
+          "ty_idx": 14,
+          "default_value": {
+            "kind": "int",
+            "v": "0"
+          }
+        },
+        {
+          "name": "beneficiaries",
+          "ty_idx": 19,
+          "default_value": {
+            "kind": "null"
+          }
+        },
+        {
+          "name": "buybackBurn",
+          "ty_idx": 5,
+          "default_value": {
+            "kind": "bool",
+            "v": false
+          }
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "MasterStorage",
+      "ty_idx": 30,
+      "fields": [
+        {
+          "name": "admin",
+          "ty_idx": 7
+        },
+        {
+          "name": "nextAdmin",
+          "ty_idx": 31
+        },
+        {
+          "name": "treasury",
+          "ty_idx": 7
+        },
+        {
+          "name": "totalLaunches",
+          "ty_idx": 11
+        },
+        {
+          "name": "feesBalance",
+          "ty_idx": 6
+        },
+        {
+          "name": "launches",
+          "ty_idx": 34,
+          "default_value": {
+            "kind": "castTo",
+            "inner": {
+              "kind": "shapedTuple",
+              "items": []
+            },
+            "cast_to_ty_idx": 34
+          }
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "MasterDataReply",
+      "ty_idx": 40,
+      "fields": [
+        {
+          "name": "admin",
+          "ty_idx": 7
+        },
+        {
+          "name": "nextAdmin",
+          "ty_idx": 31
+        },
+        {
+          "name": "treasury",
+          "ty_idx": 7
+        },
+        {
+          "name": "totalLaunches",
+          "ty_idx": 11
+        },
+        {
+          "name": "feesBalance",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "LaunchPreview",
+      "ty_idx": 41,
+      "fields": [
+        {
+          "name": "minBuyTokens",
+          "ty_idx": 6
+        },
+        {
+          "name": "maxBuyTokens",
+          "ty_idx": 6
+        },
+        {
+          "name": "virtualTonReserve",
+          "ty_idx": 6
+        },
+        {
+          "name": "graduationThreshold",
+          "ty_idx": 6
+        },
+        {
+          "name": "soldTokens",
+          "ty_idx": 6
+        },
+        {
+          "name": "poolTon",
+          "ty_idx": 6
+        },
+        {
+          "name": "poolTokens",
+          "ty_idx": 6
+        },
+        {
+          "name": "remainingTokens",
+          "ty_idx": 6
+        },
+        {
+          "name": "initialPriceNanoPerBillion",
+          "ty_idx": 1
+        },
+        {
+          "name": "graduationPriceNanoPerBillion",
+          "ty_idx": 1
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ReturnExcessesBack",
+      "ty_idx": 37,
+      "prefix": {
+        "prefix_num": 3576854235,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TopUpTons",
+      "ty_idx": 29,
+      "prefix": {
+        "prefix_num": 3547469196,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "FeeBeneficiaries",
+      "ty_idx": 16,
+      "fields": [
+        {
+          "name": "shares",
+          "ty_idx": 17
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 30
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 21
+    },
+    {
+      "body_ty_idx": 22
+    },
+    {
+      "body_ty_idx": 23
+    },
+    {
+      "body_ty_idx": 24
+    },
+    {
+      "body_ty_idx": 25
+    },
+    {
+      "body_ty_idx": 26
+    },
+    {
+      "body_ty_idx": 27
+    },
+    {
+      "body_ty_idx": 28
+    },
+    {
+      "body_ty_idx": 29
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 29
+    },
+    {
+      "body_ty_idx": 35
+    },
+    {
+      "body_ty_idx": 37
+    },
+    {
+      "body_ty_idx": 38
+    }
+  ],
+  "emitted_events": [
+    {
+      "body_ty_idx": 36
+    },
+    {
+      "body_ty_idx": 39
+    }
+  ],
+  "get_methods": [
+    {
+      "tvm_method_id": 84263,
+      "name": "get_master_data",
+      "parameters": [],
+      "return_ty_idx": 40
+    },
+    {
+      "tvm_method_id": 76073,
+      "name": "get_launch_address",
+      "parameters": [
+        {
+          "name": "creator",
+          "ty_idx": 7
+        },
+        {
+          "name": "salt",
+          "ty_idx": 11
+        },
+        {
+          "name": "options",
+          "ty_idx": 20
+        }
+      ],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 115480,
+      "name": "get_storage_reserve",
+      "parameters": [],
+      "return_ty_idx": 6
+    },
+    {
+      "tvm_method_id": 118214,
+      "name": "get_launch_preview",
+      "parameters": [
+        {
+          "name": "options",
+          "ty_idx": 20
+        }
+      ],
+      "return_ty_idx": 41
+    },
+    {
+      "tvm_method_id": 82320,
+      "name": "get_version",
+      "parameters": [],
+      "return_ty_idx": 1
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "Errors.BalanceError",
+      "err_code": 47
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotEnoughGas",
+      "err_code": 48
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 49
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidMessage",
+      "err_code": 49
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidOp",
+      "err_code": 72
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotOwner",
+      "err_code": 73
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotValidWallet",
+      "err_code": 74
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.WrongWorkchain",
+      "err_code": 333
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.4.2"
+}
