@@ -1,0 +1,459 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "TradeFactory",
+  "author": "Tradegram",
+  "version": "0.1.0",
+  "description": "Factory for two-party Tradegram escrow rooms",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CreateTrade"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SweepFactoryDust"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "AddCollection"
+    },
+    {
+      "kind": "uintN",
+      "n": 8
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "AddCollections"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CollectionEntry"
+    },
+    {
+      "kind": "mapKV",
+      "key_ty_idx": 7,
+      "value_ty_idx": 17
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RemoveCollection"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TransferOwnership"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TradeFactoryStorage"
+    },
+    {
+      "kind": "uintN",
+      "n": 256
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        7,
+        22
+      ]
+    },
+    {
+      "kind": "uintN",
+      "n": 16
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "EscrowConfig"
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "CollectionEntry",
+      "ty_idx": 17,
+      "fields": [
+        {
+          "name": "schema",
+          "ty_idx": 15
+        },
+        {
+          "name": "itemCode",
+          "ty_idx": 3
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TradeFactoryStorage",
+      "ty_idx": 21,
+      "fields": [
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "nextTradeId",
+          "ty_idx": 11
+        },
+        {
+          "name": "escrowCode",
+          "ty_idx": 3
+        },
+        {
+          "name": "allowedCollections",
+          "ty_idx": 18
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "EscrowConfig",
+      "ty_idx": 25,
+      "fields": [
+        {
+          "name": "minTradeActionValue",
+          "ty_idx": 6
+        },
+        {
+          "name": "nftTransferValue",
+          "ty_idx": 6
+        },
+        {
+          "name": "minEscrowDeployValue",
+          "ty_idx": 6
+        },
+        {
+          "name": "minCreateTradeValue",
+          "ty_idx": 6
+        },
+        {
+          "name": "maxNftsPerSide",
+          "ty_idx": 15
+        },
+        {
+          "name": "tradeFeeBps",
+          "ty_idx": 24
+        },
+        {
+          "name": "stuckSettlementTimeout",
+          "ty_idx": 9
+        },
+        {
+          "name": "openTradeTimeout",
+          "ty_idx": 9
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CreateTrade",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 1414677330,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "userA",
+          "ty_idx": 7
+        },
+        {
+          "name": "userB",
+          "ty_idx": 7
+        },
+        {
+          "name": "deployValue",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "SweepFactoryDust",
+      "ty_idx": 13,
+      "prefix": {
+        "prefix_num": 1179866960,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "AddCollection",
+      "ty_idx": 14,
+      "prefix": {
+        "prefix_num": 1094992963,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "collection",
+          "ty_idx": 7
+        },
+        {
+          "name": "itemCode",
+          "ty_idx": 3
+        },
+        {
+          "name": "schema",
+          "ty_idx": 15
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "AddCollections",
+      "ty_idx": 16,
+      "prefix": {
+        "prefix_num": 1094992962,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "entries",
+          "ty_idx": 18
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "RemoveCollection",
+      "ty_idx": 19,
+      "prefix": {
+        "prefix_num": 1380800067,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "collection",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TransferOwnership",
+      "ty_idx": 20,
+      "prefix": {
+        "prefix_num": 1414485838,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "newOwner",
+          "ty_idx": 7
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 21
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 13
+    },
+    {
+      "body_ty_idx": 14
+    },
+    {
+      "body_ty_idx": 16
+    },
+    {
+      "body_ty_idx": 19
+    },
+    {
+      "body_ty_idx": 20
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 128295,
+      "name": "getNextTradeId",
+      "parameters": [],
+      "return_ty_idx": 11
+    },
+    {
+      "tvm_method_id": 106423,
+      "name": "isCollectionAllowed",
+      "parameters": [
+        {
+          "name": "collection",
+          "ty_idx": 7
+        }
+      ],
+      "return_ty_idx": 5
+    },
+    {
+      "tvm_method_id": 113530,
+      "name": "getAllowedCollections",
+      "parameters": [],
+      "return_ty_idx": 18
+    },
+    {
+      "tvm_method_id": 87067,
+      "name": "getAllowedCollectionCount",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 78164,
+      "name": "getAllowedCollectionAt",
+      "parameters": [
+        {
+          "name": "index",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 70001,
+      "name": "getAllowedCollectionInfo",
+      "parameters": [
+        {
+          "name": "index",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 23
+    },
+    {
+      "tvm_method_id": 128267,
+      "name": "getAllowedCollectionItemCodeHash",
+      "parameters": [
+        {
+          "name": "collection",
+          "ty_idx": 7
+        }
+      ],
+      "return_ty_idx": 22
+    },
+    {
+      "tvm_method_id": 100194,
+      "name": "getAllowedCollectionSchema",
+      "parameters": [
+        {
+          "name": "collection",
+          "ty_idx": 7
+        }
+      ],
+      "return_ty_idx": 15
+    },
+    {
+      "tvm_method_id": 102025,
+      "name": "getOwner",
+      "parameters": [],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 74724,
+      "name": "getVersion",
+      "parameters": [],
+      "return_ty_idx": 24
+    },
+    {
+      "tvm_method_id": 93770,
+      "name": "getConfig",
+      "parameters": [],
+      "return_ty_idx": 25
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "TradeErrors.SameUsers",
+      "err_code": 100
+    },
+    {
+      "kind": "enum_member",
+      "name": "TradeErrors.NotParticipant",
+      "err_code": 101
+    },
+    {
+      "kind": "enum_member",
+      "name": "TradeErrors.InsufficientMessageValue",
+      "err_code": 112
+    },
+    {
+      "kind": "enum_member",
+      "name": "TradeErrors.InvalidAmount",
+      "err_code": 113
+    },
+    {
+      "kind": "enum_member",
+      "name": "TradeErrors.NotOwner",
+      "err_code": 114
+    },
+    {
+      "kind": "enum_member",
+      "name": "TradeErrors.NothingToSweep",
+      "err_code": 116
+    },
+    {
+      "kind": "enum_member",
+      "name": "TradeErrors.UnknownNftSchema",
+      "err_code": 122
+    },
+    {
+      "kind": "enum_member",
+      "name": "TradeErrors.EmptyBatch",
+      "err_code": 123
+    },
+    {
+      "kind": "enum_member",
+      "name": "TradeErrors.InvalidMessage",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.4.0"
+}
