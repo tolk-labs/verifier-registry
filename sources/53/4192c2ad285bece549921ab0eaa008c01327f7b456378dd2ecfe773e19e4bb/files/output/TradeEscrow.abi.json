@@ -1,0 +1,643 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "TradeEscrow",
+  "author": "Tradegram",
+  "version": "0.1.0",
+  "description": "Two-party TON and NFT escrow trade room",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "DepositTon"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "AcceptTrade"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CancelTrade"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SweepDust"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RetryPending"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ForceResolveStuck"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ExpireTrade"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OwnershipAssigned"
+    },
+    {
+      "kind": "remaining"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TradeEscrowStorage"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TradeParticipants"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 22
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TradeAssets"
+    },
+    {
+      "kind": "uintN",
+      "n": 8
+    },
+    {
+      "kind": "mapKV",
+      "key_ty_idx": 7,
+      "value_ty_idx": 25
+    },
+    {
+      "kind": "uintN",
+      "n": 16
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PendingReturn"
+    },
+    {
+      "kind": "mapKV",
+      "key_ty_idx": 7,
+      "value_ty_idx": 28
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 24
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CollectionEntry"
+    },
+    {
+      "kind": "mapKV",
+      "key_ty_idx": 7,
+      "value_ty_idx": 31
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "NftTransfer"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TradeState"
+    },
+    {
+      "kind": "mapKV",
+      "key_ty_idx": 7,
+      "value_ty_idx": 5
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "PendingReturn",
+      "ty_idx": 28,
+      "fields": [
+        {
+          "name": "target",
+          "ty_idx": 7
+        },
+        {
+          "name": "status",
+          "ty_idx": 25
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CollectionEntry",
+      "ty_idx": 31,
+      "fields": [
+        {
+          "name": "schema",
+          "ty_idx": 25
+        },
+        {
+          "name": "itemCode",
+          "ty_idx": 3
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TradeEscrowStorage",
+      "ty_idx": 21,
+      "fields": [
+        {
+          "name": "tradeId",
+          "ty_idx": 11
+        },
+        {
+          "name": "factory",
+          "ty_idx": 7
+        },
+        {
+          "name": "feeRecipient",
+          "ty_idx": 7
+        },
+        {
+          "name": "participants",
+          "ty_idx": 23
+        },
+        {
+          "name": "acceptedA",
+          "ty_idx": 5
+        },
+        {
+          "name": "acceptedB",
+          "ty_idx": 5
+        },
+        {
+          "name": "depositedTonA",
+          "ty_idx": 6
+        },
+        {
+          "name": "depositedTonB",
+          "ty_idx": 6
+        },
+        {
+          "name": "assets",
+          "ty_idx": 30
+        },
+        {
+          "name": "status",
+          "ty_idx": 25
+        },
+        {
+          "name": "statusChangedAt",
+          "ty_idx": 9
+        },
+        {
+          "name": "lastActivityAt",
+          "ty_idx": 9
+        },
+        {
+          "name": "allowedCollections",
+          "ty_idx": 32
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TradeParticipants",
+      "ty_idx": 22,
+      "fields": [
+        {
+          "name": "userA",
+          "ty_idx": 7
+        },
+        {
+          "name": "userB",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TradeState",
+      "ty_idx": 34,
+      "fields": [
+        {
+          "name": "tradeId",
+          "ty_idx": 11
+        },
+        {
+          "name": "factory",
+          "ty_idx": 7
+        },
+        {
+          "name": "feeRecipient",
+          "ty_idx": 7
+        },
+        {
+          "name": "userA",
+          "ty_idx": 7
+        },
+        {
+          "name": "userB",
+          "ty_idx": 7
+        },
+        {
+          "name": "acceptedA",
+          "ty_idx": 5
+        },
+        {
+          "name": "acceptedB",
+          "ty_idx": 5
+        },
+        {
+          "name": "depositedTonA",
+          "ty_idx": 6
+        },
+        {
+          "name": "depositedTonB",
+          "ty_idx": 6
+        },
+        {
+          "name": "nftCountA",
+          "ty_idx": 27
+        },
+        {
+          "name": "nftCountB",
+          "ty_idx": 27
+        },
+        {
+          "name": "pendingNftCount",
+          "ty_idx": 27
+        },
+        {
+          "name": "status",
+          "ty_idx": 25
+        },
+        {
+          "name": "statusChangedAt",
+          "ty_idx": 9
+        },
+        {
+          "name": "lastActivityAt",
+          "ty_idx": 9
+        },
+        {
+          "name": "completed",
+          "ty_idx": 5
+        },
+        {
+          "name": "cancelled",
+          "ty_idx": 5
+        },
+        {
+          "name": "stuck",
+          "ty_idx": 5
+        },
+        {
+          "name": "pendingReturnCount",
+          "ty_idx": 27
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TradeAssets",
+      "ty_idx": 24,
+      "fields": [
+        {
+          "name": "nftA",
+          "ty_idx": 26
+        },
+        {
+          "name": "nftB",
+          "ty_idx": 26
+        },
+        {
+          "name": "nftCountA",
+          "ty_idx": 27
+        },
+        {
+          "name": "nftCountB",
+          "ty_idx": 27
+        },
+        {
+          "name": "pendingReturns",
+          "ty_idx": 29
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "DepositTon",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 1414483524,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "AcceptTrade",
+      "ty_idx": 13,
+      "prefix": {
+        "prefix_num": 1094927184,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "CancelTrade",
+      "ty_idx": 14,
+      "prefix": {
+        "prefix_num": 1128353347,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "SweepDust",
+      "ty_idx": 15,
+      "prefix": {
+        "prefix_num": 1398228304,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "RetryPending",
+      "ty_idx": 16,
+      "prefix": {
+        "prefix_num": 1380275282,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "ForceResolveStuck",
+      "ty_idx": 17,
+      "prefix": {
+        "prefix_num": 1179800406,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "ExpireTrade",
+      "ty_idx": 18,
+      "prefix": {
+        "prefix_num": 1163415634,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "OwnershipAssigned",
+      "ty_idx": 19,
+      "prefix": {
+        "prefix_num": 85167505,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "prevOwner",
+          "ty_idx": 7
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 20
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "NftTransfer",
+      "ty_idx": 33,
+      "prefix": {
+        "prefix_num": 1607220500,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "newOwner",
+          "ty_idx": 7
+        },
+        {
+          "name": "responseDestination",
+          "ty_idx": 7
+        },
+        {
+          "name": "customPayload",
+          "ty_idx": 5
+        },
+        {
+          "name": "forwardAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 5
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 21
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 13
+    },
+    {
+      "body_ty_idx": 14
+    },
+    {
+      "body_ty_idx": 15
+    },
+    {
+      "body_ty_idx": 16
+    },
+    {
+      "body_ty_idx": 17
+    },
+    {
+      "body_ty_idx": 18
+    },
+    {
+      "body_ty_idx": 19
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 33
+    }
+  ],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 124033,
+      "name": "getState",
+      "parameters": [],
+      "return_ty_idx": 34
+    },
+    {
+      "tvm_method_id": 127848,
+      "name": "getPendingReturns",
+      "parameters": [],
+      "return_ty_idx": 29
+    },
+    {
+      "tvm_method_id": 90764,
+      "name": "getNftsA",
+      "parameters": [],
+      "return_ty_idx": 35
+    },
+    {
+      "tvm_method_id": 86767,
+      "name": "getNftsB",
+      "parameters": [],
+      "return_ty_idx": 35
+    },
+    {
+      "tvm_method_id": 98286,
+      "name": "getNftStatusesA",
+      "parameters": [],
+      "return_ty_idx": 26
+    },
+    {
+      "tvm_method_id": 85901,
+      "name": "getNftStatusesB",
+      "parameters": [],
+      "return_ty_idx": 26
+    },
+    {
+      "tvm_method_id": 74724,
+      "name": "getVersion",
+      "parameters": [],
+      "return_ty_idx": 27
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "TradeErrors.NotParticipant",
+      "err_code": 101
+    },
+    {
+      "kind": "enum_member",
+      "name": "TradeErrors.SideAlreadyAccepted",
+      "err_code": 103
+    },
+    {
+      "kind": "enum_member",
+      "name": "TradeErrors.EmptyTonDeposit",
+      "err_code": 104
+    },
+    {
+      "kind": "enum_member",
+      "name": "TradeErrors.AlreadyCompleted",
+      "err_code": 109
+    },
+    {
+      "kind": "enum_member",
+      "name": "TradeErrors.AlreadyCancelled",
+      "err_code": 110
+    },
+    {
+      "kind": "enum_member",
+      "name": "TradeErrors.InsufficientMessageValue",
+      "err_code": 112
+    },
+    {
+      "kind": "enum_member",
+      "name": "TradeErrors.TradeNotClosed",
+      "err_code": 115
+    },
+    {
+      "kind": "enum_member",
+      "name": "TradeErrors.NothingToSweep",
+      "err_code": 116
+    },
+    {
+      "kind": "enum_member",
+      "name": "TradeErrors.TradeNotStuck",
+      "err_code": 119
+    },
+    {
+      "kind": "enum_member",
+      "name": "TradeErrors.StuckTimeoutNotReached",
+      "err_code": 120
+    },
+    {
+      "kind": "enum_member",
+      "name": "TradeErrors.TradeNotExpired",
+      "err_code": 121
+    },
+    {
+      "kind": "enum_member",
+      "name": "TradeErrors.EscrowHasObligations",
+      "err_code": 124
+    },
+    {
+      "kind": "enum_member",
+      "name": "TradeErrors.InvalidMessage",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.4.0"
+}
