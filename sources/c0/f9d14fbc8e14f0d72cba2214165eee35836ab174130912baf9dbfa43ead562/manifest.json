@@ -1,0 +1,27 @@
+{
+  "code_hash": "c0f9d14fbc8e14f0d72cba2214165eee35836ab174130912baf9dbfa43ead562",
+  "source_bundle_hash": "9727a07318aee44cf4b777f12a44b5fd83a90d1e6d0af94dcce21ed4dbb043a6",
+  "payment_tx_hash": "db7df8bd53f6b2fd6372ff309aee10610711f01031d46e7852d6d72652c02e83",
+  "verified_at": 1791562078,
+  "compiler": {
+    "language": "func",
+    "version": "0.4.4-newops.1",
+    "entrypoint": "dedust/classic/ClassicPoolInstalledV8/main.fc",
+    "params": {
+      "compiler_version": "0.4.4-newops.1"
+    }
+  },
+  "source_map": null,
+  "files": [
+    {
+      "path": "dedust/classic/ClassicPoolInstalledV8/main.fc",
+      "content_hash": "cf4ff3f09c7930c152e615500de63ccb98895a541de3024f3eec12fc6e889582",
+      "include_in_command": true
+    },
+    {
+      "path": "func-stdlib.fc",
+      "content_hash": "2522b7757d2429a1bc647985817e853d699b86f8662aa957d6cbb1724b3611eb",
+      "include_in_command": false
+    }
+  ]
+}
