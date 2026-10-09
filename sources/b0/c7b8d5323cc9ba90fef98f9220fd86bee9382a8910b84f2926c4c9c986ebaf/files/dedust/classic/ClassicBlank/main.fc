@@ -1,0 +1,41 @@
+;; decompiled by @fiscaldev
+#pragma version =0.4.4;
+#include "../../../func-stdlib.fc";
+
+builder store_zeroes(builder b, int width) asm "STZEROES";
+
+;; Fixed-width field codecs retain the legacy loader's physical output order.
+(slice, int) load_query_id(slice s) asm "64 LDU SWAP";
+(slice, int) load_install_version(slice s) asm "16 LDU SWAP";
+
+() send_empty_message(int mode, int amount, slice recipient) impure inline {
+    cell message = begin_cell().store_uint(16, 6).store_slice(recipient)
+        .store_coins(amount).store_zeroes(107).end_cell();
+    send_raw_message(message, mode);
+}
+
+;; After replacing c3, this call executes the constructor in the installed code.
+() initialize_installed_contract(slice owner, int template_kind, slice template_data,
+    cell parameters, int version, cell code, slice body_tail) impure method_id(58662) {
+}
+
+() recv_internal(cell message, slice body) impure {
+    slice header = message.begin_parse().skip_bits(4);
+    slice sender = header~load_msg_addr();
+    try {
+        slice data = get_data().begin_parse();
+        slice owner = data~load_msg_addr();
+        int template_kind = data~load_uint(8);
+        throw_unless(259, equal_slice_bits(sender, owner));
+        throw_unless(65535, body~load_uint(32) == 2604311546);
+        body~load_query_id();
+        cell parameters = body~load_ref();
+        int version = body~load_install_version();
+        cell code = body~load_ref();
+        set_code(code);
+        set_c3(code.begin_parse().bless());
+        initialize_installed_contract(owner, template_kind, data, parameters, version, code, body);
+    } catch (_, _) {
+        send_empty_message(160, 0, sender);
+    }
+}
