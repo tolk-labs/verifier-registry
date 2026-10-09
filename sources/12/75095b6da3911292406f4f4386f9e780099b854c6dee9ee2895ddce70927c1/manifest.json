@@ -1,0 +1,27 @@
+{
+  "code_hash": "1275095b6da3911292406f4f4386f9e780099b854c6dee9ee2895ddce70927c1",
+  "source_bundle_hash": "3ea7e3d1fb958b562f160bf7f2adf08365efbc8d8a8e120be77618b9a817cf45",
+  "payment_tx_hash": "3d3a9d3bc34462ca8f30dad04b88e677eedf360fbc3aa1ea6e2fd54d8e02bdf1",
+  "verified_at": 1791562022,
+  "compiler": {
+    "language": "func",
+    "version": "0.4.4-newops.1",
+    "entrypoint": "dedust/classic/ClassicVolatilePool/main.fc",
+    "params": {
+      "compiler_version": "0.4.4-newops.1"
+    }
+  },
+  "source_map": null,
+  "files": [
+    {
+      "path": "dedust/classic/ClassicVolatilePool/main.fc",
+      "content_hash": "a8933f1cdaaff877874d9596e8d0aafe99e0c8255bc81cbe1dc4bb428d3cfba1",
+      "include_in_command": true
+    },
+    {
+      "path": "func-stdlib.fc",
+      "content_hash": "2522b7757d2429a1bc647985817e853d699b86f8662aa957d6cbb1724b3611eb",
+      "include_in_command": false
+    }
+  ]
+}
