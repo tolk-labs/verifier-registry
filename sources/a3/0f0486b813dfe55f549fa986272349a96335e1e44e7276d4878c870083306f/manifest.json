@@ -1,0 +1,27 @@
+{
+  "code_hash": "a30f0486b813dfe55f549fa986272349a96335e1e44e7276d4878c870083306f",
+  "source_bundle_hash": "ab5de8ae3b65202efef692378e834e420c4237878e18816886e87c2c0a7204eb",
+  "payment_tx_hash": "c657c4044067d116fa67a672838cc985eddb31156396c2105ea43b5f16130a26",
+  "verified_at": 1791562013,
+  "compiler": {
+    "language": "func",
+    "version": "0.4.4-newops.1",
+    "entrypoint": "dedust/classic/ClassicJettonVault/main.fc",
+    "params": {
+      "compiler_version": "0.4.4-newops.1"
+    }
+  },
+  "source_map": null,
+  "files": [
+    {
+      "path": "dedust/classic/ClassicJettonVault/main.fc",
+      "content_hash": "896a40bde2faab33c48546ea23eeffecb69d5830b7775973df8436a33b69ac0d",
+      "include_in_command": true
+    },
+    {
+      "path": "func-stdlib.fc",
+      "content_hash": "2522b7757d2429a1bc647985817e853d699b86f8662aa957d6cbb1724b3611eb",
+      "include_in_command": false
+    }
+  ]
+}
