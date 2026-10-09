@@ -1,0 +1,27 @@
+{
+  "code_hash": "80edc8d7bbbb6526c3b06ccb7c2d02a82c20d8ccdf431bf4088b1f1470cc94cc",
+  "source_bundle_hash": "f0ce3b90975eee6e3b84e8e4cbaed4ff3d79c22bc6c3a6cc1b0c9627713733dc",
+  "payment_tx_hash": "f0ff134f6b5b7e9b5b7b46fdb2588994a2f6576f678f184159e3360ff97b96db",
+  "verified_at": 1791562000,
+  "compiler": {
+    "language": "func",
+    "version": "0.4.4-newops.1",
+    "entrypoint": "dedust/classic/ClassicLiquidityDeposit/main.fc",
+    "params": {
+      "compiler_version": "0.4.4-newops.1"
+    }
+  },
+  "source_map": null,
+  "files": [
+    {
+      "path": "dedust/classic/ClassicLiquidityDeposit/main.fc",
+      "content_hash": "0aaa2736662a531c284b8c338af37c6ef8c0307b17cb82e3bc7be6df080cc58d",
+      "include_in_command": true
+    },
+    {
+      "path": "func-stdlib.fc",
+      "content_hash": "2522b7757d2429a1bc647985817e853d699b86f8662aa957d6cbb1724b3611eb",
+      "include_in_command": false
+    }
+  ]
+}

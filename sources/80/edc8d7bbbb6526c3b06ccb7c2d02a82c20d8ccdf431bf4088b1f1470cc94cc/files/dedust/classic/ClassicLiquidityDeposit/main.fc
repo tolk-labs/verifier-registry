@@ -1,0 +1,446 @@
+;; decompiled by @fiscaldev
+const int SEND_MODE_REGULAR = 0;
+const int SEND_MODE_IGNORE_ERRORS = 2;
+const int SEND_MODE_DESTROY_IF_ZERO = 32;
+const int SEND_MODE_CARRY_ALL_BALANCE = 128;
+const int SEND_MODE_CARRY_REMAINING_MESSAGE_VALUE = 64;
+const int SEND_MODE_PAY_FEES_SEPARATELY = 1;
+
+#pragma version =0.4.4;
+#include "../../../func-stdlib.fc";
+
+;; Reconstructed names describe observed behavior; original source names are unknown.
+;; Globals retain the archived c7 layout. All numeric method IDs are explicit.
+;; tuple slots: context=(flags,sender,value,original_fee); base=(factory,blank_code).
+;; amounts=(asset0,asset1); assets=(pool_type,asset0_slice,asset1_slice).
+global tuple message_context;
+global tuple template_base;
+global cell deposit_descriptor;
+global slice depositor;
+global tuple deposited_amounts;
+global int deposit_pending;
+global int minimum_liquidity;
+global cell success_payload;
+global cell failure_payload;
+global tuple pool_assets;
+global tuple target_amounts;
+
+;; Typed stack operations retain the old compiler ABI and validation order.
+;; Lowercase nop emits no opcode. UNTUPLE checks remain observable.
+forall TupleValue -> tuple opaque_tuple(TupleValue value) asm "nop";
+
+forall TupleItem0, TupleItem1 -> (TupleItem0, TupleItem1) unpack_pair(tuple value) impure asm "2 UNTUPLE";
+forall TupleItem0, TupleItem1, TupleItem2 -> (TupleItem0, TupleItem1, TupleItem2) unpack_triple(tuple value) impure asm "3 UNTUPLE";
+
+([int, cell]) get_balance_tvm () impure asm "7 GETPARAM";
+builder store_zeroes (builder a, int b) asm "STZEROES";
+(slice,slice) read_native_asset(slice s) asm "4 LDSLICE SWAP";
+;; Opaque throw retains the archived unreachable null result slots.
+() invalid_asset() impure asm "261 THROW";
+int evaluated(int value) impure asm "nop";
+(slice,int) read_template_kind(slice s) asm "8 LDU SWAP";
+tuple evaluated_tuple(tuple value) impure asm "nop";
+(slice,int) read_query_id(slice s) asm "64 LDU SWAP";
+forall Param -> (int,builder,Param) template_builder(Param descriptor,int kind) asm "NEWC ROT";
+builder store_opcode(builder b,int op) asm "SWAP 32 STU";
+builder store_query_id(builder b,int query) asm "SWAP 64 STU";
+tuple descriptor_after_tail(slice tail,tuple value) asm "NIP";
+int addresses_equal(slice actual,slice expected) asm(expected actual) "SWAP SDEQ";
+(slice,slice) read_asset(slice cursor) impure inline;
+cell state_from_data(cell code,cell data) inline;
+slice state_address(cell state) inline;
+(cell,slice) template_address(cell data) impure inline;
+tuple verify_pool_descriptor (cell arg0) impure inline_ref;
+(int,builder) pool_parameters(tuple descriptor,int template_kind) impure inline;
+cell template_state(int template_kind,builder parameters) impure inline;
+
+slice pool_address(tuple descriptor) impure inline;
+
+int refund_ton(int fee) inline;
+slice vault_address(slice asset) impure inline;
+cell refund_body(int query,cell descriptor,int amount,cell payload) inline;
+builder deposit_body(int query,cell descriptor,slice owner,int minimum,slice asset0,int amount0,slice asset1,int amount1,cell success,cell failure) inline;
+() send_ref(int mode,cell payload,int amount,slice destination) impure inline;
+() send_inline(int mode,builder payload,int amount,slice destination) impure inline;
+() send_empty(int mode,int amount,slice destination) impure inline;
+
+(int,slice,slice) get_assets () impure;
+int is_deposit_pending () impure;
+slice get_depositor () impure;
+() initialize(slice factory,int template_kind,slice template_data,cell blank_code,int version,cell code,slice body) impure;
+() load_deposit () impure;
+() save_deposit () impure;
+() refund_deposit (int arg1, cell arg0) impure;
+() handle_bounce (slice arg0) impure;
+(int,int) get_deposited_amounts () impure;
+() handle_asset_deposit (slice arg0) impure;
+() handle_deposit_success (slice arg0) impure;
+() handle_deposit_failure (slice body) impure;
+() handle_cancel (slice body) impure;
+(int,int) get_target_amounts () impure;
+slice get_pool_address () impure;
+slice get_factory_address () impure;
+int get_minimum_liquidity () impure;
+
+;; Native asset: tag 0 (4 bits). Jetton: tag 1 plus wc8/account256 (268 bits).
+;; The jetton branch returns from this local continuation, not its caller.
+(slice, slice) read_asset (slice cursor) impure inline {
+    int tag = cursor.preload_uint(4);
+    slice asset = null();
+    if (tag == 0) {
+        (cursor,asset) = read_native_asset(cursor);
+    } else {
+        if (tag == 1) {
+            slice jetton = cursor~load_bits(268);
+            return (cursor,jetton);
+        }
+        invalid_asset();
+        cursor = null();
+        asset = null();
+    }
+    return (cursor,asset);
+}
+
+cell state_from_data(cell code,cell data) inline {
+    return begin_cell().store_uint(6,5).store_ref(code).store_ref(data).end_cell();
+}
+(cell,slice) template_address(cell data) impure inline {
+    return (data,state_address(state_from_data(at(template_base,1),data)));
+}
+;; Authentication binds sender to the supplied config and checks factory/kind.
+;; It does not compare the returned assets to the deposit's stored asset pair.
+tuple verify_pool_descriptor (cell config) impure inline_ref {
+    (cell original,slice expected) = template_address(config);
+    slice cursor = original.begin_parse();
+    slice factory = cursor~load_msg_addr();
+    int template_kind = cursor~read_template_kind();
+    int pool_type = cursor~load_uint(1);
+    (cursor,slice asset0) = read_asset(cursor);
+    (cursor,slice asset1) = read_asset(cursor);
+    tuple descriptor = evaluated_tuple(opaque_tuple(triple(pool_type,asset0,asset1)));
+    cursor.end_parse();
+    throw_unless(265,(equal_slice_bits(at(message_context,1),expected)
+        & equal_slice_bits(at(template_base,0),factory)) & (template_kind == 2));
+    return descriptor;
+}
+
+(int,builder) pool_parameters(tuple descriptor,int template_kind) impure inline {
+    (int id,builder parameters,tuple assets) = template_builder(descriptor,template_kind);
+    (int kind,slice asset0,slice asset1) = unpack_triple(assets);
+    return (id,parameters.store_uint(kind & 1,1).store_slice(asset0).store_slice(asset1));
+}
+cell template_state(int template_kind,builder parameters) impure inline {
+    (slice factory,cell code) = unpack_pair(template_base);
+    cell data = begin_cell().store_slice(factory).store_uint(template_kind,8)
+        .store_builder(parameters).end_cell();
+    return begin_cell().store_uint(6,5).store_ref(code).store_ref(data).end_cell();
+}
+slice state_address(cell state) inline {
+    int workchain = evaluated(0);
+    int hash = cell_hash(state);
+    return begin_cell().store_uint(4,3).store_int(workchain,8).store_uint(hash,256).end_cell().begin_parse();
+}
+slice pool_address(tuple descriptor) impure inline {
+    (int template_kind,builder parameters) = pool_parameters(descriptor,2);
+    return state_address(template_state(template_kind,parameters));
+}
+
+int refund_ton(int fee) inline { return 11000000 + muldiv(fee,3,2) + 50000000; }
+slice vault_address(slice asset) impure inline {
+    (int id,builder parameters,slice value) = template_builder(asset,1);
+    return state_address(template_state(id,parameters.store_slice(value)));
+}
+cell refund_body(int query,cell descriptor,int amount,cell payload) inline {
+    return begin_cell().store_opcode(1795913855).store_query_id(query).store_ref(descriptor)
+        .store_grams(amount).store_maybe_ref(payload).end_cell();
+}
+builder deposit_body(int query,cell descriptor,slice owner,int minimum,slice asset0,int amount0,slice asset1,int amount1,cell success,cell failure) inline {
+    cell deposited = begin_cell().store_slice(asset0).store_grams(amount0)
+        .store_slice(asset1).store_grams(amount1).end_cell();
+    return begin_cell().store_opcode(3043726744).store_query_id(query).store_ref(descriptor)
+        .store_slice(owner).store_grams(minimum).store_ref(deposited).store_maybe_ref(success).store_maybe_ref(failure);
+}
+() send_ref(int mode,cell payload,int amount,slice destination) impure inline {
+    send_raw_message(begin_cell().store_uint(24,6).store_slice(destination).store_grams(amount)
+        .store_zeroes(106).store_maybe_ref(payload).end_cell(),mode);
+}
+() send_inline(int mode,builder payload,int amount,slice destination) impure inline {
+    send_raw_message(begin_cell().store_uint(24,6).store_slice(destination).store_grams(amount)
+        .store_zeroes(107).store_builder(payload).end_cell(),mode);
+}
+() send_empty(int mode,int amount,slice destination) impure inline {
+    send_raw_message(begin_cell().store_uint(16,6).store_slice(destination).store_grams(amount)
+        .store_zeroes(107).end_cell(),mode);
+}
+
+(int,slice,slice) get_assets () impure method_id(106125) {
+    load_deposit();
+    (int kind,slice asset0,slice asset1) = unpack_triple(pool_assets);
+    return (kind,asset0,asset1);
+}
+
+int is_deposit_pending () impure method_id(108752) {
+    load_deposit();
+    return deposit_pending;
+}
+
+slice get_depositor () impure method_id(95132) {
+    load_deposit();
+    return depositor;
+}
+
+;; Blank supplies its original data via c4. Trailing constructor fields are tolerated.
+() initialize(slice factory,int template_kind,slice template_data,cell blank_code,int version,cell code,slice body) impure method_id(58662) {
+    deposit_descriptor = get_data();
+    template_base = opaque_tuple(pair(factory,blank_code));
+    deposit_pending = 0;
+    deposited_amounts = opaque_tuple(pair(0,0));
+    cell parameters = template_data~load_ref();
+    slice cursor = parameters.begin_parse();
+    depositor = cursor~load_msg_addr();
+    int pool_type = cursor~load_uint(1);
+    (cursor,slice asset0) = read_asset(cursor);
+    (slice suffix,slice asset1) = read_asset(cursor);
+    pool_assets = descriptor_after_tail(suffix,opaque_tuple(triple(pool_type,asset0,asset1)));
+    minimum_liquidity = body~load_grams();
+    int target0 = body~load_grams();
+    int target1 = body~load_grams();
+    target_amounts = opaque_tuple(pair(target0,target1));
+    success_payload = body~load_dict();
+    failure_payload = body~load_dict();
+    save_deposit();
+}
+
+() recv_internal (cell full_message, slice body) impure method_id(0) {
+    slice header = full_message.begin_parse();
+    int flags = header~load_uint(4);
+    slice sender = header~load_msg_addr();
+    header~load_msg_addr();
+    int message_value = header~load_grams();
+    slice fees = header.skip_bits(1);
+    fees~load_grams();
+    int encoded_forward_fee = fees~load_grams();
+    int original_fee = evaluated(muldiv(encoded_forward_fee,3,2));
+    message_context = opaque_tuple(tpush(tpush(tpush(tpush(empty_tuple(), flags), sender), message_value), original_fee));
+    if (at(message_context, 0) & 1) {
+        handle_bounce(body);
+        return ();
+    }
+    int opcode = body.preload_uint(32);
+    if (opcode == 2604311546) {
+        return ();
+    }
+    if (opcode == 1411649509) {
+        handle_asset_deposit(body);
+        return ();
+    }
+    if (opcode == 2867302998) {
+        handle_deposit_success(body);
+        return ();
+    }
+    if (opcode == 3785583828) {
+        handle_deposit_failure(body);
+        return ();
+    }
+    if (opcode == 376237550) {
+        handle_cancel(body);
+        return ();
+    }
+    throw(65535);
+}
+
+() load_deposit () impure method_id(100) {
+    slice data = get_data()
+        .begin_parse();
+    cell stored_descriptor = data~load_ref();
+    deposit_descriptor = stored_descriptor;
+    slice factory = data~load_msg_addr();
+    cell blank_code = data~load_ref();
+    template_base = opaque_tuple(pair(factory, blank_code));
+    slice owner = data~load_msg_addr();
+    depositor = owner;
+    int amount0 = data~load_grams();
+    int amount1 = data~load_grams();
+    deposited_amounts = opaque_tuple(pair(amount0, amount1));
+    int pending = data~load_int(1);
+    deposit_pending = pending;
+    int minimum = data~load_grams();
+    minimum_liquidity = minimum;
+    cell config = data~load_ref();
+    slice details = config.begin_parse();
+    cell on_success = details~load_dict();
+    success_payload = on_success;
+    cell on_failure = details~load_dict();
+    failure_payload = on_failure;
+    int pool_type = details~load_uint(1);
+    (slice remaining, slice asset0) = read_asset(details);
+    (slice tail, slice asset1) = read_asset(remaining);
+    pool_assets = opaque_tuple(triple(pool_type, asset0, asset1));
+    int target0 = tail~load_grams();
+    int target1 = tail~load_grams();
+    target_amounts = opaque_tuple(pair(target0, target1));
+    tail.end_parse();
+    data.end_parse();
+    return ();
+}
+
+() save_deposit () impure method_id(101) {
+    (int pool_type, slice asset0, slice asset1) = unpack_triple(pool_assets);
+    set_data(begin_cell()
+        .store_ref(deposit_descriptor)
+        .store_slice(at(template_base, 0))
+        .store_ref(at(template_base, 1))
+        .store_slice(depositor)
+        .store_grams(at(deposited_amounts, 0))
+        .store_grams(at(deposited_amounts, 1))
+        .store_uint((deposit_pending & 1), 1)
+        .store_grams(minimum_liquidity)
+        .store_ref(begin_cell()
+            .store_maybe_ref(success_payload)
+            .store_maybe_ref(failure_payload)
+            .store_uint((pool_type & 1), 1)
+            .store_slice(asset0)
+            .store_slice(asset1)
+            .store_grams(at(target_amounts, 0))
+            .store_grams(at(target_amounts, 1))
+            .end_cell())
+        .end_cell());
+    return ();
+}
+
+() refund_deposit (int query,cell payload) impure method_id(102) {
+    (int kind,slice asset0,slice asset1) = unpack_triple(pool_assets);
+    (int amount0,int amount1) = unpack_pair(deposited_amounts);
+    deposit_pending = 0;
+    deposited_amounts = opaque_tuple(pair(0,0));
+    save_deposit();
+    int ton = pair_first(get_balance_tvm()) - (30000000 + at(message_context,3));
+    send_ref(0,refund_body(query,deposit_descriptor,amount0,payload),ton >> 1,vault_address(asset0));
+    send_ref(0,refund_body(query,deposit_descriptor,amount1,payload),ton >> 1,vault_address(asset1));
+    send_empty(162,0,depositor);
+}
+
+;; The bounce prefix is skipped without validation; only the derived pool is trusted.
+() handle_bounce (slice body) impure method_id(103) {
+    load_deposit();
+    slice expected = pool_address(pool_assets);
+    ifnot (addresses_equal(at(message_context,1),expected)) { return (); }
+    body = body.skip_bits(32);
+    int op = body~load_uint(32);
+    ifnot ((op == 3043726744) & deposit_pending) { return (); }
+    int query_id = body~read_query_id();
+    refund_deposit(query_id,null());
+}
+
+(int,int) get_deposited_amounts () impure method_id(87878) {
+    load_deposit();
+    (int amount0, int amount1) = unpack_pair(deposited_amounts);
+    return (amount0, amount1);
+}
+
+() handle_asset_deposit (slice body) impure method_id(104) {
+    load_deposit();
+    throw_unless(259,equal_slice_bits(at(message_context,1),at(template_base,0)));
+    body = body.skip_bits(32);
+    int query = body~read_query_id();
+    (body,slice asset) = read_asset(body);
+    int amount = body~load_grams();
+    body.end_parse();
+    if (deposit_pending) {
+        send_ref(64,refund_body(query,deposit_descriptor,amount,null()),0,vault_address(asset));
+        return ();
+    }
+    (int amount0,int amount1) = unpack_pair(deposited_amounts);
+    (int kind,slice asset0,slice asset1) = unpack_triple(pool_assets);
+    if (equal_slice_bits(asset,asset0)) {
+        amount0 += amount;
+    } else {
+        if (equal_slice_bits(asset,asset1)) {
+            amount1 += amount;
+        }
+    }
+    deposited_amounts = opaque_tuple(pair(amount0,amount1));
+    (int target0,int target1) = unpack_pair(target_amounts);
+    if ((amount0 >= target0) & (amount1 >= target1)) {
+        deposit_pending = -1;
+        (int unused,slice deposited0,slice deposited1) = unpack_triple(pool_assets);
+        int ton = pair_first(get_balance_tvm()) - 1000000 - 14500000;
+        send_inline(0,deposit_body(query,deposit_descriptor,depositor,minimum_liquidity,deposited0,amount0,deposited1,amount1,success_payload,failure_payload),ton,pool_address(pool_assets));
+    }
+    save_deposit();
+}
+
+;; A successful response refunds at most one excess asset: asset0 takes priority.
+() handle_deposit_success (slice body) impure method_id(105) {
+    load_deposit();
+    throw_unless(276,deposit_pending);
+    body = body.skip_bits(32);
+    int query = body~read_query_id();
+    cell reference = body~load_ref();
+    int coins0 = body~load_grams();
+    int coins1 = body~load_grams();
+    body.end_parse();
+    verify_pool_descriptor(reference);
+    (int amount0,int amount1) = unpack_pair(deposited_amounts);
+    (int kind,slice asset0,slice asset1) = unpack_triple(pool_assets);
+    int excess0 = amount0 - coins0;
+    int excess1 = amount1 - coins1;
+    int fee = at(message_context,3);
+    if (excess0 > 0) {
+        send_ref(1,refund_body(query,deposit_descriptor,excess0,null()),refund_ton(fee),vault_address(asset0));
+    } else {
+        if (excess1 > 0) {
+            send_ref(1,refund_body(query,deposit_descriptor,excess1,null()),refund_ton(fee),vault_address(asset1));
+        }
+    }
+    deposited_amounts = opaque_tuple(pair(0,0));
+    deposit_pending = 0;
+    save_deposit();
+    send_empty(160,0,depositor);
+}
+
+() handle_deposit_failure (slice body) impure method_id(106) {
+    load_deposit();
+    throw_unless(276, deposit_pending);
+    slice tail = body.skip_bits(32);
+    int query = tail~read_query_id();
+    cell config = tail~load_ref();
+    cell payload = tail~load_dict();
+    tail.end_parse();
+    _ = opaque_tuple(verify_pool_descriptor(config));
+    refund_deposit(query, payload);
+    return ();
+}
+
+() handle_cancel (slice body) impure method_id(107) {
+    load_deposit();
+    throw_unless(257, addresses_equal(at(message_context, 1), depositor));
+    throw_if(276, deposit_pending);
+    slice tail = body.skip_bits(32);
+    int query = tail~read_query_id();
+    cell payload = tail~load_dict();
+    tail.end_parse();
+    refund_deposit(query, payload);
+    return ();
+}
+
+(int,int) get_target_amounts () impure method_id(84232) {
+    load_deposit();
+    (int target0, int target1) = unpack_pair(target_amounts);
+    return (target0, target1);
+}
+
+slice get_pool_address () impure method_id(84365) {
+    load_deposit();
+    return pool_address(pool_assets);
+}
+
+slice get_factory_address () impure method_id(89995) {
+    load_deposit();
+    return at(template_base, 0);
+}
+
+int get_minimum_liquidity () impure method_id(85296) {
+    load_deposit();
+    return minimum_liquidity;
+}
