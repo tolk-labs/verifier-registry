@@ -1,0 +1,103 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [],
+  "storage": {},
+  "incoming_messages": [],
+  "incoming_external": [],
+  "outgoing_messages": [],
+  "emitted_events": [],
+  "get_methods": [],
+  "thrown_errors": [
+    {
+      "kind": "plain_int",
+      "err_code": 20
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 22
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 23
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 26
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 34
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 35
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 36
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 37
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 38
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 39
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.4.0"
+}
