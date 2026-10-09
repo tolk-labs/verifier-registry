@@ -1,0 +1,145 @@
+;; decompiled by @fiscaldev
+#pragma version =0.4.4;
+#include "../../../func-stdlib.fc";
+
+global slice sender;
+global slice owner;
+global int version;
+global int kind;
+global slice beneficiary;
+global int unlock_at;
+
+int storage_paid() impure asm "STORAGEFEES";
+int gas_fee(int gas, int workchain) asm "GETGASFEE";
+builder store_zeroes(builder b, int width) asm "STZEROES";
+(slice, int) read_query_id(slice s) asm "64 LDU SWAP";
+(slice, int) read_version(slice s) asm "16 LDU SWAP";
+;; Field codecs preserve the archived primitive's evaluation/result order.
+builder store_version(builder b,int value) asm "SWAP 16 STU";
+builder store_kind(builder b,int value) asm "SWAP 8 STU";
+int addresses_equal(slice actual,slice expected) asm(expected actual) "SWAP SDEQ";
+(int,slice) legacy_header_record(int flags,slice source) asm "SWAP SWAP";
+
+;; Keep the query field alive until the full message has been strictly decoded.
+
+(int,int,cell) upgrade_fields(slice body) inline {
+    int query_id = body~read_query_id();
+    int next_version = body~read_version();
+    cell code = body~load_ref();
+    body.end_parse();
+    return (query_id,next_version,code);
+}
+
+(int,slice) beneficiary_fields(slice body) inline {
+    int query_id = body~read_query_id();
+    slice next = body~load_msg_addr();
+    body.end_parse();
+    return (query_id,next);
+}
+
+(int,slice,cell) withdrawal_fields(slice body) inline {
+    int query_id = body~read_query_id();
+    slice recipient = body~load_msg_addr();
+    cell payload = body~load_ref();
+    body.end_parse();
+    return (query_id,recipient,payload);
+}
+
+(int,slice) message_header(cell message) inline {
+    slice header = message.begin_parse();
+    int flags = header~load_uint(4);
+    slice source = header~load_msg_addr();
+    return legacy_header_record(flags,source);
+}
+
+() load_operator() impure inline_ref {
+    slice data = get_data().begin_parse();
+    owner = data~load_msg_addr();
+    version = data~load_uint(16);
+    kind = data~load_uint(8);
+    beneficiary = data~load_msg_addr();
+    unlock_at = data~load_uint(32);
+    data.end_parse();
+}
+
+() save_operator() impure inline_ref {
+    set_data(begin_cell().store_slice(owner).store_version(version).store_kind(kind)
+        .store_slice(beneficiary).store_uint(unlock_at,32).end_cell());
+}
+
+() send_empty(int mode, int amount, slice to) impure inline {
+    send_raw_message(begin_cell().store_uint(16,6).store_slice(to).store_coins(amount)
+        .store_zeroes(107).end_cell(),mode);
+}
+
+() send_payload(int mode, cell payload, int amount, slice to) impure inline {
+    send_raw_message(begin_cell().store_uint(24,6).store_slice(to).store_coins(amount)
+        .store_zeroes(106).store_maybe_ref(payload).end_cell(),mode);
+}
+
+() after_upgrade() impure method_id(43092) { }
+
+;; c3 is replaced before this call, so the installed code's hook runs immediately.
+
+() upgrade(slice body) impure method_id(62) {
+    load_operator();
+    throw_unless(257,addresses_equal(sender,owner));
+    body = body.skip_bits(32);
+    (_,int next_version,cell code) = upgrade_fields(body);
+    throw_unless(295,next_version > version);
+    version = next_version;
+    save_operator();
+    set_code(code);
+    set_c3(code.begin_parse().bless());
+    after_upgrade();
+}
+
+() set_beneficiary(int value, slice body) impure method_id(63) {
+    load_operator();
+    throw_unless(257,addresses_equal(sender,owner));
+    body = body.skip_bits(32);
+    (_,slice next_beneficiary) = beneficiary_fields(body);
+    beneficiary = next_beneficiary;
+    unlock_at = now() + 172800; ;; 48 hours after every beneficiary change.
+    save_operator();
+    int to_send = value - (storage_paid() + gas_fee(5181,0));
+    send_empty(0,to_send,owner);
+}
+
+() withdraw(int value, slice body) impure method_id(64) {
+    load_operator();
+    throw_unless(257,addresses_equal(sender,beneficiary));
+    throw_unless(297,now() >= unlock_at);
+    body = body.skip_bits(32);
+    (_,slice recipient,cell payload) = withdrawal_fields(body);
+    int to_send = value - (storage_paid() + gas_fee(4133,0));
+    send_payload(0,payload,to_send,recipient);
+}
+
+() initialize(slice initial_owner,int template_kind,slice template_data,cell parameters,
+    int initial_version,cell code,slice body_tail) impure method_id(58662) {
+    owner = initial_owner;
+    version = initial_version;
+    kind = template_data~load_uint(8);
+    beneficiary = body_tail~load_msg_addr();
+    unlock_at = 0;
+    template_data.end_parse();
+    body_tail.end_parse();
+    save_operator();
+}
+
+(slice,int,slice,int) operator_data() impure method_id(79987) {
+    load_operator();return(owner,kind,beneficiary,unlock_at);
+}
+int operator_version() impure method_id(82320) { load_operator();return version; }
+
+() recv_internal(int value,cell message,slice body) impure {
+    (int flags,slice source) = message_header(message);
+    sender = source;
+    throw_if(0,flags & 1);
+    int op = body.preload_uint(32);
+    if(op == 444) { upgrade(body); return (); }
+    if(op == 1223010653) { set_beneficiary(value,body); return (); }
+    if(op == 4053307989) { withdraw(value,body); return (); }
+    throw(65535);
+}

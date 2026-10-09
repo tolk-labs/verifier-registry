@@ -1,0 +1,27 @@
+{
+  "code_hash": "2dbbf4ce98dd9d41e2eba5b88f74faed0ffe50136930617bf5973e4972977cc9",
+  "source_bundle_hash": "69311e53b69534ed88d5b27ac37d3e9a488c3807fa9476c0a3bc9d7cfe468887",
+  "payment_tx_hash": "699381ee3ce12734d965cd67ab5e49dcdb5ae268bbe7d2933e38d5a9f71bc441",
+  "verified_at": 1791562004,
+  "compiler": {
+    "language": "func",
+    "version": "0.4.4-newops.1",
+    "entrypoint": "dedust/classic/ClassicOperator/main.fc",
+    "params": {
+      "compiler_version": "0.4.4-newops.1"
+    }
+  },
+  "source_map": null,
+  "files": [
+    {
+      "path": "dedust/classic/ClassicOperator/main.fc",
+      "content_hash": "f857c9af29718ef2775106ba75d71c84c8801c5f70c9e1632af2e9266a558d6b",
+      "include_in_command": true
+    },
+    {
+      "path": "func-stdlib.fc",
+      "content_hash": "2522b7757d2429a1bc647985817e853d699b86f8662aa957d6cbb1724b3611eb",
+      "include_in_command": false
+    }
+  ]
+}
