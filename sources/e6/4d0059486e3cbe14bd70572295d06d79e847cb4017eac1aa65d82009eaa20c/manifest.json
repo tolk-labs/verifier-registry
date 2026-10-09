@@ -1,0 +1,27 @@
+{
+  "code_hash": "e64d0059486e3cbe14bd70572295d06d79e847cb4017eac1aa65d82009eaa20c",
+  "source_bundle_hash": "47595dcdff752c46254e9b91da54185900e43d3c9526ef23fa95956513bb86e1",
+  "payment_tx_hash": "40a34acdc43c52dc984b37e5f07227e182580821e95e8e9fc49a901bd58ef2d9",
+  "verified_at": 1791562017,
+  "compiler": {
+    "language": "func",
+    "version": "0.4.4-newops.1",
+    "entrypoint": "dedust/classic/ClassicFactory/main.fc",
+    "params": {
+      "compiler_version": "0.4.4-newops.1"
+    }
+  },
+  "source_map": null,
+  "files": [
+    {
+      "path": "dedust/classic/ClassicFactory/main.fc",
+      "content_hash": "cc93acc2ee21f376b732e373188b701f21b72314ddd9941ce26fafcbd76c5c66",
+      "include_in_command": true
+    },
+    {
+      "path": "func-stdlib.fc",
+      "content_hash": "2522b7757d2429a1bc647985817e853d699b86f8662aa957d6cbb1724b3611eb",
+      "include_in_command": false
+    }
+  ]
+}
