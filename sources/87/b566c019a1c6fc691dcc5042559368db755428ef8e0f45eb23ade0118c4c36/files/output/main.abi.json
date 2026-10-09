@@ -1,0 +1,339 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "addressAny"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PoolData"
+    },
+    {
+      "kind": "intN",
+      "n": 8
+    },
+    {
+      "kind": "AliasRef",
+      "alias_name": "AddressLookup"
+    },
+    {
+      "kind": "uintN",
+      "n": 256
+    },
+    {
+      "kind": "mapKV",
+      "key_ty_idx": 16,
+      "value_ty_idx": 12
+    },
+    {
+      "kind": "varuintN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 2
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PoolReward"
+    },
+    {
+      "kind": "uintN",
+      "n": 40
+    },
+    {
+      "kind": "mapKV",
+      "key_ty_idx": 19,
+      "value_ty_idx": 20
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "PoolData",
+      "ty_idx": 13,
+      "fields": [
+        {
+          "name": "status",
+          "ty_idx": 14
+        },
+        {
+          "name": "depositActive",
+          "ty_idx": 5
+        },
+        {
+          "name": "swapActive",
+          "ty_idx": 5
+        },
+        {
+          "name": "assetX",
+          "ty_idx": 12
+        },
+        {
+          "name": "assetY",
+          "ty_idx": 12
+        },
+        {
+          "name": "walletsByAssets",
+          "ty_idx": 15
+        },
+        {
+          "name": "assetsByWallets",
+          "ty_idx": 15
+        },
+        {
+          "name": "resolutions",
+          "ty_idx": 15
+        },
+        {
+          "name": "baseFee",
+          "ty_idx": 1
+        },
+        {
+          "name": "reserveX",
+          "ty_idx": 6
+        },
+        {
+          "name": "reserveY",
+          "ty_idx": 6
+        },
+        {
+          "name": "liquidity",
+          "ty_idx": 6
+        },
+        {
+          "name": "protocolX",
+          "ty_idx": 6
+        },
+        {
+          "name": "protocolY",
+          "ty_idx": 6
+        },
+        {
+          "name": "creatorX",
+          "ty_idx": 6
+        },
+        {
+          "name": "creatorY",
+          "ty_idx": 6
+        },
+        {
+          "name": "xCheckpoint",
+          "ty_idx": 18
+        },
+        {
+          "name": "yCheckpoint",
+          "ty_idx": 18
+        },
+        {
+          "name": "rewards",
+          "ty_idx": 22
+        }
+      ]
+    },
+    {
+      "kind": "alias",
+      "name": "AddressLookup",
+      "ty_idx": 15,
+      "target_ty_idx": 17
+    },
+    {
+      "kind": "struct",
+      "name": "PoolReward",
+      "ty_idx": 20,
+      "fields": [
+        {
+          "name": "remainingTime",
+          "ty_idx": 21
+        },
+        {
+          "name": "remainingBudget",
+          "ty_idx": 6
+        },
+        {
+          "name": "checkpoint",
+          "ty_idx": 18
+        },
+        {
+          "name": "lastUpdate",
+          "ty_idx": 21
+        }
+      ]
+    }
+  ],
+  "storage": {},
+  "incoming_messages": [],
+  "incoming_external": [],
+  "outgoing_messages": [],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 72157,
+      "name": "get_position_address",
+      "parameters": [
+        {
+          "name": "owner",
+          "ty_idx": 12
+        }
+      ],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 81689,
+      "name": "get_pool_data",
+      "parameters": [],
+      "return_ty_idx": 13
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "plain_int",
+      "err_code": 20
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 21
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 22
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 23
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 24
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 25
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 26
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 28
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 30
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 31
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 33
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 34
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 35
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 37
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 38
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 39
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 40
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 41
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 42
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 43
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 44
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 45
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 46
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 47
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 63
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.4.0"
+}
