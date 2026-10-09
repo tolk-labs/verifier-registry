@@ -1,0 +1,137 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        1,
+        1
+      ]
+    },
+    {
+      "kind": "addressAny"
+    },
+    {
+      "kind": "AliasRef",
+      "alias_name": "dict"
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 3
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        13,
+        13,
+        1,
+        1,
+        14,
+        1,
+        1,
+        1,
+        1
+      ]
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "alias",
+      "name": "dict",
+      "ty_idx": 14,
+      "target_ty_idx": 15,
+      "description": "Think of it as \"a map with unknown keys and unknown values\".\nPrefer using `map<K, V>`, not `dict`."
+    }
+  ],
+  "storage": {},
+  "incoming_messages": [],
+  "incoming_external": [],
+  "outgoing_messages": [],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 80110,
+      "name": "get_available_fees",
+      "parameters": [
+        {
+          "name": "xCheckpoint",
+          "ty_idx": 1
+        },
+        {
+          "name": "yCheckpoint",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 12
+    },
+    {
+      "tvm_method_id": 89720,
+      "name": "get_position_data",
+      "parameters": [],
+      "return_ty_idx": 16
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "plain_int",
+      "err_code": 23
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 36
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 63
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.4.0"
+}
