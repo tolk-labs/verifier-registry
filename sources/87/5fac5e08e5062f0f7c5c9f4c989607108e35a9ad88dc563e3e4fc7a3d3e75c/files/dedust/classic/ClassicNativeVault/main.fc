@@ -1,0 +1,453 @@
+;; decompiled by @fiscaldev
+#pragma version =0.4.4;
+;; Recovered names describe observed behavior; original source names are unknown.
+;; c7 layout: sender, (factory, blank_code), version, descriptor, locked_ton.
+#include "../../../func-stdlib.fc";
+global slice message_sender;
+global tuple template_base;
+global int contract_version;
+global cell vault_descriptor;
+global int locked_ton;
+
+forall TupleValue -> tuple opaque_tuple(TupleValue value) asm "nop";
+
+forall TupleItem0, TupleItem1 -> (TupleItem0, TupleItem1) unpack_pair(tuple value) impure asm "2 UNTUPLE";
+forall TupleItem0, TupleItem1, TupleItem2 -> (TupleItem0, TupleItem1, TupleItem2) unpack_triple(tuple value) impure asm "3 UNTUPLE";
+
+(builder) store_zeroes (builder a, int b) asm "STZEROES";
+(slice,int) read_query_id(slice s) asm "64 LDU SWAP";
+(slice,int) read_version(slice s) asm "16 LDU SWAP";
+(slice,int) read_kind(slice s) asm "8 LDU SWAP";
+;; Protocol ABI: installed hook 43092 consumes no arguments and returns no values.
+() invoke_installed_hook(int method) impure asm "c3 PUSHCTR EXECUTE";
+() invalid_asset() impure asm "261 THROW";
+(slice,slice) read_native_asset(slice s) asm "4 LDSLICE SWAP";
+builder store_version(builder b,int value) asm "SWAP 16 STU";
+builder store_opcode(builder b,int value) asm "SWAP 32 STU";
+builder store_query_id(builder b,int value) asm "SWAP 64 STU";
+;; The legacy bool serializer retains pending route fields on the stack.
+(cell,cell,int,builder) store_swap_flag(cell payload,cell next,int minimum,int value,builder b) asm "s2 s3 XCHG2 s2 s3 XCHG2 1 STU";
+;; Legacy decoder return layout: next, pool, limit-kind, minimum, cursor.
+(cell,slice,int,int,slice) order_swap_tail(slice pool,slice cursor,int kind,int minimum,cell next) asm "s3 s4 XCHG s4 XCHG0";
+() load_vault() impure inline {
+    slice data = get_data().begin_parse();
+    vault_descriptor = data~load_ref();
+    slice factory = data~load_msg_addr();
+    cell blank_code = data~load_ref();
+    template_base = opaque_tuple(pair(factory,blank_code));
+    contract_version = data~read_version();
+    locked_ton = data~load_grams();
+    data.end_parse();
+}
+() save_vault() impure inline {
+    set_data(begin_cell().store_ref(vault_descriptor).store_slice(at(template_base,0))
+        .store_ref(at(template_base,1)).store_version(contract_version).store_grams(locked_ton).end_cell());
+}
+() send_empty(int mode,int value,slice destination) impure inline {
+    send_raw_message(begin_cell().store_uint(16,6).store_slice(destination).store_grams(value).store_zeroes(107).end_cell(),mode);
+}
+() send_inline(int mode,builder body,int value,slice destination) impure inline {
+    send_raw_message(begin_cell().store_uint(24,6).store_slice(destination).store_grams(value).store_zeroes(107).store_builder(body).end_cell(),mode);
+}
+builder swap_body(int query,cell descriptor,int amount,slice sender,int kind,int minimum,cell next,cell payload) inline {
+    builder body = begin_cell().store_opcode(1643009069).store_query_id(query).store_ref(descriptor)
+        .store_grams(amount).store_slice(sender);
+    (payload,next,minimum,body) = store_swap_flag(payload,next,minimum,kind,body);
+    return body.store_grams(minimum).store_maybe_ref(next).store_ref(payload);
+}
+cell join_body(int query,cell descriptor,slice sender,tuple assets,int minimum,int target0,int target1,slice native_asset,int amount,cell success,cell failure) impure inline {
+    cell parameters = begin_cell().store_grams(target0).store_grams(target1).store_slice(native_asset).store_grams(amount).store_grams(minimum).end_cell();
+    builder body = begin_cell().store_opcode(4031694118).store_query_id(query).store_ref(descriptor).store_slice(sender);
+    (int kind,slice asset0,slice asset1) = unpack_triple(assets);
+    return body.store_uint(kind & 1,1).store_slice(asset0).store_slice(asset1).store_ref(parameters).store_maybe_ref(success).store_maybe_ref(failure).end_cell();
+}
+() send_ref(int mode,cell body,int value,slice destination) impure inline {
+    send_raw_message(begin_cell().store_uint(24,6).store_slice(destination).store_grams(value).store_zeroes(106).store_maybe_ref(body).end_cell(),mode);
+}
+(int,slice,int) message_fields(cell full) inline {
+    slice cursor = full.begin_parse();
+    int flags = cursor~load_uint(4);
+    slice sender = cursor~load_msg_addr();
+    cursor~load_msg_addr(); cursor~load_grams();
+    cursor = cursor.skip_bits(1); cursor~load_grams();
+    int fee = cursor~load_grams();
+    return (fee,sender,flags);
+}
+(slice,int,int,cell) swap_path(slice body) inline {
+    int kind = body~load_uint(1); int minimum = body~load_grams(); cell next = body~load_dict();
+    return (body,kind,minimum,next);
+}
+(cell,slice,int,int,slice) swap_details(slice pool,slice body) inline {
+    (body,int kind,int minimum,cell next) = swap_path(body);
+    return order_swap_tail(pool,body,kind,minimum,next);
+}
+(int,int,slice,int,int,cell,cell) swap_fields(slice body) inline {
+    body = body.skip_bits(32);
+    int query = body~read_query_id(); int amount = body~load_grams();
+    slice pool = body~load_msg_addr();
+    (cell next,pool,int kind,int minimum,body) = swap_details(pool,body);
+    cell payload = body~load_ref(); body.end_parse();
+    return (query,amount,pool,kind,minimum,next,payload);
+}
+(int,int,cell) upgrade_fields(slice body) inline {
+    int query = body~read_query_id();
+    int version = body~read_version();
+    cell code = body~load_ref();
+    body.end_parse();
+    return (query,version,code);
+}
+(int,slice) withdrawal_fields(slice body) inline {
+    int query = body~load_uint(64);
+    slice recipient = body~load_msg_addr();
+    body.end_parse();
+    return (query,recipient);
+}
+builder payout_body(int query,cell payload) inline {
+    return begin_cell().store_opcode(1196394191).store_query_id(query).store_maybe_ref(payload);
+}
+() send_payout(int mode,builder body,int value,slice destination) impure inline {
+    send_raw_message(begin_cell().store_uint(16,6).store_slice(destination).store_grams(value).store_zeroes(107).store_builder(body).end_cell(),mode);
+}
+slice evaluated_slice(slice x) impure asm "nop";
+int evaluated(int x) impure asm "nop";
+const slice NATIVE_ASSET = "0"s;
+
+(int) storage_fees () impure asm "12 GETPARAM";
+(int) forward_fee (int a, int b, int c) impure asm "GETFORWARDFEE";
+int get_gas_fee(int gas_used,int is_masterchain) asm "GETGASFEE";
+int get_original_fwd_fee(int fee,int is_masterchain) asm "GETORIGINALFWDFEE";
+
+builder status_body(int query,int ready) inline {
+    return begin_cell().store_opcode(2836651021).store_query_id(query).store_uint(ready & 1,1);
+}
+int sum3(int first,int second,int third) inline { return ((first + second) + third); }
+int swap_reply_budget(int fee) inline { return fee + get_gas_fee(9289,0) + 50000000; }
+int swap_after_base(int fee,int depth) inline {
+    return ((fee + get_gas_fee(28000,0) + get_original_fwd_fee(fee,0)) * depth)
+        + swap_reply_budget(fee);
+}
+int join_refund_budget(int fee) inline {
+    return (get_gas_fee(9888,0) + get_original_fwd_fee(fee,0) + 50000000) << 1;
+}
+int join_tail_budget(int fee) inline {
+    return get_gas_fee(22476,0) + get_original_fwd_fee(fee,0) * 3 + join_refund_budget(fee);
+}
+int join_after_deployment(int fee) inline {
+    return (get_gas_fee(22084,0) + get_original_fwd_fee(fee,0))
+        + join_tail_budget(fee);
+}
+int swap_budget(int fee,int depth) inline {
+    int base = 10000000 + get_gas_fee(6481,0) + (get_original_fwd_fee(fee,0) << 1);
+    return base + swap_after_base(fee,depth);
+}
+int join_budget(int fee) inline {
+    int deploy = sum3(get_gas_fee(11852,0) + (get_original_fwd_fee(fee,0) << 1),
+        get_gas_fee(19123,0) + get_original_fwd_fee(fee,0),
+        10000000 + get_gas_fee(1288,0) + get_gas_fee(14701,0) + (get_original_fwd_fee(fee,0) << 1));
+    return deploy + join_after_deployment(fee);
+}
+
+forall P -> (int,builder,P) template_builder(P data,int kind) asm "NEWC ROT";
+builder store_kind(builder b,int value) asm "SWAP 8 STU";
+tuple evaluated_tuple(tuple value) impure asm "nop";
+cell template_state(int kind,builder parameters) impure inline {
+    (slice factory,cell code) = unpack_pair(template_base);
+    cell data = begin_cell().store_slice(factory).store_uint(kind,8).store_builder(parameters).end_cell();
+    return begin_cell().store_uint(6,5).store_ref(code).store_ref(data).end_cell();
+}
+slice state_address(cell state) inline {
+    int workchain = evaluated(0);
+    int hash = cell_hash(state);
+    return begin_cell().store_uint(4,3).store_int(workchain,8).store_uint(hash,256).end_cell().begin_parse();
+}
+slice operator_address(int operator_kind) impure inline {
+    (int template_kind,builder parameters,int value) = template_builder(operator_kind,4);
+    return state_address(template_state(template_kind,parameters.store_kind(value)));
+}
+cell state_from_data(cell code,cell data) inline {
+    return begin_cell().store_uint(6,5).store_ref(code).store_ref(data).end_cell();
+}
+(cell,slice) template_address(cell data) impure inline {
+    return (data,state_address(state_from_data(at(template_base,1),data)));
+}
+
+(slice,slice) read_asset(slice cursor) impure inline;
+
+(slice,tuple) read_pool_assets(slice cursor) impure inline;
+(int,int,tuple,int,int,int,cell,cell) join_fields(slice body) impure inline;
+() verify_operator (int kind) impure inline_ref;
+tuple verify_pool_descriptor (cell config) impure inline_ref;
+() handle_pool_payout (int message_value, slice body) impure inline_ref;
+(slice, tuple) verify_deposit_descriptor (cell config) impure inline_ref;
+() handle_swap (int encoded_fee, int message_value, slice body) impure inline_ref;
+slice get_asset () impure;
+_ get_locked_ton () impure;
+() initialize(slice factory,int template_kind,slice asset_data,cell blank_code,int version,cell installed_code,slice body_tail) impure;
+() handle_upgrade (slice body) impure;
+() handle_join_liquidity (int encoded_fee, int message_value, slice body) impure;
+() handle_deposit_refund (int message_value, slice body) impure;
+() handle_readiness_request (int message_value, slice body) impure;
+() handle_excess_withdrawal (slice body) impure;
+int get_swap_budget (int fee, int depth) impure;
+_ get_version () impure;
+_ get_factory_address () impure;
+int get_join_budget (int fee) impure;
+() on_code_upgrade () impure;
+
+(slice,slice) read_asset(slice cursor) impure inline {
+    int tag = cursor.preload_uint(4);
+    slice asset = null();
+    if (tag == 0) { (cursor,asset) = read_native_asset(cursor); }
+    else {
+        if (tag == 1) { slice jetton = cursor~load_bits(268);return (cursor,jetton); }
+        invalid_asset();cursor = null();asset = null();
+    }
+    return (cursor,asset);
+}
+
+(slice,tuple) read_pool_assets(slice cursor) impure inline {
+    int kind = cursor~load_uint(1);
+    (cursor,slice asset0) = read_asset(cursor);
+    (cursor,slice asset1) = read_asset(cursor);
+    return (cursor,opaque_tuple(triple(kind,asset0,asset1)));
+}
+(int,int,tuple,int,int,int,cell,cell) join_fields(slice body) impure inline {
+    body = body.skip_bits(32);
+    int query = body~read_query_id();
+    int amount = body~load_grams();
+    int kind = body~load_uint(1);
+    (body,slice asset0) = read_asset(body);
+    (body,slice asset1) = read_asset(body);
+    tuple assets = opaque_tuple(triple(kind,asset0,asset1));
+    cell parameters = body~load_ref();
+    slice details = parameters.begin_parse();
+    int minimum = details~load_grams();
+    int target0 = details~load_grams();
+    int target1 = details~load_grams();
+    details.end_parse();
+    cell success = body~load_dict();
+    cell failure = body~load_dict();
+    body.end_parse();
+    return (query,amount,assets,minimum,target0,target1,success,failure);
+}
+
+() verify_operator (int kind) impure inline_ref {
+    slice sender = message_sender;
+    throw_unless(296,equal_slice_bits(sender,operator_address(kind)));
+}
+
+() handle_pool_payout (int message_value, slice body) impure inline_ref {
+    load_vault();
+    (slice after_query, int query_id) = body.skip_bits(32)
+        .read_query_id();
+    (slice after_config, cell config) = after_query.load_ref();
+    (slice after_amount, int amount) = after_config.load_grams();
+    (slice after_recipient, slice recipient) = after_amount.load_msg_addr();
+    (slice tail, cell payload) = after_recipient.load_dict();
+    tail.end_parse();
+    _ = opaque_tuple(verify_pool_descriptor(config));
+    int remaining = message_value - (storage_fees() + get_gas_fee(8234,0)) + amount;
+    locked_ton = (locked_ton - amount);
+    save_vault();
+    send_payout(0,payout_body(query_id,payload),remaining,recipient);
+    return ();
+}
+
+(slice,tuple) verify_deposit_descriptor (cell config) impure inline_ref {
+    (cell original,slice expected) = template_address(config);
+    slice cursor = original.begin_parse();
+    slice factory = cursor~load_msg_addr();
+    int kind = cursor~read_kind();
+    cell parameters = cursor~load_ref();
+    slice details = parameters.begin_parse();
+    slice owner = details~load_msg_addr();
+    (details,tuple assets) = read_pool_assets(details);
+    details.end_parse();
+    cursor.end_parse();
+    throw_unless(272,(equal_slice_bits(message_sender,expected) & equal_slice_bits(at(template_base,0),factory)) & (kind == 3));
+    return (owner,assets);
+}
+
+tuple verify_pool_descriptor (cell config) impure inline_ref {
+    (cell original,slice expected) = template_address(config);
+    slice cursor = original.begin_parse();
+    slice factory = cursor~load_msg_addr();
+    int kind = cursor~read_kind();
+    int pool_type = cursor~load_uint(1);
+    (cursor,slice asset0) = read_asset(cursor);
+    (cursor,slice asset1) = read_asset(cursor);
+    tuple assets = evaluated_tuple(opaque_tuple(triple(pool_type,asset0,asset1)));
+    cursor.end_parse();
+    throw_unless(265,(equal_slice_bits(message_sender,expected) & equal_slice_bits(at(template_base,0),factory)) & (kind == 2));
+    return assets;
+}
+
+() handle_swap (int encoded_fee, int message_value, slice body) impure inline_ref {
+    load_vault();
+    (int query_id,int amount,slice pool,int limit_kind,int minimum,cell route,cell payload) = swap_fields(body);
+    int route_depth = (cell_depth(route) + 1);
+    throw_unless(263,message_value >= amount + swap_budget(encoded_fee,route_depth));
+    throw_unless(278, (route_depth < 5));
+    int remaining = message_value - (storage_fees() + get_gas_fee(6481,0) + amount);
+    locked_ton = (locked_ton + amount);
+    save_vault();
+    send_inline(0,swap_body(query_id,vault_descriptor,amount,message_sender,limit_kind,minimum,route,payload),remaining,pool);
+    return ();
+}
+
+slice get_asset () impure method_id(89352) {
+    return (NATIVE_ASSET);
+}
+
+_ get_locked_ton () impure method_id(109867) {
+    load_vault();
+    return (locked_ton);
+}
+
+() initialize (slice factory, int template_kind, slice asset_data, cell blank_code, int version, cell installed_code, slice body_tail) impure method_id(58662) {
+    (slice tail, int asset_tag) = asset_data.load_uint(4);
+    throw_unless(261, (asset_tag == 0));
+    tail.end_parse();
+    vault_descriptor = get_data();
+    template_base = opaque_tuple(pair(factory, blank_code));
+    contract_version = version;
+    locked_ton = 0;
+    save_vault();
+    return ();
+}
+
+() handle_upgrade (slice body) impure method_id(130) {
+    load_vault();
+    throw_unless(259, equal_slice_bits(message_sender, at(template_base, 0)));
+    (_,int new_version,cell new_code) = upgrade_fields(body.skip_bits(32));
+    if (contract_version >= new_version) {
+        return ();
+    }
+    contract_version = new_version;
+    save_vault();
+    set_code(new_code);
+    set_c3(bless(new_code.begin_parse()));
+    invoke_installed_hook(43092);
+    send_empty(64,0,at(template_base,0));
+}
+
+() handle_join_liquidity (int encoded_fee, int message_value, slice body) impure method_id(131) {
+    load_vault();
+    (int query_id,int amount,tuple assets,int minimum,int target0,int target1,cell success,cell failure) = join_fields(body);
+    throw_unless(263,message_value >= amount + join_budget(encoded_fee));
+    throw_unless(276, ((target0 > 0) & (target1 > 0)));
+    (int pool_kind, slice asset0, slice asset1) = unpack_triple(assets);
+    throw_unless(291, (equal_slice_bits(asset0, NATIVE_ASSET) | equal_slice_bits(asset1, evaluated_slice(NATIVE_ASSET))));
+    int remaining = message_value - (storage_fees() + get_gas_fee(10993,0) + amount);
+    locked_ton = (locked_ton + amount);
+    save_vault();
+    send_ref(0,join_body(query_id,vault_descriptor,message_sender,assets,minimum,target0,target1,evaluated_slice(NATIVE_ASSET),amount,success,failure),remaining,at(template_base,0));
+    return ();
+}
+
+() recv_internal (int message_value, cell full_message, slice body) impure method_id(0) {
+    (int encoded_fee,slice sender,int flags) = message_fields(full_message);
+    message_sender = sender;
+    throw_if(0, (flags & 1));
+    int opcode = body.preload_uint(32);
+    if (opcode == 3926267997) {
+        handle_swap(encoded_fee, message_value, body);
+        return ();
+    }
+    if (opcode == 2907617013) {
+        handle_pool_payout(message_value, body);
+        return ();
+    }
+    if (opcode == 3579725446) {
+        handle_join_liquidity(encoded_fee, message_value, body);
+        return ();
+    }
+    if (opcode == 1795913855) {
+        handle_deposit_refund(message_value, body);
+        return ();
+    }
+    if (opcode == 3912500665) {
+        handle_readiness_request(message_value, body);
+        return ();
+    }
+    if (opcode == 444) {
+        handle_upgrade(body);
+        return ();
+    }
+    if (opcode == 650525367) {
+        handle_excess_withdrawal(body);
+        return ();
+    }
+    throw(65535);
+}
+
+() handle_deposit_refund (int message_value, slice body) impure method_id(132) {
+    load_vault();
+    (slice after_query, int query_id) = body.skip_bits(32)
+        .read_query_id();
+    (slice after_config, cell config) = after_query.load_ref();
+    (slice after_amount, int amount) = after_config.load_grams();
+    (slice tail, cell payload) = after_amount.load_dict();
+    tail.end_parse();
+    (slice depositor, _) = verify_deposit_descriptor(config);
+    int remaining = message_value - (storage_fees() + get_gas_fee(9093,0)) + amount;
+    locked_ton = (locked_ton - amount);
+    save_vault();
+    send_payout(0,payout_body(query_id,payload),remaining,depositor);
+    return ();
+}
+
+() handle_readiness_request (int message_value, slice body) impure method_id(135) {
+    load_vault();
+    (slice tail, int query_id) = body.skip_bits(32)
+        .read_query_id();
+    tail.end_parse();
+    throw_unless(263, (message_value >= ((storage_fees() + get_gas_fee(4924, 0)) + forward_fee(1, 802, 0))));
+    int remaining = message_value - (storage_fees() + get_gas_fee(4924,0));
+    send_inline(0,status_body(query_id,-1),remaining,message_sender);
+    return ();
+}
+
+() handle_excess_withdrawal (slice body) impure method_id(136) {
+    load_vault();
+    verify_operator(9);
+    (_,slice recipient) = withdrawal_fields(body.skip_bits(32));
+    raw_reserve((10000000 + locked_ton), 0);
+    send_empty(128,0,recipient);
+    return ();
+}
+
+int get_swap_budget (int fee,int depth) impure method_id(117300) { return swap_budget(fee,depth); }
+
+_ get_version () impure method_id(82320) {
+    load_vault();
+    return (contract_version);
+}
+
+_ get_factory_address () impure method_id(89995) {
+    load_vault();
+    return (at(template_base, 0));
+}
+
+int get_join_budget (int fee) impure method_id(109505) { return join_budget(fee); }
+
+() on_code_upgrade () impure method_id(43092) {
+    (slice probe, _) = get_data()
+        .begin_parse()
+        .load_msg_addr();
+    if (probe.preload_uint(16) == 4) {
+        (slice after_descriptor, cell descriptor) = get_data()
+            .begin_parse()
+            .load_ref();
+        vault_descriptor = descriptor;
+        (slice after_factory, slice factory) = after_descriptor.load_msg_addr();
+        (slice after_blank, cell blank_code) = after_factory.load_ref();
+        template_base = opaque_tuple(pair(factory, blank_code));
+        (slice tail, int version) = after_blank.read_version();
+        contract_version = version;
+        tail.end_parse();
+        locked_ton = 1792093259305502;
+        save_vault();
+    }
+    return ();
+}

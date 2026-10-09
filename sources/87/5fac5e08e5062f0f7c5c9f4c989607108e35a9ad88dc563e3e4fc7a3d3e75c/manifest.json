@@ -1,0 +1,27 @@
+{
+  "code_hash": "875fac5e08e5062f0f7c5c9f4c989607108e35a9ad88dc563e3e4fc7a3d3e75c",
+  "source_bundle_hash": "b5b63dc2294a4eaf3a8fab8ed2f8a544851f0830b36f305aa23e1082a758aedb",
+  "payment_tx_hash": "1c4b394f1ddea6640fd99f513898c701bae5c267ec5fe0390f6ce8bdc05122bf",
+  "verified_at": 1791562009,
+  "compiler": {
+    "language": "func",
+    "version": "0.4.4-newops.1",
+    "entrypoint": "dedust/classic/ClassicNativeVault/main.fc",
+    "params": {
+      "compiler_version": "0.4.4-newops.1"
+    }
+  },
+  "source_map": null,
+  "files": [
+    {
+      "path": "dedust/classic/ClassicNativeVault/main.fc",
+      "content_hash": "78e04cc7fd96d3b2831c87059003ecd33fb5b5eea584e133517c88ca621e1473",
+      "include_in_command": true
+    },
+    {
+      "path": "func-stdlib.fc",
+      "content_hash": "2522b7757d2429a1bc647985817e853d699b86f8662aa957d6cbb1724b3611eb",
+      "include_in_command": false
+    }
+  ]
+}
