@@ -1,0 +1,428 @@
+{
+  "code_hash": "1ebee524cba9e9e22ad284aef279bbe15f194f082986961025eb442ed2bec898",
+  "source_bundle_hash": "5c9e54dc51b436ca4b46e4edfe1aca056b80b18f5a7adc8a753030a62d36914d",
+  "payment_tx_hash": "544a446ea1b3f06ff8c5551f36e6f258f7714b26e8cb0b29686073891e1be149",
+  "verified_at": 1791656675,
+  "compiler": {
+    "language": "tolk",
+    "version": "1.4.0",
+    "entrypoint": "contracts/wallet.tolk",
+    "params": {
+      "compiler_version": "1.4.0",
+      "import_mappings": {
+        "@acton": ".acton",
+        "@contracts": "contracts",
+        "@gen": "gen",
+        "@tests": "tests",
+        "@wrappers": "wrappers"
+      }
+    }
+  },
+  "source_map": {
+    "code_boc64": "te6ccgEBAgEAGAABFP8A9KQT9LzyyAsBABLTMPiR8kCBMDk=",
+    "symbol_types_json": {
+      "alias_instantiations": [],
+      "declarations": [
+        {
+          "fields": [
+            {
+              "name": "generatedUsingVanityTG",
+              "ty_idx": 5
+            },
+            {
+              "name": "bannedByPavelDurov",
+              "ty_idx": 5
+            },
+            {
+              "name": "telegramUserId",
+              "ty_idx": 9
+            }
+          ],
+          "ident_loc": [
+            1,
+            13,
+            8,
+            13,
+            15
+          ],
+          "kind": "struct",
+          "name": "Storage",
+          "ty_idx": 20
+        },
+        {
+          "fields": [
+            {
+              "name": "amount",
+              "ty_idx": 6
+            }
+          ],
+          "ident_loc": [
+            1,
+            19,
+            21,
+            19,
+            29
+          ],
+          "kind": "struct",
+          "name": "SendGram",
+          "prefix": {
+            "prefix_len": 32,
+            "prefix_num": 1
+          },
+          "ty_idx": 13
+        },
+        {
+          "fields": [
+            {
+              "name": "amount",
+              "ty_idx": 6
+            }
+          ],
+          "ident_loc": [
+            1,
+            23,
+            21,
+            23,
+            32
+          ],
+          "kind": "struct",
+          "name": "ReceiveGram",
+          "prefix": {
+            "prefix_len": 32,
+            "prefix_num": 2
+          },
+          "ty_idx": 14
+        },
+        {
+          "fields": [
+            {
+              "name": "reason",
+              "ty_idx": 16
+            }
+          ],
+          "ident_loc": [
+            1,
+            27,
+            21,
+            27,
+            30
+          ],
+          "kind": "struct",
+          "name": "BanWallet",
+          "prefix": {
+            "prefix_len": 32,
+            "prefix_num": 3
+          },
+          "ty_idx": 15
+        },
+        {
+          "ident_loc": [
+            1,
+            31,
+            6,
+            31,
+            21
+          ],
+          "kind": "alias",
+          "name": "AllowedMessages",
+          "target_ty_idx": 17,
+          "ty_idx": 12
+        },
+        {
+          "encoded_as_ty_idx": 19,
+          "ident_loc": [
+            1,
+            36,
+            6,
+            36,
+            18
+          ],
+          "kind": "enum",
+          "members": [
+            {
+              "name": "NotEnoughBalance",
+              "value": "400"
+            },
+            {
+              "name": "BannedByPavelDurov",
+              "value": "401"
+            },
+            {
+              "name": "NotUsedVanityTG",
+              "value": "402"
+            }
+          ],
+          "name": "ThrownErrors",
+          "ty_idx": 18
+        }
+      ],
+      "files": [
+        {
+          "file_id": 0,
+          "file_name": "@stdlib/common.tolk",
+          "imports": [],
+          "size_chars": 75175
+        },
+        {
+          "file_id": 1,
+          "file_name": "contracts/wallet.tolk",
+          "imports": [],
+          "size_chars": 936
+        }
+      ],
+      "functions": [
+        {
+          "end_loc": [
+            1,
+            47,
+            1,
+            47,
+            2
+          ],
+          "f_idx": 0,
+          "ident_loc": [
+            1,
+            44,
+            5,
+            44,
+            22
+          ],
+          "name": "onInternalMessage",
+          "num_params": 1,
+          "params": [
+            {
+              "name": "in.body",
+              "ty_idx": 2
+            }
+          ],
+          "return_ty_idx": 1
+        }
+      ],
+      "struct_instantiations": [],
+      "unique_types": [
+        {
+          "kind": "void"
+        },
+        {
+          "kind": "int"
+        },
+        {
+          "kind": "slice"
+        },
+        {
+          "kind": "cell"
+        },
+        {
+          "kind": "builder"
+        },
+        {
+          "kind": "bool"
+        },
+        {
+          "kind": "coins"
+        },
+        {
+          "kind": "address"
+        },
+        {
+          "kind": "intN",
+          "n": 32
+        },
+        {
+          "kind": "uintN",
+          "n": 32
+        },
+        {
+          "kind": "intN",
+          "n": 64
+        },
+        {
+          "kind": "uintN",
+          "n": 64
+        },
+        {
+          "alias_name": "AllowedMessages",
+          "kind": "AliasRef"
+        },
+        {
+          "kind": "StructRef",
+          "struct_name": "SendGram"
+        },
+        {
+          "kind": "StructRef",
+          "struct_name": "ReceiveGram"
+        },
+        {
+          "kind": "StructRef",
+          "struct_name": "BanWallet"
+        },
+        {
+          "kind": "string"
+        },
+        {
+          "kind": "union",
+          "stack_width": 2,
+          "variants": [
+            {
+              "prefix_len": 32,
+              "prefix_num": 1,
+              "stack_type_id": 129,
+              "stack_width": 1,
+              "variant_ty_idx": 13
+            },
+            {
+              "prefix_len": 32,
+              "prefix_num": 2,
+              "stack_type_id": 130,
+              "stack_width": 1,
+              "variant_ty_idx": 14
+            },
+            {
+              "prefix_len": 32,
+              "prefix_num": 3,
+              "stack_type_id": 131,
+              "stack_width": 1,
+              "variant_ty_idx": 15
+            }
+          ]
+        },
+        {
+          "enum_name": "ThrownErrors",
+          "kind": "EnumRef"
+        },
+        {
+          "kind": "uintN",
+          "n": 9
+        },
+        {
+          "kind": "StructRef",
+          "struct_name": "Storage"
+        }
+      ]
+    },
+    "debug_marks_json": [
+      {
+        "f_idx": 0,
+        "f_name": "onInternalMessage",
+        "ir_import": [
+          0
+        ],
+        "is_builtin": false,
+        "is_inlined": false,
+        "kind": "enter_fun",
+        "mark_id": 0,
+        "range": [
+          1,
+          44,
+          5,
+          44,
+          22
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 1,
+        "stack": [
+          0
+        ]
+      },
+      {
+        "ir_slots": [
+          0
+        ],
+        "is_parameter": true,
+        "kind": "var",
+        "mark_id": 2,
+        "ty_idx": 2,
+        "var_name": "in.body"
+      },
+      {
+        "kind": "stack",
+        "mark_id": 3,
+        "stack": []
+      },
+      {
+        "kind": "loc",
+        "mark_id": 4,
+        "range": [
+          1,
+          44,
+          5,
+          44,
+          22
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 5,
+        "stack": [
+          1
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 6,
+        "range": [
+          1,
+          44,
+          5,
+          44,
+          22
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 7,
+        "stack": []
+      },
+      {
+        "kind": "loc",
+        "mark_id": 8,
+        "range": [
+          1,
+          45,
+          12,
+          45,
+          17
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 9,
+        "stack": [
+          4
+        ]
+      },
+      {
+        "f_idx": 0,
+        "f_name": "onInternalMessage",
+        "ir_return": [
+          4
+        ],
+        "kind": "leave_fun",
+        "mark_id": 10,
+        "range": [
+          1,
+          45,
+          5,
+          45,
+          17
+        ]
+      }
+    ],
+    "debug_marks_base64": "te6ccgEBFgEAgwABQ6Ad6XuKgsZBSjz/yTjdAOrSakq9Tq9FmKXGHb5RgvicvUwBAgPOQAIDAgEgBAUCAUgQEQIBIAYHAgEgCgsCASAICAIBIAgMAQEgCQAB1QIBIAwOAgEgDhIBASANAASoCAEBIA8ABKgYAgEgEhMBAUgVAQEgFAEBIBUABKgoAASoQA=="
+  },
+  "files": [
+    {
+      "path": "contracts/wallet.tolk",
+      "content_hash": "d0e13344362c0b3238af9d8c060aa71feab14859306cd8c20d7b85c6ebc2329f",
+      "include_in_command": true,
+      "is_stdlib": false,
+      "has_include_directives": true
+    },
+    {
+      "path": "output/wallet.abi.json",
+      "content_hash": "8ef074be8da17443050ef34b518923ad51c98a761deaf2f597f490ece2a1a3ca"
+    }
+  ]
+}
