@@ -1,0 +1,483 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "ContractTON",
+  "author": "Alexandr_K",
+  "version": "0.0.4",
+  "description": "Escrow contract TON",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Transfer"
+    },
+    {
+      "kind": "addressOpt"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ChangePercent"
+    },
+    {
+      "kind": "intN",
+      "n": 8
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "AcceptPercent"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RefundTon"
+    },
+    {
+      "kind": "uintN",
+      "n": 75
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ErrMode"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ErrRefund"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "BurnContract"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "StorageTon"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ExtraFieldsTon"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 23
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RefundBounce"
+    },
+    {
+      "kind": "uintN",
+      "n": 8
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ContractDataReply"
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "ContractDataReply",
+      "ty_idx": 27,
+      "fields": [
+        {
+          "name": "clientAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "providerAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "clientAmount",
+          "ty_idx": 18
+        },
+        {
+          "name": "providerDeposit",
+          "ty_idx": 18
+        },
+        {
+          "name": "timestamp",
+          "ty_idx": 11
+        },
+        {
+          "name": "clientAmountInit",
+          "ty_idx": 18
+        },
+        {
+          "name": "providerDepositInit",
+          "ty_idx": 18
+        },
+        {
+          "name": "royaltyInit",
+          "ty_idx": 18
+        },
+        {
+          "name": "adminAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "completed",
+          "ty_idx": 5
+        },
+        {
+          "name": "percent",
+          "ty_idx": 15
+        },
+        {
+          "name": "errMode",
+          "ty_idx": 15
+        },
+        {
+          "name": "errModeAt",
+          "ty_idx": 11
+        },
+        {
+          "name": "mode",
+          "ty_idx": 15
+        },
+        {
+          "name": "isActive",
+          "ty_idx": 5
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ErrMode",
+      "ty_idx": 19,
+      "prefix": {
+        "prefix_num": 1478208844,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "value",
+          "ty_idx": 15
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ChangePercent",
+      "ty_idx": 14,
+      "prefix": {
+        "prefix_num": 3967285315,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "percent",
+          "ty_idx": 15
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "AcceptPercent",
+      "ty_idx": 16,
+      "prefix": {
+        "prefix_num": 629519677,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "percent",
+          "ty_idx": 15
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "BurnContract",
+      "ty_idx": 21,
+      "prefix": {
+        "prefix_num": 993954628,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "Transfer",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 2434676305,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "sender",
+          "ty_idx": 13
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "RefundTon",
+      "ty_idx": 17,
+      "prefix": {
+        "prefix_num": 3560792938,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "tonAmount",
+          "ty_idx": 18
+        },
+        {
+          "name": "addressRefund",
+          "ty_idx": 13
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ErrRefund",
+      "ty_idx": 20,
+      "prefix": {
+        "prefix_num": 181188036,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "addressRefund",
+          "ty_idx": 13
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "RefundBounce",
+      "ty_idx": 25,
+      "prefix": {
+        "prefix_num": 2712847316,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 26
+        },
+        {
+          "name": "tonAmount",
+          "ty_idx": 18
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ExtraFieldsTon",
+      "ty_idx": 23,
+      "fields": [
+        {
+          "name": "timestamp",
+          "ty_idx": 11
+        },
+        {
+          "name": "clientAmountInit",
+          "ty_idx": 18
+        },
+        {
+          "name": "providerDepositInit",
+          "ty_idx": 18
+        },
+        {
+          "name": "royaltyInit",
+          "ty_idx": 18
+        },
+        {
+          "name": "adminAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "completed",
+          "ty_idx": 5
+        },
+        {
+          "name": "percent",
+          "ty_idx": 15
+        },
+        {
+          "name": "errMode",
+          "ty_idx": 15
+        },
+        {
+          "name": "errModeAt",
+          "ty_idx": 11
+        },
+        {
+          "name": "mode",
+          "ty_idx": 15
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "StorageTon",
+      "ty_idx": 22,
+      "fields": [
+        {
+          "name": "clientAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "providerAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "clientAmount",
+          "ty_idx": 18
+        },
+        {
+          "name": "providerDeposit",
+          "ty_idx": 18
+        },
+        {
+          "name": "extra",
+          "ty_idx": 24
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 22
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 14
+    },
+    {
+      "body_ty_idx": 16
+    },
+    {
+      "body_ty_idx": 17
+    },
+    {
+      "body_ty_idx": 19
+    },
+    {
+      "body_ty_idx": 20
+    },
+    {
+      "body_ty_idx": 21
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 3
+    },
+    {
+      "body_ty_idx": 25
+    }
+  ],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 123534,
+      "name": "getContractData",
+      "parameters": [],
+      "return_ty_idx": 27
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "Errors.UnauthorizedSender",
+      "err_code": 102
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotEnoughGas",
+      "err_code": 104
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.ContractIsNotActive",
+      "err_code": 105
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.WrongPercent",
+      "err_code": 107
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotEnoughTons",
+      "err_code": 110
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.ContractIsCompleted",
+      "err_code": 111
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.BalancesNotEmpty",
+      "err_code": 112
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.PercentNotOffered",
+      "err_code": 113
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.PercentMismatch",
+      "err_code": 114
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.ZeroAmount",
+      "err_code": 115
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.ValueTooSmall",
+      "err_code": 120
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.5.0"
+}
