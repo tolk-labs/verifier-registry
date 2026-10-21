@@ -1,0 +1,19 @@
+enum Errors {
+    InvalidWallet = 101
+    UnauthorizedSender = 102
+    NotEnoughGas = 104
+    ContractIsNotActive = 105
+    WrongPercent = 107
+    NotEnoughJettons = 109
+    NotEnoughTons = 110
+    ContractIsCompleted = 111
+    BalancesNotEmpty = 112
+    PercentNotOffered = 113
+    PercentMismatch = 114
+    ZeroAmount = 115
+    PartiesAreEqual = 116
+    BelowMinimum = 117
+    EmptyCodeUpdate = 118
+    MissingInitiator = 119
+    ValueTooSmall = 120
+}
