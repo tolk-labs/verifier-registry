@@ -1,0 +1,976 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "PassGramRegistry",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "DiscoverUsdtJettonWallet"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TakeWalletAddress"
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 3
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RotateOwnerKey"
+    },
+    {
+      "kind": "uintN",
+      "n": 256
+    },
+    {
+      "kind": "remaining"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "JettonExcesses"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RetryPayouts"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RegisterCommunity"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "UpdateCommunity"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SetCommunityReferral"
+    },
+    {
+      "kind": "uintN",
+      "n": 16
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SetCommunityPaused"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "JettonTransferNotification"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Persisted"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ProvideWalletAddress"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "JettonTransfer"
+    },
+    {
+      "kind": "addressOpt"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "UsdtJettonWalletSet"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OwnerKeyRotated"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CommunityRegistered"
+    },
+    {
+      "kind": "uintN",
+      "n": 8
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CommunityUpdated"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CommunityReferralStopped"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CommunityReferralActivated"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CommunityDeactivated"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CommunityReactivated"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ExcessReturned"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SubscriptionPaid"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PaymentRefunded"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PayoutRetried"
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "Persisted",
+      "ty_idx": 26,
+      "fields": [
+        {
+          "name": "head",
+          "ty_idx": 3
+        },
+        {
+          "name": "tail",
+          "ty_idx": 3
+        },
+        {
+          "name": "books",
+          "ty_idx": 3
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "JettonTransferNotification",
+      "ty_idx": 25,
+      "prefix": {
+        "prefix_num": 1935855772,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "sender",
+          "ty_idx": 7
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 17
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "JettonTransfer",
+      "ty_idx": 28,
+      "prefix": {
+        "prefix_num": 260734629,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "destination",
+          "ty_idx": 7
+        },
+        {
+          "name": "responseDestination",
+          "ty_idx": 7
+        },
+        {
+          "name": "customPayload",
+          "ty_idx": 14
+        },
+        {
+          "name": "forwardTonAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 17
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "SubscriptionPaid",
+      "ty_idx": 40,
+      "prefix": {
+        "prefix_num": 1258072203,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "subscriber",
+          "ty_idx": 7
+        },
+        {
+          "name": "creator",
+          "ty_idx": 7
+        },
+        {
+          "name": "communityId",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "paidAt",
+          "ty_idx": 9
+        },
+        {
+          "name": "expiresAt",
+          "ty_idx": 9
+        },
+        {
+          "name": "hasPlatformReferrer",
+          "ty_idx": 5
+        },
+        {
+          "name": "hasCommunityReferrer",
+          "ty_idx": 5
+        },
+        {
+          "name": "communityAffiliateAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "rest",
+          "ty_idx": 3
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PaymentRefunded",
+      "ty_idx": 41,
+      "prefix": {
+        "prefix_num": 1380339268,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "payer",
+          "ty_idx": 7
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "communityId",
+          "ty_idx": 11
+        },
+        {
+          "name": "reason",
+          "ty_idx": 33
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "DiscoverUsdtJettonWallet",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 1431520343,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ProvideWalletAddress",
+      "ty_idx": 27,
+      "prefix": {
+        "prefix_num": 745978227,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "ownerAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "includeAddress",
+          "ty_idx": 5
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TakeWalletAddress",
+      "ty_idx": 13,
+      "prefix": {
+        "prefix_num": 3513996288,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "walletAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "ownerAddress",
+          "ty_idx": 14
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "UsdtJettonWalletSet",
+      "ty_idx": 30,
+      "prefix": {
+        "prefix_num": 1465075028,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "wallet",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "RotateOwnerKey",
+      "ty_idx": 15,
+      "prefix": {
+        "prefix_num": 1380931403,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "newKey",
+          "ty_idx": 16
+        },
+        {
+          "name": "validUntil",
+          "ty_idx": 9
+        },
+        {
+          "name": "authorization",
+          "ty_idx": 17
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "OwnerKeyRotated",
+      "ty_idx": 31,
+      "prefix": {
+        "prefix_num": 1330336340,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "newKey",
+          "ty_idx": 16
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ExcessReturned",
+      "ty_idx": 39,
+      "prefix": {
+        "prefix_num": 1163412307,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "payer",
+          "ty_idx": 7
+        },
+        {
+          "name": "communityId",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "JettonExcesses",
+      "ty_idx": 18,
+      "prefix": {
+        "prefix_num": 3576854235,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "RetryPayouts",
+      "ty_idx": 19,
+      "prefix": {
+        "prefix_num": 1381257817,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PayoutRetried",
+      "ty_idx": 42,
+      "prefix": {
+        "prefix_num": 3508228050,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "destination",
+          "ty_idx": 7
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "RegisterCommunity",
+      "ty_idx": 20,
+      "prefix": {
+        "prefix_num": 1380271939,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "communityId",
+          "ty_idx": 11
+        },
+        {
+          "name": "creator",
+          "ty_idx": 7
+        },
+        {
+          "name": "payout",
+          "ty_idx": 7
+        },
+        {
+          "name": "price",
+          "ty_idx": 6
+        },
+        {
+          "name": "durationSeconds",
+          "ty_idx": 9
+        },
+        {
+          "name": "tail",
+          "ty_idx": 3
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CommunityRegistered",
+      "ty_idx": 32,
+      "prefix": {
+        "prefix_num": 1129465159,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "communityId",
+          "ty_idx": 11
+        },
+        {
+          "name": "creator",
+          "ty_idx": 7
+        },
+        {
+          "name": "price",
+          "ty_idx": 6
+        },
+        {
+          "name": "durationSeconds",
+          "ty_idx": 9
+        },
+        {
+          "name": "platformMarketer",
+          "ty_idx": 29
+        },
+        {
+          "name": "communityReferralBps",
+          "ty_idx": 23
+        },
+        {
+          "name": "accessMode",
+          "ty_idx": 33
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CommunityUpdated",
+      "ty_idx": 34,
+      "prefix": {
+        "prefix_num": 1129664580,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "communityId",
+          "ty_idx": 11
+        },
+        {
+          "name": "price",
+          "ty_idx": 6
+        },
+        {
+          "name": "durationSeconds",
+          "ty_idx": 9
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "UpdateCommunity",
+      "ty_idx": 21,
+      "prefix": {
+        "prefix_num": 1431323715,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "communityId",
+          "ty_idx": 11
+        },
+        {
+          "name": "price",
+          "ty_idx": 6
+        },
+        {
+          "name": "durationSeconds",
+          "ty_idx": 9
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "SetCommunityReferral",
+      "ty_idx": 22,
+      "prefix": {
+        "prefix_num": 1396920902,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "communityId",
+          "ty_idx": 11
+        },
+        {
+          "name": "communityReferralBps",
+          "ty_idx": 23
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CommunityReferralActivated",
+      "ty_idx": 36,
+      "prefix": {
+        "prefix_num": 988184010,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "communityId",
+          "ty_idx": 11
+        },
+        {
+          "name": "communityReferralBps",
+          "ty_idx": 23
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CommunityReferralStopped",
+      "ty_idx": 35,
+      "prefix": {
+        "prefix_num": 3496872851,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "communityId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "SetCommunityPaused",
+      "ty_idx": 24,
+      "prefix": {
+        "prefix_num": 1396920403,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "communityId",
+          "ty_idx": 11
+        },
+        {
+          "name": "paused",
+          "ty_idx": 5
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CommunityDeactivated",
+      "ty_idx": 37,
+      "prefix": {
+        "prefix_num": 161481761,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "communityId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CommunityReactivated",
+      "ty_idx": 38,
+      "prefix": {
+        "prefix_num": 1669862152,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "communityId",
+          "ty_idx": 11
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 26
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 13
+    },
+    {
+      "body_ty_idx": 15
+    },
+    {
+      "body_ty_idx": 18
+    },
+    {
+      "body_ty_idx": 19
+    },
+    {
+      "body_ty_idx": 20
+    },
+    {
+      "body_ty_idx": 21
+    },
+    {
+      "body_ty_idx": 22
+    },
+    {
+      "body_ty_idx": 24
+    },
+    {
+      "body_ty_idx": 25
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 27
+    },
+    {
+      "body_ty_idx": 28
+    }
+  ],
+  "emitted_events": [
+    {
+      "body_ty_idx": 30
+    },
+    {
+      "body_ty_idx": 31
+    },
+    {
+      "body_ty_idx": 32
+    },
+    {
+      "body_ty_idx": 34
+    },
+    {
+      "body_ty_idx": 35
+    },
+    {
+      "body_ty_idx": 36
+    },
+    {
+      "body_ty_idx": 37
+    },
+    {
+      "body_ty_idx": 38
+    },
+    {
+      "body_ty_idx": 39
+    },
+    {
+      "body_ty_idx": 40
+    },
+    {
+      "body_ty_idx": 41
+    },
+    {
+      "body_ty_idx": 42
+    }
+  ],
+  "get_methods": [
+    {
+      "tvm_method_id": 112065,
+      "name": "ownerPublicKey",
+      "parameters": [],
+      "return_ty_idx": 16
+    },
+    {
+      "tvm_method_id": 90214,
+      "name": "platformFeeBps",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 120975,
+      "name": "affiliateShareOfPlatformBps",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 124483,
+      "name": "maxCommunityReferralBps",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 106403,
+      "name": "treasury",
+      "parameters": [],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 74616,
+      "name": "usdtJettonMaster",
+      "parameters": [],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 129715,
+      "name": "usdtJettonWallet",
+      "parameters": [],
+      "return_ty_idx": 29
+    },
+    {
+      "tvm_method_id": 126389,
+      "name": "communityReferralBps",
+      "parameters": [
+        {
+          "name": "communityId",
+          "ty_idx": 11
+        }
+      ],
+      "return_ty_idx": 1
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "plain_int",
+      "err_code": 100
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 101
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 102
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 103
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 104
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 105
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 106
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 107
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 108
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 109
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 110
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 111
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 112
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 113
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 114
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 115
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 116
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 117
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 118
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.5.0"
+}
