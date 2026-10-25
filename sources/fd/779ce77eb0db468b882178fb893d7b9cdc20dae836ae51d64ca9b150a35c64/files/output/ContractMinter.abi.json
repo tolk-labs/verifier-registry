@@ -1,0 +1,292 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "ContractMinter",
+  "author": "Alexandr_K",
+  "version": "0.0.5",
+  "description": "Escrow contract minter",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CreateTonContract"
+    },
+    {
+      "kind": "uintN",
+      "n": 75
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CreateUsdtContract"
+    },
+    {
+      "kind": "uintN",
+      "n": 72
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "WithdrawTon"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "UpdateCode"
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 3
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "StorageMinter"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TransferRefund"
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "CreateTonContract",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 648687198,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "clientAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "providerAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "clientAmountInit",
+          "ty_idx": 13
+        },
+        {
+          "name": "providerDepositInit",
+          "ty_idx": 13
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CreateUsdtContract",
+      "ty_idx": 14,
+      "prefix": {
+        "prefix_num": 4091202027,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "clientAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "providerAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "clientAmountInit",
+          "ty_idx": 15
+        },
+        {
+          "name": "providerDepositInit",
+          "ty_idx": 15
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "WithdrawTon",
+      "ty_idx": 16,
+      "prefix": {
+        "prefix_num": 3652471588,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "dest",
+          "ty_idx": 7
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "UpdateCode",
+      "ty_idx": 17,
+      "prefix": {
+        "prefix_num": 1294727999,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "newCode",
+          "ty_idx": 18
+        },
+        {
+          "name": "newData",
+          "ty_idx": 18
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TransferRefund",
+      "ty_idx": 20,
+      "prefix": {
+        "prefix_num": 2434676305,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "sender",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "StorageMinter",
+      "ty_idx": 19,
+      "fields": [
+        {
+          "name": "contractUsdtCode",
+          "ty_idx": 3
+        },
+        {
+          "name": "contractTonCode",
+          "ty_idx": 3
+        },
+        {
+          "name": "adminAddress",
+          "ty_idx": 7
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 19
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 14
+    },
+    {
+      "body_ty_idx": 16
+    },
+    {
+      "body_ty_idx": 17
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 20
+    }
+  ],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 123534,
+      "name": "getContractData",
+      "parameters": [],
+      "return_ty_idx": 19,
+      "description": "Reads minter admin and the child escrow code cells used for deploys."
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "Errors.UnauthorizedSender",
+      "err_code": 102
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotEnoughGas",
+      "err_code": 104
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.WrongPercent",
+      "err_code": 107
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.ZeroAmount",
+      "err_code": 115
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.PartiesAreEqual",
+      "err_code": 116
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.BelowMinimum",
+      "err_code": 117
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.EmptyCodeUpdate",
+      "err_code": 118
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.ValueTooSmall",
+      "err_code": 120
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.5.0"
+}
