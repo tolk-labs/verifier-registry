@@ -1,0 +1,3129 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "CertifiedOfferEscrow",
+  "author": "Gettran",
+  "version": "1.0.0",
+  "description": "Escrow for one indivisible Offer whose criterion-selected or provider-delivered positions require a bounded platform certificate and explicit finalization policy",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "NftOwnershipAssigned"
+    },
+    {
+      "kind": "remaining"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "NftReportStaticData"
+    },
+    {
+      "kind": "uintN",
+      "n": 256
+    },
+    {
+      "kind": "addressOpt"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "JettonTransferNotification"
+    },
+    {
+      "kind": "AliasRef",
+      "alias_name": "ForwardPayload"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PayloadInline"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PayloadInRef"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 13
+    },
+    {
+      "kind": "union",
+      "variants": [
+        {
+          "variant_ty_idx": 19,
+          "prefix_num": 0,
+          "prefix_len": 1,
+          "stack_type_id": 137,
+          "stack_width": 1
+        },
+        {
+          "variant_ty_idx": 20,
+          "prefix_num": 1,
+          "prefix_len": 1,
+          "stack_type_id": 138,
+          "stack_width": 1
+        }
+      ],
+      "stack_width": 2
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "JettonExcesses"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "UsdtDepositReceived"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "UsdtDepositTerms"
+    },
+    {
+      "kind": "EnumRef",
+      "enum_name": "OfferSide"
+    },
+    {
+      "kind": "uintN",
+      "n": 8
+    },
+    {
+      "kind": "EnumRef",
+      "enum_name": "UsdtDepositPurpose"
+    },
+    {
+      "kind": "uintN",
+      "n": 1
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 3
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 25
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "UsdtDepositAssigned"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "UsdtHoldingFunded"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ResolveUsdtDeposit"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ResolveUsdtHolding"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PrepareUsdtPayment"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "StartCertifiedOfferExecution"
+    },
+    {
+      "kind": "bitsN",
+      "n": 512
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "DepositCertifiedOfferPayment"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "BuyCertifiedOffer"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ApplyCertifiedSettlementApproval"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CertifiedSettlementApprovalAuthorization"
+    },
+    {
+      "kind": "uintN",
+      "n": 128
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CertifiedSettlementApprovalEvidence"
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 15
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 44
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 42
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ReleaseCertifiedOfferExecutionAttempt"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ApplyCertifiedExecutionRejection"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CertifiedExecutionRejectionAuthorization"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 50
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ApplyCertifiedExecutionRejectionAndClose"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CertifiedExecutionRejectionAndCloseAuthorization"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 53
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ExpireCertifiedOffer"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ResumeCertifiedSettlement"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Cancel"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RelayCertifiedCustodiedCancellation"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CertifiedCustodiedCancellationAuthorization"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 59
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "DepositEscrowReserve"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "DepositSideFee"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ConfirmNftDelivery"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RetryNftDelivery"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RecoverUnexpectedNft"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TextComment"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TriggerCertifiedOfferExpiry"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TriggerCertifiedExpiredExecutionRelease"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TriggerSettlementResume"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TriggerNftDeliveryRetry"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RelayCertifiedSettlementApproval"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RelayCertifiedExecutionRejection"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RelayCertifiedExecutionRejectionAndClose"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RelayMakerCancellation"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TonConnectMakerCancellation"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "MakerCancellationAuthorization"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 76
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 75
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CertifiedOfferEscrowStorage"
+    },
+    {
+      "kind": "EnumRef",
+      "enum_name": "CertifiedOfferEscrowStatus"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OfferEscrowDeposits"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PaymentDeposits"
+    },
+    {
+      "kind": "AliasRef",
+      "alias_name": "MoneyContributions"
+    },
+    {
+      "kind": "mapKV",
+      "key_ty_idx": 7,
+      "value_ty_idx": 6
+    },
+    {
+      "kind": "AliasRef",
+      "alias_name": "NftDeliveries"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "NftDelivery"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 66
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 87
+    },
+    {
+      "kind": "EnumRef",
+      "enum_name": "NftDeliveryStatus"
+    },
+    {
+      "kind": "mapKV",
+      "key_ty_idx": 7,
+      "value_ty_idx": 86
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "UsdtDeposits"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "UsdtDepositRecord"
+    },
+    {
+      "kind": "EnumRef",
+      "enum_name": "UsdtDepositAssignmentStatus"
+    },
+    {
+      "kind": "uintN",
+      "n": 2
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 11
+    },
+    {
+      "kind": "mapKV",
+      "key_ty_idx": 7,
+      "value_ty_idx": 92
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 81
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CertifiedOfferTerms"
+    },
+    {
+      "kind": "uintN",
+      "n": 16
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OfferEscrowParties"
+    },
+    {
+      "kind": "AliasRef",
+      "alias_name": "OfferWallets"
+    },
+    {
+      "kind": "mapKV",
+      "key_ty_idx": 7,
+      "value_ty_idx": 5
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "MakerCancellationPolicy"
+    },
+    {
+      "kind": "AliasRef",
+      "alias_name": "MakerCancellationKeys"
+    },
+    {
+      "kind": "mapKV",
+      "key_ty_idx": 7,
+      "value_ty_idx": 15
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 103
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 106
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 100
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PaymentTerms"
+    },
+    {
+      "kind": "EnumRef",
+      "enum_name": "PaymentAsset"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 109
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 111
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CertifiedOfferPolicy"
+    },
+    {
+      "kind": "AliasRef",
+      "alias_name": "ItemDeposits"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ItemDeposit"
+    },
+    {
+      "kind": "mapKV",
+      "key_ty_idx": 7,
+      "value_ty_idx": 115
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "DeliveryCommitment"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 117
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 118
+    },
+    {
+      "kind": "EnumRef",
+      "enum_name": "FinalizationPolicy"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 113
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "EscrowConfig"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 122
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 98
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CertifiedOfferExecutionAttempt"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CertifiedExecutionAttemptDetails"
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 43
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 126
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 125
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 129
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "JettonTransfer"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "NftTransfer"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "NftGetStaticData"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "AssignUsdtDeposit"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RefundUsdtDeposit"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RestoreUsdtDepositAssignment"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ProbeUsdtDeposit"
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 125,
+      "stack_type_id": 134,
+      "stack_width": 10
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "enum",
+      "name": "UsdtDepositPurpose",
+      "ty_idx": 28,
+      "encoded_as_ty_idx": 29,
+      "members": [
+        {
+          "name": "Principal",
+          "value": "0"
+        },
+        {
+          "name": "MarketplaceFee",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ProbeUsdtDeposit",
+      "ty_idx": 137,
+      "prefix": {
+        "prefix_num": 1430540370,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "AssignUsdtDeposit",
+      "ty_idx": 134,
+      "prefix": {
+        "prefix_num": 1430537037,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "beneficiary",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "RestoreUsdtDepositAssignment",
+      "ty_idx": 136,
+      "prefix": {
+        "prefix_num": 1430540865,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "beneficiary",
+          "ty_idx": 7
+        },
+        {
+          "name": "holdingAttempt",
+          "ty_idx": 95,
+          "default_value": {
+            "kind": "null"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "RefundUsdtDeposit",
+      "ty_idx": 135,
+      "prefix": {
+        "prefix_num": 1430540870,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "comment",
+          "ty_idx": 87
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "UsdtDepositReceived",
+      "ty_idx": 24,
+      "prefix": {
+        "prefix_num": 1430537796,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "terms",
+          "ty_idx": 31
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "UsdtDepositAssigned",
+      "ty_idx": 32,
+      "prefix": {
+        "prefix_num": 1430536515,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "terms",
+          "ty_idx": 31
+        },
+        {
+          "name": "beneficiary",
+          "ty_idx": 7
+        },
+        {
+          "name": "holdingAttempt",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "UsdtHoldingFunded",
+      "ty_idx": 33,
+      "prefix": {
+        "prefix_num": 1430799940,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "terms",
+          "ty_idx": 31
+        },
+        {
+          "name": "attempt",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "UsdtDepositTerms",
+      "ty_idx": 25,
+      "fields": [
+        {
+          "name": "escrow",
+          "ty_idx": 7
+        },
+        {
+          "name": "contributor",
+          "ty_idx": 7
+        },
+        {
+          "name": "offerExecutionNumber",
+          "ty_idx": 9
+        },
+        {
+          "name": "side",
+          "ty_idx": 26
+        },
+        {
+          "name": "purpose",
+          "ty_idx": 28
+        },
+        {
+          "name": "nonce",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "execution",
+          "ty_idx": 30,
+          "default_value": {
+            "kind": "null"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TextComment",
+      "ty_idx": 66,
+      "prefix": {
+        "prefix_num": 0,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "text",
+          "ty_idx": 13
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PayloadInline",
+      "ty_idx": 19,
+      "prefix": {
+        "prefix_num": 0,
+        "prefix_len": 1
+      },
+      "fields": [
+        {
+          "name": "value",
+          "ty_idx": 13
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PayloadInRef",
+      "ty_idx": 20,
+      "prefix": {
+        "prefix_num": 1,
+        "prefix_len": 1
+      },
+      "fields": [
+        {
+          "name": "value",
+          "ty_idx": 21
+        }
+      ]
+    },
+    {
+      "kind": "alias",
+      "name": "ForwardPayload",
+      "ty_idx": 18,
+      "target_ty_idx": 22
+    },
+    {
+      "kind": "struct",
+      "name": "JettonTransferNotification",
+      "ty_idx": 17,
+      "prefix": {
+        "prefix_num": 1935855772,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "jettonAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "transferInitiator",
+          "ty_idx": 16
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 13,
+          "client_ty_idx": 18
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "JettonTransfer",
+      "ty_idx": 131,
+      "prefix": {
+        "prefix_num": 260734629,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "jettonAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "transferRecipient",
+          "ty_idx": 7
+        },
+        {
+          "name": "sendExcessesTo",
+          "ty_idx": 16
+        },
+        {
+          "name": "customPayload",
+          "ty_idx": 30,
+          "default_value": {
+            "kind": "null"
+          }
+        },
+        {
+          "name": "forwardTonAmount",
+          "ty_idx": 6,
+          "default_value": {
+            "kind": "castTo",
+            "inner": {
+              "kind": "int",
+              "v": "0"
+            },
+            "cast_to_ty_idx": 6
+          }
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 13
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "JettonExcesses",
+      "ty_idx": 23,
+      "prefix": {
+        "prefix_num": 3576854235,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "alias",
+      "name": "MakerCancellationKeys",
+      "ty_idx": 104,
+      "target_ty_idx": 105
+    },
+    {
+      "kind": "struct",
+      "name": "MakerCancellationPolicy",
+      "ty_idx": 103,
+      "fields": [
+        {
+          "name": "networkGlobalId",
+          "ty_idx": 8
+        },
+        {
+          "name": "appDomainHash",
+          "ty_idx": 15
+        },
+        {
+          "name": "keys",
+          "ty_idx": 104,
+          "default_value": {
+            "kind": "castTo",
+            "inner": {
+              "kind": "shapedTuple",
+              "items": []
+            },
+            "cast_to_ty_idx": 105
+          }
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "MakerCancellationAuthorization",
+      "ty_idx": 76,
+      "prefix": {
+        "prefix_num": 1296253262,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "networkGlobalId",
+          "ty_idx": 8
+        },
+        {
+          "name": "escrow",
+          "ty_idx": 7
+        },
+        {
+          "name": "offerId",
+          "ty_idx": 43
+        },
+        {
+          "name": "validUntil",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TonConnectMakerCancellation",
+      "ty_idx": 75,
+      "fields": [
+        {
+          "name": "magic",
+          "ty_idx": 9
+        },
+        {
+          "name": "schemaHash",
+          "ty_idx": 9
+        },
+        {
+          "name": "timestamp",
+          "ty_idx": 11
+        },
+        {
+          "name": "userAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "appDomain",
+          "ty_idx": 3
+        },
+        {
+          "name": "payload",
+          "ty_idx": 77
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "RelayMakerCancellation",
+      "ty_idx": 74,
+      "prefix": {
+        "prefix_num": 1480805955,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "signature",
+          "ty_idx": 38
+        },
+        {
+          "name": "signed",
+          "ty_idx": 78
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "NftDelivery",
+      "ty_idx": 86,
+      "fields": [
+        {
+          "name": "recipient",
+          "ty_idx": 7
+        },
+        {
+          "name": "comment",
+          "ty_idx": 88,
+          "default_value": {
+            "kind": "null"
+          }
+        },
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "sponsor",
+          "ty_idx": 16,
+          "default_value": {
+            "kind": "null"
+          }
+        },
+        {
+          "name": "hasReceipt",
+          "ty_idx": 5,
+          "default_value": {
+            "kind": "bool",
+            "v": false
+          }
+        },
+        {
+          "name": "automaticAttempts",
+          "ty_idx": 27,
+          "default_value": {
+            "kind": "int",
+            "v": "0"
+          }
+        },
+        {
+          "name": "status",
+          "ty_idx": 89,
+          "default_value": {
+            "kind": "castTo",
+            "inner": {
+              "kind": "int",
+              "v": "0"
+            },
+            "cast_to_ty_idx": 89
+          }
+        }
+      ]
+    },
+    {
+      "kind": "alias",
+      "name": "NftDeliveries",
+      "ty_idx": 85,
+      "target_ty_idx": 90
+    },
+    {
+      "kind": "struct",
+      "name": "ItemDeposit",
+      "ty_idx": 115,
+      "fields": [
+        {
+          "name": "refundRecipient",
+          "ty_idx": 16
+        },
+        {
+          "name": "depositor",
+          "ty_idx": 16
+        }
+      ]
+    },
+    {
+      "kind": "alias",
+      "name": "ItemDeposits",
+      "ty_idx": 114,
+      "target_ty_idx": 116
+    },
+    {
+      "kind": "enum",
+      "name": "NftDeliveryStatus",
+      "ty_idx": 89,
+      "encoded_as_ty_idx": 27,
+      "members": [
+        {
+          "name": "Pending",
+          "value": "0"
+        },
+        {
+          "name": "Failed",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "NftOwnershipAssigned",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 85167505,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "previousOwner",
+          "ty_idx": 7
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 13
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "NftTransfer",
+      "ty_idx": 132,
+      "prefix": {
+        "prefix_num": 1607220500,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "newOwner",
+          "ty_idx": 7
+        },
+        {
+          "name": "responseDestination",
+          "ty_idx": 7
+        },
+        {
+          "name": "customPayload",
+          "ty_idx": 30,
+          "default_value": {
+            "kind": "null"
+          }
+        },
+        {
+          "name": "forwardAmount",
+          "ty_idx": 6,
+          "default_value": {
+            "kind": "castTo",
+            "inner": {
+              "kind": "int",
+              "v": "0"
+            },
+            "cast_to_ty_idx": 6
+          }
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 13
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "NftGetStaticData",
+      "ty_idx": 133,
+      "prefix": {
+        "prefix_num": 801842850,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "NftReportStaticData",
+      "ty_idx": 14,
+      "prefix": {
+        "prefix_num": 2339837749,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "index",
+          "ty_idx": 15
+        },
+        {
+          "name": "collection",
+          "ty_idx": 16
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "RetryNftDelivery",
+      "ty_idx": 64,
+      "prefix": {
+        "prefix_num": 1380861524,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "nft",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TriggerNftDeliveryRetry",
+      "ty_idx": 70,
+      "prefix": {
+        "prefix_num": 1481524818,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "offerId",
+          "ty_idx": 43
+        },
+        {
+          "name": "nft",
+          "ty_idx": 7
+        },
+        {
+          "name": "deliveryQueryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ConfirmNftDelivery",
+      "ty_idx": 63,
+      "prefix": {
+        "prefix_num": 1129203282,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "nft",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "RecoverUnexpectedNft",
+      "ty_idx": 65,
+      "prefix": {
+        "prefix_num": 1381322328,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "recoveryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "nft",
+          "ty_idx": 7
+        },
+        {
+          "name": "recipient",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "OfferEscrowDeposits",
+      "ty_idx": 81,
+      "fields": [
+        {
+          "name": "makerFeePayer",
+          "ty_idx": 16,
+          "default_value": {
+            "kind": "null"
+          }
+        },
+        {
+          "name": "maker",
+          "ty_idx": 82,
+          "default_value": {
+            "kind": "object",
+            "struct_name": "PaymentDeposits",
+            "fields": [
+              {
+                "kind": "castTo",
+                "inner": {
+                  "kind": "int",
+                  "v": "0"
+                },
+                "cast_to_ty_idx": 6
+              },
+              {
+                "kind": "castTo",
+                "inner": {
+                  "kind": "shapedTuple",
+                  "items": []
+                },
+                "cast_to_ty_idx": 84
+              }
+            ]
+          }
+        },
+        {
+          "name": "nftDeliveries",
+          "ty_idx": 85,
+          "default_value": {
+            "kind": "castTo",
+            "inner": {
+              "kind": "shapedTuple",
+              "items": []
+            },
+            "cast_to_ty_idx": 90
+          }
+        },
+        {
+          "name": "usdt",
+          "ty_idx": 91,
+          "default_value": {
+            "kind": "object",
+            "struct_name": "UsdtDeposits",
+            "fields": [
+              {
+                "kind": "castTo",
+                "inner": {
+                  "kind": "int",
+                  "v": "0"
+                },
+                "cast_to_ty_idx": 6
+              },
+              {
+                "kind": "castTo",
+                "inner": {
+                  "kind": "int",
+                  "v": "0"
+                },
+                "cast_to_ty_idx": 6
+              },
+              {
+                "kind": "castTo",
+                "inner": {
+                  "kind": "int",
+                  "v": "0"
+                },
+                "cast_to_ty_idx": 27
+              },
+              {
+                "kind": "castTo",
+                "inner": {
+                  "kind": "int",
+                  "v": "0"
+                },
+                "cast_to_ty_idx": 27
+              },
+              {
+                "kind": "castTo",
+                "inner": {
+                  "kind": "shapedTuple",
+                  "items": []
+                },
+                "cast_to_ty_idx": 96
+              },
+              {
+                "kind": "castTo",
+                "inner": {
+                  "kind": "int",
+                  "v": "0"
+                },
+                "cast_to_ty_idx": 9
+              },
+              {
+                "kind": "castTo",
+                "inner": {
+                  "kind": "int",
+                  "v": "0"
+                },
+                "cast_to_ty_idx": 9
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": "PaymentAsset",
+      "ty_idx": 110,
+      "encoded_as_ty_idx": 27,
+      "members": [
+        {
+          "name": "Ton",
+          "value": "0"
+        },
+        {
+          "name": "Usdt",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": "OfferSide",
+      "ty_idx": 26,
+      "encoded_as_ty_idx": 27,
+      "members": [
+        {
+          "name": "Maker",
+          "value": "0"
+        },
+        {
+          "name": "Taker",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Cancel",
+      "ty_idx": 57,
+      "prefix": {
+        "prefix_num": 1128353347,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "DepositEscrowReserve",
+      "ty_idx": 61,
+      "prefix": {
+        "prefix_num": 1163023190,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TriggerSettlementResume",
+      "ty_idx": 69,
+      "prefix": {
+        "prefix_num": 1481854290,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "offerId",
+          "ty_idx": 43
+        },
+        {
+          "name": "payoutQueryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "vault",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "DepositSideFee",
+      "ty_idx": 62,
+      "prefix": {
+        "prefix_num": 1179010373,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "offerExecutionNumber",
+          "ty_idx": 9
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "OfferEscrowParties",
+      "ty_idx": 100,
+      "fields": [
+        {
+          "name": "makerWallets",
+          "ty_idx": 101
+        },
+        {
+          "name": "makerSettlementWallet",
+          "ty_idx": 7
+        },
+        {
+          "name": "addresseeWallets",
+          "ty_idx": 101
+        },
+        {
+          "name": "makerCancellation",
+          "ty_idx": 107,
+          "default_value": {
+            "kind": "null"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PaymentTerms",
+      "ty_idx": 109,
+      "fields": [
+        {
+          "name": "asset",
+          "ty_idx": 110
+        },
+        {
+          "name": "payer",
+          "ty_idx": 26
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "marketplaceFee",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PaymentDeposits",
+      "ty_idx": 82,
+      "fields": [
+        {
+          "name": "total",
+          "ty_idx": 6
+        },
+        {
+          "name": "contributions",
+          "ty_idx": 83
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "EscrowConfig",
+      "ty_idx": 122,
+      "fields": [
+        {
+          "name": "feeTreasury",
+          "ty_idx": 7
+        },
+        {
+          "name": "unexpectedNftRecoveryAuthority",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "alias",
+      "name": "OfferWallets",
+      "ty_idx": 101,
+      "target_ty_idx": 102
+    },
+    {
+      "kind": "alias",
+      "name": "MoneyContributions",
+      "ty_idx": 83,
+      "target_ty_idx": 84
+    },
+    {
+      "kind": "struct",
+      "name": "UsdtDepositRecord",
+      "ty_idx": 92,
+      "fields": [
+        {
+          "name": "terms",
+          "ty_idx": 31
+        },
+        {
+          "name": "assignmentStatus",
+          "ty_idx": 93,
+          "default_value": {
+            "kind": "castTo",
+            "inner": {
+              "kind": "int",
+              "v": "0"
+            },
+            "cast_to_ty_idx": 93
+          }
+        },
+        {
+          "name": "automaticAttempts",
+          "ty_idx": 27,
+          "default_value": {
+            "kind": "int",
+            "v": "0"
+          }
+        },
+        {
+          "name": "lastAttemptAt",
+          "ty_idx": 9,
+          "default_value": {
+            "kind": "int",
+            "v": "0"
+          }
+        },
+        {
+          "name": "selectedAttempt",
+          "ty_idx": 95,
+          "default_value": {
+            "kind": "null"
+          }
+        },
+        {
+          "name": "termsPayloadBits",
+          "ty_idx": 9,
+          "default_value": {
+            "kind": "int",
+            "v": "0"
+          }
+        },
+        {
+          "name": "termsPayloadCells",
+          "ty_idx": 9,
+          "default_value": {
+            "kind": "int",
+            "v": "0"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "UsdtDeposits",
+      "ty_idx": 91,
+      "fields": [
+        {
+          "name": "principal",
+          "ty_idx": 6,
+          "default_value": {
+            "kind": "int",
+            "v": "0"
+          }
+        },
+        {
+          "name": "fee",
+          "ty_idx": 6,
+          "default_value": {
+            "kind": "int",
+            "v": "0"
+          }
+        },
+        {
+          "name": "count",
+          "ty_idx": 27,
+          "default_value": {
+            "kind": "int",
+            "v": "0"
+          }
+        },
+        {
+          "name": "assignedCount",
+          "ty_idx": 27,
+          "default_value": {
+            "kind": "int",
+            "v": "0"
+          }
+        },
+        {
+          "name": "entries",
+          "ty_idx": 96,
+          "default_value": {
+            "kind": "castTo",
+            "inner": {
+              "kind": "shapedTuple",
+              "items": []
+            },
+            "cast_to_ty_idx": 96
+          }
+        },
+        {
+          "name": "termsPayloadBits",
+          "ty_idx": 9,
+          "default_value": {
+            "kind": "int",
+            "v": "0"
+          }
+        },
+        {
+          "name": "termsPayloadCells",
+          "ty_idx": 9,
+          "default_value": {
+            "kind": "int",
+            "v": "0"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ResolveUsdtDeposit",
+      "ty_idx": 34,
+      "prefix": {
+        "prefix_num": 1430540883,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "terms",
+          "ty_idx": 31
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ResolveUsdtHolding",
+      "ty_idx": 35,
+      "prefix": {
+        "prefix_num": 1430803027,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "terms",
+          "ty_idx": 31
+        },
+        {
+          "name": "attempt",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PrepareUsdtPayment",
+      "ty_idx": 36,
+      "prefix": {
+        "prefix_num": 1431520336,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "offerExecutionNumber",
+          "ty_idx": 9
+        },
+        {
+          "name": "nonce",
+          "ty_idx": 11
+        },
+        {
+          "name": "principal",
+          "ty_idx": 6
+        },
+        {
+          "name": "marketplaceFee",
+          "ty_idx": 6
+        },
+        {
+          "name": "sideFeeAmount",
+          "ty_idx": 6,
+          "default_value": {
+            "kind": "int",
+            "v": "0"
+          }
+        },
+        {
+          "name": "execution",
+          "ty_idx": 30,
+          "default_value": {
+            "kind": "null"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": "CertifiedOfferEscrowStatus",
+      "ty_idx": 80,
+      "encoded_as_ty_idx": 27,
+      "members": [
+        {
+          "name": "CollectingMaker",
+          "value": "0"
+        },
+        {
+          "name": "Open",
+          "value": "1"
+        },
+        {
+          "name": "CollectingTaker",
+          "value": "2"
+        },
+        {
+          "name": "AwaitingApproval",
+          "value": "3"
+        },
+        {
+          "name": "AwaitingPayoutConfirmation",
+          "value": "4"
+        },
+        {
+          "name": "PayoutFailed",
+          "value": "5"
+        },
+        {
+          "name": "PayoutConfirmed",
+          "value": "6"
+        },
+        {
+          "name": "Settled",
+          "value": "7"
+        },
+        {
+          "name": "Cancelled",
+          "value": "8"
+        },
+        {
+          "name": "Expired",
+          "value": "9"
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": "FinalizationPolicy",
+      "ty_idx": 120,
+      "encoded_as_ty_idx": 27,
+      "members": [
+        {
+          "name": "Revocable",
+          "value": "0"
+        },
+        {
+          "name": "CertifierGated",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "StartCertifiedOfferExecution",
+      "ty_idx": 37,
+      "prefix": {
+        "prefix_num": 1094927174,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "signature",
+          "ty_idx": 38
+        },
+        {
+          "name": "signed",
+          "ty_idx": 3
+        },
+        {
+          "name": "paymentAmount",
+          "ty_idx": 6,
+          "default_value": {
+            "kind": "int",
+            "v": "0"
+          }
+        },
+        {
+          "name": "sideFeeAmount",
+          "ty_idx": 6,
+          "default_value": {
+            "kind": "int",
+            "v": "0"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "DepositCertifiedOfferPayment",
+      "ty_idx": 39,
+      "prefix": {
+        "prefix_num": 1179534406,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "offerExecutionNumber",
+          "ty_idx": 9
+        },
+        {
+          "name": "paymentAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "sideFeeAmount",
+          "ty_idx": 6,
+          "default_value": {
+            "kind": "int",
+            "v": "0"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "BuyCertifiedOffer",
+      "ty_idx": 40,
+      "prefix": {
+        "prefix_num": 1112889670,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "paymentAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "signature",
+          "ty_idx": 38
+        },
+        {
+          "name": "signed",
+          "ty_idx": 3
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CertifiedSettlementApprovalAuthorization",
+      "ty_idx": 42,
+      "fields": [
+        {
+          "name": "domain",
+          "ty_idx": 9
+        },
+        {
+          "name": "schemaVersion",
+          "ty_idx": 27
+        },
+        {
+          "name": "escrow",
+          "ty_idx": 7
+        },
+        {
+          "name": "offerId",
+          "ty_idx": 43
+        },
+        {
+          "name": "offerExecutionNumber",
+          "ty_idx": 9
+        },
+        {
+          "name": "issuedAt",
+          "ty_idx": 9
+        },
+        {
+          "name": "validUntil",
+          "ty_idx": 9
+        },
+        {
+          "name": "evidence",
+          "ty_idx": 46
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CertifiedSettlementApprovalEvidence",
+      "ty_idx": 44,
+      "fields": [
+        {
+          "name": "certificateHash",
+          "ty_idx": 15
+        },
+        {
+          "name": "makerDeliveryCommitment",
+          "ty_idx": 45
+        },
+        {
+          "name": "takerDeliveryCommitment",
+          "ty_idx": 45
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CertifiedExecutionRejectionAuthorization",
+      "ty_idx": 50,
+      "fields": [
+        {
+          "name": "domain",
+          "ty_idx": 9
+        },
+        {
+          "name": "schemaVersion",
+          "ty_idx": 27
+        },
+        {
+          "name": "escrow",
+          "ty_idx": 7
+        },
+        {
+          "name": "offerId",
+          "ty_idx": 43
+        },
+        {
+          "name": "offerExecutionNumber",
+          "ty_idx": 9
+        },
+        {
+          "name": "certificateHash",
+          "ty_idx": 15
+        },
+        {
+          "name": "issuedAt",
+          "ty_idx": 9
+        },
+        {
+          "name": "validUntil",
+          "ty_idx": 9
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CertifiedExecutionRejectionAndCloseAuthorization",
+      "ty_idx": 53,
+      "fields": [
+        {
+          "name": "domain",
+          "ty_idx": 9
+        },
+        {
+          "name": "schemaVersion",
+          "ty_idx": 27
+        },
+        {
+          "name": "escrow",
+          "ty_idx": 7
+        },
+        {
+          "name": "offerId",
+          "ty_idx": 43
+        },
+        {
+          "name": "offerExecutionNumber",
+          "ty_idx": 9
+        },
+        {
+          "name": "certificateHash",
+          "ty_idx": 15
+        },
+        {
+          "name": "issuedAt",
+          "ty_idx": 9
+        },
+        {
+          "name": "validUntil",
+          "ty_idx": 9
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CertifiedCustodiedCancellationAuthorization",
+      "ty_idx": 59,
+      "fields": [
+        {
+          "name": "domain",
+          "ty_idx": 9
+        },
+        {
+          "name": "schemaVersion",
+          "ty_idx": 27
+        },
+        {
+          "name": "escrow",
+          "ty_idx": 7
+        },
+        {
+          "name": "offerId",
+          "ty_idx": 43
+        },
+        {
+          "name": "issuedAt",
+          "ty_idx": 9
+        },
+        {
+          "name": "validUntil",
+          "ty_idx": 9
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ApplyCertifiedSettlementApproval",
+      "ty_idx": 41,
+      "prefix": {
+        "prefix_num": 1096106320,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "signature",
+          "ty_idx": 38
+        },
+        {
+          "name": "signed",
+          "ty_idx": 47
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ApplyCertifiedExecutionRejection",
+      "ty_idx": 49,
+      "prefix": {
+        "prefix_num": 1096110666,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "signature",
+          "ty_idx": 38
+        },
+        {
+          "name": "signed",
+          "ty_idx": 51
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ApplyCertifiedExecutionRejectionAndClose",
+      "ty_idx": 52,
+      "prefix": {
+        "prefix_num": 1096110659,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "signature",
+          "ty_idx": 38
+        },
+        {
+          "name": "signed",
+          "ty_idx": 54
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ReleaseCertifiedOfferExecutionAttempt",
+      "ty_idx": 48,
+      "prefix": {
+        "prefix_num": 1380729670,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "offerExecutionNumber",
+          "ty_idx": 9
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ExpireCertifiedOffer",
+      "ty_idx": 55,
+      "prefix": {
+        "prefix_num": 1163415622,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ResumeCertifiedSettlement",
+      "ty_idx": 56,
+      "prefix": {
+        "prefix_num": 1381190982,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TriggerCertifiedOfferExpiry",
+      "ty_idx": 67,
+      "prefix": {
+        "prefix_num": 1480939590,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "offerId",
+          "ty_idx": 43
+        },
+        {
+          "name": "expiresAt",
+          "ty_idx": 9
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TriggerCertifiedExpiredExecutionRelease",
+      "ty_idx": 68,
+      "prefix": {
+        "prefix_num": 1481788486,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "offerId",
+          "ty_idx": 43
+        },
+        {
+          "name": "offerExecutionNumber",
+          "ty_idx": 9
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "RelayCertifiedSettlementApproval",
+      "ty_idx": 71,
+      "prefix": {
+        "prefix_num": 1480675398,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "signature",
+          "ty_idx": 38
+        },
+        {
+          "name": "signed",
+          "ty_idx": 47
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "RelayCertifiedExecutionRejection",
+      "ty_idx": 72,
+      "prefix": {
+        "prefix_num": 1481787974,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "signature",
+          "ty_idx": 38
+        },
+        {
+          "name": "signed",
+          "ty_idx": 51
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "RelayCertifiedExecutionRejectionAndClose",
+      "ty_idx": 73,
+      "prefix": {
+        "prefix_num": 1481787971,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "signature",
+          "ty_idx": 38
+        },
+        {
+          "name": "signed",
+          "ty_idx": 54
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "RelayCertifiedCustodiedCancellation",
+      "ty_idx": 58,
+      "prefix": {
+        "prefix_num": 1480803142,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "signature",
+          "ty_idx": 38
+        },
+        {
+          "name": "signed",
+          "ty_idx": 60
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "DeliveryCommitment",
+      "ty_idx": 117,
+      "fields": [
+        {
+          "name": "itemCount",
+          "ty_idx": 99
+        },
+        {
+          "name": "hash",
+          "ty_idx": 15
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CertifiedOfferPolicy",
+      "ty_idx": 113,
+      "fields": [
+        {
+          "name": "fixedTakerItems",
+          "ty_idx": 114,
+          "default_value": {
+            "kind": "castTo",
+            "inner": {
+              "kind": "shapedTuple",
+              "items": []
+            },
+            "cast_to_ty_idx": 116
+          }
+        },
+        {
+          "name": "makerDelivery",
+          "ty_idx": 119
+        },
+        {
+          "name": "takerRequirementCommitment",
+          "ty_idx": 15
+        },
+        {
+          "name": "finalizationPolicy",
+          "ty_idx": 120,
+          "default_value": {
+            "kind": "castTo",
+            "inner": {
+              "kind": "int",
+              "v": "0"
+            },
+            "cast_to_ty_idx": 120
+          }
+        },
+        {
+          "name": "custodiedCancellationByCertifier",
+          "ty_idx": 5,
+          "default_value": {
+            "kind": "bool",
+            "v": false
+          }
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CertifiedOfferTerms",
+      "ty_idx": 98,
+      "fields": [
+        {
+          "name": "offerId",
+          "ty_idx": 43
+        },
+        {
+          "name": "makerItemCount",
+          "ty_idx": 99
+        },
+        {
+          "name": "takerItemCount",
+          "ty_idx": 99
+        },
+        {
+          "name": "parties",
+          "ty_idx": 108
+        },
+        {
+          "name": "payment",
+          "ty_idx": 112
+        },
+        {
+          "name": "makerTonFee",
+          "ty_idx": 6
+        },
+        {
+          "name": "takerTonFee",
+          "ty_idx": 6,
+          "default_value": {
+            "kind": "castTo",
+            "inner": {
+              "kind": "int",
+              "v": "0"
+            },
+            "cast_to_ty_idx": 6
+          }
+        },
+        {
+          "name": "policy",
+          "ty_idx": 121
+        },
+        {
+          "name": "config",
+          "ty_idx": 123
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CertifiedExecutionAttemptDetails",
+      "ty_idx": 126,
+      "fields": [
+        {
+          "name": "contributorWallets",
+          "ty_idx": 101
+        },
+        {
+          "name": "takerSettlementWallet",
+          "ty_idx": 7
+        },
+        {
+          "name": "items",
+          "ty_idx": 114,
+          "default_value": {
+            "kind": "castTo",
+            "inner": {
+              "kind": "shapedTuple",
+              "items": []
+            },
+            "cast_to_ty_idx": 116
+          }
+        },
+        {
+          "name": "delivery",
+          "ty_idx": 119
+        },
+        {
+          "name": "executionAgreementId",
+          "ty_idx": 127,
+          "default_value": {
+            "kind": "null"
+          }
+        },
+        {
+          "name": "takerTonFee",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CertifiedOfferExecutionAttempt",
+      "ty_idx": 125,
+      "fields": [
+        {
+          "name": "feePayer",
+          "ty_idx": 16,
+          "default_value": {
+            "kind": "null"
+          }
+        },
+        {
+          "name": "excessRecipient",
+          "ty_idx": 16,
+          "default_value": {
+            "kind": "null"
+          }
+        },
+        {
+          "name": "number",
+          "ty_idx": 9
+        },
+        {
+          "name": "certificateHash",
+          "ty_idx": 15
+        },
+        {
+          "name": "validUntil",
+          "ty_idx": 9
+        },
+        {
+          "name": "confirmedContributorWallets",
+          "ty_idx": 101
+        },
+        {
+          "name": "deposits",
+          "ty_idx": 82
+        },
+        {
+          "name": "details",
+          "ty_idx": 128
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CertifiedOfferEscrowStorage",
+      "ty_idx": 79,
+      "fields": [
+        {
+          "name": "status",
+          "ty_idx": 80
+        },
+        {
+          "name": "expiresAt",
+          "ty_idx": 9
+        },
+        {
+          "name": "executionAttemptTtl",
+          "ty_idx": 9
+        },
+        {
+          "name": "deposits",
+          "ty_idx": 97
+        },
+        {
+          "name": "offerExecutionNumber",
+          "ty_idx": 9
+        },
+        {
+          "name": "payoutQueryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "closedAt",
+          "ty_idx": 9,
+          "default_value": {
+            "kind": "int",
+            "v": "0"
+          }
+        },
+        {
+          "name": "lastUnexpectedNftRecoveryId",
+          "ty_idx": 11,
+          "default_value": {
+            "kind": "int",
+            "v": "0"
+          }
+        },
+        {
+          "name": "automaticRecoveryBudget",
+          "ty_idx": 6,
+          "default_value": {
+            "kind": "castTo",
+            "inner": {
+              "kind": "int",
+              "v": "0"
+            },
+            "cast_to_ty_idx": 6
+          }
+        },
+        {
+          "name": "certifierPublicKey",
+          "ty_idx": 15
+        },
+        {
+          "name": "terms",
+          "ty_idx": 124
+        },
+        {
+          "name": "makerItems",
+          "ty_idx": 114,
+          "default_value": {
+            "kind": "castTo",
+            "inner": {
+              "kind": "shapedTuple",
+              "items": []
+            },
+            "cast_to_ty_idx": 116
+          }
+        },
+        {
+          "name": "executionAttempt",
+          "ty_idx": 130
+        },
+        {
+          "name": "reserveRefundRecipient",
+          "ty_idx": 16,
+          "default_value": {
+            "kind": "null"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": "UsdtDepositAssignmentStatus",
+      "ty_idx": 93,
+      "encoded_as_ty_idx": 94,
+      "members": [
+        {
+          "name": "Unsent",
+          "value": "0"
+        },
+        {
+          "name": "Pending",
+          "value": "1"
+        },
+        {
+          "name": "Assigned",
+          "value": "2"
+        },
+        {
+          "name": "Failed",
+          "value": "3"
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 79
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 14
+    },
+    {
+      "body_ty_idx": 17
+    },
+    {
+      "body_ty_idx": 23
+    },
+    {
+      "body_ty_idx": 24
+    },
+    {
+      "body_ty_idx": 32
+    },
+    {
+      "body_ty_idx": 33
+    },
+    {
+      "body_ty_idx": 34
+    },
+    {
+      "body_ty_idx": 35
+    },
+    {
+      "body_ty_idx": 36
+    },
+    {
+      "body_ty_idx": 37
+    },
+    {
+      "body_ty_idx": 39
+    },
+    {
+      "body_ty_idx": 40
+    },
+    {
+      "body_ty_idx": 41
+    },
+    {
+      "body_ty_idx": 48
+    },
+    {
+      "body_ty_idx": 49
+    },
+    {
+      "body_ty_idx": 52
+    },
+    {
+      "body_ty_idx": 55
+    },
+    {
+      "body_ty_idx": 56
+    },
+    {
+      "body_ty_idx": 57
+    },
+    {
+      "body_ty_idx": 58
+    },
+    {
+      "body_ty_idx": 61
+    },
+    {
+      "body_ty_idx": 62
+    },
+    {
+      "body_ty_idx": 63
+    },
+    {
+      "body_ty_idx": 64
+    },
+    {
+      "body_ty_idx": 65
+    },
+    {
+      "body_ty_idx": 66
+    }
+  ],
+  "incoming_external": [
+    {
+      "body_ty_idx": 67
+    },
+    {
+      "body_ty_idx": 68
+    },
+    {
+      "body_ty_idx": 69
+    },
+    {
+      "body_ty_idx": 70
+    },
+    {
+      "body_ty_idx": 71
+    },
+    {
+      "body_ty_idx": 72
+    },
+    {
+      "body_ty_idx": 73
+    },
+    {
+      "body_ty_idx": 58
+    },
+    {
+      "body_ty_idx": 74
+    }
+  ],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 131
+    },
+    {
+      "body_ty_idx": 132
+    },
+    {
+      "body_ty_idx": 66
+    },
+    {
+      "body_ty_idx": 133
+    },
+    {
+      "body_ty_idx": 134
+    },
+    {
+      "body_ty_idx": 135
+    },
+    {
+      "body_ty_idx": 136
+    },
+    {
+      "body_ty_idx": 61
+    },
+    {
+      "body_ty_idx": 137
+    },
+    {
+      "body_ty_idx": 56
+    }
+  ],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 101642,
+      "name": "status",
+      "parameters": [],
+      "return_ty_idx": 80
+    },
+    {
+      "tvm_method_id": 78392,
+      "name": "nft_deliveries",
+      "parameters": [],
+      "return_ty_idx": 85
+    },
+    {
+      "tvm_method_id": 111006,
+      "name": "nft_recovery_recipient",
+      "parameters": [
+        {
+          "name": "nft",
+          "ty_idx": 7
+        }
+      ],
+      "return_ty_idx": 16
+    },
+    {
+      "tvm_method_id": 126533,
+      "name": "offer_id",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 78811,
+      "name": "offer_execution_number",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 80098,
+      "name": "execution_attempt",
+      "parameters": [],
+      "return_ty_idx": 138
+    },
+    {
+      "tvm_method_id": 122342,
+      "name": "certifier_public_key",
+      "parameters": [],
+      "return_ty_idx": 15
+    },
+    {
+      "tvm_method_id": 127949,
+      "name": "maker_items",
+      "parameters": [],
+      "return_ty_idx": 114
+    },
+    {
+      "tvm_method_id": 88955,
+      "name": "required_maker_balance",
+      "parameters": [],
+      "return_ty_idx": 6
+    },
+    {
+      "tvm_method_id": 125809,
+      "name": "usdt_wallet",
+      "parameters": [],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 122409,
+      "name": "usdt_deposits",
+      "parameters": [],
+      "return_ty_idx": 91
+    },
+    {
+      "tvm_method_id": 84297,
+      "name": "usdt_recovery_storage_reserve",
+      "parameters": [],
+      "return_ty_idx": 6
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.NotMaker",
+      "err_code": 401
+    },
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.AlreadyClosed",
+      "err_code": 402
+    },
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.NotClosed",
+      "err_code": 403
+    },
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.NotUnexpectedNftRecoveryAuthority",
+      "err_code": 405
+    },
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.NotOpen",
+      "err_code": 406
+    },
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.ExecutionAttemptMoved",
+      "err_code": 407
+    },
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.NotAllowedToRelease",
+      "err_code": 408
+    },
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.OfferExecutionNumberExhausted",
+      "err_code": 409
+    },
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.OfferExpired",
+      "err_code": 410
+    },
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.OfferNotExpired",
+      "err_code": 411
+    },
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.InvalidTerms",
+      "err_code": 412
+    },
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.InvalidContributorSet",
+      "err_code": 413
+    },
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.WrongCertificateDomain",
+      "err_code": 414
+    },
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.InvalidCertificate",
+      "err_code": 415
+    },
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.NotAwaitingApproval",
+      "err_code": 417
+    },
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.WrongDeliveryCommitment",
+      "err_code": 418
+    },
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.WrongPayoutConfirmation",
+      "err_code": 419
+    },
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.SettlementNotResumable",
+      "err_code": 420
+    },
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.RecoveryReplay",
+      "err_code": 423
+    },
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.NotRecoverableNft",
+      "err_code": 424
+    },
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.NftAlreadyRecorded",
+      "err_code": 425
+    },
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.SettlementInProgress",
+      "err_code": 426
+    },
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.FinalizationLocked",
+      "err_code": 427
+    },
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.NotEnoughValue",
+      "err_code": 428
+    },
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.NftDeliveryPending",
+      "err_code": 429
+    },
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.NotNftDeliveryRecipient",
+      "err_code": 430
+    },
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.WrongSettlementAuthorizationDomain",
+      "err_code": 431
+    },
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.InvalidSettlementAuthorization",
+      "err_code": 432
+    },
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.SettlementAuthorizationExpired",
+      "err_code": 433
+    },
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.MakerCancellationUnavailable",
+      "err_code": 434
+    },
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.InvalidMakerCancellation",
+      "err_code": 435
+    },
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.AutomaticRecoveryUnavailable",
+      "err_code": 436
+    },
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.UnexpectedNftRecoveryLocked",
+      "err_code": 437
+    },
+    {
+      "kind": "enum_member",
+      "name": "UsdtDepositVaultErrors.NotEnoughValue",
+      "err_code": 801
+    },
+    {
+      "kind": "enum_member",
+      "name": "UsdtDepositVaultErrors.BeneficiaryAlreadyAssigned",
+      "err_code": 806
+    },
+    {
+      "kind": "enum_member",
+      "name": "UsdtDepositVaultErrors.InvalidTerms",
+      "err_code": 820
+    },
+    {
+      "kind": "enum_member",
+      "name": "UsdtDepositVaultErrors.InvalidVault",
+      "err_code": 821
+    },
+    {
+      "kind": "enum_member",
+      "name": "UsdtDepositVaultErrors.DuplicateDeposit",
+      "err_code": 822
+    },
+    {
+      "kind": "enum_member",
+      "name": "UsdtDepositVaultErrors.UnknownDeposit",
+      "err_code": 823
+    },
+    {
+      "kind": "enum_member",
+      "name": "UsdtDepositVaultErrors.DecisionPending",
+      "err_code": 824
+    },
+    {
+      "kind": "enum_member",
+      "name": "CertifiedOfferEscrowErrors.InvalidMessage",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.5.0"
+}
