@@ -1,0 +1,1081 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "PxpRelease",
+  "author": "PenaltyXP",
+  "version": "2.0.0",
+  "description": "Fixed-cap issuance with one-time delayed snapshot registration",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PushAllocation"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ProofStep"
+    },
+    {
+      "kind": "uintN",
+      "n": 256
+    },
+    {
+      "kind": "uintN",
+      "n": 120
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 13
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 16
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RegisterSnapshot"
+    },
+    {
+      "kind": "uintN",
+      "n": 8
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "MintBurnReserve"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "MintReceipt"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "BurnNotificationForMinter"
+    },
+    {
+      "kind": "addressOpt"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RepeatBurnReceipt"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RequestWalletAddress"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ReturnExcessesBack"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TopUpGrams"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ReleaseStorage"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ReleaseConfig"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 29
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Payment"
+    },
+    {
+      "kind": "uintN",
+      "n": 2
+    },
+    {
+      "kind": "mapKV",
+      "key_ty_idx": 9,
+      "value_ty_idx": 31
+    },
+    {
+      "kind": "mapKV",
+      "key_ty_idx": 9,
+      "value_ty_idx": 14
+    },
+    {
+      "kind": "uintN",
+      "n": 16
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "BurnReceipt"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 36
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 37
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "InternalTransferStep"
+    },
+    {
+      "kind": "AliasRef",
+      "alias_name": "ForwardPayloadRemainder"
+    },
+    {
+      "kind": "remaining"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PayloadInline"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PayloadInRef"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 41
+    },
+    {
+      "kind": "union",
+      "variants": [
+        {
+          "variant_ty_idx": 42,
+          "prefix_num": 0,
+          "prefix_len": 1,
+          "stack_type_id": 142,
+          "stack_width": 1
+        },
+        {
+          "variant_ty_idx": 43,
+          "prefix_num": 1,
+          "prefix_len": 1,
+          "stack_type_id": 143,
+          "stack_width": 1
+        }
+      ],
+      "stack_width": 2
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ResponseWalletAddress"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 7
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 47
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "JettonDataReply"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OnchainMetadataReply"
+    },
+    {
+      "kind": "AliasRef",
+      "alias_name": "string_prefixed0x"
+    },
+    {
+      "kind": "string"
+    },
+    {
+      "kind": "mapKV",
+      "key_ty_idx": 14,
+      "value_ty_idx": 51
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 50
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ReleaseStatus"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PaymentReply"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "MintReceiptReply"
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "alias",
+      "name": "ForwardPayloadRemainder",
+      "ty_idx": 40,
+      "target_ty_idx": 41
+    },
+    {
+      "kind": "struct",
+      "name": "PayloadInline",
+      "ty_idx": 42,
+      "prefix": {
+        "prefix_num": 0,
+        "prefix_len": 1
+      },
+      "fields": [
+        {
+          "name": "value",
+          "ty_idx": 41
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PayloadInRef",
+      "ty_idx": 43,
+      "prefix": {
+        "prefix_num": 1,
+        "prefix_len": 1
+      },
+      "fields": [
+        {
+          "name": "value",
+          "ty_idx": 44
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "InternalTransferStep",
+      "ty_idx": 39,
+      "prefix": {
+        "prefix_num": 395134233,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "jettonAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "transferInitiator",
+          "ty_idx": 23
+        },
+        {
+          "name": "sendExcessesTo",
+          "ty_idx": 23
+        },
+        {
+          "name": "forwardTonAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 40,
+          "client_ty_idx": 45
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ReturnExcessesBack",
+      "ty_idx": 26,
+      "prefix": {
+        "prefix_num": 3576854235,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "BurnNotificationForMinter",
+      "ty_idx": 22,
+      "prefix": {
+        "prefix_num": 2078119902,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "jettonAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "burnInitiator",
+          "ty_idx": 7
+        },
+        {
+          "name": "sendExcessesTo",
+          "ty_idx": 23
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "RequestWalletAddress",
+      "ty_idx": 25,
+      "prefix": {
+        "prefix_num": 745978227,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "ownerAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "includeOwnerAddress",
+          "ty_idx": 5
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ResponseWalletAddress",
+      "ty_idx": 46,
+      "prefix": {
+        "prefix_num": 3513996288,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "jettonWalletAddress",
+          "ty_idx": 23
+        },
+        {
+          "name": "ownerAddress",
+          "ty_idx": 48
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TopUpGrams",
+      "ty_idx": 27,
+      "prefix": {
+        "prefix_num": 3547469196,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "ProofStep",
+      "ty_idx": 13,
+      "fields": [
+        {
+          "name": "siblingHash",
+          "ty_idx": 14
+        },
+        {
+          "name": "siblingSum",
+          "ty_idx": 15
+        },
+        {
+          "name": "next",
+          "ty_idx": 17
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PushAllocation",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 1347964929,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "index",
+          "ty_idx": 9
+        },
+        {
+          "name": "recipient",
+          "ty_idx": 7
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "proof",
+          "ty_idx": 17
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "MintBurnReserve",
+      "ty_idx": 20,
+      "prefix": {
+        "prefix_num": 1347964930,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "MintReceipt",
+      "ty_idx": 21,
+      "prefix": {
+        "prefix_num": 1347964931,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "jettonAmount",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "BurnReceipt",
+      "ty_idx": 36,
+      "prefix": {
+        "prefix_num": 1347964933,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "jettonAmount",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "RepeatBurnReceipt",
+      "ty_idx": 24,
+      "prefix": {
+        "prefix_num": 1347964937,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "RegisterSnapshot",
+      "ty_idx": 18,
+      "prefix": {
+        "prefix_num": 1347964938,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "rootHash",
+          "ty_idx": 14
+        },
+        {
+          "name": "snapshotHash",
+          "ty_idx": 14
+        },
+        {
+          "name": "recipientCount",
+          "ty_idx": 9
+        },
+        {
+          "name": "proofDepth",
+          "ty_idx": 19
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Payment",
+      "ty_idx": 31,
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "recipient",
+          "ty_idx": 7
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "state",
+          "ty_idx": 32
+        },
+        {
+          "name": "requester",
+          "ty_idx": 7
+        },
+        {
+          "name": "storageDeposit",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ReleaseConfig",
+      "ty_idx": 29,
+      "fields": [
+        {
+          "name": "rootHash",
+          "ty_idx": 14
+        },
+        {
+          "name": "snapshotHash",
+          "ty_idx": 14
+        },
+        {
+          "name": "recipientCount",
+          "ty_idx": 9
+        },
+        {
+          "name": "proofDepth",
+          "ty_idx": 19
+        },
+        {
+          "name": "releaseAt",
+          "ty_idx": 9
+        },
+        {
+          "name": "metadata",
+          "ty_idx": 3
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ReleaseStorage",
+      "ty_idx": 28,
+      "fields": [
+        {
+          "name": "config",
+          "ty_idx": 30
+        },
+        {
+          "name": "totalSupply",
+          "ty_idx": 6,
+          "default_value": {
+            "kind": "int",
+            "v": "0"
+          }
+        },
+        {
+          "name": "committed",
+          "ty_idx": 6,
+          "default_value": {
+            "kind": "int",
+            "v": "0"
+          }
+        },
+        {
+          "name": "confirmed",
+          "ty_idx": 6,
+          "default_value": {
+            "kind": "int",
+            "v": "0"
+          }
+        },
+        {
+          "name": "confirmedCount",
+          "ty_idx": 9,
+          "default_value": {
+            "kind": "int",
+            "v": "0"
+          }
+        },
+        {
+          "name": "nextAttempt",
+          "ty_idx": 9,
+          "default_value": {
+            "kind": "int",
+            "v": "1"
+          }
+        },
+        {
+          "name": "payments",
+          "ty_idx": 33,
+          "default_value": {
+            "kind": "castTo",
+            "inner": {
+              "kind": "shapedTuple",
+              "items": []
+            },
+            "cast_to_ty_idx": 33
+          }
+        },
+        {
+          "name": "settled",
+          "ty_idx": 34,
+          "default_value": {
+            "kind": "castTo",
+            "inner": {
+              "kind": "shapedTuple",
+              "items": []
+            },
+            "cast_to_ty_idx": 34
+          }
+        },
+        {
+          "name": "pendingCount",
+          "ty_idx": 35,
+          "default_value": {
+            "kind": "int",
+            "v": "0"
+          }
+        },
+        {
+          "name": "burned",
+          "ty_idx": 6,
+          "default_value": {
+            "kind": "int",
+            "v": "0"
+          }
+        },
+        {
+          "name": "lastBurn",
+          "ty_idx": 38,
+          "default_value": {
+            "kind": "null"
+          }
+        },
+        {
+          "name": "rootRegistrar",
+          "ty_idx": 23,
+          "default_value": {
+            "kind": "null"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ReleaseStatus",
+      "ty_idx": 55,
+      "fields": [
+        {
+          "name": "totalSupply",
+          "ty_idx": 6
+        },
+        {
+          "name": "committed",
+          "ty_idx": 6
+        },
+        {
+          "name": "confirmed",
+          "ty_idx": 6
+        },
+        {
+          "name": "confirmedCount",
+          "ty_idx": 9
+        },
+        {
+          "name": "burned",
+          "ty_idx": 6
+        },
+        {
+          "name": "releaseAt",
+          "ty_idx": 9
+        },
+        {
+          "name": "recipientCount",
+          "ty_idx": 9
+        },
+        {
+          "name": "rootHash",
+          "ty_idx": 14
+        },
+        {
+          "name": "snapshotHash",
+          "ty_idx": 14
+        },
+        {
+          "name": "pendingCount",
+          "ty_idx": 35
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PaymentReply",
+      "ty_idx": 56,
+      "fields": [
+        {
+          "name": "found",
+          "ty_idx": 5
+        },
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "recipient",
+          "ty_idx": 23
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "state",
+          "ty_idx": 32
+        },
+        {
+          "name": "requester",
+          "ty_idx": 23
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "MintReceiptReply",
+      "ty_idx": 57,
+      "fields": [
+        {
+          "name": "found",
+          "ty_idx": 5
+        },
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "JettonDataReply",
+      "ty_idx": 49,
+      "fields": [
+        {
+          "name": "totalSupply",
+          "ty_idx": 1
+        },
+        {
+          "name": "mintable",
+          "ty_idx": 5
+        },
+        {
+          "name": "adminAddress",
+          "ty_idx": 23
+        },
+        {
+          "name": "jettonContent",
+          "ty_idx": 54
+        },
+        {
+          "name": "jettonWalletCode",
+          "ty_idx": 3
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "OnchainMetadataReply",
+      "ty_idx": 50,
+      "prefix": {
+        "prefix_num": 0,
+        "prefix_len": 8
+      },
+      "fields": [
+        {
+          "name": "contentDict",
+          "ty_idx": 53
+        }
+      ]
+    },
+    {
+      "kind": "alias",
+      "name": "string_prefixed0x",
+      "ty_idx": 51,
+      "target_ty_idx": 52,
+      "description": "A string, which contents starts with 0x00/0x01 byte.\nBy standard, offchain explorers/APIs may treat contents of a string based on 0xXX prefixes:\n- 0x00 + \"str\" — means \"this is a regular snake-encoded string\"\n- 0x01 + \"str\" — means \"this is an off-chain content URL\"\nUsed in jettons and NFTs for responses from GET methods to comply with TEPs (token standards)."
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 28
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 18
+    },
+    {
+      "body_ty_idx": 20
+    },
+    {
+      "body_ty_idx": 21
+    },
+    {
+      "body_ty_idx": 22
+    },
+    {
+      "body_ty_idx": 24
+    },
+    {
+      "body_ty_idx": 25
+    },
+    {
+      "body_ty_idx": 26
+    },
+    {
+      "body_ty_idx": 27
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 27
+    },
+    {
+      "body_ty_idx": 39
+    },
+    {
+      "body_ty_idx": 26
+    },
+    {
+      "body_ty_idx": 36
+    },
+    {
+      "body_ty_idx": 46
+    }
+  ],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 106029,
+      "name": "get_jetton_data",
+      "parameters": [],
+      "return_ty_idx": 49
+    },
+    {
+      "tvm_method_id": 103289,
+      "name": "get_wallet_address",
+      "parameters": [
+        {
+          "name": "ownerAddress",
+          "ty_idx": 7
+        }
+      ],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 82685,
+      "name": "get_release_status",
+      "parameters": [],
+      "return_ty_idx": 55
+    },
+    {
+      "tvm_method_id": 89498,
+      "name": "get_release_config",
+      "parameters": [],
+      "return_ty_idx": 29
+    },
+    {
+      "tvm_method_id": 83517,
+      "name": "get_payment",
+      "parameters": [
+        {
+          "name": "index",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 56
+    },
+    {
+      "tvm_method_id": 72787,
+      "name": "get_burn_vault",
+      "parameters": [],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 127745,
+      "name": "get_payment_states",
+      "parameters": [
+        {
+          "name": "start",
+          "ty_idx": 1
+        },
+        {
+          "name": "count",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 3
+    },
+    {
+      "tvm_method_id": 87629,
+      "name": "get_network_id",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 85992,
+      "name": "get_execution_budget",
+      "parameters": [],
+      "return_ty_idx": 6
+    },
+    {
+      "tvm_method_id": 123800,
+      "name": "get_receipt_request_budget",
+      "parameters": [],
+      "return_ty_idx": 6
+    },
+    {
+      "tvm_method_id": 96340,
+      "name": "get_last_burn_receipt",
+      "parameters": [],
+      "return_ty_idx": 57
+    },
+    {
+      "tvm_method_id": 129147,
+      "name": "get_chain_time",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 118624,
+      "name": "get_root_registrar",
+      "parameters": [],
+      "return_ty_idx": 23
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "plain_int",
+      "err_code": 901
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 902
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 903
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 906
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 907
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 908
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 909
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 910
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 911
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 912
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 913
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 914
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 915
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 916
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 917
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.5.0"
+}
