@@ -1,0 +1,281 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "PxpBurnVault",
+  "author": "PenaltyXP",
+  "version": "1.0.0",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TickBurn"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "BurnReceipt"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "BurnFailure"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TopUpGrams"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "BurnVaultStorage"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "AskToBurn"
+    },
+    {
+      "kind": "addressOpt"
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 3
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "AskToBurn",
+      "ty_idx": 17,
+      "prefix": {
+        "prefix_num": 1499400124,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "jettonAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "sendExcessesTo",
+          "ty_idx": 18
+        },
+        {
+          "name": "customPayload",
+          "ty_idx": 19
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TopUpGrams",
+      "ty_idx": 15,
+      "prefix": {
+        "prefix_num": 3547469196,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "BurnReceipt",
+      "ty_idx": 13,
+      "prefix": {
+        "prefix_num": 1347964933,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "jettonAmount",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "BurnFailure",
+      "ty_idx": 14,
+      "prefix": {
+        "prefix_num": 1347964934,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "jettonAmount",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TickBurn",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 1347964936,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "BurnVaultStorage",
+      "ty_idx": 16,
+      "fields": [
+        {
+          "name": "minterAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "releaseAt",
+          "ty_idx": 9
+        },
+        {
+          "name": "burned",
+          "ty_idx": 6,
+          "default_value": {
+            "kind": "int",
+            "v": "0"
+          }
+        },
+        {
+          "name": "pending",
+          "ty_idx": 6,
+          "default_value": {
+            "kind": "int",
+            "v": "0"
+          }
+        },
+        {
+          "name": "nextQuery",
+          "ty_idx": 11,
+          "default_value": {
+            "kind": "int",
+            "v": "1"
+          }
+        },
+        {
+          "name": "pendingQuery",
+          "ty_idx": 11,
+          "default_value": {
+            "kind": "int",
+            "v": "0"
+          }
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 16
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 13
+    },
+    {
+      "body_ty_idx": 14
+    },
+    {
+      "body_ty_idx": 15
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 17
+    }
+  ],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 107232,
+      "name": "get_burn_status",
+      "parameters": [],
+      "return_ty_idx": 16
+    },
+    {
+      "tvm_method_id": 85992,
+      "name": "get_execution_budget",
+      "parameters": [],
+      "return_ty_idx": 6
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "plain_int",
+      "err_code": 901
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 902
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 903
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 904
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 905
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 913
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.5.0"
+}
