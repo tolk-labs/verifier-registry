@@ -1,0 +1,867 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "UsdtDepositVault",
+  "author": "Gettran",
+  "version": "1.0.0",
+  "description": "Contributor USDT intake with single-selection principal holdings",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ProbeUsdtDeposit"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ReportUsdtDeposit"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "AssignUsdtDeposit"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RestoreUsdtDepositAssignment"
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 11
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RefundUsdtDeposit"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TextComment"
+    },
+    {
+      "kind": "remaining"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 18
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "WithdrawUsdtDeposit"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PrepareUsdtHolding"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "UsdtHoldingReady"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "UsdtHoldingUnavailable"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "UsdtDepositAssigned"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "UsdtDepositTerms"
+    },
+    {
+      "kind": "EnumRef",
+      "enum_name": "OfferSide"
+    },
+    {
+      "kind": "uintN",
+      "n": 8
+    },
+    {
+      "kind": "EnumRef",
+      "enum_name": "UsdtDepositPurpose"
+    },
+    {
+      "kind": "uintN",
+      "n": 1
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 3
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 26
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "JettonTransferNotification"
+    },
+    {
+      "kind": "addressOpt"
+    },
+    {
+      "kind": "AliasRef",
+      "alias_name": "ForwardPayload"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PayloadInline"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PayloadInRef"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 19
+    },
+    {
+      "kind": "union",
+      "variants": [
+        {
+          "variant_ty_idx": 36,
+          "prefix_num": 0,
+          "prefix_len": 1,
+          "stack_type_id": 143,
+          "stack_width": 1
+        },
+        {
+          "variant_ty_idx": 37,
+          "prefix_num": 1,
+          "prefix_len": 1,
+          "stack_type_id": 144,
+          "stack_width": 1
+        }
+      ],
+      "stack_width": 2
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "JettonExcesses"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "UsdtDepositVaultStorage"
+    },
+    {
+      "kind": "EnumRef",
+      "enum_name": "UsdtDepositStatus"
+    },
+    {
+      "kind": "uintN",
+      "n": 2
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 20
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "UsdtPrincipalAllocation"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 45
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 46
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "JettonTransfer"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "UsdtDepositReceived"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "UsdtHoldingFunded"
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "TextComment",
+      "ty_idx": 18,
+      "prefix": {
+        "prefix_num": 0,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "text",
+          "ty_idx": 19
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PayloadInline",
+      "ty_idx": 36,
+      "prefix": {
+        "prefix_num": 0,
+        "prefix_len": 1
+      },
+      "fields": [
+        {
+          "name": "value",
+          "ty_idx": 19
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PayloadInRef",
+      "ty_idx": 37,
+      "prefix": {
+        "prefix_num": 1,
+        "prefix_len": 1
+      },
+      "fields": [
+        {
+          "name": "value",
+          "ty_idx": 38
+        }
+      ]
+    },
+    {
+      "kind": "alias",
+      "name": "ForwardPayload",
+      "ty_idx": 35,
+      "target_ty_idx": 39
+    },
+    {
+      "kind": "struct",
+      "name": "JettonTransferNotification",
+      "ty_idx": 33,
+      "prefix": {
+        "prefix_num": 1935855772,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "jettonAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "transferInitiator",
+          "ty_idx": 34
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 19,
+          "client_ty_idx": 35
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "JettonTransfer",
+      "ty_idx": 48,
+      "prefix": {
+        "prefix_num": 260734629,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "jettonAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "transferRecipient",
+          "ty_idx": 7
+        },
+        {
+          "name": "sendExcessesTo",
+          "ty_idx": 34
+        },
+        {
+          "name": "customPayload",
+          "ty_idx": 31,
+          "default_value": {
+            "kind": "null"
+          }
+        },
+        {
+          "name": "forwardTonAmount",
+          "ty_idx": 6,
+          "default_value": {
+            "kind": "castTo",
+            "inner": {
+              "kind": "int",
+              "v": "0"
+            },
+            "cast_to_ty_idx": 6
+          }
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 19
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "JettonExcesses",
+      "ty_idx": 40,
+      "prefix": {
+        "prefix_num": 3576854235,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": "UsdtDepositStatus",
+      "ty_idx": 42,
+      "encoded_as_ty_idx": 43,
+      "members": [
+        {
+          "name": "Collecting",
+          "value": "0"
+        },
+        {
+          "name": "Deposited",
+          "value": "1"
+        },
+        {
+          "name": "Assigned",
+          "value": "2"
+        },
+        {
+          "name": "Refunded",
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": "UsdtDepositPurpose",
+      "ty_idx": 29,
+      "encoded_as_ty_idx": 30,
+      "members": [
+        {
+          "name": "Principal",
+          "value": "0"
+        },
+        {
+          "name": "MarketplaceFee",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ProbeUsdtDeposit",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 1430540370,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "ReportUsdtDeposit",
+      "ty_idx": 13,
+      "prefix": {
+        "prefix_num": 1430540880,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "AssignUsdtDeposit",
+      "ty_idx": 14,
+      "prefix": {
+        "prefix_num": 1430537037,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "beneficiary",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "RestoreUsdtDepositAssignment",
+      "ty_idx": 15,
+      "prefix": {
+        "prefix_num": 1430540865,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "beneficiary",
+          "ty_idx": 7
+        },
+        {
+          "name": "holdingAttempt",
+          "ty_idx": 16,
+          "default_value": {
+            "kind": "null"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "RefundUsdtDeposit",
+      "ty_idx": 17,
+      "prefix": {
+        "prefix_num": 1430540870,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "comment",
+          "ty_idx": 20
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "WithdrawUsdtDeposit",
+      "ty_idx": 21,
+      "prefix": {
+        "prefix_num": 1430542148,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "amount",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "UsdtDepositReceived",
+      "ty_idx": 49,
+      "prefix": {
+        "prefix_num": 1430537796,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "terms",
+          "ty_idx": 32
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "UsdtDepositAssigned",
+      "ty_idx": 25,
+      "prefix": {
+        "prefix_num": 1430536515,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "terms",
+          "ty_idx": 32
+        },
+        {
+          "name": "beneficiary",
+          "ty_idx": 7
+        },
+        {
+          "name": "holdingAttempt",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PrepareUsdtHolding",
+      "ty_idx": 22,
+      "prefix": {
+        "prefix_num": 1430802514,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "UsdtHoldingReady",
+      "ty_idx": 23,
+      "prefix": {
+        "prefix_num": 1430803012,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "attempt",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "UsdtHoldingUnavailable",
+      "ty_idx": 24,
+      "prefix": {
+        "prefix_num": 1430803790,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "attempt",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "UsdtHoldingFunded",
+      "ty_idx": 50,
+      "prefix": {
+        "prefix_num": 1430799940,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "terms",
+          "ty_idx": 32
+        },
+        {
+          "name": "attempt",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "UsdtDepositTerms",
+      "ty_idx": 26,
+      "fields": [
+        {
+          "name": "escrow",
+          "ty_idx": 7
+        },
+        {
+          "name": "contributor",
+          "ty_idx": 7
+        },
+        {
+          "name": "offerExecutionNumber",
+          "ty_idx": 9
+        },
+        {
+          "name": "side",
+          "ty_idx": 27
+        },
+        {
+          "name": "purpose",
+          "ty_idx": 29
+        },
+        {
+          "name": "nonce",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "execution",
+          "ty_idx": 31,
+          "default_value": {
+            "kind": "null"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "UsdtDepositVaultStorage",
+      "ty_idx": 41,
+      "fields": [
+        {
+          "name": "terms",
+          "ty_idx": 32
+        },
+        {
+          "name": "status",
+          "ty_idx": 42,
+          "default_value": {
+            "kind": "castTo",
+            "inner": {
+              "kind": "int",
+              "v": "0"
+            },
+            "cast_to_ty_idx": 42
+          }
+        },
+        {
+          "name": "beneficiary",
+          "ty_idx": 34,
+          "default_value": {
+            "kind": "null"
+          }
+        },
+        {
+          "name": "refundComment",
+          "ty_idx": 44,
+          "default_value": {
+            "kind": "null"
+          }
+        },
+        {
+          "name": "holdingAttempt",
+          "ty_idx": 16,
+          "default_value": {
+            "kind": "null"
+          }
+        },
+        {
+          "name": "allocation",
+          "ty_idx": 47,
+          "default_value": {
+            "kind": "null"
+          }
+        },
+        {
+          "name": "selectedAttempt",
+          "ty_idx": 16,
+          "default_value": {
+            "kind": "null"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "UsdtPrincipalAllocation",
+      "ty_idx": 45,
+      "fields": [
+        {
+          "name": "attempt",
+          "ty_idx": 11
+        },
+        {
+          "name": "dispatched",
+          "ty_idx": 5,
+          "default_value": {
+            "kind": "bool",
+            "v": false
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": "OfferSide",
+      "ty_idx": 27,
+      "encoded_as_ty_idx": 28,
+      "members": [
+        {
+          "name": "Maker",
+          "value": "0"
+        },
+        {
+          "name": "Taker",
+          "value": "1"
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 41
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 13
+    },
+    {
+      "body_ty_idx": 14
+    },
+    {
+      "body_ty_idx": 15
+    },
+    {
+      "body_ty_idx": 17
+    },
+    {
+      "body_ty_idx": 21
+    },
+    {
+      "body_ty_idx": 22
+    },
+    {
+      "body_ty_idx": 23
+    },
+    {
+      "body_ty_idx": 24
+    },
+    {
+      "body_ty_idx": 25
+    },
+    {
+      "body_ty_idx": 33
+    },
+    {
+      "body_ty_idx": 40
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 23
+    },
+    {
+      "body_ty_idx": 15
+    },
+    {
+      "body_ty_idx": 48
+    },
+    {
+      "body_ty_idx": 49
+    },
+    {
+      "body_ty_idx": 13
+    },
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 50
+    },
+    {
+      "body_ty_idx": 25
+    },
+    {
+      "body_ty_idx": 22
+    },
+    {
+      "body_ty_idx": 18
+    },
+    {
+      "body_ty_idx": 24
+    }
+  ],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 124011,
+      "name": "deposit_state",
+      "parameters": [],
+      "return_ty_idx": 41
+    },
+    {
+      "tvm_method_id": 84297,
+      "name": "usdt_recovery_storage_reserve",
+      "parameters": [],
+      "return_ty_idx": 6
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "UsdtDepositVaultErrors.NotEnoughValue",
+      "err_code": 801
+    },
+    {
+      "kind": "enum_member",
+      "name": "UsdtDepositVaultErrors.InvalidAmount",
+      "err_code": 802
+    },
+    {
+      "kind": "enum_member",
+      "name": "UsdtDepositVaultErrors.InvalidStatus",
+      "err_code": 803
+    },
+    {
+      "kind": "enum_member",
+      "name": "UsdtDepositVaultErrors.InvalidNotification",
+      "err_code": 804
+    },
+    {
+      "kind": "enum_member",
+      "name": "UsdtDepositVaultErrors.NotEscrow",
+      "err_code": 805
+    },
+    {
+      "kind": "enum_member",
+      "name": "UsdtDepositVaultErrors.BeneficiaryAlreadyAssigned",
+      "err_code": 806
+    },
+    {
+      "kind": "enum_member",
+      "name": "UsdtDepositVaultErrors.InvalidTerms",
+      "err_code": 820
+    },
+    {
+      "kind": "enum_member",
+      "name": "UsdtDepositVaultErrors.InvalidVault",
+      "err_code": 821
+    },
+    {
+      "kind": "enum_member",
+      "name": "UsdtDepositVaultErrors.InvalidMessage",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.5.0"
+}
