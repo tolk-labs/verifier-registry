@@ -1,0 +1,336 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "PassportItem",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "InitPassport"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PassportTransfer"
+    },
+    {
+      "kind": "addressAny"
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 3
+    },
+    {
+      "kind": "remaining"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PassportGetStaticData"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PassportItemStorage"
+    },
+    {
+      "kind": "addressOpt"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PassportExcesses"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OwnershipAssigned"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PassportReportStaticData"
+    },
+    {
+      "kind": "uintN",
+      "n": 256
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        5,
+        1,
+        7,
+        14,
+        3
+      ]
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "PassportItemStorage",
+      "ty_idx": 18,
+      "fields": [
+        {
+          "name": "collection",
+          "ty_idx": 7
+        },
+        {
+          "name": "index",
+          "ty_idx": 11
+        },
+        {
+          "name": "owner",
+          "ty_idx": 19
+        },
+        {
+          "name": "content",
+          "ty_idx": 15
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "InitPassport",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 1448083458,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "content",
+          "ty_idx": 3
+        },
+        {
+          "name": "excessesTo",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PassportTransfer",
+      "ty_idx": 13,
+      "prefix": {
+        "prefix_num": 1607220500,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "newOwner",
+          "ty_idx": 7
+        },
+        {
+          "name": "responseDestination",
+          "ty_idx": 14
+        },
+        {
+          "name": "customPayload",
+          "ty_idx": 15
+        },
+        {
+          "name": "forwardAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 16
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "OwnershipAssigned",
+      "ty_idx": 21,
+      "prefix": {
+        "prefix_num": 85167505,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "prevOwner",
+          "ty_idx": 7
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 16
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PassportGetStaticData",
+      "ty_idx": 17,
+      "prefix": {
+        "prefix_num": 801842850,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PassportReportStaticData",
+      "ty_idx": 22,
+      "prefix": {
+        "prefix_num": 2339837749,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "index",
+          "ty_idx": 23
+        },
+        {
+          "name": "collection",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PassportExcesses",
+      "ty_idx": 20,
+      "prefix": {
+        "prefix_num": 3576854235,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 18
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 13
+    },
+    {
+      "body_ty_idx": 17
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 20
+    },
+    {
+      "body_ty_idx": 21
+    },
+    {
+      "body_ty_idx": 22
+    }
+  ],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 102351,
+      "name": "get_nft_data",
+      "parameters": [],
+      "return_ty_idx": 24
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "PassportErrors.NotFromCollection",
+      "err_code": 305
+    },
+    {
+      "kind": "enum_member",
+      "name": "PassportErrors.AlreadyInitialized",
+      "err_code": 306
+    },
+    {
+      "kind": "enum_member",
+      "name": "PassportErrors.NotInitialized",
+      "err_code": 307
+    },
+    {
+      "kind": "enum_member",
+      "name": "PassportErrors.NotItemOwner",
+      "err_code": 308
+    },
+    {
+      "kind": "enum_member",
+      "name": "PassportErrors.NotEnoughForTransfer",
+      "err_code": 309
+    },
+    {
+      "kind": "enum_member",
+      "name": "PassportErrors.WrongWorkchain",
+      "err_code": 311
+    },
+    {
+      "kind": "enum_member",
+      "name": "PassportErrors.InvalidMessage",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.4.2"
+}
