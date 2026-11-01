@@ -1,0 +1,561 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "PassportCollection",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "MintPassport"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SetMinter"
+    },
+    {
+      "kind": "addressOpt"
+    },
+    {
+      "kind": "uintN",
+      "n": 16
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ChangeContent"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PassportContent"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 17
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RoyaltyParams"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 19
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ChangeOwner"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "WithdrawExcess"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "GetRoyaltyParams"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PassportCollectionStorage"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PassportExcesses"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "InitPassport"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PassportMintedEvent"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ReportRoyaltyParams"
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        1,
+        3,
+        7
+      ]
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        1,
+        1,
+        7
+      ]
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        14,
+        15,
+        15,
+        9,
+        9,
+        9
+      ]
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "PassportContent",
+      "ty_idx": 17,
+      "fields": [
+        {
+          "name": "collection",
+          "ty_idx": 3
+        },
+        {
+          "name": "common",
+          "ty_idx": 3
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "RoyaltyParams",
+      "ty_idx": 19,
+      "fields": [
+        {
+          "name": "numerator",
+          "ty_idx": 15
+        },
+        {
+          "name": "denominator",
+          "ty_idx": 15
+        },
+        {
+          "name": "destination",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PassportCollectionStorage",
+      "ty_idx": 24,
+      "fields": [
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "minter",
+          "ty_idx": 14
+        },
+        {
+          "name": "dailyLimit",
+          "ty_idx": 15
+        },
+        {
+          "name": "day",
+          "ty_idx": 9
+        },
+        {
+          "name": "mintedToday",
+          "ty_idx": 15
+        },
+        {
+          "name": "mintedTotal",
+          "ty_idx": 9
+        },
+        {
+          "name": "maxSupply",
+          "ty_idx": 9
+        },
+        {
+          "name": "content",
+          "ty_idx": 18
+        },
+        {
+          "name": "royalty",
+          "ty_idx": 20
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "MintPassport",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 1448083457,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "index",
+          "ty_idx": 11
+        },
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "content",
+          "ty_idx": 3
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "InitPassport",
+      "ty_idx": 26,
+      "prefix": {
+        "prefix_num": 1448083458,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "content",
+          "ty_idx": 3
+        },
+        {
+          "name": "excessesTo",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "SetMinter",
+      "ty_idx": 13,
+      "prefix": {
+        "prefix_num": 1448083459,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "minter",
+          "ty_idx": 14
+        },
+        {
+          "name": "dailyLimit",
+          "ty_idx": 15
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ChangeContent",
+      "ty_idx": 16,
+      "prefix": {
+        "prefix_num": 1448083460,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "content",
+          "ty_idx": 18
+        },
+        {
+          "name": "royalty",
+          "ty_idx": 20
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ChangeOwner",
+      "ty_idx": 21,
+      "prefix": {
+        "prefix_num": 1448083461,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "newOwner",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "WithdrawExcess",
+      "ty_idx": 22,
+      "prefix": {
+        "prefix_num": 1448083462,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PassportMintedEvent",
+      "ty_idx": 27,
+      "prefix": {
+        "prefix_num": 1448116225,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "index",
+          "ty_idx": 11
+        },
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "byMinter",
+          "ty_idx": 5
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "GetRoyaltyParams",
+      "ty_idx": 23,
+      "prefix": {
+        "prefix_num": 1765620048,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ReportRoyaltyParams",
+      "ty_idx": 28,
+      "prefix": {
+        "prefix_num": 2831876269,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "numerator",
+          "ty_idx": 15
+        },
+        {
+          "name": "denominator",
+          "ty_idx": 15
+        },
+        {
+          "name": "destination",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PassportExcesses",
+      "ty_idx": 25,
+      "prefix": {
+        "prefix_num": 3576854235,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 24
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 13
+    },
+    {
+      "body_ty_idx": 16
+    },
+    {
+      "body_ty_idx": 21
+    },
+    {
+      "body_ty_idx": 22
+    },
+    {
+      "body_ty_idx": 23
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 25
+    },
+    {
+      "body_ty_idx": 26
+    },
+    {
+      "body_ty_idx": 28
+    }
+  ],
+  "emitted_events": [
+    {
+      "body_ty_idx": 27
+    }
+  ],
+  "get_methods": [
+    {
+      "tvm_method_id": 102491,
+      "name": "get_collection_data",
+      "parameters": [],
+      "return_ty_idx": 29
+    },
+    {
+      "tvm_method_id": 92067,
+      "name": "get_nft_address_by_index",
+      "parameters": [
+        {
+          "name": "index",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 68445,
+      "name": "get_nft_content",
+      "parameters": [
+        {
+          "name": "_index",
+          "ty_idx": 1
+        },
+        {
+          "name": "individualContent",
+          "ty_idx": 3
+        }
+      ],
+      "return_ty_idx": 3
+    },
+    {
+      "tvm_method_id": 85719,
+      "name": "royalty_params",
+      "parameters": [],
+      "return_ty_idx": 30
+    },
+    {
+      "tvm_method_id": 117635,
+      "name": "minterInfo",
+      "parameters": [],
+      "return_ty_idx": 31
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "PassportErrors.NotCollectionOwner",
+      "err_code": 300
+    },
+    {
+      "kind": "enum_member",
+      "name": "PassportErrors.NotMinter",
+      "err_code": 301
+    },
+    {
+      "kind": "enum_member",
+      "name": "PassportErrors.DailyLimit",
+      "err_code": 302
+    },
+    {
+      "kind": "enum_member",
+      "name": "PassportErrors.IndexOutOfRange",
+      "err_code": 303
+    },
+    {
+      "kind": "enum_member",
+      "name": "PassportErrors.NotEnoughValue",
+      "err_code": 304
+    },
+    {
+      "kind": "enum_member",
+      "name": "PassportErrors.InvalidRoyalty",
+      "err_code": 310
+    },
+    {
+      "kind": "enum_member",
+      "name": "PassportErrors.WrongWorkchain",
+      "err_code": 311
+    },
+    {
+      "kind": "enum_member",
+      "name": "PassportErrors.InvalidMessage",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.4.2"
+}
