@@ -1,0 +1,239 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "NftTransfer"
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 3
+    },
+    {
+      "kind": "uintN",
+      "n": 8
+    },
+    {
+      "kind": "uintN",
+      "n": 256
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "AssetEntry"
+    },
+    {
+      "kind": "mapKV",
+      "key_ty_idx": 15,
+      "value_ty_idx": 16
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        1,
+        7,
+        7,
+        7,
+        11,
+        9,
+        6,
+        6,
+        6,
+        6,
+        5,
+        9,
+        7,
+        14,
+        14,
+        14,
+        14,
+        14,
+        6,
+        17,
+        7,
+        14,
+        14,
+        14,
+        14,
+        14,
+        6,
+        17
+      ]
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "AssetEntry",
+      "ty_idx": 16,
+      "fields": [
+        {
+          "name": "credited",
+          "ty_idx": 5
+        },
+        {
+          "name": "held",
+          "ty_idx": 5
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "NftTransfer",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 1607220500,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "newOwner",
+          "ty_idx": 7
+        },
+        {
+          "name": "responseDestination",
+          "ty_idx": 7
+        },
+        {
+          "name": "customPayload",
+          "ty_idx": 13
+        },
+        {
+          "name": "forwardTonAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 13
+        }
+      ]
+    }
+  ],
+  "storage": {},
+  "incoming_messages": [],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 3
+    },
+    {
+      "body_ty_idx": 12
+    }
+  ],
+  "emitted_events": [
+    {
+      "body_ty_idx": 3
+    }
+  ],
+  "get_methods": [
+    {
+      "tvm_method_id": 87036,
+      "name": "get_deal_data",
+      "parameters": [],
+      "return_ty_idx": 18
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "plain_int",
+      "err_code": 35
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 402
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 403
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 405
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 419
+    },
+    {
+      "kind": "constant",
+      "name": "ERR_PAYLOAD_FOR_ANOTHER_OP",
+      "err_code": 420
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 501
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 502
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 503
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 504
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 505
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 507
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.4.2"
+}
