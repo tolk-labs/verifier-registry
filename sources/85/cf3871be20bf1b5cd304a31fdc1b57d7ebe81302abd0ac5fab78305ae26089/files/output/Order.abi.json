@@ -1,0 +1,730 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "Order",
+  "author": "SwiftDelivery",
+  "version": "1.0.0",
+  "description": "A single delivery order with a USDT escrow",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "AcceptOrder"
+    },
+    {
+      "kind": "bitsN",
+      "n": 512
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ConfirmWithCode"
+    },
+    {
+      "kind": "uintN",
+      "n": 256
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CancelOrder"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ClaimExpired"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CourierRelease"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "InitWallet"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Rescue"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "JettonNotify"
+    },
+    {
+      "kind": "addressOpt"
+    },
+    {
+      "kind": "remaining"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Excesses"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OrderStorage"
+    },
+    {
+      "kind": "EnumRef",
+      "enum_name": "OrderStatus"
+    },
+    {
+      "kind": "uintN",
+      "n": 8
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OrderExtra"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OrderJetton"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 29
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 28
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "JettonTransfer"
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 3
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OrderFunded"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OrderAccepted"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OrderCompleted"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OrderExpired"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OrderCancelled"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OrderReopened"
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "enum",
+      "name": "OrderStatus",
+      "ty_idx": 26,
+      "encoded_as_ty_idx": 27,
+      "members": [
+        {
+          "name": "Open",
+          "value": "0"
+        },
+        {
+          "name": "Accepted",
+          "value": "1"
+        },
+        {
+          "name": "Completed",
+          "value": "2"
+        },
+        {
+          "name": "Cancelled",
+          "value": "3"
+        },
+        {
+          "name": "Expired",
+          "value": "4"
+        },
+        {
+          "name": "Funding",
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "OrderJetton",
+      "ty_idx": 29,
+      "fields": [
+        {
+          "name": "marketplace",
+          "ty_idx": 7
+        },
+        {
+          "name": "wallet",
+          "ty_idx": 22
+        },
+        {
+          "name": "acceptKey",
+          "ty_idx": 15
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "OrderExtra",
+      "ty_idx": 28,
+      "fields": [
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "clientContact",
+          "ty_idx": 3
+        },
+        {
+          "name": "courierContact",
+          "ty_idx": 3
+        },
+        {
+          "name": "secretHash",
+          "ty_idx": 15
+        },
+        {
+          "name": "referral",
+          "ty_idx": 22
+        },
+        {
+          "name": "jetton",
+          "ty_idx": 30
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "OrderStorage",
+      "ty_idx": 25,
+      "fields": [
+        {
+          "name": "client",
+          "ty_idx": 7
+        },
+        {
+          "name": "courier",
+          "ty_idx": 22
+        },
+        {
+          "name": "description",
+          "ty_idx": 3
+        },
+        {
+          "name": "area",
+          "ty_idx": 3
+        },
+        {
+          "name": "origin",
+          "ty_idx": 3
+        },
+        {
+          "name": "reward",
+          "ty_idx": 6
+        },
+        {
+          "name": "status",
+          "ty_idx": 26
+        },
+        {
+          "name": "nonce",
+          "ty_idx": 11
+        },
+        {
+          "name": "createdAt",
+          "ty_idx": 9
+        },
+        {
+          "name": "acceptedAt",
+          "ty_idx": 9
+        },
+        {
+          "name": "deliveryTime",
+          "ty_idx": 9
+        },
+        {
+          "name": "extra",
+          "ty_idx": 31
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "AcceptOrder",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 2685009921,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "courierContact",
+          "ty_idx": 3
+        },
+        {
+          "name": "validUntil",
+          "ty_idx": 9
+        },
+        {
+          "name": "signature",
+          "ty_idx": 13
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ConfirmWithCode",
+      "ty_idx": 14,
+      "prefix": {
+        "prefix_num": 2685009922,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "secret",
+          "ty_idx": 15
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CancelOrder",
+      "ty_idx": 16,
+      "prefix": {
+        "prefix_num": 2685009923,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "ClaimExpired",
+      "ty_idx": 17,
+      "prefix": {
+        "prefix_num": 2685009924,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "CourierRelease",
+      "ty_idx": 18,
+      "prefix": {
+        "prefix_num": 2685009925,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "InitWallet",
+      "ty_idx": 19,
+      "prefix": {
+        "prefix_num": 2685009926,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "wallet",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Rescue",
+      "ty_idx": 20,
+      "prefix": {
+        "prefix_num": 2685009927,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "amount",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "JettonTransfer",
+      "ty_idx": 32,
+      "prefix": {
+        "prefix_num": 260734629,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "destination",
+          "ty_idx": 7
+        },
+        {
+          "name": "responseDestination",
+          "ty_idx": 7
+        },
+        {
+          "name": "customPayload",
+          "ty_idx": 33
+        },
+        {
+          "name": "forwardTonAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "forwardPayloadInRef",
+          "ty_idx": 5
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "JettonNotify",
+      "ty_idx": 21,
+      "prefix": {
+        "prefix_num": 1935855772,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "from",
+          "ty_idx": 22
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 23
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Excesses",
+      "ty_idx": 24,
+      "prefix": {
+        "prefix_num": 3576854235,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "OrderAccepted",
+      "ty_idx": 35,
+      "prefix": {
+        "prefix_num": 2685010177,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "courier",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "OrderCompleted",
+      "ty_idx": 36,
+      "prefix": {
+        "prefix_num": 2685010178,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "courier",
+          "ty_idx": 7
+        },
+        {
+          "name": "reward",
+          "ty_idx": 6
+        },
+        {
+          "name": "referralPayout",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "OrderCancelled",
+      "ty_idx": 38,
+      "prefix": {
+        "prefix_num": 2685010179,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "reward",
+          "ty_idx": 6
+        },
+        {
+          "name": "referralPayout",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "OrderExpired",
+      "ty_idx": 37,
+      "prefix": {
+        "prefix_num": 2685010180,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "courier",
+          "ty_idx": 7
+        },
+        {
+          "name": "reward",
+          "ty_idx": 6
+        },
+        {
+          "name": "referralPayout",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "OrderReopened",
+      "ty_idx": 39,
+      "prefix": {
+        "prefix_num": 2685010181,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "courier",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "OrderFunded",
+      "ty_idx": 34,
+      "prefix": {
+        "prefix_num": 2685010182,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "reward",
+          "ty_idx": 6
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 25
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 14
+    },
+    {
+      "body_ty_idx": 16
+    },
+    {
+      "body_ty_idx": 17
+    },
+    {
+      "body_ty_idx": 18
+    },
+    {
+      "body_ty_idx": 19
+    },
+    {
+      "body_ty_idx": 20
+    },
+    {
+      "body_ty_idx": 21
+    },
+    {
+      "body_ty_idx": 24
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 32
+    }
+  ],
+  "emitted_events": [
+    {
+      "body_ty_idx": 34
+    },
+    {
+      "body_ty_idx": 35
+    },
+    {
+      "body_ty_idx": 36
+    },
+    {
+      "body_ty_idx": 37
+    },
+    {
+      "body_ty_idx": 38
+    },
+    {
+      "body_ty_idx": 39
+    }
+  ],
+  "get_methods": [
+    {
+      "tvm_method_id": 120887,
+      "name": "orderData",
+      "parameters": [],
+      "return_ty_idx": 25
+    },
+    {
+      "tvm_method_id": 101642,
+      "name": "status",
+      "parameters": [],
+      "return_ty_idx": 26
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "OrderErrors.WrongStatus",
+      "err_code": 100
+    },
+    {
+      "kind": "enum_member",
+      "name": "OrderErrors.NotClient",
+      "err_code": 101
+    },
+    {
+      "kind": "enum_member",
+      "name": "OrderErrors.NotCourier",
+      "err_code": 102
+    },
+    {
+      "kind": "enum_member",
+      "name": "OrderErrors.FeeTooLow",
+      "err_code": 103
+    },
+    {
+      "kind": "enum_member",
+      "name": "OrderErrors.NotExpired",
+      "err_code": 104
+    },
+    {
+      "kind": "enum_member",
+      "name": "OrderErrors.DeadlinePassed",
+      "err_code": 105
+    },
+    {
+      "kind": "enum_member",
+      "name": "OrderErrors.BadCode",
+      "err_code": 108
+    },
+    {
+      "kind": "enum_member",
+      "name": "OrderErrors.NotMarketplace",
+      "err_code": 109
+    },
+    {
+      "kind": "enum_member",
+      "name": "OrderErrors.NotJettonWallet",
+      "err_code": 110
+    },
+    {
+      "kind": "enum_member",
+      "name": "OrderErrors.NotPayee",
+      "err_code": 111
+    },
+    {
+      "kind": "enum_member",
+      "name": "OrderErrors.BadInvite",
+      "err_code": 112
+    },
+    {
+      "kind": "enum_member",
+      "name": "OrderErrors.InviteExpired",
+      "err_code": 113
+    },
+    {
+      "kind": "enum_member",
+      "name": "OrderErrors.InvalidMessage",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.5.0"
+}
