@@ -1,0 +1,422 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "Marketplace",
+  "author": "SwiftDelivery",
+  "version": "1.0.0",
+  "description": "Registry that deploys Order escrow contracts for USDT rewards",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "JettonNotify"
+    },
+    {
+      "kind": "addressOpt"
+    },
+    {
+      "kind": "remaining"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Excesses"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "MarketplaceStorage"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "JettonTransfer"
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 3
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "InitWallet"
+    },
+    {
+      "kind": "uintN",
+      "n": 8
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        20,
+        20,
+        20
+      ]
+    },
+    {
+      "kind": "uintN",
+      "n": 256
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CreateRefused"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OrderCreated"
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "InitWallet",
+      "ty_idx": 19,
+      "prefix": {
+        "prefix_num": 2685009926,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "wallet",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "JettonTransfer",
+      "ty_idx": 17,
+      "prefix": {
+        "prefix_num": 260734629,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "destination",
+          "ty_idx": 7
+        },
+        {
+          "name": "responseDestination",
+          "ty_idx": 7
+        },
+        {
+          "name": "customPayload",
+          "ty_idx": 18
+        },
+        {
+          "name": "forwardTonAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "forwardPayloadInRef",
+          "ty_idx": 5
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "JettonNotify",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 1935855772,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "from",
+          "ty_idx": 13
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 14
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Excesses",
+      "ty_idx": 15,
+      "prefix": {
+        "prefix_num": 3576854235,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "OrderCreated",
+      "ty_idx": 24,
+      "prefix": {
+        "prefix_num": 2685010176,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "orderAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "client",
+          "ty_idx": 7
+        },
+        {
+          "name": "reward",
+          "ty_idx": 6
+        },
+        {
+          "name": "area",
+          "ty_idx": 3
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CreateRefused",
+      "ty_idx": 23,
+      "prefix": {
+        "prefix_num": 2685010183,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "client",
+          "ty_idx": 7
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "MarketplaceStorage",
+      "ty_idx": 16,
+      "fields": [
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "orderCode",
+          "ty_idx": 3
+        },
+        {
+          "name": "orderCount",
+          "ty_idx": 9
+        },
+        {
+          "name": "usdtMaster",
+          "ty_idx": 7
+        },
+        {
+          "name": "jettonWalletCode",
+          "ty_idx": 3
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 16
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 15
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 17
+    },
+    {
+      "body_ty_idx": 19
+    }
+  ],
+  "emitted_events": [
+    {
+      "body_ty_idx": 23
+    },
+    {
+      "body_ty_idx": 24
+    }
+  ],
+  "get_methods": [
+    {
+      "tvm_method_id": 76407,
+      "name": "version",
+      "parameters": [],
+      "return_ty_idx": 21
+    },
+    {
+      "tvm_method_id": 106982,
+      "name": "orderCount",
+      "parameters": [],
+      "return_ty_idx": 9
+    },
+    {
+      "tvm_method_id": 83229,
+      "name": "owner",
+      "parameters": [],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 130119,
+      "name": "orderCodeHash",
+      "parameters": [],
+      "return_ty_idx": 22
+    },
+    {
+      "tvm_method_id": 113833,
+      "name": "usdtMaster",
+      "parameters": [],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 86176,
+      "name": "jettonWalletCodeHash",
+      "parameters": [],
+      "return_ty_idx": 22
+    },
+    {
+      "tvm_method_id": 108969,
+      "name": "usdtWalletOf",
+      "parameters": [
+        {
+          "name": "owner",
+          "ty_idx": 7
+        }
+      ],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 101845,
+      "name": "orderAddress",
+      "parameters": [
+        {
+          "name": "client",
+          "ty_idx": 7
+        },
+        {
+          "name": "reward",
+          "ty_idx": 6
+        },
+        {
+          "name": "nonce",
+          "ty_idx": 11
+        },
+        {
+          "name": "createdAt",
+          "ty_idx": 9
+        },
+        {
+          "name": "deliveryTime",
+          "ty_idx": 9
+        },
+        {
+          "name": "description",
+          "ty_idx": 3
+        },
+        {
+          "name": "area",
+          "ty_idx": 3
+        },
+        {
+          "name": "origin",
+          "ty_idx": 3
+        },
+        {
+          "name": "clientContact",
+          "ty_idx": 3
+        },
+        {
+          "name": "secretHash",
+          "ty_idx": 22
+        },
+        {
+          "name": "acceptKey",
+          "ty_idx": 22
+        },
+        {
+          "name": "referral",
+          "ty_idx": 13
+        }
+      ],
+      "return_ty_idx": 7
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "MarketplaceErrors.NotJettonWallet",
+      "err_code": 201
+    },
+    {
+      "kind": "enum_member",
+      "name": "MarketplaceErrors.InvalidMessage",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.5.0"
+}
