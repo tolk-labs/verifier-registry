@@ -1,0 +1,188 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "FlipCoin",
+  "author": "TON Core (maybe)",
+  "version": "1.0.0",
+  "description": "Source code reconstructed by @ai_terminal. Heads-or-tails game that pays winners double from the contract balance.",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "AliasRef",
+      "alias_name": "AllowedMessage"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TextComment"
+    },
+    {
+      "kind": "remaining"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Storage"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "StatsReply"
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "Storage",
+      "ty_idx": 15,
+      "fields": [
+        {
+          "name": "admin",
+          "ty_idx": 7,
+          "description": "The only address that can withdraw the balance. It can't be changed."
+        },
+        {
+          "name": "gamesPlayed",
+          "ty_idx": 9,
+          "description": "Bets played so far. Refunded bets don't count."
+        },
+        {
+          "name": "playerWins",
+          "ty_idx": 9,
+          "description": "Bets won by players so far."
+        }
+      ],
+      "description": "Persistent contract data."
+    },
+    {
+      "kind": "struct",
+      "name": "TextComment",
+      "ty_idx": 13,
+      "prefix": {
+        "prefix_num": 0,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "text",
+          "ty_idx": 14,
+          "description": "The comment text, without the opcode."
+        }
+      ],
+      "description": "Standard text comment: op 0 followed by the text. Bets arrive as one, replies leave as one."
+    },
+    {
+      "kind": "alias",
+      "name": "AllowedMessage",
+      "ty_idx": 12,
+      "target_ty_idx": 13,
+      "description": "Messages with a body that the contract accepts. Empty messages are handled separately."
+    },
+    {
+      "kind": "struct",
+      "name": "StatsReply",
+      "ty_idx": 16,
+      "fields": [
+        {
+          "name": "gamesPlayed",
+          "ty_idx": 9,
+          "description": "Bets played so far. Refunded bets don't count."
+        },
+        {
+          "name": "playerWins",
+          "ty_idx": 9,
+          "description": "Bets won by players so far."
+        },
+        {
+          "name": "balance",
+          "ty_idx": 6,
+          "description": "Current contract balance."
+        },
+        {
+          "name": "maxBet",
+          "ty_idx": 6,
+          "description": "Largest bet the contract would accept right now."
+        }
+      ],
+      "description": "Reply of the `stats` getter."
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 15
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 13
+    }
+  ],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 89570,
+      "name": "stats",
+      "parameters": [],
+      "return_ty_idx": 16,
+      "description": "Returns the game counters, the balance and the current bet limit."
+    },
+    {
+      "tvm_method_id": 116046,
+      "name": "admin",
+      "parameters": [],
+      "return_ty_idx": 7,
+      "description": "Returns the admin address."
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "Errors.UnknownMessage",
+      "description": "A non-empty message that is not a text comment.",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.5.0"
+}
