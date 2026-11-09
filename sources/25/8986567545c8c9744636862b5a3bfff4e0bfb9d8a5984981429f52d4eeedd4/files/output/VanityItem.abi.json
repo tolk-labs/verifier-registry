@@ -1,0 +1,955 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "VanityItem",
+  "author": "TON Vanity",
+  "version": "2.0.0",
+  "description": "NFT item (TEP-62) that is also a smart account controlled by the NFT holder; holder-only opt-in upgrades",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Transfer"
+    },
+    {
+      "kind": "addressOpt"
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 3
+    },
+    {
+      "kind": "remaining"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PayloadInline"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PayloadInRef"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 15
+    },
+    {
+      "kind": "union",
+      "variants": [
+        {
+          "variant_ty_idx": 16,
+          "prefix_num": 0,
+          "prefix_len": 1,
+          "stack_type_id": 135,
+          "stack_width": 1
+        },
+        {
+          "variant_ty_idx": 17,
+          "prefix_num": 1,
+          "prefix_len": 1,
+          "stack_type_id": 136,
+          "stack_width": 1
+        }
+      ],
+      "stack_width": 2
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RequestStaticData"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "MirrorExec"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "MirrorActionHead"
+    },
+    {
+      "kind": "uintN",
+      "n": 8
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 22
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SetForwarding"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SetClaim"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PatternClaim"
+    },
+    {
+      "kind": "uintN",
+      "n": 2
+    },
+    {
+      "kind": "AliasRef",
+      "alias_name": "PatternText"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 27
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "UpgradeItem"
+    },
+    {
+      "kind": "uintN",
+      "n": 256
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "InstallItemCode"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "MigrateItem"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TextComment"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ItemInit"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "JettonTransferNotification"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OwnershipAssigned"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Excesses"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ItemStorage"
+    },
+    {
+      "kind": "uintN",
+      "n": 16
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ItemUpgradeRequest"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 42
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 43
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ItemInitData"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RequestItemCode"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ItemCodeInstalled"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ResponseStaticData"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "NftDataReply"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ItemUpgradeStatusReply"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "MirrorDataReply"
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "RequestItemCode",
+      "ty_idx": 46,
+      "prefix": {
+        "prefix_num": 2020568256,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "index",
+          "ty_idx": 32
+        },
+        {
+          "name": "codeHash",
+          "ty_idx": 32
+        }
+      ],
+      "description": "Item → collection, on behalf of its holder: \"send me the approved item code with this hash\".\nAccepted only from the item address of `index`."
+    },
+    {
+      "kind": "struct",
+      "name": "ItemCodeInstalled",
+      "ty_idx": 47,
+      "prefix": {
+        "prefix_num": 2104389861,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "codeHash",
+          "ty_idx": 32
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "InstallItemCode",
+      "ty_idx": 33,
+      "prefix": {
+        "prefix_num": 227287469,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "code",
+          "ty_idx": 3
+        }
+      ],
+      "description": "Reply to RequestItemCode: the approved item code. The item installs it only if its holder asked\nfor exactly this hash."
+    },
+    {
+      "kind": "struct",
+      "name": "ItemInit",
+      "ty_idx": 36,
+      "prefix": {
+        "prefix_num": 1768843636,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "responseDestination",
+          "ty_idx": 7
+        },
+        {
+          "name": "treasury",
+          "ty_idx": 7
+        },
+        {
+          "name": "mintPrice",
+          "ty_idx": 6
+        },
+        {
+          "name": "claim",
+          "ty_idx": 30
+        }
+      ],
+      "description": "Sent by the collection together with the deployment. On the first init the item pays `mintPrice`\nto `treasury` (buy) out of the value it received. A second init (duplicate index) is refunded\nin full, price included, to `responseDestination` by the item; nothing reaches the treasury and\nnothing bounces back into the collection."
+    },
+    {
+      "kind": "struct",
+      "name": "RequestStaticData",
+      "ty_idx": 20,
+      "prefix": {
+        "prefix_num": 801842850,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ResponseStaticData",
+      "ty_idx": 48,
+      "prefix": {
+        "prefix_num": 2339837749,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "index",
+          "ty_idx": 32
+        },
+        {
+          "name": "collection",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PayloadInline",
+      "ty_idx": 16,
+      "prefix": {
+        "prefix_num": 0,
+        "prefix_len": 1
+      },
+      "fields": [
+        {
+          "name": "value",
+          "ty_idx": 15
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PayloadInRef",
+      "ty_idx": 17,
+      "prefix": {
+        "prefix_num": 1,
+        "prefix_len": 1
+      },
+      "fields": [
+        {
+          "name": "value",
+          "ty_idx": 18
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "OwnershipAssigned",
+      "ty_idx": 38,
+      "prefix": {
+        "prefix_num": 85167505,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "previousOwner",
+          "ty_idx": 7
+        },
+        {
+          "name": "payload",
+          "ty_idx": 15,
+          "client_ty_idx": 19
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Excesses",
+      "ty_idx": 39,
+      "prefix": {
+        "prefix_num": 3576854235,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Transfer",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 1607220500,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "newOwner",
+          "ty_idx": 7
+        },
+        {
+          "name": "responseDestination",
+          "ty_idx": 13
+        },
+        {
+          "name": "customPayload",
+          "ty_idx": 14
+        },
+        {
+          "name": "forwardAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 15,
+          "client_ty_idx": 19
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "MirrorActionHead",
+      "ty_idx": 22,
+      "fields": [
+        {
+          "name": "mode",
+          "ty_idx": 23
+        },
+        {
+          "name": "message",
+          "ty_idx": 3
+        },
+        {
+          "name": "next",
+          "ty_idx": 14
+        }
+      ],
+      "description": "One node of the action list: send `message` (a serialized MessageRelaxed) with `mode`.\nLayout: mode:uint8 ^MessageRelaxed next:(Maybe ^MirrorAction)"
+    },
+    {
+      "kind": "struct",
+      "name": "MirrorExec",
+      "ty_idx": 21,
+      "prefix": {
+        "prefix_num": 1835366501,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "actions",
+          "ty_idx": 24
+        }
+      ],
+      "description": "Owner-only. Sends up to 254 messages from the item's address.\nOnly SENDRAWMSG is ever executed, so set_code / set_library are impossible; mode +32 is rejected."
+    },
+    {
+      "kind": "struct",
+      "name": "SetClaim",
+      "ty_idx": 26,
+      "prefix": {
+        "prefix_num": 1935895661,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "claim",
+          "ty_idx": 30
+        }
+      ],
+      "description": "Owner-only. Replace the claim (e.g. after someone minted the item for you with a shorter one);\nit is checked against the item's own address."
+    },
+    {
+      "kind": "struct",
+      "name": "SetForwarding",
+      "ty_idx": 25,
+      "prefix": {
+        "prefix_num": 1719100530,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "enabled",
+          "ty_idx": 5
+        }
+      ],
+      "description": "Owner-only. Auto-forward incoming plain TON (minus reserve and fees) to the owner."
+    },
+    {
+      "kind": "struct",
+      "name": "UpgradeItem",
+      "ty_idx": 31,
+      "prefix": {
+        "prefix_num": 997399057,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "codeHash",
+          "ty_idx": 32
+        }
+      ],
+      "description": "Owner-only. Opt-in upgrade of the holder's own account to the item code the collection publishes\n(get_upgrade_state.itemCodeHash). The holder signs the exact code hash; nobody else, not even the\ncollection, can change an item's code. Must carry ITEM_UPGRADE_ALLOWANCE; the excess comes back."
+    },
+    {
+      "kind": "struct",
+      "name": "MigrateItem",
+      "ty_idx": 34,
+      "prefix": {
+        "prefix_num": 1148591221,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ],
+      "description": "Sent by the item to itself right after it installs new code, so the NEW code converts the data.\nIdempotent (the holder can send it via mirror_exec too); the remaining value goes to the holder."
+    },
+    {
+      "kind": "struct",
+      "name": "JettonTransferNotification",
+      "ty_idx": 37,
+      "prefix": {
+        "prefix_num": 1935855772,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "sender",
+          "ty_idx": 7
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 15
+        }
+      ],
+      "description": "Jetton transfer notification (TEP-74). Accepted, never auto-forwarded."
+    },
+    {
+      "kind": "struct",
+      "name": "TextComment",
+      "ty_idx": 35,
+      "prefix": {
+        "prefix_num": 0,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "text",
+          "ty_idx": 15
+        }
+      ],
+      "description": "Text comment / plain transfer with comment."
+    },
+    {
+      "kind": "alias",
+      "name": "PatternText",
+      "ty_idx": 29,
+      "target_ty_idx": 2,
+      "custom_pack_unpack": {
+        "pack_to_builder": true,
+        "unpack_from_slice": true
+      },
+      "description": "Pattern text: len:uint6 followed by len ASCII bytes [A-Za-z0-9]."
+    },
+    {
+      "kind": "struct",
+      "name": "PatternClaim",
+      "ty_idx": 27,
+      "fields": [
+        {
+          "name": "mode",
+          "ty_idx": 28,
+          "description": "0 = start, 1 = end, 2 = both"
+        },
+        {
+          "name": "caseSensitive",
+          "ty_idx": 5
+        },
+        {
+          "name": "pattern",
+          "ty_idx": 29
+        }
+      ],
+      "description": "What the item claims about its own address. Validated on-chain against the address itself,\nso a claim can never be false. Stored on the item and returned as TEP-62 individual content;\nthe collection turns it into the metadata URL in get_nft_content."
+    },
+    {
+      "kind": "struct",
+      "name": "ItemInitData",
+      "ty_idx": 45,
+      "fields": [
+        {
+          "name": "collection",
+          "ty_idx": 7
+        },
+        {
+          "name": "index",
+          "ty_idx": 32
+        }
+      ],
+      "description": "Item data at deployment: exactly 523 bits, no refs. The order (collection first) is part of the\nmining protocol: the 27-bit inner nonce lands in the second SHA-256 block of the cell repr."
+    },
+    {
+      "kind": "struct",
+      "name": "ItemUpgradeRequest",
+      "ty_idx": 42,
+      "fields": [
+        {
+          "name": "codeHash",
+          "ty_idx": 32
+        }
+      ],
+      "description": "Code hash the holder asked to install (`upgrade_item`); the collection's reply must match it."
+    },
+    {
+      "kind": "struct",
+      "name": "ItemStorage",
+      "ty_idx": 40,
+      "fields": [
+        {
+          "name": "collection",
+          "ty_idx": 7
+        },
+        {
+          "name": "index",
+          "ty_idx": 32
+        },
+        {
+          "name": "version",
+          "ty_idx": 41
+        },
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "forwarding",
+          "ty_idx": 5
+        },
+        {
+          "name": "claim",
+          "ty_idx": 30
+        },
+        {
+          "name": "upgradeRequest",
+          "ty_idx": 44
+        }
+      ],
+      "description": "Initialized item. `collection` and `index` stay first (they are the deployment data); `version`\nis the item code version that last wrote the data, so later code knows which layout it reads."
+    },
+    {
+      "kind": "struct",
+      "name": "ItemUpgradeStatusReply",
+      "ty_idx": 50,
+      "fields": [
+        {
+          "name": "version",
+          "ty_idx": 41,
+          "description": "Item code version that last wrote the data."
+        },
+        {
+          "name": "codeHash",
+          "ty_idx": 32,
+          "description": "Hash of the code the item runs now."
+        },
+        {
+          "name": "requestedCodeHash",
+          "ty_idx": 32,
+          "description": "Code hash the holder asked for that hasn't been installed yet (0 = none)."
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "NftDataReply",
+      "ty_idx": 49,
+      "fields": [
+        {
+          "name": "isInitialized",
+          "ty_idx": 5
+        },
+        {
+          "name": "index",
+          "ty_idx": 1
+        },
+        {
+          "name": "collection",
+          "ty_idx": 7
+        },
+        {
+          "name": "owner",
+          "ty_idx": 13,
+          "default_value": {
+            "kind": "null"
+          }
+        },
+        {
+          "name": "content",
+          "ty_idx": 14,
+          "default_value": {
+            "kind": "null"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "MirrorDataReply",
+      "ty_idx": 51,
+      "fields": [
+        {
+          "name": "owner",
+          "ty_idx": 13
+        },
+        {
+          "name": "forwarding",
+          "ty_idx": 5
+        },
+        {
+          "name": "reserve",
+          "ty_idx": 6
+        },
+        {
+          "name": "version",
+          "ty_idx": 1
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 40,
+    "storage_at_deployment_ty_idx": 45
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 20
+    },
+    {
+      "body_ty_idx": 21
+    },
+    {
+      "body_ty_idx": 25
+    },
+    {
+      "body_ty_idx": 26
+    },
+    {
+      "body_ty_idx": 31
+    },
+    {
+      "body_ty_idx": 33
+    },
+    {
+      "body_ty_idx": 34
+    },
+    {
+      "body_ty_idx": 35
+    },
+    {
+      "body_ty_idx": 36
+    },
+    {
+      "body_ty_idx": 37
+    },
+    {
+      "body_ty_idx": 38
+    },
+    {
+      "body_ty_idx": 39
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 46
+    },
+    {
+      "body_ty_idx": 34
+    },
+    {
+      "body_ty_idx": 39
+    },
+    {
+      "body_ty_idx": 48
+    },
+    {
+      "body_ty_idx": 38
+    }
+  ],
+  "emitted_events": [
+    {
+      "body_ty_idx": 47
+    }
+  ],
+  "get_methods": [
+    {
+      "tvm_method_id": 102351,
+      "name": "get_nft_data",
+      "parameters": [],
+      "return_ty_idx": 49
+    },
+    {
+      "tvm_method_id": 124003,
+      "name": "get_upgrade_status",
+      "parameters": [],
+      "return_ty_idx": 50
+    },
+    {
+      "tvm_method_id": 105418,
+      "name": "get_mirror_data",
+      "parameters": [],
+      "return_ty_idx": 51
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidWorkchain",
+      "err_code": 333
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotFromOwner",
+      "err_code": 401
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotFromCollection",
+      "err_code": 405
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotEnoughValue",
+      "err_code": 412
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidClaim",
+      "err_code": 415
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.DestroyModeForbidden",
+      "err_code": 420
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.TooManyActions",
+      "err_code": 421
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.TransferToSelf",
+      "err_code": 423
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.ForbiddenOpcode",
+      "err_code": 424
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotFromSelf",
+      "err_code": 458
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.UpgradeNotRequested",
+      "err_code": 459
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.IncorrectForwardPayload",
+      "err_code": 708
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.5.0"
+}
