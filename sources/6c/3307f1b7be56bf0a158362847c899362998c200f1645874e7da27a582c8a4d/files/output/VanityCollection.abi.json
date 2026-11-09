@@ -1,0 +1,1456 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "VanityCollection",
+  "author": "TON Vanity",
+  "version": "3.0.0",
+  "description": "Vanity address NFT collection: signed-voucher sale, ops mint, time-locked upgrades, TEP-62/64/66",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Buy"
+    },
+    {
+      "kind": "bitsN",
+      "n": 512
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Voucher"
+    },
+    {
+      "kind": "uintN",
+      "n": 256
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PatternClaim"
+    },
+    {
+      "kind": "uintN",
+      "n": 2
+    },
+    {
+      "kind": "AliasRef",
+      "alias_name": "PatternText"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 16
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 14
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "AdminMint"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RequestRoyaltyParams"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ChangeOwner"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SetMinter"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SetSigner"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SetTreasury"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SetContent"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CollectionContent"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 28
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SetRoyalty"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RoyaltyParams"
+    },
+    {
+      "kind": "uintN",
+      "n": 16
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 31
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SetPaused"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Withdraw"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ProposeUpgrade"
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 3
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ApproveUpgrade"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CancelUpgrade"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Migrate"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RequestItemCode"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TextComment"
+    },
+    {
+      "kind": "remaining"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CollectionStorage"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CollectionExt"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SaleConfig"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "UpgradeState"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "UpgradeProposal"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 48
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 49
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 47
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 45
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ItemInit"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Excesses"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ResponseRoyaltyParams"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "InstallItemCode"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CollectionDataReply"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SaleConfigReply"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "BuyParamsReply"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CollectionVersionReply"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "UpgradeStateReply"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "UpgradeProposed"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "UpgradeApproved"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "UpgradeCancelled"
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "Voucher",
+      "ty_idx": 14,
+      "prefix": {
+        "prefix_num": 1521848670,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "collection",
+          "ty_idx": 7,
+          "description": "The collection the voucher is valid for (replay on another deployment is refused)."
+        },
+        {
+          "name": "index",
+          "ty_idx": 15
+        },
+        {
+          "name": "owner",
+          "ty_idx": 7,
+          "description": "The item goes to this owner; changing it invalidates the signature."
+        },
+        {
+          "name": "price",
+          "ty_idx": 6,
+          "description": "Forwarded to the treasury by the freshly deployed item."
+        },
+        {
+          "name": "validUntil",
+          "ty_idx": 9,
+          "description": "Unix time; the voucher is refused when now() > validUntil."
+        },
+        {
+          "name": "claim",
+          "ty_idx": 19,
+          "description": "What the address shows; must really appear in it (checked against the computed address)."
+        }
+      ],
+      "description": "What the sale backend signs to authorize one `buy`. The signer signs the representation hash of\nthis exact cell (the claim ref's hash is part of it). The prefix equals the `buy` opcode, so a\nvoucher can't be confused with any other signed payload."
+    },
+    {
+      "kind": "struct",
+      "name": "Buy",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 1521848670,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "signature",
+          "ty_idx": 13
+        },
+        {
+          "name": "voucher",
+          "ty_idx": 20
+        }
+      ],
+      "description": "Anyone may send it with a voucher signed by `signerPublicKey`: one transaction pays and mints."
+    },
+    {
+      "kind": "struct",
+      "name": "AdminMint",
+      "ty_idx": 21,
+      "prefix": {
+        "prefix_num": 1640872330,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "index",
+          "ty_idx": 15
+        },
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "responseDestination",
+          "ty_idx": 7
+        },
+        {
+          "name": "claim",
+          "ty_idx": 19
+        }
+      ],
+      "description": "Ops wallet only (`minter`): mints without payment (e.g. orders paid in Telegram Stars)."
+    },
+    {
+      "kind": "struct",
+      "name": "RequestRoyaltyParams",
+      "ty_idx": 22,
+      "prefix": {
+        "prefix_num": 1765620048,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ],
+      "description": "TEP-66"
+    },
+    {
+      "kind": "struct",
+      "name": "ResponseRoyaltyParams",
+      "ty_idx": 55,
+      "prefix": {
+        "prefix_num": 2831876269,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "royaltyParams",
+          "ty_idx": 31
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ChangeOwner",
+      "ty_idx": 23,
+      "prefix": {
+        "prefix_num": 1668249454,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "newOwner",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "SetMinter",
+      "ty_idx": 24,
+      "prefix": {
+        "prefix_num": 1035326673,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "minter",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "SetSigner",
+      "ty_idx": 25,
+      "prefix": {
+        "prefix_num": 2000889331,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "signerPublicKey",
+          "ty_idx": 15
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "SetTreasury",
+      "ty_idx": 26,
+      "prefix": {
+        "prefix_num": 1921660699,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "treasury",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "SetContent",
+      "ty_idx": 27,
+      "prefix": {
+        "prefix_num": 1935896180,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "content",
+          "ty_idx": 29
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "SetRoyalty",
+      "ty_idx": 30,
+      "prefix": {
+        "prefix_num": 1936879481,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "royalty",
+          "ty_idx": 33
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "SetPaused",
+      "ty_idx": 34,
+      "prefix": {
+        "prefix_num": 1885435251,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "paused",
+          "ty_idx": 5
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Withdraw",
+      "ty_idx": 35,
+      "prefix": {
+        "prefix_num": 2003071607,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "destination",
+          "ty_idx": 7
+        }
+      ],
+      "description": "amount = 0 withdraws everything above COLLECTION_RESERVE."
+    },
+    {
+      "kind": "struct",
+      "name": "ProposeUpgrade",
+      "ty_idx": 36,
+      "prefix": {
+        "prefix_num": 1194080334,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "authority",
+          "ty_idx": 7
+        },
+        {
+          "name": "delay",
+          "ty_idx": 9
+        },
+        {
+          "name": "code",
+          "ty_idx": 37
+        },
+        {
+          "name": "migration",
+          "ty_idx": 37
+        },
+        {
+          "name": "itemCode",
+          "ty_idx": 37
+        }
+      ],
+      "description": "Upgrade authority only. Replaces any pending proposal and starts its timelock (`delay` in force\nnow). At least one of: new code, new item code, a different authority or delay."
+    },
+    {
+      "kind": "struct",
+      "name": "ApproveUpgrade",
+      "ty_idx": 38,
+      "prefix": {
+        "prefix_num": 618652037,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "proposalHash",
+          "ty_idx": 15
+        }
+      ],
+      "description": "Upgrade authority only, after the timelock. `proposalHash` = hash of the pending proposal cell\n(get_upgrade_state), so the signer approves exactly what is pending."
+    },
+    {
+      "kind": "struct",
+      "name": "CancelUpgrade",
+      "ty_idx": 39,
+      "prefix": {
+        "prefix_num": 1998839364,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ],
+      "description": "Upgrade authority only."
+    },
+    {
+      "kind": "struct",
+      "name": "Migrate",
+      "ty_idx": 40,
+      "prefix": {
+        "prefix_num": 493430557,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "fromVersion",
+          "ty_idx": 9
+        },
+        {
+          "name": "migration",
+          "ty_idx": 37
+        }
+      ],
+      "description": "Sent by the collection to itself right after it installs new code, so the NEW code converts the\ndata (`fromVersion` = the old data version). Every collection version must handle it; the\nremaining value goes back to the upgrade authority."
+    },
+    {
+      "kind": "struct",
+      "name": "RequestItemCode",
+      "ty_idx": 41,
+      "prefix": {
+        "prefix_num": 2020568256,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "index",
+          "ty_idx": 15
+        },
+        {
+          "name": "codeHash",
+          "ty_idx": 15
+        }
+      ],
+      "description": "Item → collection, on behalf of its holder: \"send me the approved item code with this hash\".\nAccepted only from the item address of `index`."
+    },
+    {
+      "kind": "struct",
+      "name": "UpgradeProposed",
+      "ty_idx": 62,
+      "prefix": {
+        "prefix_num": 1896768361,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "proposalHash",
+          "ty_idx": 15
+        },
+        {
+          "name": "readyAt",
+          "ty_idx": 9
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "UpgradeApproved",
+      "ty_idx": 63,
+      "prefix": {
+        "prefix_num": 565271233,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "proposalHash",
+          "ty_idx": 15
+        },
+        {
+          "name": "codeHash",
+          "ty_idx": 15
+        },
+        {
+          "name": "itemCodeHash",
+          "ty_idx": 15
+        }
+      ],
+      "description": "codeHash / itemCodeHash are 0 when that part stayed unchanged."
+    },
+    {
+      "kind": "struct",
+      "name": "UpgradeCancelled",
+      "ty_idx": 64,
+      "prefix": {
+        "prefix_num": 88648787,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "proposalHash",
+          "ty_idx": 15
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "InstallItemCode",
+      "ty_idx": 56,
+      "prefix": {
+        "prefix_num": 227287469,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "code",
+          "ty_idx": 3
+        }
+      ],
+      "description": "Reply to RequestItemCode: the approved item code. The item installs it only if its holder asked\nfor exactly this hash."
+    },
+    {
+      "kind": "struct",
+      "name": "ItemInit",
+      "ty_idx": 53,
+      "prefix": {
+        "prefix_num": 1768843636,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "responseDestination",
+          "ty_idx": 7
+        },
+        {
+          "name": "treasury",
+          "ty_idx": 7
+        },
+        {
+          "name": "mintPrice",
+          "ty_idx": 6
+        },
+        {
+          "name": "claim",
+          "ty_idx": 19
+        }
+      ],
+      "description": "Sent by the collection together with the deployment. On the first init the item pays `mintPrice`\nto `treasury` (buy) out of the value it received. A second init (duplicate index) is refunded\nin full, price included, to `responseDestination` by the item; nothing reaches the treasury and\nnothing bounces back into the collection."
+    },
+    {
+      "kind": "struct",
+      "name": "Excesses",
+      "ty_idx": 54,
+      "prefix": {
+        "prefix_num": 3576854235,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TextComment",
+      "ty_idx": 42,
+      "prefix": {
+        "prefix_num": 0,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "text",
+          "ty_idx": 43
+        }
+      ],
+      "description": "Text comment / plain transfer with comment."
+    },
+    {
+      "kind": "struct",
+      "name": "RoyaltyParams",
+      "ty_idx": 31,
+      "fields": [
+        {
+          "name": "numerator",
+          "ty_idx": 32
+        },
+        {
+          "name": "denominator",
+          "ty_idx": 32
+        },
+        {
+          "name": "destination",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CollectionContent",
+      "ty_idx": 28,
+      "fields": [
+        {
+          "name": "collectionMetadata",
+          "ty_idx": 3,
+          "description": "TEP-64 off-chain collection metadata cell: 0x01 + URL of collection.json"
+        },
+        {
+          "name": "commonContent",
+          "ty_idx": 3,
+          "description": "Common prefix of item content, e.g. \"https://vanity.example/api/nft/\" — inline bytes in a\nsingle cell (≤ 126 bytes, no refs), so get_nft_content can emit the reference layout\n0x01 || common || ^individual."
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "SaleConfig",
+      "ty_idx": 46,
+      "fields": [
+        {
+          "name": "minter",
+          "ty_idx": 7,
+          "description": "Ops wallet: the only sender allowed to `admin_mint`."
+        },
+        {
+          "name": "signerPublicKey",
+          "ty_idx": 15,
+          "description": "ed25519 key whose signature authorizes a `buy` voucher."
+        },
+        {
+          "name": "treasury",
+          "ty_idx": 7,
+          "description": "Receives the price of every `buy` (paid by the freshly deployed item, see ItemInit)."
+        }
+      ],
+      "description": "Sale roles (inline in CollectionExt)."
+    },
+    {
+      "kind": "struct",
+      "name": "UpgradeProposal",
+      "ty_idx": 48,
+      "fields": [
+        {
+          "name": "readyAt",
+          "ty_idx": 9,
+          "description": "Earliest unix time `approve_upgrade` is accepted (proposal time + the delay in force then)."
+        },
+        {
+          "name": "authority",
+          "ty_idx": 7,
+          "description": "Upgrade authority after the approval (rotation is time-locked like everything else)."
+        },
+        {
+          "name": "delay",
+          "ty_idx": 9,
+          "description": "Timelock after the approval."
+        },
+        {
+          "name": "code",
+          "ty_idx": 37,
+          "description": "New collection code; null keeps the current code."
+        },
+        {
+          "name": "migration",
+          "ty_idx": 37,
+          "description": "Parameters handed to the new code's `migrate` (only together with `code`)."
+        },
+        {
+          "name": "itemCode",
+          "ty_idx": 37,
+          "description": "New item code holders may opt into; null keeps the published one."
+        }
+      ],
+      "description": "An upgrade waiting for its timelock. Everything the authority approves is in this cell, and the\napproval names its hash, so what was proposed is exactly what gets installed."
+    },
+    {
+      "kind": "struct",
+      "name": "UpgradeState",
+      "ty_idx": 47,
+      "fields": [
+        {
+          "name": "authority",
+          "ty_idx": 7
+        },
+        {
+          "name": "delay",
+          "ty_idx": 9,
+          "description": "Seconds between a proposal and the earliest approval (≤ MAX_UPGRADE_DELAY)."
+        },
+        {
+          "name": "itemCode",
+          "ty_idx": 3,
+          "description": "Latest approved item code, installed into an item only when its holder asks (`upgrade_item`).\nStarts as the address code."
+        },
+        {
+          "name": "pending",
+          "ty_idx": 50
+        }
+      ],
+      "description": "Upgrade governance. The authority is a wallet the admin signs with (TON Connect), never a server\nkey: every proposal and every approval is a message it signs."
+    },
+    {
+      "kind": "struct",
+      "name": "CollectionExt",
+      "ty_idx": 45,
+      "fields": [
+        {
+          "name": "sale",
+          "ty_idx": 46
+        },
+        {
+          "name": "upgrades",
+          "ty_idx": 51
+        }
+      ],
+      "description": "Roles and governance in one ref (the root holds four refs already)."
+    },
+    {
+      "kind": "struct",
+      "name": "CollectionStorage",
+      "ty_idx": 44,
+      "fields": [
+        {
+          "name": "version",
+          "ty_idx": 9
+        },
+        {
+          "name": "owner",
+          "ty_idx": 7,
+          "description": "Admin: the only sender allowed to change roles, content, royalty, pause and withdraw."
+        },
+        {
+          "name": "paused",
+          "ty_idx": 5,
+          "description": "Blocks both `buy` and `admin_mint`."
+        },
+        {
+          "name": "mintedCount",
+          "ty_idx": 11,
+          "description": "Mint operations dispatched by the collection (a duplicate index is refunded by the item but\nstill counted: the collection can't know an item exists)."
+        },
+        {
+          "name": "itemCode",
+          "ty_idx": 3,
+          "description": "Item address code: get_nft_address_by_index and every mint use it, whatever code items run later."
+        },
+        {
+          "name": "content",
+          "ty_idx": 29
+        },
+        {
+          "name": "royalty",
+          "ty_idx": 33
+        },
+        {
+          "name": "ext",
+          "ty_idx": 52
+        }
+      ],
+      "description": "Layout invariants every future collection version keeps, so an upgrade can't move item addresses\nand new code always knows which layout it reads:\n  - the data starts with `version:uint32` (the code version that last wrote the data);\n  - the first ref is the item address code (the code in every item's StateInit). It never changes."
+    },
+    {
+      "kind": "alias",
+      "name": "PatternText",
+      "ty_idx": 18,
+      "target_ty_idx": 2,
+      "custom_pack_unpack": {
+        "pack_to_builder": true,
+        "unpack_from_slice": true
+      },
+      "description": "Pattern text: len:uint6 followed by len ASCII bytes [A-Za-z0-9]."
+    },
+    {
+      "kind": "struct",
+      "name": "PatternClaim",
+      "ty_idx": 16,
+      "fields": [
+        {
+          "name": "mode",
+          "ty_idx": 17,
+          "description": "0 = start, 1 = end, 2 = both"
+        },
+        {
+          "name": "caseSensitive",
+          "ty_idx": 5
+        },
+        {
+          "name": "pattern",
+          "ty_idx": 18
+        }
+      ],
+      "description": "What the item claims about its own address. Validated on-chain against the address itself,\nso a claim can never be false. Stored on the item and returned as TEP-62 individual content;\nthe collection turns it into the metadata URL in get_nft_content."
+    },
+    {
+      "kind": "struct",
+      "name": "CollectionDataReply",
+      "ty_idx": 57,
+      "fields": [
+        {
+          "name": "nextItemIndex",
+          "ty_idx": 1
+        },
+        {
+          "name": "collectionMetadata",
+          "ty_idx": 3
+        },
+        {
+          "name": "owner",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "SaleConfigReply",
+      "ty_idx": 58,
+      "fields": [
+        {
+          "name": "minter",
+          "ty_idx": 7
+        },
+        {
+          "name": "signerPublicKey",
+          "ty_idx": 15
+        },
+        {
+          "name": "treasury",
+          "ty_idx": 7
+        },
+        {
+          "name": "paused",
+          "ty_idx": 5
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "BuyParamsReply",
+      "ty_idx": 59,
+      "fields": [
+        {
+          "name": "itemInitValue",
+          "ty_idx": 6
+        },
+        {
+          "name": "mintGasAllowance",
+          "ty_idx": 6
+        },
+        {
+          "name": "treasuryFeeAllowance",
+          "ty_idx": 6
+        },
+        {
+          "name": "itemCodeHash",
+          "ty_idx": 15
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CollectionVersionReply",
+      "ty_idx": 60,
+      "fields": [
+        {
+          "name": "version",
+          "ty_idx": 9,
+          "description": "Version of the code that last wrote the data."
+        },
+        {
+          "name": "codeVersion",
+          "ty_idx": 9,
+          "description": "Version compiled into the running code."
+        },
+        {
+          "name": "codeHash",
+          "ty_idx": 15,
+          "description": "Hash of the running code."
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "UpgradeStateReply",
+      "ty_idx": 61,
+      "fields": [
+        {
+          "name": "authority",
+          "ty_idx": 7
+        },
+        {
+          "name": "delay",
+          "ty_idx": 9
+        },
+        {
+          "name": "addressCodeHash",
+          "ty_idx": 15,
+          "description": "Code in every item's StateInit (never changes)."
+        },
+        {
+          "name": "itemCodeHash",
+          "ty_idx": 15,
+          "description": "Latest approved item code (what `upgrade_item` installs)."
+        },
+        {
+          "name": "pending",
+          "ty_idx": 50,
+          "description": "The pending UpgradeProposal cell, or null."
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 44
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 21
+    },
+    {
+      "body_ty_idx": 22
+    },
+    {
+      "body_ty_idx": 23
+    },
+    {
+      "body_ty_idx": 24
+    },
+    {
+      "body_ty_idx": 25
+    },
+    {
+      "body_ty_idx": 26
+    },
+    {
+      "body_ty_idx": 27
+    },
+    {
+      "body_ty_idx": 30
+    },
+    {
+      "body_ty_idx": 34
+    },
+    {
+      "body_ty_idx": 35
+    },
+    {
+      "body_ty_idx": 36
+    },
+    {
+      "body_ty_idx": 38
+    },
+    {
+      "body_ty_idx": 39
+    },
+    {
+      "body_ty_idx": 40
+    },
+    {
+      "body_ty_idx": 41
+    },
+    {
+      "body_ty_idx": 42
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 53
+    },
+    {
+      "body_ty_idx": 54
+    },
+    {
+      "body_ty_idx": 55
+    },
+    {
+      "body_ty_idx": 40
+    },
+    {
+      "body_ty_idx": 56
+    }
+  ],
+  "emitted_events": [
+    {
+      "body_ty_idx": 62
+    },
+    {
+      "body_ty_idx": 63
+    },
+    {
+      "body_ty_idx": 64
+    }
+  ],
+  "get_methods": [
+    {
+      "tvm_method_id": 102491,
+      "name": "get_collection_data",
+      "parameters": [],
+      "return_ty_idx": 57
+    },
+    {
+      "tvm_method_id": 92067,
+      "name": "get_nft_address_by_index",
+      "parameters": [
+        {
+          "name": "index",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 68445,
+      "name": "get_nft_content",
+      "parameters": [
+        {
+          "name": "index",
+          "ty_idx": 1
+        },
+        {
+          "name": "individualContent",
+          "ty_idx": 3
+        }
+      ],
+      "return_ty_idx": 3,
+      "description": "TEP-64 off-chain reference layout: 0x01 || common prefix (inline) || ^individual part.\nThe URL is built from the index itself, so an item can never point at another item's metadata."
+    },
+    {
+      "tvm_method_id": 85719,
+      "name": "royalty_params",
+      "parameters": [],
+      "return_ty_idx": 31
+    },
+    {
+      "tvm_method_id": 130934,
+      "name": "get_sale_config",
+      "parameters": [],
+      "return_ty_idx": 58
+    },
+    {
+      "tvm_method_id": 68099,
+      "name": "get_minted_count",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 124059,
+      "name": "get_buy_params",
+      "parameters": [],
+      "return_ty_idx": 59,
+      "description": "What a buyer needs to attach: price + (price > 0 ? treasury_fee_allowance : 0) + item_init_value\n+ mint_gas_allowance; item_code_hash is the code the GPU fleet mines against."
+    },
+    {
+      "tvm_method_id": 84521,
+      "name": "get_fixed_prefix_limit",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 82320,
+      "name": "get_version",
+      "parameters": [],
+      "return_ty_idx": 60
+    },
+    {
+      "tvm_method_id": 90853,
+      "name": "get_upgrade_state",
+      "parameters": [],
+      "return_ty_idx": 61
+    },
+    {
+      "tvm_method_id": 129557,
+      "name": "get_item_code",
+      "parameters": [],
+      "return_ty_idx": 3,
+      "description": "The approved item code `upgrade_item` installs (wallets and the app read it to show what a\nholder would sign)."
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidWorkchain",
+      "err_code": 333
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotFromAdmin",
+      "err_code": 402
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotFromMinter",
+      "err_code": 403
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.MintPaused",
+      "err_code": 411
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotEnoughValue",
+      "err_code": 412
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.FixedPrefixNotAllowed",
+      "err_code": 413
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidIndex",
+      "err_code": 414
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidClaim",
+      "err_code": 415
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidCommonContent",
+      "err_code": 416
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidRoyalty",
+      "err_code": 430
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidSignature",
+      "err_code": 440
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.VoucherExpired",
+      "err_code": 441
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.WrongCollection",
+      "err_code": 442
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidVoucher",
+      "err_code": 443
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotFromUpgradeAuthority",
+      "err_code": 450
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NoPendingUpgrade",
+      "err_code": 451
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.UpgradeTimelocked",
+      "err_code": 452
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.ProposalMismatch",
+      "err_code": 453
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.EmptyProposal",
+      "err_code": 454
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidUpgradeDelay",
+      "err_code": 455
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotFromItem",
+      "err_code": 456
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.ItemCodeMismatch",
+      "err_code": 457
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotFromSelf",
+      "err_code": 458
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.UnknownOp",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.5.0"
+}
