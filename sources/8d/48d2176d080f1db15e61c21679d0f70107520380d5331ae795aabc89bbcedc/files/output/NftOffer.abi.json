@@ -1,0 +1,428 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "NftOffer",
+  "author": "Telegram and/or TON Core (maybe)",
+  "version": "1.0.0",
+  "description": "Source code reconstructed by @ai_terminal. Buyer-funded offer for one NFT from one seller: pays the price and a marketplace fee on sale; the buyer can cancel, paying a fee before expiry; a signed or post-expiry external cancel refunds the buyer",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OwnershipAssigned"
+    },
+    {
+      "kind": "remaining"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CancelByBuyer"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CancelOffer"
+    },
+    {
+      "kind": "bitsN",
+      "n": 512
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 16
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Storage"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OfferConfig"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Parties"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 20
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Fee"
+    },
+    {
+      "kind": "uintN",
+      "n": 16
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 22
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 19
+    },
+    {
+      "kind": "uintN",
+      "n": 256
+    },
+    {
+      "kind": "EnumRef",
+      "enum_name": "Phase"
+    },
+    {
+      "kind": "uintN",
+      "n": 8
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "NftTransfer"
+    },
+    {
+      "kind": "addressOpt"
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 3
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "OwnershipAssigned",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 85167505,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "prevOwner",
+          "ty_idx": 7,
+          "description": "Owner before the transfer. The offer pays this address when it is the seller."
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 13,
+          "description": "Ignored."
+        }
+      ],
+      "description": "TEP-62 `ownership_assigned`: NFT item → new owner."
+    },
+    {
+      "kind": "struct",
+      "name": "NftTransfer",
+      "ty_idx": 29,
+      "prefix": {
+        "prefix_num": 1607220500,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "newOwner",
+          "ty_idx": 7
+        },
+        {
+          "name": "responseDestination",
+          "ty_idx": 30,
+          "description": "Gets the excess of the transfer value."
+        },
+        {
+          "name": "customPayload",
+          "ty_idx": 31,
+          "default_value": {
+            "kind": "null"
+          }
+        },
+        {
+          "name": "forwardAmount",
+          "ty_idx": 6,
+          "default_value": {
+            "kind": "int",
+            "v": "0"
+          }
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 13,
+          "default_value": {
+            "kind": "slice",
+            "hex": "4_"
+          }
+        }
+      ],
+      "description": "TEP-62 `transfer`: owner → NFT item. The offer sends it with no custom payload, no forward\namount and an empty inline forward payload."
+    },
+    {
+      "kind": "struct",
+      "name": "CancelByBuyer",
+      "ty_idx": 14,
+      "prefix": {
+        "prefix_num": 1774999329,
+        "prefix_len": 32
+      },
+      "fields": [],
+      "description": "Buyer → offer: closes the offer in any phase and sends the balance to the buyer. Before\nexpiry, a cancel fee goes to the fee address first."
+    },
+    {
+      "kind": "struct",
+      "name": "CancelOffer",
+      "ty_idx": 15,
+      "prefix": {
+        "prefix_num": 1196229120,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "signature",
+          "ty_idx": 17,
+          "description": "Ed25519 signature by the offer key over the hash part of the offer address. Required\nbefore expiry; null works only after expiry. A replay does nothing, because the offer is\nthen no longer Active."
+        }
+      ],
+      "description": "External cancel of an Active offer. Sends the balance to the buyer and closes the offer."
+    },
+    {
+      "kind": "enum",
+      "name": "Phase",
+      "ty_idx": 27,
+      "encoded_as_ty_idx": 28,
+      "members": [
+        {
+          "name": "Funding",
+          "value": "0",
+          "description": "Deployed; waits for the buyer to fund the price, the fee and the storage reserve."
+        },
+        {
+          "name": "Active",
+          "value": "1",
+          "description": "Funded; accepts the NFT from the seller until expiry."
+        },
+        {
+          "name": "Sold",
+          "value": "2",
+          "description": "The seller got the price and the NFT transfer to the recipient was sent. If the NFT item\nrejects that transfer, the NFT stays with the offer."
+        },
+        {
+          "name": "Closed",
+          "value": "3",
+          "description": "Cancelled by the buyer, cancelled with the offer key, or cancelled after expiry."
+        }
+      ],
+      "description": "Offer lifecycle. Offers are deployed in `Funding`, and the contract sets every later phase.\nThe contract doesn't check the deployed phase; indexers recognise only an address whose\nstate init has `Funding`."
+    },
+    {
+      "kind": "struct",
+      "name": "Parties",
+      "ty_idx": 20,
+      "fields": [
+        {
+          "name": "buyer",
+          "ty_idx": 7,
+          "description": "Funds the offer and gets the balance back on a cancel."
+        },
+        {
+          "name": "recipient",
+          "ty_idx": 7,
+          "description": "Gets the NFT after a sale."
+        },
+        {
+          "name": "seller",
+          "ty_idx": 7,
+          "description": "The only previous owner whose NFT the offer buys."
+        }
+      ],
+      "description": "Addresses that take part in the offer."
+    },
+    {
+      "kind": "struct",
+      "name": "Fee",
+      "ty_idx": 22,
+      "fields": [
+        {
+          "name": "feeAddress",
+          "ty_idx": 7,
+          "description": "Gets the cancel fee, the excess of the NFT transfer, and the rest of the balance after a\nsale: the funded fee and any surplus."
+        },
+        {
+          "name": "feeBps",
+          "ty_idx": 23,
+          "description": "Fee in basis points of the price, which the buyer funds on top of the price."
+        },
+        {
+          "name": "cancelFee",
+          "ty_idx": 23,
+          "description": "Sets the fee for a buyer cancel before expiry: the larger of this value in basis points\nof the price and a minimum fee that is proportional to this value."
+        }
+      ],
+      "description": "Marketplace fee terms."
+    },
+    {
+      "kind": "struct",
+      "name": "OfferConfig",
+      "ty_idx": 19,
+      "fields": [
+        {
+          "name": "nft",
+          "ty_idx": 7,
+          "description": "The NFT item the offer buys."
+        },
+        {
+          "name": "price",
+          "ty_idx": 6,
+          "description": "Amount paid to the seller."
+        },
+        {
+          "name": "salt",
+          "ty_idx": 11,
+          "description": "Any value. It makes the offer address unique."
+        },
+        {
+          "name": "expiresAt",
+          "ty_idx": 9,
+          "description": "Unix time from which the offer no longer accepts funding or the NFT. From then on, a buyer\ncancel has no fee and an external cancel needs no signature."
+        },
+        {
+          "name": "parties",
+          "ty_idx": 21,
+          "description": "Buyer, recipient and seller."
+        },
+        {
+          "name": "fee",
+          "ty_idx": 24,
+          "description": "Fee address and rates."
+        }
+      ],
+      "description": "Offer terms. They don't change after deployment."
+    },
+    {
+      "kind": "struct",
+      "name": "Storage",
+      "ty_idx": 18,
+      "fields": [
+        {
+          "name": "config",
+          "ty_idx": 25,
+          "description": "Offer terms."
+        },
+        {
+          "name": "publicKey",
+          "ty_idx": 26,
+          "description": "Ed25519 key that can cancel the offer with an external before expiry."
+        },
+        {
+          "name": "phase",
+          "ty_idx": 27,
+          "description": "Current lifecycle phase."
+        }
+      ],
+      "description": "Contract data. Only `phase` changes after deployment."
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 18
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 14
+    }
+  ],
+  "incoming_external": [
+    {
+      "body_ty_idx": 15
+    }
+  ],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 29
+    }
+  ],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 123752,
+      "name": "nftOfferData",
+      "parameters": [],
+      "return_ty_idx": 18,
+      "description": "Full offer storage: the config cell, the offer key and the phase."
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotEnoughFunds",
+      "description": "The funding doesn't cover the price, the fee and the storage reserve.",
+      "err_code": 453
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidOwnershipAssigned",
+      "description": "`ownership_assigned` didn't come from the offer NFT, or names a previous owner outside the\nbasechain.",
+      "err_code": 455
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.Expired",
+      "description": "The offer expired.",
+      "err_code": 457
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.Forbidden",
+      "description": "Unknown opcode (a text comment included), wrong sender, wrong phase or bad signature.",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.5.0"
+}
