@@ -1,0 +1,613 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "TonnelPredict",
+  "author": "Mr FreeMan / Tonnel Network",
+  "version": "1.0.0",
+  "description": "Price prediction rounds with oracle-signed prices. Source code reconstructed by @ai_terminal.",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SubmitPrice"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ProcessPayouts"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ForceRefund"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "WithdrawFees"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "UpdateOracleAndConfig"
+    },
+    {
+      "kind": "uintN",
+      "n": 256
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Config"
+    },
+    {
+      "kind": "uintN",
+      "n": 16
+    },
+    {
+      "kind": "uintN",
+      "n": 8
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 18
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Storage"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Round"
+    },
+    {
+      "kind": "uintN",
+      "n": 2
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Bet"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 25
+    },
+    {
+      "kind": "mapKV",
+      "key_ty_idx": 7,
+      "value_ty_idx": 26
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 23
+    },
+    {
+      "kind": "mapKV",
+      "key_ty_idx": 9,
+      "value_ty_idx": 28
+    },
+    {
+      "kind": "mapKV",
+      "key_ty_idx": 7,
+      "value_ty_idx": 9
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TextComment"
+    },
+    {
+      "kind": "string"
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        7,
+        17,
+        21
+      ]
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 28
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "SubmitPrice",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 1414352897,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "roundTs",
+          "ty_idx": 9,
+          "description": "The round start time. It must be a multiple of `roundDuration`."
+        },
+        {
+          "name": "price",
+          "ty_idx": 11,
+          "description": "The oracle price. It must not be 0."
+        },
+        {
+          "name": "signature",
+          "ty_idx": 3,
+          "description": "The 512-bit Ed25519 signature of `PricePayload`, with no refs."
+        }
+      ],
+      "description": "Anyone → contract: the signed oracle price at the start of a round.\nThe price opens this round and closes the previous round."
+    },
+    {
+      "kind": "struct",
+      "name": "ProcessPayouts",
+      "ty_idx": 13,
+      "prefix": {
+        "prefix_num": 1414352898,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "roundTs",
+          "ty_idx": 9
+        }
+      ],
+      "description": "Contract → contract: pays the next batch of bettors of a closed round.\nAny sender can send it."
+    },
+    {
+      "kind": "struct",
+      "name": "ForceRefund",
+      "ty_idx": 14,
+      "prefix": {
+        "prefix_num": 1414352899,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "roundTs",
+          "ty_idx": 9
+        }
+      ],
+      "description": "Anyone → contract: refunds a round that has no result after the refund delay."
+    },
+    {
+      "kind": "struct",
+      "name": "WithdrawFees",
+      "ty_idx": 15,
+      "prefix": {
+        "prefix_num": 1414352900,
+        "prefix_len": 32
+      },
+      "fields": [],
+      "description": "Treasury → contract: withdraws all protocol fees."
+    },
+    {
+      "kind": "struct",
+      "name": "UpdateOracleAndConfig",
+      "ty_idx": 16,
+      "prefix": {
+        "prefix_num": 1414352901,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "oraclePublicKey",
+          "ty_idx": 17
+        },
+        {
+          "name": "config",
+          "ty_idx": 21
+        }
+      ],
+      "description": "Admin → contract: sets a new oracle key and a new configuration.\nThe contract must have no active rounds, no locked funds and no bettors."
+    },
+    {
+      "kind": "struct",
+      "name": "TextComment",
+      "ty_idx": 31,
+      "prefix": {
+        "prefix_num": 0,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "text",
+          "ty_idx": 32
+        }
+      ],
+      "description": "The body of an outgoing payment: op 0 and a ref to the comment text."
+    },
+    {
+      "kind": "struct",
+      "name": "Bet",
+      "ty_idx": 25,
+      "fields": [
+        {
+          "name": "long",
+          "ty_idx": 6,
+          "description": "The amount on \"the price goes up\"."
+        },
+        {
+          "name": "short",
+          "ty_idx": 6,
+          "description": "The amount on \"the price goes down\"."
+        }
+      ],
+      "description": "The bet of one bettor in one round. A bettor bets on one side only."
+    },
+    {
+      "kind": "struct",
+      "name": "Round",
+      "ty_idx": 23,
+      "fields": [
+        {
+          "name": "openPrice",
+          "ty_idx": 11,
+          "description": "The oracle price at the round start. 0: no price."
+        },
+        {
+          "name": "closePrice",
+          "ty_idx": 11,
+          "description": "The oracle price at the round end. 0: no price."
+        },
+        {
+          "name": "longPool",
+          "ty_idx": 6,
+          "description": "The sum of all \"Long\" bets."
+        },
+        {
+          "name": "shortPool",
+          "ty_idx": 6,
+          "description": "The sum of all \"Short\" bets."
+        },
+        {
+          "name": "unpaidPool",
+          "ty_idx": 6,
+          "description": "The amount that is not paid out yet. After the last payout, it goes to the protocol fees."
+        },
+        {
+          "name": "unpaidBettorCount",
+          "ty_idx": 20,
+          "description": "The number of bettors that are not paid out yet."
+        },
+        {
+          "name": "result",
+          "ty_idx": 24,
+          "description": "One of the `RESULT_*` values."
+        },
+        {
+          "name": "bets",
+          "ty_idx": 27,
+          "description": "The bets that are not paid out yet, by bettor address."
+        }
+      ],
+      "description": "One prediction round. The key in the rounds map is the round start time."
+    },
+    {
+      "kind": "struct",
+      "name": "Config",
+      "ty_idx": 18,
+      "fields": [
+        {
+          "name": "roundDuration",
+          "ty_idx": 9,
+          "description": "The round length, in seconds."
+        },
+        {
+          "name": "feeBps",
+          "ty_idx": 19,
+          "description": "The protocol fee, in basis points of the losing pool."
+        },
+        {
+          "name": "betFee",
+          "ty_idx": 11,
+          "description": "The amount that the contract keeps from each bet message."
+        },
+        {
+          "name": "minOpValue",
+          "ty_idx": 11,
+          "description": "The minimum value of an operation message. The contract also attaches this value\nto each `ProcessPayouts` message that it sends to itself."
+        },
+        {
+          "name": "reserveExtra",
+          "ty_idx": 11,
+          "description": "The balance that the contract keeps in addition to the locked funds and the protocol fees."
+        },
+        {
+          "name": "priceWindow",
+          "ty_idx": 9,
+          "description": "The time after the round start in which the oracle can send the price, in seconds."
+        },
+        {
+          "name": "refundDelay",
+          "ty_idx": 9,
+          "description": "The time after the round end after which any sender can refund the round, in seconds."
+        },
+        {
+          "name": "maxBettorsPerRound",
+          "ty_idx": 20,
+          "description": "The maximum number of bettors in one round."
+        },
+        {
+          "name": "maxActiveRounds",
+          "ty_idx": 20,
+          "description": "The maximum number of rounds that are not fully paid out."
+        },
+        {
+          "name": "payoutBatchSize",
+          "ty_idx": 20,
+          "description": "The maximum number of payouts in one transaction."
+        },
+        {
+          "name": "betSize1",
+          "ty_idx": 11,
+          "description": "The permitted bet sizes, from the smallest to the largest."
+        },
+        {
+          "name": "betSize2",
+          "ty_idx": 11
+        },
+        {
+          "name": "betSize3",
+          "ty_idx": 11
+        },
+        {
+          "name": "betSize4",
+          "ty_idx": 11
+        },
+        {
+          "name": "treasury",
+          "ty_idx": 7,
+          "description": "The address that gets the protocol fees."
+        }
+      ],
+      "description": "The contract settings. The admin changes them with `UpdateOracleAndConfig`."
+    },
+    {
+      "kind": "struct",
+      "name": "Storage",
+      "ty_idx": 22,
+      "fields": [
+        {
+          "name": "networkId",
+          "ty_idx": 8,
+          "description": "The global ID of the network (-239: mainnet, -3: testnet). It is part of the signed price."
+        },
+        {
+          "name": "oraclePublicKey",
+          "ty_idx": 17,
+          "description": "The public key of the price oracle."
+        },
+        {
+          "name": "lastRoundTs",
+          "ty_idx": 9,
+          "description": "The start time of the last round that got a price."
+        },
+        {
+          "name": "lastPrice",
+          "ty_idx": 11,
+          "description": "The last price from the oracle."
+        },
+        {
+          "name": "lockedFunds",
+          "ty_idx": 6,
+          "description": "The sum of the bets that are not paid out yet."
+        },
+        {
+          "name": "protocolFees",
+          "ty_idx": 6,
+          "description": "The protocol fees that are not withdrawn yet."
+        },
+        {
+          "name": "activeRoundCount",
+          "ty_idx": 20,
+          "description": "The number of rounds that are not fully paid out."
+        },
+        {
+          "name": "rounds",
+          "ty_idx": 29,
+          "description": "The rounds, by round start time."
+        },
+        {
+          "name": "openBetCounts",
+          "ty_idx": 30,
+          "description": "The number of open bets of each bettor, by bettor address. A bettor can have one bet\nin each round."
+        },
+        {
+          "name": "config",
+          "ty_idx": 21,
+          "description": "The contract settings."
+        }
+      ],
+      "description": "The contract data. The field order and the field sizes are the same as in the deployed contract."
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 22
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 13
+    },
+    {
+      "body_ty_idx": 14
+    },
+    {
+      "body_ty_idx": 15
+    },
+    {
+      "body_ty_idx": 16
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 31
+    },
+    {
+      "body_ty_idx": 13
+    }
+  ],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 86957,
+      "name": "get_state",
+      "parameters": [],
+      "return_ty_idx": 3,
+      "description": "Returns the full contract data cell."
+    },
+    {
+      "tvm_method_id": 103798,
+      "name": "get_config",
+      "parameters": [],
+      "return_ty_idx": 33,
+      "description": "Returns the admin address, the oracle public key and the configuration cell."
+    },
+    {
+      "tvm_method_id": 106366,
+      "name": "get_round",
+      "parameters": [
+        {
+          "name": "roundTs",
+          "ty_idx": 9
+        }
+      ],
+      "return_ty_idx": 34,
+      "description": "Returns the round cell for a round start time. Returns null if the round is not found."
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidBetText",
+      "description": "The text bet is not \"Long\" or \"Short\", or the body has refs.",
+      "err_code": 400
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotEnoughValue",
+      "description": "The message value is less than `minOpValue`.",
+      "err_code": 401
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.SenderNotAllowed",
+      "description": "The sender cannot do this operation. For a bet: the sender is not in the basechain,\nor it is the contract itself.",
+      "err_code": 402
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidBetAmount",
+      "description": "The message value minus `betFee` is not one of the permitted bet sizes.",
+      "err_code": 403
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.RoundNotFound",
+      "description": "The round is not in the rounds map.",
+      "err_code": 404
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidRoundState",
+      "description": "The round state does not permit this operation.",
+      "err_code": 405
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidRoundTime",
+      "description": "The round time is not correct for a price update.",
+      "err_code": 406
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidPriceProof",
+      "description": "The price is 0, or the oracle signature is not correct.",
+      "err_code": 407
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.LimitReached",
+      "description": "The limit of active rounds, or the limit of bettors in the round, is reached.",
+      "err_code": 408
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NoFees",
+      "description": "There are no protocol fees to withdraw.",
+      "err_code": 409
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.RefundTooEarly",
+      "description": "The refund delay of the round is not complete.",
+      "err_code": 410
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.ContractNotIdle",
+      "description": "The contract has active rounds, locked funds or bettors.",
+      "err_code": 412
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidConfig",
+      "description": "A value in the new configuration, or the new oracle key, is not correct.",
+      "err_code": 413
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.TreasuryChangeWithFees",
+      "description": "The treasury cannot change while there are protocol fees to withdraw.",
+      "err_code": 414
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.BettorNotFound",
+      "description": "A paid bettor is not in the open bet counts map.",
+      "err_code": 415
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.5.0"
+}
