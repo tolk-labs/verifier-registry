@@ -1,0 +1,1306 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "JettonTransfer"
+    },
+    {
+      "kind": "addressOpt"
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 3
+    },
+    {
+      "kind": "remaining"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "AttestTerms"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "FeeNotice"
+    },
+    {
+      "kind": "uintN",
+      "n": 256
+    },
+    {
+      "kind": "uintN",
+      "n": 8
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Excesses"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PlainGram"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "NftTransfer"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OwnershipAssigned"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ReportStaticData"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OwnershipProof"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OwnerInfo"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LockState"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Schedule"
+    },
+    {
+      "kind": "uintN",
+      "n": 48
+    },
+    {
+      "kind": "uintN",
+      "n": 16
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LockStateParties"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 31
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OwnershipProofBounced"
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        5,
+        1,
+        7,
+        13,
+        3
+      ]
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LockInfo"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SetupInfo"
+    },
+    {
+      "kind": "addressAny"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LockCreatedEvent"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LockTerms"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LockParties"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 40
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 39
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LockCancelledEvent"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LockFundedEvent"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LockToppedUpEvent"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LockClaimedEvent"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LockExtendedEvent"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LockSweptEvent"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LockClaimRestoredEvent"
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "PlainGram",
+      "ty_idx": 21,
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "LockCreatedEvent",
+      "ty_idx": 38,
+      "prefix": {
+        "prefix_num": 1282098002,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "index",
+          "ty_idx": 18
+        },
+        {
+          "name": "jettonWallet",
+          "ty_idx": 7
+        },
+        {
+          "name": "terms",
+          "ty_idx": 42
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "LockFundedEvent",
+      "ty_idx": 44,
+      "prefix": {
+        "prefix_num": 1282098773,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "index",
+          "ty_idx": 18
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "fee",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "LockToppedUpEvent",
+      "ty_idx": 45,
+      "prefix": {
+        "prefix_num": 1282102323,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "index",
+          "ty_idx": 18
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "fee",
+          "ty_idx": 6
+        },
+        {
+          "name": "from",
+          "ty_idx": 7
+        },
+        {
+          "name": "prevDepositLt",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "LockClaimedEvent",
+      "ty_idx": 46,
+      "prefix": {
+        "prefix_num": 1282097996,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "index",
+          "ty_idx": 18
+        },
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "destination",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "LockSweptEvent",
+      "ty_idx": 48,
+      "prefix": {
+        "prefix_num": 1282102103,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "index",
+          "ty_idx": 18
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "destination",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "LockExtendedEvent",
+      "ty_idx": 47,
+      "prefix": {
+        "prefix_num": 1282098520,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "index",
+          "ty_idx": 18
+        },
+        {
+          "name": "permanent",
+          "ty_idx": 5
+        },
+        {
+          "name": "schedule",
+          "ty_idx": 28
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "LockCancelledEvent",
+      "ty_idx": 43,
+      "prefix": {
+        "prefix_num": 1282097988,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "index",
+          "ty_idx": 18
+        },
+        {
+          "name": "reason",
+          "ty_idx": 19
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "LockClaimRestoredEvent",
+      "ty_idx": 49,
+      "prefix": {
+        "prefix_num": 1282101843,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "index",
+          "ty_idx": 18
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "LockInfo",
+      "ty_idx": 35,
+      "fields": [
+        {
+          "name": "status",
+          "ty_idx": 1
+        },
+        {
+          "name": "index",
+          "ty_idx": 1
+        },
+        {
+          "name": "collection",
+          "ty_idx": 7
+        },
+        {
+          "name": "owner",
+          "ty_idx": 13
+        },
+        {
+          "name": "jettonMaster",
+          "ty_idx": 13
+        },
+        {
+          "name": "jettonWallet",
+          "ty_idx": 13
+        },
+        {
+          "name": "creator",
+          "ty_idx": 13
+        },
+        {
+          "name": "createdAt",
+          "ty_idx": 1
+        },
+        {
+          "name": "cliff",
+          "ty_idx": 1
+        },
+        {
+          "name": "end",
+          "ty_idx": 1
+        },
+        {
+          "name": "step",
+          "ty_idx": 1
+        },
+        {
+          "name": "initialBps",
+          "ty_idx": 1
+        },
+        {
+          "name": "permanent",
+          "ty_idx": 5
+        },
+        {
+          "name": "totalAmount",
+          "ty_idx": 1
+        },
+        {
+          "name": "expectedAmount",
+          "ty_idx": 1
+        },
+        {
+          "name": "claimed",
+          "ty_idx": 1
+        },
+        {
+          "name": "freeBalance",
+          "ty_idx": 1
+        },
+        {
+          "name": "claimableNow",
+          "ty_idx": 1
+        },
+        {
+          "name": "feeBps",
+          "ty_idx": 1
+        },
+        {
+          "name": "topUpFlatFee",
+          "ty_idx": 1
+        },
+        {
+          "name": "version",
+          "ty_idx": 1
+        },
+        {
+          "name": "lastDepositLt",
+          "ty_idx": 1
+        },
+        {
+          "name": "createBefore",
+          "ty_idx": 1
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "SetupInfo",
+      "ty_idx": 36,
+      "fields": [
+        {
+          "name": "till",
+          "ty_idx": 13
+        },
+        {
+          "name": "termsAttested",
+          "ty_idx": 5
+        },
+        {
+          "name": "pendingAmount",
+          "ty_idx": 1
+        },
+        {
+          "name": "feeOwed",
+          "ty_idx": 1
+        },
+        {
+          "name": "flatFee",
+          "ty_idx": 1
+        },
+        {
+          "name": "setupExtra",
+          "ty_idx": 1
+        },
+        {
+          "name": "setupDeadline",
+          "ty_idx": 1
+        },
+        {
+          "name": "cancelReason",
+          "ty_idx": 1
+        },
+        {
+          "name": "sweepFrom",
+          "ty_idx": 1
+        },
+        {
+          "name": "walletPaidUntil",
+          "ty_idx": 1
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "JettonTransfer",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 260734629,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "destination",
+          "ty_idx": 7
+        },
+        {
+          "name": "responseDestination",
+          "ty_idx": 13
+        },
+        {
+          "name": "customPayload",
+          "ty_idx": 14
+        },
+        {
+          "name": "forwardTonAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 15
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Excesses",
+      "ty_idx": 20,
+      "prefix": {
+        "prefix_num": 3576854235,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "NftTransfer",
+      "ty_idx": 22,
+      "prefix": {
+        "prefix_num": 1607220500,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "newOwner",
+          "ty_idx": 7
+        },
+        {
+          "name": "responseDestination",
+          "ty_idx": 13
+        },
+        {
+          "name": "customPayload",
+          "ty_idx": 14
+        },
+        {
+          "name": "forwardAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 15
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "OwnershipAssigned",
+      "ty_idx": 23,
+      "prefix": {
+        "prefix_num": 85167505,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "prevOwner",
+          "ty_idx": 7
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 15
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ReportStaticData",
+      "ty_idx": 24,
+      "prefix": {
+        "prefix_num": 2339837749,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "index",
+          "ty_idx": 18
+        },
+        {
+          "name": "collection",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "OwnershipProof",
+      "ty_idx": 25,
+      "prefix": {
+        "prefix_num": 86296494,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "itemId",
+          "ty_idx": 18
+        },
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "data",
+          "ty_idx": 3
+        },
+        {
+          "name": "revokedAt",
+          "ty_idx": 11
+        },
+        {
+          "name": "content",
+          "ty_idx": 14
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "OwnerInfo",
+      "ty_idx": 26,
+      "prefix": {
+        "prefix_num": 232130531,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "itemId",
+          "ty_idx": 18
+        },
+        {
+          "name": "initiator",
+          "ty_idx": 7
+        },
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "data",
+          "ty_idx": 3
+        },
+        {
+          "name": "revokedAt",
+          "ty_idx": 11
+        },
+        {
+          "name": "content",
+          "ty_idx": 14
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "OwnershipProofBounced",
+      "ty_idx": 33,
+      "prefix": {
+        "prefix_num": 3247343314,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Schedule",
+      "ty_idx": 28,
+      "fields": [
+        {
+          "name": "cliff",
+          "ty_idx": 29
+        },
+        {
+          "name": "end",
+          "ty_idx": 29
+        },
+        {
+          "name": "step",
+          "ty_idx": 9
+        },
+        {
+          "name": "initialBps",
+          "ty_idx": 30
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "LockParties",
+      "ty_idx": 40,
+      "fields": [
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "creator",
+          "ty_idx": 7
+        },
+        {
+          "name": "salt",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "LockTerms",
+      "ty_idx": 39,
+      "fields": [
+        {
+          "name": "version",
+          "ty_idx": 19
+        },
+        {
+          "name": "soulbound",
+          "ty_idx": 5
+        },
+        {
+          "name": "permanent",
+          "ty_idx": 5
+        },
+        {
+          "name": "jettonMaster",
+          "ty_idx": 7
+        },
+        {
+          "name": "schedule",
+          "ty_idx": 28
+        },
+        {
+          "name": "expectedAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "maxFlatFee",
+          "ty_idx": 6
+        },
+        {
+          "name": "maxFeeBps",
+          "ty_idx": 30
+        },
+        {
+          "name": "maxTopUpFlatFee",
+          "ty_idx": 6
+        },
+        {
+          "name": "createBefore",
+          "ty_idx": 29
+        },
+        {
+          "name": "parties",
+          "ty_idx": 41
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "LockStateParties",
+      "ty_idx": 31,
+      "fields": [
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "jettonMaster",
+          "ty_idx": 7
+        },
+        {
+          "name": "jettonWallet",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "LockState",
+      "ty_idx": 27,
+      "prefix": {
+        "prefix_num": 110776235,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "index",
+          "ty_idx": 18
+        },
+        {
+          "name": "status",
+          "ty_idx": 19
+        },
+        {
+          "name": "permanent",
+          "ty_idx": 5
+        },
+        {
+          "name": "schedule",
+          "ty_idx": 28
+        },
+        {
+          "name": "totalAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "claimed",
+          "ty_idx": 6
+        },
+        {
+          "name": "freeBalance",
+          "ty_idx": 6
+        },
+        {
+          "name": "parties",
+          "ty_idx": 32
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "AttestTerms",
+      "ty_idx": 16,
+      "prefix": {
+        "prefix_num": 2190378968,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "FeeNotice",
+      "ty_idx": 17,
+      "prefix": {
+        "prefix_num": 3786441504,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "index",
+          "ty_idx": 18
+        },
+        {
+          "name": "master",
+          "ty_idx": 7
+        },
+        {
+          "name": "kind",
+          "ty_idx": 19
+        }
+      ]
+    }
+  ],
+  "storage": {},
+  "incoming_messages": [],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 16
+    },
+    {
+      "body_ty_idx": 17
+    },
+    {
+      "body_ty_idx": 20
+    },
+    {
+      "body_ty_idx": 21
+    },
+    {
+      "body_ty_idx": 22
+    },
+    {
+      "body_ty_idx": 23
+    },
+    {
+      "body_ty_idx": 24
+    },
+    {
+      "body_ty_idx": 25
+    },
+    {
+      "body_ty_idx": 26
+    },
+    {
+      "body_ty_idx": 27
+    },
+    {
+      "body_ty_idx": 33
+    }
+  ],
+  "emitted_events": [
+    {
+      "body_ty_idx": 38
+    },
+    {
+      "body_ty_idx": 43
+    },
+    {
+      "body_ty_idx": 44
+    },
+    {
+      "body_ty_idx": 45
+    },
+    {
+      "body_ty_idx": 46
+    },
+    {
+      "body_ty_idx": 47
+    },
+    {
+      "body_ty_idx": 48
+    },
+    {
+      "body_ty_idx": 49
+    }
+  ],
+  "get_methods": [
+    {
+      "tvm_method_id": 102351,
+      "name": "get_nft_data",
+      "parameters": [],
+      "return_ty_idx": 34
+    },
+    {
+      "tvm_method_id": 82909,
+      "name": "get_lock_data",
+      "parameters": [],
+      "return_ty_idx": 35
+    },
+    {
+      "tvm_method_id": 127882,
+      "name": "get_setup_data",
+      "parameters": [],
+      "return_ty_idx": 36
+    },
+    {
+      "tvm_method_id": 119349,
+      "name": "get_lock_terms",
+      "parameters": [],
+      "return_ty_idx": 3
+    },
+    {
+      "tvm_method_id": 69921,
+      "name": "get_unlocked_at",
+      "parameters": [
+        {
+          "name": "t",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 106361,
+      "name": "get_claimable",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 122528,
+      "name": "get_claim_min_value",
+      "parameters": [
+        {
+          "name": "forwardTonAmount",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 66361,
+      "name": "get_claim_min_value_with_payload",
+      "parameters": [
+        {
+          "name": "forwardTonAmount",
+          "ty_idx": 1
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 3
+        }
+      ],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 127678,
+      "name": "get_top_up_cost",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 89465,
+      "name": "get_sweep_min_value",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 104329,
+      "name": "get_claim_foreign_cost",
+      "parameters": [
+        {
+          "name": "walletWorkchain",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 106381,
+      "name": "get_jetton_transfer_value",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 122008,
+      "name": "get_extend_cost",
+      "parameters": [
+        {
+          "name": "permanent",
+          "ty_idx": 5
+        },
+        {
+          "name": "end",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 124468,
+      "name": "get_cancel_cost",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 89158,
+      "name": "get_retry_cost",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 69014,
+      "name": "get_recover_cost",
+      "parameters": [
+        {
+          "name": "walletWorkchain",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 70676,
+      "name": "get_retry_funding_cost",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 79140,
+      "name": "get_sworn_version",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 84760,
+      "name": "get_authority_address",
+      "parameters": [],
+      "return_ty_idx": 37
+    },
+    {
+      "tvm_method_id": 97667,
+      "name": "get_revoked_time",
+      "parameters": [],
+      "return_ty_idx": 1
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "constant",
+      "name": "ERROR_NOT_OWNER",
+      "err_code": 402
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_NOT_FUNDED",
+      "err_code": 403
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_NOTHING_TO_CLAIM",
+      "err_code": 405
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_AMOUNT_TOO_HIGH",
+      "err_code": 406
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_INSUFFICIENT_VALUE",
+      "err_code": 407
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_INVALID_EXTENSION",
+      "err_code": 408
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_SOULBOUND",
+      "err_code": 409
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_WRONG_WORKCHAIN",
+      "err_code": 410
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_FORBIDDEN_WALLET",
+      "err_code": 411
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_NOT_SUPPORTED",
+      "err_code": 412
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_BAD_STATUS",
+      "err_code": 414
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_NOT_FINISHED",
+      "err_code": 415
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_BAD_TERMS",
+      "err_code": 416
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_BAD_TILL_CODE",
+      "err_code": 417
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_TOO_EARLY",
+      "err_code": 419
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_NOT_CREATOR",
+      "err_code": 420
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_NOTHING_OWED",
+      "err_code": 422
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_CREATE_EXPIRED",
+      "err_code": 423
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_FEE_UNSETTLED",
+      "err_code": 426
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_MISSING_FORWARD_PAYLOAD",
+      "err_code": 708
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_UNKNOWN_OP",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.5.0"
+}
