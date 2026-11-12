@@ -1,0 +1,711 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SetTillConfig"
+    },
+    {
+      "kind": "uintN",
+      "n": 16
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "JettonTransfer"
+    },
+    {
+      "kind": "addressOpt"
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 3
+    },
+    {
+      "kind": "remaining"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ReportRoyaltyParams"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TillWithdrawJetton"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TillWithdrawGrams"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Excesses"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "NftTransfer"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TillWithdrawNft"
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        1,
+        3,
+        7
+      ]
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        1,
+        1,
+        7
+      ]
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RootInfo"
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        16,
+        16,
+        1
+      ]
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ContentScheduledEvent"
+    },
+    {
+      "kind": "uintN",
+      "n": 48
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ContentPair"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 30
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "AdminChangedEvent"
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "ContentPair",
+      "ty_idx": 30,
+      "fields": [
+        {
+          "name": "collection",
+          "ty_idx": 3
+        },
+        {
+          "name": "itemBaseUri",
+          "ty_idx": 3
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "AdminChangedEvent",
+      "ty_idx": 32,
+      "prefix": {
+        "prefix_num": 1400324420,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "admin",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ContentScheduledEvent",
+      "ty_idx": 28,
+      "prefix": {
+        "prefix_num": 1400324947,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "effectiveAt",
+          "ty_idx": 29
+        },
+        {
+          "name": "content",
+          "ty_idx": 31
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "RootInfo",
+      "ty_idx": 26,
+      "fields": [
+        {
+          "name": "version",
+          "ty_idx": 1
+        },
+        {
+          "name": "admin",
+          "ty_idx": 7
+        },
+        {
+          "name": "pendingAdmin",
+          "ty_idx": 15
+        },
+        {
+          "name": "creationEnabled",
+          "ty_idx": 5
+        },
+        {
+          "name": "flatFee",
+          "ty_idx": 1
+        },
+        {
+          "name": "topUpFlatFee",
+          "ty_idx": 1
+        },
+        {
+          "name": "feeBps",
+          "ty_idx": 1
+        },
+        {
+          "name": "maxFlatFee",
+          "ty_idx": 1
+        },
+        {
+          "name": "maxFeeBps",
+          "ty_idx": 1
+        },
+        {
+          "name": "tillCount",
+          "ty_idx": 1
+        },
+        {
+          "name": "transferableCodeHash",
+          "ty_idx": 1
+        },
+        {
+          "name": "soulboundCodeHash",
+          "ty_idx": 1
+        },
+        {
+          "name": "tillCodeHash",
+          "ty_idx": 1
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "JettonTransfer",
+      "ty_idx": 14,
+      "prefix": {
+        "prefix_num": 260734629,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "destination",
+          "ty_idx": 7
+        },
+        {
+          "name": "responseDestination",
+          "ty_idx": 15
+        },
+        {
+          "name": "customPayload",
+          "ty_idx": 16
+        },
+        {
+          "name": "forwardTonAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 17
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Excesses",
+      "ty_idx": 21,
+      "prefix": {
+        "prefix_num": 3576854235,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "NftTransfer",
+      "ty_idx": 22,
+      "prefix": {
+        "prefix_num": 1607220500,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "newOwner",
+          "ty_idx": 7
+        },
+        {
+          "name": "responseDestination",
+          "ty_idx": 15
+        },
+        {
+          "name": "customPayload",
+          "ty_idx": 16
+        },
+        {
+          "name": "forwardAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 17
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ReportRoyaltyParams",
+      "ty_idx": 18,
+      "prefix": {
+        "prefix_num": 2831876269,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "numerator",
+          "ty_idx": 13
+        },
+        {
+          "name": "denominator",
+          "ty_idx": 13
+        },
+        {
+          "name": "destination",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "SetTillConfig",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 2486944989,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "enabled",
+          "ty_idx": 5
+        },
+        {
+          "name": "flatFee",
+          "ty_idx": 6
+        },
+        {
+          "name": "topUpFlatFee",
+          "ty_idx": 6
+        },
+        {
+          "name": "feeBps",
+          "ty_idx": 13
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TillWithdrawJetton",
+      "ty_idx": 19,
+      "prefix": {
+        "prefix_num": 3649464690,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "wallet",
+          "ty_idx": 7
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "destination",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TillWithdrawGrams",
+      "ty_idx": 20,
+      "prefix": {
+        "prefix_num": 4293648890,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "destination",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TillWithdrawNft",
+      "ty_idx": 23,
+      "prefix": {
+        "prefix_num": 2885995455,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "nft",
+          "ty_idx": 7
+        },
+        {
+          "name": "newOwner",
+          "ty_idx": 7
+        }
+      ]
+    }
+  ],
+  "storage": {},
+  "incoming_messages": [],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 14
+    },
+    {
+      "body_ty_idx": 18
+    },
+    {
+      "body_ty_idx": 19
+    },
+    {
+      "body_ty_idx": 20
+    },
+    {
+      "body_ty_idx": 21
+    },
+    {
+      "body_ty_idx": 22
+    },
+    {
+      "body_ty_idx": 23
+    }
+  ],
+  "emitted_events": [
+    {
+      "body_ty_idx": 28
+    },
+    {
+      "body_ty_idx": 32
+    }
+  ],
+  "get_methods": [
+    {
+      "tvm_method_id": 102491,
+      "name": "get_collection_data",
+      "parameters": [],
+      "return_ty_idx": 24
+    },
+    {
+      "tvm_method_id": 92067,
+      "name": "get_nft_address_by_index",
+      "parameters": [
+        {
+          "name": "index",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 68445,
+      "name": "get_nft_content",
+      "parameters": [
+        {
+          "name": "index",
+          "ty_idx": 1
+        },
+        {
+          "name": "individualContent",
+          "ty_idx": 3
+        }
+      ],
+      "return_ty_idx": 3
+    },
+    {
+      "tvm_method_id": 85719,
+      "name": "royalty_params",
+      "parameters": [],
+      "return_ty_idx": 25
+    },
+    {
+      "tvm_method_id": 126648,
+      "name": "get_root_data",
+      "parameters": [],
+      "return_ty_idx": 26
+    },
+    {
+      "tvm_method_id": 109139,
+      "name": "get_pending_content",
+      "parameters": [],
+      "return_ty_idx": 27
+    },
+    {
+      "tvm_method_id": 114802,
+      "name": "get_till_address",
+      "parameters": [
+        {
+          "name": "n",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 127588,
+      "name": "get_till_code",
+      "parameters": [],
+      "return_ty_idx": 3
+    },
+    {
+      "tvm_method_id": 102280,
+      "name": "get_create_cost",
+      "parameters": [
+        {
+          "name": "maxFlatFee",
+          "ty_idx": 1
+        },
+        {
+          "name": "permanent",
+          "ty_idx": 5
+        },
+        {
+          "name": "end",
+          "ty_idx": 1
+        },
+        {
+          "name": "walletWorkchain",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 98834,
+      "name": "get_fund_forward",
+      "parameters": [
+        {
+          "name": "walletWorkchain",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 106381,
+      "name": "get_jetton_transfer_value",
+      "parameters": [
+        {
+          "name": "walletWorkchain",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 124468,
+      "name": "get_cancel_cost",
+      "parameters": [
+        {
+          "name": "walletWorkchain",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 92968,
+      "name": "get_deploy_till_cost",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 67233,
+      "name": "get_broadcast_cost",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 77498,
+      "name": "get_till_withdraw_cost",
+      "parameters": [
+        {
+          "name": "walletWorkchain",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 1
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "constant",
+      "name": "ERROR_NOT_ADMIN",
+      "err_code": 501
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_FEE_ABOVE_CAP",
+      "err_code": 502
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_INSUFFICIENT_VALUE",
+      "err_code": 503
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_BAD_TILL",
+      "err_code": 505
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_BAD_CONTENT",
+      "err_code": 510
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_WRONG_WORKCHAIN",
+      "err_code": 511
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_RESERVE",
+      "err_code": 512
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_LOCK_NFT",
+      "err_code": 513
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_BAD_NFT_STATE",
+      "err_code": 514
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_UNKNOWN_OP",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.5.0"
+}
