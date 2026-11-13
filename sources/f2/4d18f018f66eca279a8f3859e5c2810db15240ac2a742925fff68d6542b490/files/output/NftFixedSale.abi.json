@@ -1,0 +1,428 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "NftFixedSale",
+  "author": "Telegram and/or TON Core (maybe)",
+  "version": "1.0.0",
+  "description": "Source code reconstructed by @ai_terminal. Fixed-price sale of one NFT. The fee address gets a fee and the rest of the balance.",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OwnershipAssigned"
+    },
+    {
+      "kind": "remaining"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ChangePrice"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Buy"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Cancel"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Storage"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SaleConfig"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "FeeConfig"
+    },
+    {
+      "kind": "uintN",
+      "n": 16
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 19
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 18
+    },
+    {
+      "kind": "EnumRef",
+      "enum_name": "Phase"
+    },
+    {
+      "kind": "uintN",
+      "n": 8
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TransferNft"
+    },
+    {
+      "kind": "addressOpt"
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 3
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "OwnershipAssigned",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 85167505,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "prevOwner",
+          "ty_idx": 7,
+          "description": "Owner of the NFT before the transfer."
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 13,
+          "description": "Forward payload of the transfer. The sale ignores it."
+        }
+      ],
+      "description": "TEP-62 `ownership_assigned`: NFT → sale. The NFT tells the sale that it is the new owner."
+    },
+    {
+      "kind": "struct",
+      "name": "Buy",
+      "ty_idx": 15,
+      "prefix": {
+        "prefix_num": 1196228609,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "maxPrice",
+          "ty_idx": 6,
+          "description": "Maximum price that the buyer accepts."
+        },
+        {
+          "name": "newOwner",
+          "ty_idx": 7,
+          "description": "Gets the NFT."
+        }
+      ],
+      "description": "Anyone → sale: buys the NFT."
+    },
+    {
+      "kind": "struct",
+      "name": "ChangePrice",
+      "ty_idx": 14,
+      "prefix": {
+        "prefix_num": 1196228610,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "newPrice",
+          "ty_idx": 6,
+          "description": "New price. It must be more than 0."
+        }
+      ],
+      "description": "Seller → sale: sets a new price."
+    },
+    {
+      "kind": "struct",
+      "name": "Cancel",
+      "ty_idx": 16,
+      "prefix": {
+        "prefix_num": 1196228611,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "responseDestination",
+          "ty_idx": 7,
+          "description": "Gets the excess of the NFT transfer."
+        }
+      ],
+      "description": "Seller → sale: cancels the sale and sends the NFT back to the seller."
+    },
+    {
+      "kind": "struct",
+      "name": "TransferNft",
+      "ty_idx": 25,
+      "prefix": {
+        "prefix_num": 1607220500,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "newOwner",
+          "ty_idx": 7,
+          "description": "Gets the NFT."
+        },
+        {
+          "name": "responseDestination",
+          "ty_idx": 26,
+          "description": "Gets the excess of the transfer."
+        },
+        {
+          "name": "customPayload",
+          "ty_idx": 27,
+          "description": "Payload for the NFT item. The sale sends none."
+        },
+        {
+          "name": "forwardAmount",
+          "ty_idx": 6,
+          "description": "Value for the `ownership_assigned` notification. The sale sends 0."
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 13,
+          "description": "Payload for the `ownership_assigned` notification."
+        }
+      ],
+      "description": "TEP-62 `transfer`: sale → NFT."
+    },
+    {
+      "kind": "enum",
+      "name": "Phase",
+      "ty_idx": 23,
+      "encoded_as_ty_idx": 24,
+      "members": [
+        {
+          "name": "AwaitingNft",
+          "value": "0",
+          "description": "The sale is deployed and waits for the NFT."
+        },
+        {
+          "name": "Active",
+          "value": "1",
+          "description": "The sale holds the NFT. A buyer can buy it."
+        },
+        {
+          "name": "Sold",
+          "value": "3",
+          "description": "The NFT is sent to the buyer."
+        },
+        {
+          "name": "Cancelled",
+          "value": "5",
+          "description": "The NFT is sent back to the seller."
+        }
+      ],
+      "description": "Phase of the sale."
+    },
+    {
+      "kind": "struct",
+      "name": "FeeConfig",
+      "ty_idx": 19,
+      "fields": [
+        {
+          "name": "feeAddress",
+          "ty_idx": 7,
+          "description": "Gets the fee and the remaining balance after a sale."
+        },
+        {
+          "name": "feeBps",
+          "ty_idx": 20,
+          "description": "Fee in basis points of the price. The maximum is 10000."
+        }
+      ],
+      "description": "Fee terms of the sale."
+    },
+    {
+      "kind": "struct",
+      "name": "SaleConfig",
+      "ty_idx": 18,
+      "fields": [
+        {
+          "name": "seller",
+          "ty_idx": 7,
+          "description": "Owner of the NFT. Gets the price after a sale."
+        },
+        {
+          "name": "nft",
+          "ty_idx": 7,
+          "description": "NFT item for sale."
+        },
+        {
+          "name": "initialPrice",
+          "ty_idx": 6,
+          "description": "Price at deploy."
+        },
+        {
+          "name": "salt",
+          "ty_idx": 11,
+          "description": "Makes the sale address unique for equal terms."
+        },
+        {
+          "name": "fee",
+          "ty_idx": 21,
+          "description": "Fee terms."
+        }
+      ],
+      "description": "Terms of the sale. They do not change after deploy."
+    },
+    {
+      "kind": "struct",
+      "name": "Storage",
+      "ty_idx": 17,
+      "fields": [
+        {
+          "name": "config",
+          "ty_idx": 22,
+          "description": "Terms of the sale."
+        },
+        {
+          "name": "price",
+          "ty_idx": 6,
+          "description": "Current price. The seller can change it while the sale is active."
+        },
+        {
+          "name": "phase",
+          "ty_idx": 23,
+          "description": "Current phase."
+        }
+      ],
+      "description": "Persistent data of the sale."
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 17
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 14
+    },
+    {
+      "body_ty_idx": 15
+    },
+    {
+      "body_ty_idx": 16
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 25
+    }
+  ],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 109918,
+      "name": "saleData",
+      "parameters": [],
+      "return_ty_idx": 17,
+      "description": "Returns the persistent data: the terms, the current price and the phase."
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotPermitted",
+      "description": "The sender is not the seller, or the seller cancels a sale that is not active.",
+      "err_code": 401
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotActive",
+      "description": "The sale is not active.",
+      "err_code": 402
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.PriceTooLow",
+      "description": "The price is not set, or the maximum price of the buyer is lower than the price.",
+      "err_code": 403
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidOwnershipAssigned",
+      "description": "The sender is not the NFT of the sale, or the previous owner is not in the basechain.",
+      "err_code": 404
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotEnoughValue",
+      "description": "The attached value is not sufficient.",
+      "err_code": 405
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidParams",
+      "description": "A price, a fee or an address is not valid.",
+      "err_code": 410
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.UnknownOperation",
+      "description": "The message is not a known operation.",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.5.0"
+}
