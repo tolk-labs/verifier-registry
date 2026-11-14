@@ -1,0 +1,116 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        6,
+        1,
+        7,
+        3,
+        3
+      ]
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [],
+  "storage": {},
+  "incoming_messages": [],
+  "incoming_external": [],
+  "outgoing_messages": [],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 106029,
+      "name": "get_jetton_data",
+      "parameters": [],
+      "return_ty_idx": 12
+    },
+    {
+      "tvm_method_id": 103289,
+      "name": "get_wallet_address",
+      "parameters": [
+        {
+          "name": "owner",
+          "ty_idx": 7
+        }
+      ],
+      "return_ty_idx": 7
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "constant",
+      "name": "ERR_NOT_ADMIN",
+      "err_code": 73
+    },
+    {
+      "kind": "constant",
+      "name": "ERR_NOT_VALID_SENDER",
+      "err_code": 74
+    },
+    {
+      "kind": "constant",
+      "name": "ERR_NOT_ENOUGH_GAS",
+      "err_code": 76
+    },
+    {
+      "kind": "constant",
+      "name": "ERR_SUPPLY",
+      "err_code": 77
+    },
+    {
+      "kind": "constant",
+      "name": "ERR_WRONG_WORKCHAIN",
+      "err_code": 333
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.4.2"
+}
