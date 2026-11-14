@@ -1,0 +1,188 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        7,
+        7,
+        3
+      ]
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        7,
+        6,
+        6,
+        1,
+        1,
+        1,
+        1
+      ]
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [],
+  "storage": {},
+  "incoming_messages": [],
+  "incoming_external": [],
+  "outgoing_messages": [],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 84263,
+      "name": "get_master_data",
+      "parameters": [],
+      "return_ty_idx": 12
+    },
+    {
+      "tvm_method_id": 120414,
+      "name": "get_curve_address",
+      "parameters": [
+        {
+          "name": "creator",
+          "ty_idx": 7
+        },
+        {
+          "name": "quoteMaster",
+          "ty_idx": 7
+        },
+        {
+          "name": "salt",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 100410,
+      "name": "get_quote_config",
+      "parameters": [
+        {
+          "name": "quoteMaster",
+          "ty_idx": 7
+        }
+      ],
+      "return_ty_idx": 13
+    },
+    {
+      "tvm_method_id": 114877,
+      "name": "get_quote_enabled",
+      "parameters": [
+        {
+          "name": "quoteMaster",
+          "ty_idx": 7
+        }
+      ],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 91979,
+      "name": "get_quote_community_only",
+      "parameters": [
+        {
+          "name": "quoteMaster",
+          "ty_idx": 7
+        }
+      ],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 120325,
+      "name": "get_native_curve_code",
+      "parameters": [],
+      "return_ty_idx": 3
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "constant",
+      "name": "ERR_BAD_QUOTE",
+      "err_code": 101
+    },
+    {
+      "kind": "constant",
+      "name": "ERR_LOW_GAS",
+      "err_code": 102
+    },
+    {
+      "kind": "constant",
+      "name": "ERR_NOT_ADMIN",
+      "err_code": 103
+    },
+    {
+      "kind": "constant",
+      "name": "ERR_DUP_QUOTE",
+      "err_code": 104
+    },
+    {
+      "kind": "constant",
+      "name": "ERR_TOO_MANY_QUOTES",
+      "err_code": 105
+    },
+    {
+      "kind": "constant",
+      "name": "ERR_BAD_PARAMS",
+      "err_code": 106
+    },
+    {
+      "kind": "constant",
+      "name": "ERR_META_TOO_BIG",
+      "err_code": 107
+    },
+    {
+      "kind": "constant",
+      "name": "ERR_BAD_MODE",
+      "err_code": 108
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.4.2"
+}
