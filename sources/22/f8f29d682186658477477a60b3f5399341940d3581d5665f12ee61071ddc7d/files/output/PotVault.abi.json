@@ -1,0 +1,147 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        7,
+        7,
+        7,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        7
+      ]
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [],
+  "storage": {},
+  "incoming_messages": [],
+  "incoming_external": [],
+  "outgoing_messages": [],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 96925,
+      "name": "get_pot_state",
+      "parameters": [],
+      "return_ty_idx": 12,
+      "description": "(referee, creator, curve, minBuy, createdAt, started, startedAt, lastReset, paid, winner)\npaid: 0 = running/unfunded, 1 = paid to winner, 2 = returned to creator.\n`winner` is the curve address until paid."
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "constant",
+      "name": "ERR_NOT_REFEREE",
+      "err_code": 801
+    },
+    {
+      "kind": "constant",
+      "name": "ERR_NOT_CREATOR",
+      "err_code": 802
+    },
+    {
+      "kind": "constant",
+      "name": "ERR_DONE",
+      "err_code": 803
+    },
+    {
+      "kind": "constant",
+      "name": "ERR_NOT_FUNDED",
+      "err_code": 804
+    },
+    {
+      "kind": "constant",
+      "name": "ERR_STARTED",
+      "err_code": 805
+    },
+    {
+      "kind": "constant",
+      "name": "ERR_NOT_STARTED",
+      "err_code": 806
+    },
+    {
+      "kind": "constant",
+      "name": "ERR_TOO_EARLY",
+      "err_code": 807
+    },
+    {
+      "kind": "constant",
+      "name": "ERR_BAD_TIME",
+      "err_code": 808
+    },
+    {
+      "kind": "constant",
+      "name": "ERR_BAD_WINNER",
+      "err_code": 809
+    },
+    {
+      "kind": "constant",
+      "name": "ERR_BAD_MIN_BUY",
+      "err_code": 810
+    },
+    {
+      "kind": "constant",
+      "name": "ERR_POT_TOO_SMALL",
+      "err_code": 811
+    },
+    {
+      "kind": "constant",
+      "name": "ERR_POT_TOO_BIG",
+      "err_code": 812
+    },
+    {
+      "kind": "constant",
+      "name": "ERR_UNKNOWN_OP",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.4.2"
+}
