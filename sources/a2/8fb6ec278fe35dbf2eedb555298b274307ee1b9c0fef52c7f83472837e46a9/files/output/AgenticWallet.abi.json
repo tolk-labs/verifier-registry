@@ -1,0 +1,880 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "AgenticWallet",
+  "author": "mnemotiv",
+  "version": "2.0.0",
+  "description": "W5-based agentic wallet as an NFT item. TEP-62 and TEP-64 compliant.",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "InternalSignedRequest"
+    },
+    {
+      "kind": "AliasRef",
+      "alias_name": "OutActionsCell"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OutActionWithSendMessageOnly"
+    },
+    {
+      "kind": "AliasRef",
+      "alias_name": "OutActionWithSendMessageOnlyOrEmpty"
+    },
+    {
+      "kind": "union",
+      "variants": [
+        {
+          "variant_ty_idx": 14,
+          "prefix_num": 247711853,
+          "prefix_len": 32,
+          "stack_type_id": 133,
+          "stack_width": 3
+        },
+        {
+          "variant_ty_idx": 0,
+          "prefix_num": 0,
+          "prefix_len": 0,
+          "stack_type_id": 10,
+          "stack_width": 0
+        }
+      ],
+      "stack_width": 4
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 15
+    },
+    {
+      "kind": "uintN",
+      "n": 8
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 14
+    },
+    {
+      "kind": "bitsN",
+      "n": 512
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OwnerActionRequest"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ChangeWalletOwner"
+    },
+    {
+      "kind": "addressOpt"
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 3
+    },
+    {
+      "kind": "remaining"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PayloadInline"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PayloadInRef"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 25
+    },
+    {
+      "kind": "union",
+      "variants": [
+        {
+          "variant_ty_idx": 26,
+          "prefix_num": 0,
+          "prefix_len": 1,
+          "stack_type_id": 136,
+          "stack_width": 1
+        },
+        {
+          "variant_ty_idx": 27,
+          "prefix_num": 1,
+          "prefix_len": 1,
+          "stack_type_id": 137,
+          "stack_width": 1
+        }
+      ],
+      "stack_width": 2
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ChangeWalletDelegate"
+    },
+    {
+      "kind": "uintN",
+      "n": 256
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RequestStaticData"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "EditWalletContent"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "DeployWallet"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "AgenticWalletInitParams"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 35
+    },
+    {
+      "kind": "AliasRef",
+      "alias_name": "AllowedExternalMessageToAgenticWallet"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ExternalSignedRequest"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "AgenticWalletStorage"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "AgenticWalletStorageNotInitialized"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "NotificationForNewOwner"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ReturnExcessesBack"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ResponseStaticData"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "NftDataReply"
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "alias",
+      "name": "AllowedExternalMessageToAgenticWallet",
+      "ty_idx": 37,
+      "target_ty_idx": 38,
+      "description": "Signed request in an external message."
+    },
+    {
+      "kind": "struct",
+      "name": "PayloadInline",
+      "ty_idx": 26,
+      "prefix": {
+        "prefix_num": 0,
+        "prefix_len": 1
+      },
+      "fields": [
+        {
+          "name": "value",
+          "ty_idx": 25
+        }
+      ],
+      "description": "TEP-62 forward payload stored inline (prefix bit 0)."
+    },
+    {
+      "kind": "struct",
+      "name": "PayloadInRef",
+      "ty_idx": 27,
+      "prefix": {
+        "prefix_num": 1,
+        "prefix_len": 1
+      },
+      "fields": [
+        {
+          "name": "value",
+          "ty_idx": 28
+        }
+      ],
+      "description": "TEP-62 forward payload stored in a ref (prefix bit 1)."
+    },
+    {
+      "kind": "struct",
+      "name": "NotificationForNewOwner",
+      "ty_idx": 41,
+      "prefix": {
+        "prefix_num": 85167505,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "oldOwnerAddress",
+          "ty_idx": 7,
+          "description": "Previous owner; the collection on deploy."
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 25,
+          "client_ty_idx": 29,
+          "description": "Forward payload of the transfer or deploy, passed as is."
+        }
+      ],
+      "description": "TEP-62 `ownership_assigned`: wallet → new owner."
+    },
+    {
+      "kind": "struct",
+      "name": "ReturnExcessesBack",
+      "ty_idx": 42,
+      "prefix": {
+        "prefix_num": 3576854235,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ],
+      "description": "TEP-62 `excesses`: returns unused value to the response address."
+    },
+    {
+      "kind": "alias",
+      "name": "OutActionsCell",
+      "ty_idx": 13,
+      "target_ty_idx": 3,
+      "description": "Raw OutActionList (TL-B `OutList`), the format of c5."
+    },
+    {
+      "kind": "struct",
+      "name": "OutActionWithSendMessageOnly",
+      "ty_idx": 14,
+      "prefix": {
+        "prefix_num": 247711853,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "prev",
+          "ty_idx": 17,
+          "description": "The rest of the list."
+        },
+        {
+          "name": "sendMode",
+          "ty_idx": 18
+        },
+        {
+          "name": "outMsg",
+          "ty_idx": 3
+        }
+      ],
+      "description": "TL-B `action_send_msg#0ec3c86d mode:(## 8) out_msg:^(MessageRelaxed Any)`."
+    },
+    {
+      "kind": "alias",
+      "name": "OutActionWithSendMessageOnlyOrEmpty",
+      "ty_idx": 15,
+      "target_ty_idx": 16,
+      "description": "The previous action, or the end of the list."
+    },
+    {
+      "kind": "struct",
+      "name": "AgenticWalletInitParams",
+      "ty_idx": 35,
+      "fields": [
+        {
+          "name": "ownerAddress",
+          "ty_idx": 7,
+          "description": "First owner of the wallet."
+        },
+        {
+          "name": "content",
+          "ty_idx": 3,
+          "description": "Individual content, expanded by the collection's `get_nft_content`."
+        },
+        {
+          "name": "delegatePublicKey",
+          "ty_idx": 31,
+          "description": "Public key of the agent that can sign requests; 0 means none."
+        },
+        {
+          "name": "forwardAmount",
+          "ty_idx": 6,
+          "description": "Value sent to the owner with `ownership_assigned`; 0: no notification."
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 25,
+          "client_ty_idx": 29,
+          "description": "Payload of that notification."
+        }
+      ],
+      "description": "Wallet initialization data, relayed from the collection on deploy."
+    },
+    {
+      "kind": "struct",
+      "name": "ExternalSignedRequest",
+      "ty_idx": 38,
+      "prefix": {
+        "prefix_num": 2424806312,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "walletAddress",
+          "ty_idx": 7,
+          "description": "Address of the wallet this request is signed for."
+        },
+        {
+          "name": "validUntil",
+          "ty_idx": 9,
+          "description": "Unix time the request expires at."
+        },
+        {
+          "name": "seqno",
+          "ty_idx": 9,
+          "description": "Must equal the wallet seqno."
+        },
+        {
+          "name": "outActions",
+          "ty_idx": 13,
+          "client_ty_idx": 19,
+          "description": "OutActionList the wallet sends."
+        },
+        {
+          "name": "signature",
+          "ty_idx": 20,
+          "description": "Delegate signature of the request without this field."
+        }
+      ],
+      "description": "Signed request in an external message."
+    },
+    {
+      "kind": "struct",
+      "name": "InternalSignedRequest",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 3278479509,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "walletAddress",
+          "ty_idx": 7,
+          "description": "Address of the wallet this request is signed for."
+        },
+        {
+          "name": "validUntil",
+          "ty_idx": 9,
+          "description": "Unix time the request expires at."
+        },
+        {
+          "name": "seqno",
+          "ty_idx": 9,
+          "description": "Must equal the wallet seqno."
+        },
+        {
+          "name": "outActions",
+          "ty_idx": 13,
+          "client_ty_idx": 19,
+          "description": "OutActionList the wallet sends."
+        },
+        {
+          "name": "signature",
+          "ty_idx": 20,
+          "description": "Delegate signature of the request without this field."
+        }
+      ],
+      "description": "Signed request in an internal message."
+    },
+    {
+      "kind": "struct",
+      "name": "OwnerActionRequest",
+      "ty_idx": 21,
+      "prefix": {
+        "prefix_num": 2140615501,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "outActions",
+          "ty_idx": 13,
+          "client_ty_idx": 19,
+          "description": "OutActionList the wallet sends."
+        }
+      ],
+      "description": "Owner → wallet: sends the given OutActionList from the wallet."
+    },
+    {
+      "kind": "struct",
+      "name": "ChangeWalletOwner",
+      "ty_idx": 22,
+      "prefix": {
+        "prefix_num": 1607220500,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "newOwnerAddress",
+          "ty_idx": 7,
+          "description": "Replaces the owner."
+        },
+        {
+          "name": "sendExcessesTo",
+          "ty_idx": 23,
+          "description": "Gets the excess value with `excesses`; null: the wallet keeps it."
+        },
+        {
+          "name": "customPayload",
+          "ty_idx": 24,
+          "description": "Ignored."
+        },
+        {
+          "name": "forwardAmount",
+          "ty_idx": 6,
+          "description": "Value sent to the new owner with `ownership_assigned`; 0: no notification."
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 25,
+          "client_ty_idx": 29,
+          "description": "Payload of that notification."
+        }
+      ],
+      "description": "TEP-62 `transfer`: owner → wallet. Removes the delegate key and increments the seqno."
+    },
+    {
+      "kind": "struct",
+      "name": "ChangeWalletDelegate",
+      "ty_idx": 30,
+      "prefix": {
+        "prefix_num": 3348523911,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "newDelegatePublicKey",
+          "ty_idx": 31,
+          "description": "Replaces the delegate public key; 0 removes it."
+        }
+      ],
+      "description": "Owner → wallet: sets the delegate public key and increments the seqno."
+    },
+    {
+      "kind": "struct",
+      "name": "DeployWallet",
+      "ty_idx": 34,
+      "prefix": {
+        "prefix_num": 2668664535,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "initParams",
+          "ty_idx": 36,
+          "description": "Initialization data from `RelayDeployWallet` or the public deploy."
+        }
+      ],
+      "description": "Collection → wallet: initializes the wallet."
+    },
+    {
+      "kind": "struct",
+      "name": "EditWalletContent",
+      "ty_idx": 33,
+      "prefix": {
+        "prefix_num": 2384046994,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "newContent",
+          "ty_idx": 3,
+          "description": "Replaces the wallet's individual content."
+        }
+      ],
+      "description": "Collection → wallet: replaces the wallet content."
+    },
+    {
+      "kind": "struct",
+      "name": "RequestStaticData",
+      "ty_idx": 32,
+      "prefix": {
+        "prefix_num": 801842850,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ],
+      "description": "TEP-62 `get_static_data`: anyone → wallet."
+    },
+    {
+      "kind": "struct",
+      "name": "ResponseStaticData",
+      "ty_idx": 43,
+      "prefix": {
+        "prefix_num": 2339837749,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "walletIndex",
+          "ty_idx": 31,
+          "description": "TEP-62 `index` of this wallet."
+        },
+        {
+          "name": "collectionAddress",
+          "ty_idx": 7,
+          "description": "Collection that deployed this wallet."
+        }
+      ],
+      "description": "TEP-62 `report_static_data`: wallet → requester."
+    },
+    {
+      "kind": "struct",
+      "name": "AgenticWalletStorageNotInitialized",
+      "ty_idx": 40,
+      "fields": [
+        {
+          "name": "seqno",
+          "ty_idx": 9,
+          "description": "Replay counter of signed requests."
+        },
+        {
+          "name": "walletIndex",
+          "ty_idx": 11,
+          "description": "Index of this wallet in the collection."
+        },
+        {
+          "name": "collectionAddress",
+          "ty_idx": 7,
+          "description": "Collection that deploys this wallet."
+        }
+      ],
+      "description": "Wallet storage until the collection's deploy message initializes it."
+    },
+    {
+      "kind": "struct",
+      "name": "AgenticWalletStorage",
+      "ty_idx": 39,
+      "fields": [
+        {
+          "name": "seqno",
+          "ty_idx": 9,
+          "description": "Replay counter of signed requests. Owner and delegate key changes also increment it."
+        },
+        {
+          "name": "walletIndex",
+          "ty_idx": 11,
+          "description": "Index of this wallet in the collection."
+        },
+        {
+          "name": "collectionAddress",
+          "ty_idx": 7,
+          "description": "Collection that deployed this wallet. Only it can send the deploy and content edits."
+        },
+        {
+          "name": "ownerAddress",
+          "ty_idx": 7,
+          "description": "Owner: sends owner actions, transfers the wallet and sets the delegate key."
+        },
+        {
+          "name": "delegatePublicKey",
+          "ty_idx": 31,
+          "description": "Public key of the agent that can sign requests; 0 means none."
+        },
+        {
+          "name": "content",
+          "ty_idx": 3,
+          "description": "Individual content, expanded by the collection's `get_nft_content`."
+        }
+      ],
+      "description": "Storage of an initialized wallet. It starts with the fields of\n`AgenticWalletStorageNotInitialized`."
+    },
+    {
+      "kind": "struct",
+      "name": "NftDataReply",
+      "ty_idx": 44,
+      "fields": [
+        {
+          "name": "isInitialized",
+          "ty_idx": 5,
+          "description": "Whether the collection's deploy message has initialized the wallet."
+        },
+        {
+          "name": "walletIndex",
+          "ty_idx": 11
+        },
+        {
+          "name": "collectionAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "ownerAddress",
+          "ty_idx": 23,
+          "default_value": {
+            "kind": "null"
+          },
+          "description": "Null until the wallet is initialized."
+        },
+        {
+          "name": "content",
+          "ty_idx": 24,
+          "default_value": {
+            "kind": "null"
+          },
+          "description": "Individual content; null until the wallet is initialized."
+        }
+      ],
+      "description": "TEP-62 `get_nft_data` result."
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 39,
+    "storage_at_deployment_ty_idx": 40
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 21
+    },
+    {
+      "body_ty_idx": 22
+    },
+    {
+      "body_ty_idx": 30
+    },
+    {
+      "body_ty_idx": 32
+    },
+    {
+      "body_ty_idx": 33
+    },
+    {
+      "body_ty_idx": 34
+    }
+  ],
+  "incoming_external": [
+    {
+      "body_ty_idx": 37
+    }
+  ],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 41
+    },
+    {
+      "body_ty_idx": 42
+    },
+    {
+      "body_ty_idx": 43
+    }
+  ],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 85143,
+      "name": "seqno",
+      "parameters": [],
+      "return_ty_idx": 9,
+      "description": "Returns the seqno that the next signed request must have."
+    },
+    {
+      "tvm_method_id": 78748,
+      "name": "get_public_key",
+      "parameters": [],
+      "return_ty_idx": 31,
+      "description": "Returns the delegate public key. Returns 0 if no key is set or the wallet is not initialized."
+    },
+    {
+      "tvm_method_id": 102351,
+      "name": "get_nft_data",
+      "parameters": [],
+      "return_ty_idx": 44,
+      "description": "TEP-62: the wallet data. The owner and the content are null until the wallet is initialized."
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidSeqno",
+      "description": "The request seqno is not equal to the wallet seqno.",
+      "err_code": 133
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidWalletAddress",
+      "description": "The request is signed for another wallet address.",
+      "err_code": 134
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidSignature",
+      "description": "The signature is invalid, or no delegate key is set.",
+      "err_code": 135
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.Expired",
+      "description": "The request `validUntil` time is not later than the current time.",
+      "err_code": 136
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.ExternalSendMessageMustHaveIgnoreErrorsSendMode",
+      "description": "An external request has a send action without ignore-errors mode (+2).",
+      "err_code": 137
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidMessageOperation",
+      "description": "The external message is not a signed request.",
+      "err_code": 138
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidC5",
+      "description": "The action list is empty or malformed, has a non-send action or has more than 255 actions.",
+      "err_code": 147
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidWorkchain",
+      "description": "An address is not in the basechain.",
+      "err_code": 333
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotFromOwner",
+      "description": "The sender is not the current owner of the wallet.",
+      "err_code": 403
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotFromCollection",
+      "description": "The sender is not the collection of this wallet.",
+      "err_code": 405
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.TooSmallRestAmount",
+      "description": "The balance can not pay the storage reserve, the forward amount and the fees.",
+      "err_code": 406
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.IncorrectForwardPayload",
+      "description": "The forward payload does not have a valid inline or ref encoding.",
+      "err_code": 708
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.AlreadyInitialized",
+      "description": "A deploy message reached an already initialized wallet.",
+      "err_code": 804
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotInitialized",
+      "description": "The wallet is not initialized yet.",
+      "err_code": 805
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.DestroyNotAllowed",
+      "description": "A wallet action can not use the destroy send mode (+32).",
+      "err_code": 806
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.TooSmallFunding",
+      "description": "The incoming value can not pay the forward amount and the forward fees.",
+      "err_code": 807
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.5.0"
+}
