@@ -1,0 +1,835 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "AgenticCollection",
+  "author": "mnemotiv",
+  "version": "2.0.0",
+  "description": "NFT collection of agentic wallets. TEP-62, TEP-64 and TEP-66 compliant.",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RelayPublicDeployWallet"
+    },
+    {
+      "kind": "addressOpt"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RelayDeployWallet"
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 11
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "AgenticWalletInitParams"
+    },
+    {
+      "kind": "uintN",
+      "n": 256
+    },
+    {
+      "kind": "remaining"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PayloadInline"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PayloadInRef"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 18
+    },
+    {
+      "kind": "union",
+      "variants": [
+        {
+          "variant_ty_idx": 19,
+          "prefix_num": 0,
+          "prefix_len": 1,
+          "stack_type_id": 134,
+          "stack_width": 1
+        },
+        {
+          "variant_ty_idx": 20,
+          "prefix_num": 1,
+          "prefix_len": 1,
+          "stack_type_id": 135,
+          "stack_width": 1
+        }
+      ],
+      "stack_width": 2
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 16
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RequestRoyaltyParams"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "WithdrawCollectionBalance"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RelayEditWalletContent"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "EditCollectionSettings"
+    },
+    {
+      "kind": "uintN",
+      "n": 16
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "EditCollectionContent"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CollectionContent"
+    },
+    {
+      "kind": "string"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 30
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RoyaltyParams"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 33
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ChangeCollectionAdmin"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "AgenticCollectionStorage"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "DeployWallet"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TextComment"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ResponseRoyaltyParams"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "EditWalletContent"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CollectionDataReply"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CollectionSettingsReply"
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "PayloadInline",
+      "ty_idx": 19,
+      "prefix": {
+        "prefix_num": 0,
+        "prefix_len": 1
+      },
+      "fields": [
+        {
+          "name": "value",
+          "ty_idx": 18
+        }
+      ],
+      "description": "TEP-62 forward payload stored inline (prefix bit 0)."
+    },
+    {
+      "kind": "struct",
+      "name": "PayloadInRef",
+      "ty_idx": 20,
+      "prefix": {
+        "prefix_num": 1,
+        "prefix_len": 1
+      },
+      "fields": [
+        {
+          "name": "value",
+          "ty_idx": 21
+        }
+      ],
+      "description": "TEP-62 forward payload stored in a ref (prefix bit 1)."
+    },
+    {
+      "kind": "struct",
+      "name": "TextComment",
+      "ty_idx": 38,
+      "prefix": {
+        "prefix_num": 0,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "text",
+          "ty_idx": 18
+        }
+      ],
+      "description": "Text comment: op 0 followed by the text."
+    },
+    {
+      "kind": "struct",
+      "name": "RelayPublicDeployWallet",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 3799212132,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "referralAddress",
+          "ty_idx": 13,
+          "description": "Gets `referralBps` of the deploy price; null: no reward."
+        }
+      ],
+      "description": "Anyone → collection: deploys the next wallet for the sender. The value pays the deploy price,\nand the wallet gets the rest."
+    },
+    {
+      "kind": "struct",
+      "name": "RelayDeployWallet",
+      "ty_idx": 14,
+      "prefix": {
+        "prefix_num": 3680594414,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "walletIndex",
+          "ty_idx": 15,
+          "description": "Allocated index to retry; null: the next index."
+        },
+        {
+          "name": "attachAmount",
+          "ty_idx": 6,
+          "description": "Value sent to the wallet with its deploy message."
+        },
+        {
+          "name": "initParams",
+          "ty_idx": 23,
+          "description": "Relayed to the wallet as is."
+        }
+      ],
+      "description": "Admin → collection: deploys the next wallet, or retries an allocated one."
+    },
+    {
+      "kind": "struct",
+      "name": "AgenticWalletInitParams",
+      "ty_idx": 16,
+      "fields": [
+        {
+          "name": "ownerAddress",
+          "ty_idx": 7,
+          "description": "First owner of the wallet."
+        },
+        {
+          "name": "content",
+          "ty_idx": 3,
+          "description": "Individual content, expanded by the collection's `get_nft_content`."
+        },
+        {
+          "name": "delegatePublicKey",
+          "ty_idx": 17,
+          "description": "Public key of the agent that can sign requests; 0 means none."
+        },
+        {
+          "name": "forwardAmount",
+          "ty_idx": 6,
+          "description": "Value sent to the owner with `ownership_assigned`; 0: no notification."
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 18,
+          "client_ty_idx": 22,
+          "description": "Payload of that notification."
+        }
+      ],
+      "description": "Wallet initialization data, relayed from the collection on deploy."
+    },
+    {
+      "kind": "struct",
+      "name": "RelayEditWalletContent",
+      "ty_idx": 26,
+      "prefix": {
+        "prefix_num": 1024196594,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "walletIndex",
+          "ty_idx": 11,
+          "description": "Index of the wallet to edit."
+        },
+        {
+          "name": "newContent",
+          "ty_idx": 3,
+          "description": "Replaces the wallet's individual content."
+        }
+      ],
+      "description": "Admin → collection: replaces the content of wallet `walletIndex`."
+    },
+    {
+      "kind": "struct",
+      "name": "EditCollectionContent",
+      "ty_idx": 29,
+      "prefix": {
+        "prefix_num": 4077028787,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "newContent",
+          "ty_idx": 32,
+          "description": "Replaces the collection content."
+        },
+        {
+          "name": "newRoyaltyParams",
+          "ty_idx": 34,
+          "description": "Replaces the royalty params."
+        }
+      ],
+      "description": "Admin → collection: replaces the collection content and royalty params."
+    },
+    {
+      "kind": "struct",
+      "name": "EditCollectionSettings",
+      "ty_idx": 27,
+      "prefix": {
+        "prefix_num": 405446154,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "maxWalletIndex",
+          "ty_idx": 11,
+          "description": "Highest index that a new wallet can get."
+        },
+        {
+          "name": "publicDeployEnabled",
+          "ty_idx": 5,
+          "description": "Whether public deploys are accepted."
+        },
+        {
+          "name": "deployPrice",
+          "ty_idx": 6,
+          "description": "Price of every public deploy, kept by the collection."
+        },
+        {
+          "name": "referralBps",
+          "ty_idx": 28,
+          "description": "Share of `deployPrice` paid to the referral, in basis points."
+        },
+        {
+          "name": "traitSetCount",
+          "ty_idx": 28,
+          "description": "Number of trait sets a public deploy draws from."
+        }
+      ],
+      "description": "Admin → collection: replaces the collection settings."
+    },
+    {
+      "kind": "struct",
+      "name": "WithdrawCollectionBalance",
+      "ty_idx": 25,
+      "prefix": {
+        "prefix_num": 3723725227,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ],
+      "description": "Admin → collection: withdraws the collection balance."
+    },
+    {
+      "kind": "struct",
+      "name": "ChangeCollectionAdmin",
+      "ty_idx": 35,
+      "prefix": {
+        "prefix_num": 793302177,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "newAdminAddress",
+          "ty_idx": 7,
+          "description": "Replaces the admin."
+        }
+      ],
+      "description": "Admin → collection: sets a new admin."
+    },
+    {
+      "kind": "struct",
+      "name": "RequestRoyaltyParams",
+      "ty_idx": 24,
+      "prefix": {
+        "prefix_num": 1765620048,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ],
+      "description": "TEP-66 `get_royalty_params`: anyone → collection."
+    },
+    {
+      "kind": "struct",
+      "name": "ResponseRoyaltyParams",
+      "ty_idx": 39,
+      "prefix": {
+        "prefix_num": 2831876269,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "royaltyParams",
+          "ty_idx": 33
+        }
+      ],
+      "description": "TEP-66 `report_royalty_params`: collection → requester."
+    },
+    {
+      "kind": "struct",
+      "name": "DeployWallet",
+      "ty_idx": 37,
+      "prefix": {
+        "prefix_num": 2668664535,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "initParams",
+          "ty_idx": 23,
+          "description": "Initialization data from `RelayDeployWallet` or the public deploy."
+        }
+      ],
+      "description": "Collection → wallet: initializes the wallet."
+    },
+    {
+      "kind": "struct",
+      "name": "EditWalletContent",
+      "ty_idx": 40,
+      "prefix": {
+        "prefix_num": 2384046994,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "newContent",
+          "ty_idx": 3,
+          "description": "Replaces the wallet's individual content."
+        }
+      ],
+      "description": "Collection → wallet: replaces the wallet content."
+    },
+    {
+      "kind": "struct",
+      "name": "CollectionContent",
+      "ty_idx": 30,
+      "fields": [
+        {
+          "name": "collectionMetadata",
+          "ty_idx": 3,
+          "description": "TEP-64 collection metadata, returned by `get_collection_data`."
+        },
+        {
+          "name": "commonContent",
+          "ty_idx": 31,
+          "description": "Prefix of the wallet content URLs that `get_nft_content` builds. It must end with \"/\"."
+        }
+      ],
+      "description": "Collection content: its metadata and the prefix of wallet content URLs."
+    },
+    {
+      "kind": "struct",
+      "name": "RoyaltyParams",
+      "ty_idx": 33,
+      "fields": [
+        {
+          "name": "numerator",
+          "ty_idx": 28
+        },
+        {
+          "name": "denominator",
+          "ty_idx": 28
+        },
+        {
+          "name": "royaltyAddress",
+          "ty_idx": 7
+        }
+      ],
+      "description": "TEP-66 royalty: `numerator / denominator` of each sale goes to `royaltyAddress`."
+    },
+    {
+      "kind": "struct",
+      "name": "AgenticCollectionStorage",
+      "ty_idx": 36,
+      "fields": [
+        {
+          "name": "nextWalletIndex",
+          "ty_idx": 11,
+          "description": "Index of the next new wallet. All lower indexes are allocated."
+        },
+        {
+          "name": "maxWalletIndex",
+          "ty_idx": 11,
+          "description": "Highest index that a new wallet can get."
+        },
+        {
+          "name": "publicDeployEnabled",
+          "ty_idx": 5,
+          "description": "Whether public deploys are accepted."
+        },
+        {
+          "name": "deployPrice",
+          "ty_idx": 6,
+          "description": "Price of every public deploy, kept by the collection."
+        },
+        {
+          "name": "referralBps",
+          "ty_idx": 28,
+          "description": "Share of `deployPrice` paid to the referral, in basis points."
+        },
+        {
+          "name": "traitSetCount",
+          "ty_idx": 28,
+          "description": "Number of trait sets a public deploy draws from."
+        },
+        {
+          "name": "networkId",
+          "ty_idx": 8,
+          "description": "Global ID of the network this collection deploys wallets on."
+        },
+        {
+          "name": "adminAddress",
+          "ty_idx": 7,
+          "description": "Sends the admin messages: admin deploys, content and settings edits, withdrawals and admin\nchanges."
+        },
+        {
+          "name": "content",
+          "ty_idx": 32,
+          "description": "Collection metadata and the prefix of wallet content URLs."
+        },
+        {
+          "name": "walletCode",
+          "ty_idx": 3,
+          "description": "Code of the wallets this collection deploys."
+        },
+        {
+          "name": "royaltyParams",
+          "ty_idx": 34,
+          "description": "TEP-66 royalty, returned by `royalty_params` and `RequestRoyaltyParams`."
+        }
+      ],
+      "description": "Collection storage."
+    },
+    {
+      "kind": "struct",
+      "name": "CollectionDataReply",
+      "ty_idx": 41,
+      "fields": [
+        {
+          "name": "nextWalletIndex",
+          "ty_idx": 11,
+          "description": "Index the next new wallet gets."
+        },
+        {
+          "name": "collectionMetadata",
+          "ty_idx": 3,
+          "description": "TEP-64 collection metadata."
+        },
+        {
+          "name": "adminAddress",
+          "ty_idx": 7,
+          "description": "Collection admin, the TEP-62 `owner_address`."
+        }
+      ],
+      "description": "TEP-62 `get_collection_data` result."
+    },
+    {
+      "kind": "struct",
+      "name": "CollectionSettingsReply",
+      "ty_idx": 42,
+      "fields": [
+        {
+          "name": "maxWalletIndex",
+          "ty_idx": 11
+        },
+        {
+          "name": "publicDeployEnabled",
+          "ty_idx": 5
+        },
+        {
+          "name": "deployPrice",
+          "ty_idx": 6
+        },
+        {
+          "name": "referralBps",
+          "ty_idx": 28
+        },
+        {
+          "name": "traitSetCount",
+          "ty_idx": 28
+        }
+      ],
+      "description": "`get_collection_settings` result. The fields are the same as in `AgenticCollectionStorage`."
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 36
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 14
+    },
+    {
+      "body_ty_idx": 24
+    },
+    {
+      "body_ty_idx": 25
+    },
+    {
+      "body_ty_idx": 26
+    },
+    {
+      "body_ty_idx": 27
+    },
+    {
+      "body_ty_idx": 29
+    },
+    {
+      "body_ty_idx": 35
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 37
+    },
+    {
+      "body_ty_idx": 38
+    },
+    {
+      "body_ty_idx": 39
+    },
+    {
+      "body_ty_idx": 25
+    },
+    {
+      "body_ty_idx": 40
+    }
+  ],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 102491,
+      "name": "get_collection_data",
+      "parameters": [],
+      "return_ty_idx": 41,
+      "description": "TEP-62: the next wallet index, the collection metadata and the admin."
+    },
+    {
+      "tvm_method_id": 98881,
+      "name": "get_collection_settings",
+      "parameters": [],
+      "return_ty_idx": 42,
+      "description": "Returns the max wallet index and the public deploy settings."
+    },
+    {
+      "tvm_method_id": 92067,
+      "name": "get_nft_address_by_index",
+      "parameters": [
+        {
+          "name": "walletIndex",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 7,
+      "description": "TEP-62: address of wallet `walletIndex`, deployed or not."
+    },
+    {
+      "tvm_method_id": 68445,
+      "name": "get_nft_content",
+      "parameters": [
+        {
+          "name": "walletIndex",
+          "ty_idx": 1
+        },
+        {
+          "name": "individualContent",
+          "ty_idx": 3
+        }
+      ],
+      "return_ty_idx": 3,
+      "description": "Expands `TraitSetContent` into off-chain content\n\"<commonContent><traitSetIndex>/<walletIndex>.json\".\nExpands `WalletIndexContent` into \"<commonContent><walletIndex>.json\".\nBoth formats ignore the bits and refs after their fields.\nReturns other content as is: it must already be TEP-64."
+    },
+    {
+      "tvm_method_id": 85719,
+      "name": "royalty_params",
+      "parameters": [],
+      "return_ty_idx": 33,
+      "description": "TEP-66: the royalty params."
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidWorkchain",
+      "description": "An address is not in the basechain.",
+      "err_code": 333
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NotFromAdmin",
+      "description": "The sender is not the collection admin.",
+      "err_code": 401
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidWalletIndex",
+      "description": "The wallet index of a deploy retry or a content edit is not allocated yet.",
+      "err_code": 402
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.WrongNetwork",
+      "description": "The network ID in the collection storage is not the ID of the current network.",
+      "err_code": 800
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.PublicDeployDisabled",
+      "description": "Public deploys are disabled.",
+      "err_code": 801
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.WalletLimitReached",
+      "description": "A new wallet index is past the collection's max wallet index.",
+      "err_code": 802
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.TooSmallDeployValue",
+      "description": "The value can not pay the deploy price and the storage reserve of the wallet.",
+      "err_code": 803
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.UnknownOperation",
+      "description": "The message is not a known operation.",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.5.0"
+}
