@@ -1,0 +1,1049 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "MembershipNftCollection",
+  "version": "3",
+  "description": "CyberKonquest membership NFT collection: one mint per wallet, authorized by the game server",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "MintMembership"
+    },
+    {
+      "kind": "uintN",
+      "n": 8
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LocksCounted"
+    },
+    {
+      "kind": "uintN",
+      "n": 256
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "GetRoyaltyParams"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ProposeOwner"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "AcceptOwner"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SetContent"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CollectionContent"
+    },
+    {
+      "kind": "string"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 20
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SetSignerPublicKey"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SetRoyalty"
+    },
+    {
+      "kind": "uintN",
+      "n": 16
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "VoidAuthorizations"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "WithdrawGrams"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SetPaused"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Excesses"
+    },
+    {
+      "kind": "EnumRef",
+      "enum_name": "Errors"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Storage"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PendingOwnerAndMembership"
+    },
+    {
+      "kind": "addressOpt"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "MembershipData"
+    },
+    {
+      "kind": "mapKV",
+      "key_ty_idx": 7,
+      "value_ty_idx": 11
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 34
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 32
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "InitNftItem"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "MembershipContent"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "MembershipMintedEvent"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ReportRoyaltyParams"
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        1,
+        3,
+        7
+      ]
+    },
+    {
+      "kind": "AliasRef",
+      "alias_name": "string_prefixed0x"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 39
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        1,
+        1,
+        7
+      ]
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        1,
+        1
+      ]
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "enum",
+      "name": "Errors",
+      "ty_idx": 30,
+      "encoded_as_ty_idx": 25,
+      "members": [
+        {
+          "name": "Unauthorized",
+          "value": "801"
+        },
+        {
+          "name": "Paused",
+          "value": "802"
+        },
+        {
+          "name": "InvalidWorkchain",
+          "value": "803"
+        },
+        {
+          "name": "AlreadyMember",
+          "value": "804"
+        },
+        {
+          "name": "InvalidTier",
+          "value": "805"
+        },
+        {
+          "name": "TierSoldOut",
+          "value": "806"
+        },
+        {
+          "name": "InvalidGeneration",
+          "value": "807"
+        },
+        {
+          "name": "Expired",
+          "value": "808"
+        },
+        {
+          "name": "ExpiryTooFar",
+          "value": "809"
+        },
+        {
+          "name": "LockNotBegun",
+          "value": "810"
+        },
+        {
+          "name": "LockEnded",
+          "value": "811"
+        },
+        {
+          "name": "LockTooShort",
+          "value": "812"
+        },
+        {
+          "name": "InsufficientValue",
+          "value": "813"
+        },
+        {
+          "name": "InvalidSignature",
+          "value": "814"
+        },
+        {
+          "name": "WeakKey",
+          "value": "815"
+        },
+        {
+          "name": "NoPendingOwner",
+          "value": "816"
+        },
+        {
+          "name": "InvalidContent",
+          "value": "817"
+        },
+        {
+          "name": "RoyaltyDenominatorZero",
+          "value": "818"
+        },
+        {
+          "name": "RoyaltyTooHigh",
+          "value": "819"
+        },
+        {
+          "name": "UnknownOp",
+          "value": "65535"
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "MembershipData",
+      "ty_idx": 34,
+      "fields": [
+        {
+          "name": "bronzeSupply",
+          "ty_idx": 25
+        },
+        {
+          "name": "silverSupply",
+          "ty_idx": 25
+        },
+        {
+          "name": "goldSupply",
+          "ty_idx": 25
+        },
+        {
+          "name": "cyberSupply",
+          "ty_idx": 25
+        },
+        {
+          "name": "minterToNft",
+          "ty_idx": 35
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "PendingOwnerAndMembership",
+      "ty_idx": 32,
+      "fields": [
+        {
+          "name": "pendingOwner",
+          "ty_idx": 33
+        },
+        {
+          "name": "membership",
+          "ty_idx": 36
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CollectionContent",
+      "ty_idx": 20,
+      "fields": [
+        {
+          "name": "collectionMetadata",
+          "ty_idx": 3
+        },
+        {
+          "name": "itemBaseUri",
+          "ty_idx": 21
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Storage",
+      "ty_idx": 31,
+      "fields": [
+        {
+          "name": "ownerAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "nextItemIndex",
+          "ty_idx": 11
+        },
+        {
+          "name": "content",
+          "ty_idx": 22
+        },
+        {
+          "name": "nftItemCode",
+          "ty_idx": 3
+        },
+        {
+          "name": "signerPublicKey",
+          "ty_idx": 15
+        },
+        {
+          "name": "generation",
+          "ty_idx": 9
+        },
+        {
+          "name": "royaltyNumerator",
+          "ty_idx": 25
+        },
+        {
+          "name": "royaltyDenominator",
+          "ty_idx": 25
+        },
+        {
+          "name": "royaltyDestination",
+          "ty_idx": 7
+        },
+        {
+          "name": "paused",
+          "ty_idx": 5
+        },
+        {
+          "name": "pendingOwnerAndMembership",
+          "ty_idx": 37
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "LocksCounted",
+      "ty_idx": 14,
+      "fields": [
+        {
+          "name": "lockersHash",
+          "ty_idx": 15
+        },
+        {
+          "name": "lockedValue",
+          "ty_idx": 6
+        },
+        {
+          "name": "lockTime",
+          "ty_idx": 9
+        },
+        {
+          "name": "unlockTime",
+          "ty_idx": 9
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "MintMembership",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 1016047639,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "tier",
+          "ty_idx": 13
+        },
+        {
+          "name": "locks",
+          "ty_idx": 14
+        },
+        {
+          "name": "generation",
+          "ty_idx": 9
+        },
+        {
+          "name": "expiry",
+          "ty_idx": 9
+        },
+        {
+          "name": "signature",
+          "ty_idx": 3
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "GetRoyaltyParams",
+      "ty_idx": 16,
+      "prefix": {
+        "prefix_num": 1765620048,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ReportRoyaltyParams",
+      "ty_idx": 41,
+      "prefix": {
+        "prefix_num": 2831876269,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "numerator",
+          "ty_idx": 25
+        },
+        {
+          "name": "denominator",
+          "ty_idx": 25
+        },
+        {
+          "name": "destination",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ProposeOwner",
+      "ty_idx": 17,
+      "prefix": {
+        "prefix_num": 1147747781,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "newOwner",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "AcceptOwner",
+      "ty_idx": 18,
+      "prefix": {
+        "prefix_num": 3830817239,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "SetContent",
+      "ty_idx": 19,
+      "prefix": {
+        "prefix_num": 574661591,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "content",
+          "ty_idx": 22
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "SetSignerPublicKey",
+      "ty_idx": 23,
+      "prefix": {
+        "prefix_num": 1564130765,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "publicKey",
+          "ty_idx": 15
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "SetRoyalty",
+      "ty_idx": 24,
+      "prefix": {
+        "prefix_num": 2544067963,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "numerator",
+          "ty_idx": 25
+        },
+        {
+          "name": "denominator",
+          "ty_idx": 25
+        },
+        {
+          "name": "destination",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "VoidAuthorizations",
+      "ty_idx": 26,
+      "prefix": {
+        "prefix_num": 270132434,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "WithdrawGrams",
+      "ty_idx": 27,
+      "prefix": {
+        "prefix_num": 2357004083,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "SetPaused",
+      "ty_idx": 28,
+      "prefix": {
+        "prefix_num": 355467189,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "paused",
+          "ty_idx": 5
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "MembershipMintedEvent",
+      "ty_idx": 40,
+      "prefix": {
+        "prefix_num": 1298287945,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "itemIndex",
+          "ty_idx": 11
+        },
+        {
+          "name": "minter",
+          "ty_idx": 7
+        },
+        {
+          "name": "tier",
+          "ty_idx": 13
+        },
+        {
+          "name": "lockersHash",
+          "ty_idx": 15
+        }
+      ]
+    },
+    {
+      "kind": "alias",
+      "name": "string_prefixed0x",
+      "ty_idx": 43,
+      "target_ty_idx": 21,
+      "description": "A string, which contents starts with 0x00/0x01 byte.\nBy standard, offchain explorers/APIs may treat contents of a string based on 0xXX prefixes:\n- 0x00 + \"str\" — means \"this is a regular snake-encoded string\"\n- 0x01 + \"str\" — means \"this is an off-chain content URL\"\nUsed in jettons and NFTs for responses from GET methods to comply with TEPs (token standards)."
+    },
+    {
+      "kind": "struct",
+      "name": "MembershipContent",
+      "ty_idx": 39,
+      "fields": [
+        {
+          "name": "tier",
+          "ty_idx": 13
+        },
+        {
+          "name": "mintTimestamp",
+          "ty_idx": 9
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "InitNftItem",
+      "ty_idx": 38,
+      "prefix": {
+        "prefix_num": 2279990154,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "index",
+          "ty_idx": 11
+        },
+        {
+          "name": "minter",
+          "ty_idx": 7
+        },
+        {
+          "name": "content",
+          "ty_idx": 39
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Excesses",
+      "ty_idx": 29,
+      "prefix": {
+        "prefix_num": 3576854235,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 31
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 16
+    },
+    {
+      "body_ty_idx": 17
+    },
+    {
+      "body_ty_idx": 18
+    },
+    {
+      "body_ty_idx": 19
+    },
+    {
+      "body_ty_idx": 23
+    },
+    {
+      "body_ty_idx": 24
+    },
+    {
+      "body_ty_idx": 26
+    },
+    {
+      "body_ty_idx": 27
+    },
+    {
+      "body_ty_idx": 28
+    },
+    {
+      "body_ty_idx": 29
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 38
+    },
+    {
+      "body_ty_idx": 29
+    },
+    {
+      "body_ty_idx": 41
+    }
+  ],
+  "emitted_events": [
+    {
+      "body_ty_idx": 40
+    }
+  ],
+  "get_methods": [
+    {
+      "tvm_method_id": 102491,
+      "name": "get_collection_data",
+      "parameters": [],
+      "return_ty_idx": 42
+    },
+    {
+      "tvm_method_id": 92067,
+      "name": "get_nft_address_by_index",
+      "parameters": [
+        {
+          "name": "index",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 68445,
+      "name": "get_nft_content",
+      "parameters": [
+        {
+          "name": "_index",
+          "ty_idx": 1
+        },
+        {
+          "name": "individualContent",
+          "ty_idx": 44
+        }
+      ],
+      "return_ty_idx": 43
+    },
+    {
+      "tvm_method_id": 85719,
+      "name": "royalty_params",
+      "parameters": [],
+      "return_ty_idx": 45
+    },
+    {
+      "tvm_method_id": 78527,
+      "name": "get_max_royalty",
+      "parameters": [],
+      "return_ty_idx": 46
+    },
+    {
+      "tvm_method_id": 80177,
+      "name": "get_signer_public_key",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 99836,
+      "name": "get_generation",
+      "parameters": [],
+      "return_ty_idx": 9
+    },
+    {
+      "tvm_method_id": 87711,
+      "name": "get_paused",
+      "parameters": [],
+      "return_ty_idx": 5
+    },
+    {
+      "tvm_method_id": 75825,
+      "name": "get_global_id",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 78940,
+      "name": "get_pending_owner",
+      "parameters": [],
+      "return_ty_idx": 33
+    },
+    {
+      "tvm_method_id": 82320,
+      "name": "get_version",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 112820,
+      "name": "get_tier_supply",
+      "parameters": [
+        {
+          "name": "tier",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 106931,
+      "name": "get_tier_max_supply",
+      "parameters": [
+        {
+          "name": "tier",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 122595,
+      "name": "get_remaining_supply",
+      "parameters": [
+        {
+          "name": "tier",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 122870,
+      "name": "get_total_supply",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 98183,
+      "name": "get_minted_nft",
+      "parameters": [
+        {
+          "name": "minter",
+          "ty_idx": 7
+        }
+      ],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 81134,
+      "name": "get_mint_min_value",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 111877,
+      "name": "get_answer_cost",
+      "parameters": [
+        {
+          "name": "workchain",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 1
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "Errors.Unauthorized",
+      "err_code": 801
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.Paused",
+      "err_code": 802
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidWorkchain",
+      "err_code": 803
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.AlreadyMember",
+      "err_code": 804
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidTier",
+      "err_code": 805
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.TierSoldOut",
+      "err_code": 806
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidGeneration",
+      "err_code": 807
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.Expired",
+      "err_code": 808
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.ExpiryTooFar",
+      "err_code": 809
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.LockNotBegun",
+      "err_code": 810
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.LockEnded",
+      "err_code": 811
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.LockTooShort",
+      "err_code": 812
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InsufficientValue",
+      "err_code": 813
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidSignature",
+      "err_code": 814
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.WeakKey",
+      "err_code": 815
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.NoPendingOwner",
+      "err_code": 816
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidContent",
+      "err_code": 817
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.RoyaltyDenominatorZero",
+      "err_code": 818
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.RoyaltyTooHigh",
+      "err_code": 819
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.UnknownOp",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.5.0"
+}
