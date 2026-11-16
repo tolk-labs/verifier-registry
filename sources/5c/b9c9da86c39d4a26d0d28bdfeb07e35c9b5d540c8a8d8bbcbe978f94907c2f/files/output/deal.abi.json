@@ -1,0 +1,327 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "JettonTransfer"
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 3
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ProvideWalletAddress"
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "JettonTransfer",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 260734629,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "destination",
+          "ty_idx": 7
+        },
+        {
+          "name": "responseDestination",
+          "ty_idx": 7
+        },
+        {
+          "name": "customPayload",
+          "ty_idx": 13
+        },
+        {
+          "name": "forwardTonAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "forwardPayloadInRef",
+          "ty_idx": 5
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ProvideWalletAddress",
+      "ty_idx": 14,
+      "prefix": {
+        "prefix_num": 745978227,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "ownerAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "includeAddress",
+          "ty_idx": 5
+        }
+      ]
+    }
+  ],
+  "storage": {},
+  "incoming_messages": [],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 4
+    },
+    {
+      "body_ty_idx": 14
+    }
+  ],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 108177,
+      "name": "dealCell",
+      "parameters": [],
+      "return_ty_idx": 3
+    },
+    {
+      "tvm_method_id": 77589,
+      "name": "state",
+      "parameters": [],
+      "return_ty_idx": 1
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "constant",
+      "name": "E_INVALID_MESSAGE",
+      "err_code": 130
+    },
+    {
+      "kind": "constant",
+      "name": "E_ALREADY_INIT",
+      "err_code": 2977
+    },
+    {
+      "kind": "constant",
+      "name": "E_CANNOT_CONTEST",
+      "err_code": 4587
+    },
+    {
+      "kind": "constant",
+      "name": "E_BAD_SHARE",
+      "err_code": 4730
+    },
+    {
+      "kind": "constant",
+      "name": "E_PAY_IN_JETTONS",
+      "err_code": 5094
+    },
+    {
+      "kind": "constant",
+      "name": "E_BAD_INVITE_CODE",
+      "err_code": 5933
+    },
+    {
+      "kind": "constant",
+      "name": "E_NOT_INIT",
+      "err_code": 7657
+    },
+    {
+      "kind": "constant",
+      "name": "E_CUSTOMER_CANNOT_ACCEPT",
+      "err_code": 13534
+    },
+    {
+      "kind": "constant",
+      "name": "E_PAY_FEE_IN_JETTONS",
+      "err_code": 16247
+    },
+    {
+      "kind": "constant",
+      "name": "E_ONLY_MASTER",
+      "err_code": 16588
+    },
+    {
+      "kind": "constant",
+      "name": "E_WRONG_STATE",
+      "err_code": 17346
+    },
+    {
+      "kind": "constant",
+      "name": "E_ONLY_CUSTOMER",
+      "err_code": 18550
+    },
+    {
+      "kind": "constant",
+      "name": "E_ALREADY_FUNDED",
+      "err_code": 27392
+    },
+    {
+      "kind": "constant",
+      "name": "E_NOT_ENOUGH_TON",
+      "err_code": 29562
+    },
+    {
+      "kind": "constant",
+      "name": "E_BAD_INVITE",
+      "err_code": 30109
+    },
+    {
+      "kind": "constant",
+      "name": "E_PROPOSER_CANNOT_ACCEPT",
+      "err_code": 36449
+    },
+    {
+      "kind": "constant",
+      "name": "E_REVIEW_NOT_OVER",
+      "err_code": 37061
+    },
+    {
+      "kind": "constant",
+      "name": "E_ATTACH_01",
+      "err_code": 38983
+    },
+    {
+      "kind": "constant",
+      "name": "E_ONLY_PARTIES",
+      "err_code": 39355
+    },
+    {
+      "kind": "constant",
+      "name": "E_WALLET_KNOWN",
+      "err_code": 40564
+    },
+    {
+      "kind": "constant",
+      "name": "E_NOTHING_TO_WITHDRAW",
+      "err_code": 40636
+    },
+    {
+      "kind": "constant",
+      "name": "E_NO_CHANGE",
+      "err_code": 46156
+    },
+    {
+      "kind": "constant",
+      "name": "E_ONLY_INVITED",
+      "err_code": 46179
+    },
+    {
+      "kind": "constant",
+      "name": "E_CHANGE_PROPOSED",
+      "err_code": 46247
+    },
+    {
+      "kind": "constant",
+      "name": "E_ATTACH_MORE",
+      "err_code": 46549
+    },
+    {
+      "kind": "constant",
+      "name": "E_NOT_PAID",
+      "err_code": 46695
+    },
+    {
+      "kind": "constant",
+      "name": "E_AMOUNT_TOO_SMALL",
+      "err_code": 46710
+    },
+    {
+      "kind": "constant",
+      "name": "E_BAD_DEADLINE",
+      "err_code": 48718
+    },
+    {
+      "kind": "constant",
+      "name": "E_ONLY_JETTON_MASTER",
+      "err_code": 51072
+    },
+    {
+      "kind": "constant",
+      "name": "E_ARBITER_PARTY",
+      "err_code": 54556
+    },
+    {
+      "kind": "constant",
+      "name": "E_ONLY_EXECUTOR",
+      "err_code": 56628
+    },
+    {
+      "kind": "constant",
+      "name": "E_ONLY_ARBITER",
+      "err_code": 57914
+    },
+    {
+      "kind": "constant",
+      "name": "E_EXECUTOR_HAS_TIME",
+      "err_code": 57929
+    },
+    {
+      "kind": "constant",
+      "name": "E_CANNOT_DISPUTE",
+      "err_code": 58639
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.5.0"
+}
