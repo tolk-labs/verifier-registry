@@ -1,0 +1,708 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "GemSafe",
+  "author": "gemsafe.ton",
+  "version": "2.0",
+  "description": "GemSafe (gemsafe.ton) — escrow deal on TON: holds the customer's TON/USDT until the terms are met",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "DealInit"
+    },
+    {
+      "kind": "addressOpt"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "DealInitExtra"
+    },
+    {
+      "kind": "uintN",
+      "n": 16
+    },
+    {
+      "kind": "uintN",
+      "n": 8
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "DealInitHashes"
+    },
+    {
+      "kind": "uintN",
+      "n": 256
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 17
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 14
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TakeWalletAddress"
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 3
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Accept"
+    },
+    {
+      "kind": "uintN",
+      "n": 128
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SetInvite"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Fund"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ProposeChange"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Resolve"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Withdraw"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "JettonNotify"
+    },
+    {
+      "kind": "remaining"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SetTag"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "JettonTransfer"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ProvideWalletAddress"
+    },
+    {
+      "kind": "string"
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "DealInitHashes",
+      "ty_idx": 17,
+      "fields": [
+        {
+          "name": "invite",
+          "ty_idx": 18
+        },
+        {
+          "name": "termsHash",
+          "ty_idx": 18
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "DealInitExtra",
+      "ty_idx": 14,
+      "fields": [
+        {
+          "name": "feeWallet",
+          "ty_idx": 7
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "feeBps",
+          "ty_idx": 15
+        },
+        {
+          "name": "deliveryPeriod",
+          "ty_idx": 9
+        },
+        {
+          "name": "reviewPeriod",
+          "ty_idx": 9
+        },
+        {
+          "name": "feePayer",
+          "ty_idx": 16
+        },
+        {
+          "name": "customerTag",
+          "ty_idx": 11
+        },
+        {
+          "name": "currency",
+          "ty_idx": 16
+        },
+        {
+          "name": "jettonMaster",
+          "ty_idx": 13
+        },
+        {
+          "name": "prepaid",
+          "ty_idx": 5
+        },
+        {
+          "name": "hashes",
+          "ty_idx": 19
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "DealInit",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 1352976130,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "customer",
+          "ty_idx": 7
+        },
+        {
+          "name": "executor",
+          "ty_idx": 13
+        },
+        {
+          "name": "arbiter",
+          "ty_idx": 7
+        },
+        {
+          "name": "extra",
+          "ty_idx": 20
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Accept",
+      "ty_idx": 23,
+      "prefix": {
+        "prefix_num": 1352976131,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "tag",
+          "ty_idx": 11
+        },
+        {
+          "name": "code",
+          "ty_idx": 24
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Fund",
+      "ty_idx": 26,
+      "prefix": {
+        "prefix_num": 1352976132,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ProposeChange",
+      "ty_idx": 27,
+      "prefix": {
+        "prefix_num": 1352976133,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "deadline",
+          "ty_idx": 9
+        },
+        {
+          "name": "termsHash",
+          "ty_idx": 18
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Resolve",
+      "ty_idx": 28,
+      "prefix": {
+        "prefix_num": 1352976134,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "customerAmount",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Withdraw",
+      "ty_idx": 29,
+      "prefix": {
+        "prefix_num": 1352976135,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "to",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "SetTag",
+      "ty_idx": 32,
+      "prefix": {
+        "prefix_num": 1352976136,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "tag",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "SetInvite",
+      "ty_idx": 25,
+      "prefix": {
+        "prefix_num": 1352976138,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "invite",
+          "ty_idx": 18
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "JettonTransfer",
+      "ty_idx": 33,
+      "prefix": {
+        "prefix_num": 260734629,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "destination",
+          "ty_idx": 7
+        },
+        {
+          "name": "responseDestination",
+          "ty_idx": 7
+        },
+        {
+          "name": "customPayload",
+          "ty_idx": 22
+        },
+        {
+          "name": "forwardTonAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "forwardPayloadInRef",
+          "ty_idx": 5
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "JettonNotify",
+      "ty_idx": 30,
+      "prefix": {
+        "prefix_num": 1935855772,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "sender",
+          "ty_idx": 7
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 31
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ProvideWalletAddress",
+      "ty_idx": 34,
+      "prefix": {
+        "prefix_num": 745978227,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "ownerAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "includeAddress",
+          "ty_idx": 5
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TakeWalletAddress",
+      "ty_idx": 21,
+      "prefix": {
+        "prefix_num": 3513996288,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "walletAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "ownerAddress",
+          "ty_idx": 22
+        }
+      ]
+    }
+  ],
+  "storage": {},
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 21
+    },
+    {
+      "body_ty_idx": 23
+    },
+    {
+      "body_ty_idx": 25
+    },
+    {
+      "body_ty_idx": 26
+    },
+    {
+      "body_ty_idx": 27
+    },
+    {
+      "body_ty_idx": 28
+    },
+    {
+      "body_ty_idx": 29
+    },
+    {
+      "body_ty_idx": 30
+    },
+    {
+      "body_ty_idx": 32
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 33
+    },
+    {
+      "body_ty_idx": 4
+    },
+    {
+      "body_ty_idx": 34
+    }
+  ],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 108177,
+      "name": "dealCell",
+      "parameters": [],
+      "return_ty_idx": 3
+    },
+    {
+      "tvm_method_id": 72595,
+      "name": "service",
+      "parameters": [],
+      "return_ty_idx": 35
+    },
+    {
+      "tvm_method_id": 77589,
+      "name": "state",
+      "parameters": [],
+      "return_ty_idx": 1
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "constant",
+      "name": "E_INVALID_MESSAGE",
+      "err_code": 130
+    },
+    {
+      "kind": "constant",
+      "name": "E_ALREADY_INIT",
+      "err_code": 2977
+    },
+    {
+      "kind": "constant",
+      "name": "E_CANNOT_CONTEST",
+      "err_code": 4587
+    },
+    {
+      "kind": "constant",
+      "name": "E_BAD_SHARE",
+      "err_code": 4730
+    },
+    {
+      "kind": "constant",
+      "name": "E_PAY_IN_JETTONS",
+      "err_code": 5094
+    },
+    {
+      "kind": "constant",
+      "name": "E_BAD_INVITE_CODE",
+      "err_code": 5933
+    },
+    {
+      "kind": "constant",
+      "name": "E_NOT_INIT",
+      "err_code": 7657
+    },
+    {
+      "kind": "constant",
+      "name": "E_CUSTOMER_CANNOT_ACCEPT",
+      "err_code": 13534
+    },
+    {
+      "kind": "constant",
+      "name": "E_PAY_FEE_IN_JETTONS",
+      "err_code": 16247
+    },
+    {
+      "kind": "constant",
+      "name": "E_ONLY_MASTER",
+      "err_code": 16588
+    },
+    {
+      "kind": "constant",
+      "name": "E_WRONG_STATE",
+      "err_code": 17346
+    },
+    {
+      "kind": "constant",
+      "name": "E_ONLY_CUSTOMER",
+      "err_code": 18550
+    },
+    {
+      "kind": "constant",
+      "name": "E_ALREADY_FUNDED",
+      "err_code": 27392
+    },
+    {
+      "kind": "constant",
+      "name": "E_NOT_ENOUGH_TON",
+      "err_code": 29562
+    },
+    {
+      "kind": "constant",
+      "name": "E_BAD_INVITE",
+      "err_code": 30109
+    },
+    {
+      "kind": "constant",
+      "name": "E_PROPOSER_CANNOT_ACCEPT",
+      "err_code": 36449
+    },
+    {
+      "kind": "constant",
+      "name": "E_REVIEW_NOT_OVER",
+      "err_code": 37061
+    },
+    {
+      "kind": "constant",
+      "name": "E_ATTACH_01",
+      "err_code": 38983
+    },
+    {
+      "kind": "constant",
+      "name": "E_ONLY_PARTIES",
+      "err_code": 39355
+    },
+    {
+      "kind": "constant",
+      "name": "E_WALLET_KNOWN",
+      "err_code": 40564
+    },
+    {
+      "kind": "constant",
+      "name": "E_NOTHING_TO_WITHDRAW",
+      "err_code": 40636
+    },
+    {
+      "kind": "constant",
+      "name": "E_NO_CHANGE",
+      "err_code": 46156
+    },
+    {
+      "kind": "constant",
+      "name": "E_ONLY_INVITED",
+      "err_code": 46179
+    },
+    {
+      "kind": "constant",
+      "name": "E_CHANGE_PROPOSED",
+      "err_code": 46247
+    },
+    {
+      "kind": "constant",
+      "name": "E_ATTACH_MORE",
+      "err_code": 46549
+    },
+    {
+      "kind": "constant",
+      "name": "E_NOT_PAID",
+      "err_code": 46695
+    },
+    {
+      "kind": "constant",
+      "name": "E_AMOUNT_TOO_SMALL",
+      "err_code": 46710
+    },
+    {
+      "kind": "constant",
+      "name": "E_BAD_DEADLINE",
+      "err_code": 48718
+    },
+    {
+      "kind": "constant",
+      "name": "E_ONLY_JETTON_MASTER",
+      "err_code": 51072
+    },
+    {
+      "kind": "constant",
+      "name": "E_ARBITER_PARTY",
+      "err_code": 54556
+    },
+    {
+      "kind": "constant",
+      "name": "E_ONLY_EXECUTOR",
+      "err_code": 56628
+    },
+    {
+      "kind": "constant",
+      "name": "E_ONLY_ARBITER",
+      "err_code": 57914
+    },
+    {
+      "kind": "constant",
+      "name": "E_EXECUTOR_HAS_TIME",
+      "err_code": 57929
+    },
+    {
+      "kind": "constant",
+      "name": "E_CANNOT_DISPUTE",
+      "err_code": 58639
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.5.0"
+}
