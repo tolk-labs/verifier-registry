@@ -1,0 +1,483 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "GemSafeFactory",
+  "author": "gemsafe.ton",
+  "version": "2.0",
+  "description": "GemSafe (gemsafe.ton) — factory of escrow deals on TON",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CreateDeal"
+    },
+    {
+      "kind": "addressOpt"
+    },
+    {
+      "kind": "uintN",
+      "n": 8
+    },
+    {
+      "kind": "uintN",
+      "n": 256
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TermsRef"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 16
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SetConfig"
+    },
+    {
+      "kind": "uintN",
+      "n": 16
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TransferOwnership"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SetJetton"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SetPaused"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "DealInit"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "DealInitExtra"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "DealInitHashes"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 25
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 24
+    },
+    {
+      "kind": "string"
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "TermsRef",
+      "ty_idx": 16,
+      "fields": [
+        {
+          "name": "termsHash",
+          "ty_idx": 15
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CreateDeal",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 1352976129,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "executor",
+          "ty_idx": 13
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "deliveryPeriod",
+          "ty_idx": 9
+        },
+        {
+          "name": "reviewPeriod",
+          "ty_idx": 9
+        },
+        {
+          "name": "feePayer",
+          "ty_idx": 14
+        },
+        {
+          "name": "tag",
+          "ty_idx": 11
+        },
+        {
+          "name": "currency",
+          "ty_idx": 14
+        },
+        {
+          "name": "invite",
+          "ty_idx": 15
+        },
+        {
+          "name": "terms",
+          "ty_idx": 17
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "DealInitHashes",
+      "ty_idx": 25,
+      "fields": [
+        {
+          "name": "invite",
+          "ty_idx": 15
+        },
+        {
+          "name": "termsHash",
+          "ty_idx": 15
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "DealInitExtra",
+      "ty_idx": 24,
+      "fields": [
+        {
+          "name": "feeWallet",
+          "ty_idx": 7
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "feeBps",
+          "ty_idx": 19
+        },
+        {
+          "name": "deliveryPeriod",
+          "ty_idx": 9
+        },
+        {
+          "name": "reviewPeriod",
+          "ty_idx": 9
+        },
+        {
+          "name": "feePayer",
+          "ty_idx": 14
+        },
+        {
+          "name": "customerTag",
+          "ty_idx": 11
+        },
+        {
+          "name": "currency",
+          "ty_idx": 14
+        },
+        {
+          "name": "jettonMaster",
+          "ty_idx": 13
+        },
+        {
+          "name": "prepaid",
+          "ty_idx": 5
+        },
+        {
+          "name": "hashes",
+          "ty_idx": 26
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "DealInit",
+      "ty_idx": 23,
+      "prefix": {
+        "prefix_num": 1352976130,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "customer",
+          "ty_idx": 7
+        },
+        {
+          "name": "executor",
+          "ty_idx": 13
+        },
+        {
+          "name": "arbiter",
+          "ty_idx": 7
+        },
+        {
+          "name": "extra",
+          "ty_idx": 27
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "SetConfig",
+      "ty_idx": 18,
+      "prefix": {
+        "prefix_num": 1352976145,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "arbiter",
+          "ty_idx": 7
+        },
+        {
+          "name": "feeWallet",
+          "ty_idx": 7
+        },
+        {
+          "name": "feeBps",
+          "ty_idx": 19
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TransferOwnership",
+      "ty_idx": 20,
+      "prefix": {
+        "prefix_num": 1352976146,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "newOwner",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "SetPaused",
+      "ty_idx": 22,
+      "prefix": {
+        "prefix_num": 1352976147,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "paused",
+          "ty_idx": 5
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "SetJetton",
+      "ty_idx": 21,
+      "prefix": {
+        "prefix_num": 1352976148,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "jettonMaster",
+          "ty_idx": 13
+        }
+      ]
+    }
+  ],
+  "storage": {},
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 18
+    },
+    {
+      "body_ty_idx": 20
+    },
+    {
+      "body_ty_idx": 21
+    },
+    {
+      "body_ty_idx": 22
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 23
+    }
+  ],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 103547,
+      "name": "configCell",
+      "parameters": [],
+      "return_ty_idx": 3
+    },
+    {
+      "tvm_method_id": 121104,
+      "name": "dealAddress",
+      "parameters": [
+        {
+          "name": "id",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 113976,
+      "name": "nextId",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 72595,
+      "name": "service",
+      "parameters": [],
+      "return_ty_idx": 28
+    },
+    {
+      "tvm_method_id": 74550,
+      "name": "dealCodeHash",
+      "parameters": [],
+      "return_ty_idx": 1
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "constant",
+      "name": "E_INVALID_MESSAGE",
+      "err_code": 130
+    },
+    {
+      "kind": "constant",
+      "name": "E_BAD_FEE_PAYER",
+      "err_code": 1860
+    },
+    {
+      "kind": "constant",
+      "name": "E_INVITE_REQUIRED",
+      "err_code": 12193
+    },
+    {
+      "kind": "constant",
+      "name": "E_BAD_DELIVERY",
+      "err_code": 29268
+    },
+    {
+      "kind": "constant",
+      "name": "E_BAD_CURRENCY",
+      "err_code": 29500
+    },
+    {
+      "kind": "constant",
+      "name": "E_NOT_ENOUGH_TON",
+      "err_code": 29562
+    },
+    {
+      "kind": "constant",
+      "name": "E_ONLY_OWNER",
+      "err_code": 35499
+    },
+    {
+      "kind": "constant",
+      "name": "E_ATTACH_DEAL_AMOUNT",
+      "err_code": 36871
+    },
+    {
+      "kind": "constant",
+      "name": "E_EXECUTOR_IS_CUSTOMER",
+      "err_code": 42449
+    },
+    {
+      "kind": "constant",
+      "name": "E_JETTON_NOT_CONFIGURED",
+      "err_code": 43660
+    },
+    {
+      "kind": "constant",
+      "name": "E_FEE_TOO_HIGH",
+      "err_code": 46136
+    },
+    {
+      "kind": "constant",
+      "name": "E_AMOUNT_TOO_SMALL",
+      "err_code": 46710
+    },
+    {
+      "kind": "constant",
+      "name": "E_BAD_REVIEW",
+      "err_code": 51602
+    },
+    {
+      "kind": "constant",
+      "name": "E_ARBITER_PARTY",
+      "err_code": 54556
+    },
+    {
+      "kind": "constant",
+      "name": "E_PAUSED",
+      "err_code": 59457
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.5.0"
+}
