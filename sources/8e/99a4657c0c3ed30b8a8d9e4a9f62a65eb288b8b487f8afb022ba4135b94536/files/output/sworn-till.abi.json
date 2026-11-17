@@ -1,0 +1,764 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "SwornTill",
+  "version": "8",
+  "description": "Sworn till: one of the 255 fee receivers of a root",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "AttestFees"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TransferNotification"
+    },
+    {
+      "kind": "AliasRef",
+      "alias_name": "NotificationSender"
+    },
+    {
+      "kind": "addressOpt"
+    },
+    {
+      "kind": "remaining"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "FeeNotice"
+    },
+    {
+      "kind": "uintN",
+      "n": 256
+    },
+    {
+      "kind": "uintN",
+      "n": 8
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SetTillConfig"
+    },
+    {
+      "kind": "uintN",
+      "n": 16
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TillWithdrawJetton"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TillWithdrawGrams"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TillWithdrawNft"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Excesses"
+    },
+    {
+      "kind": "EnumRef",
+      "enum_name": "TillErrors"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TillStorage"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "JettonTransfer"
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 3
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "NftTransfer"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "FeesAttested"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TillInfo"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "FeeReceivedEvent"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "FeeDetails"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 34
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TillConfigChangedEvent"
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "enum",
+      "name": "TillErrors",
+      "ty_idx": 26,
+      "encoded_as_ty_idx": 21,
+      "members": [
+        {
+          "name": "NotRoot",
+          "value": "601"
+        },
+        {
+          "name": "FeeAboveCap",
+          "value": "602"
+        },
+        {
+          "name": "NotConfigured",
+          "value": "603"
+        },
+        {
+          "name": "WrongWorkchain",
+          "value": "604"
+        },
+        {
+          "name": "Reserve",
+          "value": "605"
+        },
+        {
+          "name": "InsufficientValue",
+          "value": "606"
+        },
+        {
+          "name": "UnknownOp",
+          "value": "65535"
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "FeeDetails",
+      "ty_idx": 34,
+      "fields": [
+        {
+          "name": "master",
+          "ty_idx": 15
+        },
+        {
+          "name": "wallet",
+          "ty_idx": 15
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "FeeReceivedEvent",
+      "ty_idx": 33,
+      "prefix": {
+        "prefix_num": 1416185426,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "index",
+          "ty_idx": 18
+        },
+        {
+          "name": "from",
+          "ty_idx": 15
+        },
+        {
+          "name": "kind",
+          "ty_idx": 19
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "value",
+          "ty_idx": 6
+        },
+        {
+          "name": "details",
+          "ty_idx": 35
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TillConfigChangedEvent",
+      "ty_idx": 36,
+      "prefix": {
+        "prefix_num": 1416184646,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "n",
+          "ty_idx": 19
+        },
+        {
+          "name": "enabled",
+          "ty_idx": 5
+        },
+        {
+          "name": "flatFee",
+          "ty_idx": 6
+        },
+        {
+          "name": "topUpFlatFee",
+          "ty_idx": 6
+        },
+        {
+          "name": "feeBps",
+          "ty_idx": 21
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TillInfo",
+      "ty_idx": 32,
+      "fields": [
+        {
+          "name": "version",
+          "ty_idx": 1
+        },
+        {
+          "name": "root",
+          "ty_idx": 7
+        },
+        {
+          "name": "n",
+          "ty_idx": 1
+        },
+        {
+          "name": "configured",
+          "ty_idx": 5
+        },
+        {
+          "name": "enabled",
+          "ty_idx": 5
+        },
+        {
+          "name": "flatFee",
+          "ty_idx": 1
+        },
+        {
+          "name": "topUpFlatFee",
+          "ty_idx": 1
+        },
+        {
+          "name": "feeBps",
+          "ty_idx": 1
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "JettonTransfer",
+      "ty_idx": 28,
+      "prefix": {
+        "prefix_num": 260734629,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "destination",
+          "ty_idx": 7
+        },
+        {
+          "name": "responseDestination",
+          "ty_idx": 15
+        },
+        {
+          "name": "customPayload",
+          "ty_idx": 29
+        },
+        {
+          "name": "forwardTonAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 16
+        }
+      ]
+    },
+    {
+      "kind": "alias",
+      "name": "NotificationSender",
+      "ty_idx": 14,
+      "target_ty_idx": 15,
+      "custom_pack_unpack": {
+        "pack_to_builder": true,
+        "unpack_from_slice": true
+      }
+    },
+    {
+      "kind": "struct",
+      "name": "TransferNotification",
+      "ty_idx": 13,
+      "prefix": {
+        "prefix_num": 1935855772,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "sender",
+          "ty_idx": 14
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 16
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Excesses",
+      "ty_idx": 25,
+      "prefix": {
+        "prefix_num": 3576854235,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "NftTransfer",
+      "ty_idx": 30,
+      "prefix": {
+        "prefix_num": 1607220500,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "newOwner",
+          "ty_idx": 7
+        },
+        {
+          "name": "responseDestination",
+          "ty_idx": 15
+        },
+        {
+          "name": "customPayload",
+          "ty_idx": 29
+        },
+        {
+          "name": "forwardAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 16
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "AttestFees",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 2965874957,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "FeesAttested",
+      "ty_idx": 31,
+      "prefix": {
+        "prefix_num": 86584893,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "enabled",
+          "ty_idx": 5
+        },
+        {
+          "name": "flatFee",
+          "ty_idx": 6
+        },
+        {
+          "name": "topUpFlatFee",
+          "ty_idx": 6
+        },
+        {
+          "name": "feeBps",
+          "ty_idx": 21
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "FeeNotice",
+      "ty_idx": 17,
+      "prefix": {
+        "prefix_num": 2138285727,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "index",
+          "ty_idx": 18
+        },
+        {
+          "name": "master",
+          "ty_idx": 15
+        },
+        {
+          "name": "kind",
+          "ty_idx": 19
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "SetTillConfig",
+      "ty_idx": 20,
+      "prefix": {
+        "prefix_num": 1360867771,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "enabled",
+          "ty_idx": 5
+        },
+        {
+          "name": "flatFee",
+          "ty_idx": 6
+        },
+        {
+          "name": "topUpFlatFee",
+          "ty_idx": 6
+        },
+        {
+          "name": "feeBps",
+          "ty_idx": 21
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TillWithdrawJetton",
+      "ty_idx": 22,
+      "prefix": {
+        "prefix_num": 2952723686,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "wallet",
+          "ty_idx": 7
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "destination",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TillWithdrawGrams",
+      "ty_idx": 23,
+      "prefix": {
+        "prefix_num": 1530914234,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "destination",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TillWithdrawNft",
+      "ty_idx": 24,
+      "prefix": {
+        "prefix_num": 1820245624,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "nft",
+          "ty_idx": 7
+        },
+        {
+          "name": "newOwner",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TillStorage",
+      "ty_idx": 27,
+      "fields": [
+        {
+          "name": "root",
+          "ty_idx": 7
+        },
+        {
+          "name": "n",
+          "ty_idx": 19
+        },
+        {
+          "name": "configured",
+          "ty_idx": 5
+        },
+        {
+          "name": "enabled",
+          "ty_idx": 5
+        },
+        {
+          "name": "flatFee",
+          "ty_idx": 6
+        },
+        {
+          "name": "topUpFlatFee",
+          "ty_idx": 6
+        },
+        {
+          "name": "feeBps",
+          "ty_idx": 21
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 27
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 13
+    },
+    {
+      "body_ty_idx": 17
+    },
+    {
+      "body_ty_idx": 20
+    },
+    {
+      "body_ty_idx": 22
+    },
+    {
+      "body_ty_idx": 23
+    },
+    {
+      "body_ty_idx": 24
+    },
+    {
+      "body_ty_idx": 25
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 28
+    },
+    {
+      "body_ty_idx": 30
+    },
+    {
+      "body_ty_idx": 25
+    },
+    {
+      "body_ty_idx": 31
+    }
+  ],
+  "emitted_events": [
+    {
+      "body_ty_idx": 33
+    },
+    {
+      "body_ty_idx": 36
+    }
+  ],
+  "get_methods": [
+    {
+      "tvm_method_id": 129983,
+      "name": "get_till_data",
+      "parameters": [],
+      "return_ty_idx": 32
+    },
+    {
+      "tvm_method_id": 111877,
+      "name": "get_answer_cost",
+      "parameters": [
+        {
+          "name": "workchain",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 79140,
+      "name": "get_sworn_version",
+      "parameters": [],
+      "return_ty_idx": 1
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "TillErrors.NotRoot",
+      "err_code": 601
+    },
+    {
+      "kind": "enum_member",
+      "name": "TillErrors.FeeAboveCap",
+      "err_code": 602
+    },
+    {
+      "kind": "enum_member",
+      "name": "TillErrors.NotConfigured",
+      "err_code": 603
+    },
+    {
+      "kind": "enum_member",
+      "name": "TillErrors.WrongWorkchain",
+      "err_code": 604
+    },
+    {
+      "kind": "enum_member",
+      "name": "TillErrors.Reserve",
+      "err_code": 605
+    },
+    {
+      "kind": "enum_member",
+      "name": "TillErrors.InsufficientValue",
+      "err_code": 606
+    },
+    {
+      "kind": "enum_member",
+      "name": "TillErrors.UnknownOp",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.5.0"
+}
