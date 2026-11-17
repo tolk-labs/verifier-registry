@@ -1,0 +1,2083 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "SwornGramLockSoulbound",
+  "version": "8",
+  "description": "Sworn lock of GRAM, soulbound kind: a TEP-62 NFT and TEP-85 SBT that holds the locked GRAM",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "FeesAttested"
+    },
+    {
+      "kind": "uintN",
+      "n": 16
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TransferNotification"
+    },
+    {
+      "kind": "AliasRef",
+      "alias_name": "NotificationSender"
+    },
+    {
+      "kind": "addressOpt"
+    },
+    {
+      "kind": "remaining"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "TopUpGram"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ClaimGram"
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 3
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ExtendLock"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Schedule"
+    },
+    {
+      "kind": "uintN",
+      "n": 48
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ClaimForeign"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ClaimForeignNft"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SweepGram"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RetryFunding"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CancelCreation"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "NftTransfer"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "GetStaticData"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ProveOwnership"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RequestOwner"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Destroy"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Revoke"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "StorageTopUp"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RequestLockState"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "InitGramLock"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LockTerms"
+    },
+    {
+      "kind": "uintN",
+      "n": 8
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LockParties"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 40
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 38
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Excesses"
+    },
+    {
+      "kind": "EnumRef",
+      "enum_name": "LockErrors"
+    },
+    {
+      "kind": "EnumRef",
+      "enum_name": "GramErrors"
+    },
+    {
+      "kind": "uintN",
+      "n": 9
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "GramLockStorage"
+    },
+    {
+      "kind": "uintN",
+      "n": 256
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "GramLockBalances"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 49
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "GramLockLive"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 51
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LockInitData"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "JettonTransfer"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "AttestFees"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "FeeNotice"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OwnershipAssigned"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ReportStaticData"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OwnershipProof"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OwnerInfo"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OwnershipProofBounced"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LockState"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LockStateParties"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 63
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        5,
+        1,
+        7,
+        16,
+        3
+      ]
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LockInfo"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CustodyInfo"
+    },
+    {
+      "kind": "addressAny"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LockCreatedEvent"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LockCancelledEvent"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LockFundedEvent"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LockToppedUpEvent"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LockClaimedEvent"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LockExtendedEvent"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "LockSweptEvent"
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "enum",
+      "name": "GramErrors",
+      "ty_idx": 45,
+      "encoded_as_ty_idx": 46,
+      "members": [
+        {
+          "name": "NotParty",
+          "value": "423"
+        },
+        {
+          "name": "Finished",
+          "value": "424"
+        },
+        {
+          "name": "BadComment",
+          "value": "425"
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "GramLockBalances",
+      "ty_idx": 49,
+      "fields": [
+        {
+          "name": "totalAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "claimed",
+          "ty_idx": 6
+        },
+        {
+          "name": "lastDepositLt",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "GramLockLive",
+      "ty_idx": 51,
+      "fields": [
+        {
+          "name": "createdAt",
+          "ty_idx": 23
+        },
+        {
+          "name": "permanent",
+          "ty_idx": 5
+        },
+        {
+          "name": "schedule",
+          "ty_idx": 22
+        },
+        {
+          "name": "flatFee",
+          "ty_idx": 6
+        },
+        {
+          "name": "topUpFlatFee",
+          "ty_idx": 6
+        },
+        {
+          "name": "feeBps",
+          "ty_idx": 13
+        },
+        {
+          "name": "till",
+          "ty_idx": 7
+        },
+        {
+          "name": "cancelReason",
+          "ty_idx": 39
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "GramLockStorage",
+      "ty_idx": 47,
+      "fields": [
+        {
+          "name": "collection",
+          "ty_idx": 7
+        },
+        {
+          "name": "index",
+          "ty_idx": 48
+        },
+        {
+          "name": "status",
+          "ty_idx": 39
+        },
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "lastTx",
+          "ty_idx": 23
+        },
+        {
+          "name": "balances",
+          "ty_idx": 50
+        },
+        {
+          "name": "terms",
+          "ty_idx": 42
+        },
+        {
+          "name": "live",
+          "ty_idx": 52
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": "LockErrors",
+      "ty_idx": 44,
+      "encoded_as_ty_idx": 13,
+      "members": [
+        {
+          "name": "NotOwner",
+          "value": "401"
+        },
+        {
+          "name": "NotFunded",
+          "value": "402"
+        },
+        {
+          "name": "ZeroAmount",
+          "value": "403"
+        },
+        {
+          "name": "AmountTooHigh",
+          "value": "404"
+        },
+        {
+          "name": "InsufficientValue",
+          "value": "405"
+        },
+        {
+          "name": "InvalidExtension",
+          "value": "406"
+        },
+        {
+          "name": "Soulbound",
+          "value": "407"
+        },
+        {
+          "name": "WrongWorkchain",
+          "value": "408"
+        },
+        {
+          "name": "ForbiddenAccount",
+          "value": "409"
+        },
+        {
+          "name": "NotSupported",
+          "value": "410"
+        },
+        {
+          "name": "BadStatus",
+          "value": "411"
+        },
+        {
+          "name": "NotFinished",
+          "value": "412"
+        },
+        {
+          "name": "BadTerms",
+          "value": "413"
+        },
+        {
+          "name": "BadTillCode",
+          "value": "414"
+        },
+        {
+          "name": "TooEarly",
+          "value": "415"
+        },
+        {
+          "name": "NotCreator",
+          "value": "416"
+        },
+        {
+          "name": "CreateExpired",
+          "value": "417"
+        },
+        {
+          "name": "PayloadTooLarge",
+          "value": "418"
+        },
+        {
+          "name": "AlreadyCreated",
+          "value": "419"
+        },
+        {
+          "name": "MissingForwardPayload",
+          "value": "420"
+        },
+        {
+          "name": "UnknownOp",
+          "value": "65535"
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "LockCreatedEvent",
+      "ty_idx": 69,
+      "prefix": {
+        "prefix_num": 1282098002,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "index",
+          "ty_idx": 48
+        },
+        {
+          "name": "jettonWallet",
+          "ty_idx": 16
+        },
+        {
+          "name": "terms",
+          "ty_idx": 42
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "LockFundedEvent",
+      "ty_idx": 71,
+      "prefix": {
+        "prefix_num": 1282098773,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "index",
+          "ty_idx": 48
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "fee",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "LockToppedUpEvent",
+      "ty_idx": 72,
+      "prefix": {
+        "prefix_num": 1282102357,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "index",
+          "ty_idx": 48
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "fee",
+          "ty_idx": 6
+        },
+        {
+          "name": "from",
+          "ty_idx": 7
+        },
+        {
+          "name": "prevDepositLt",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "LockClaimedEvent",
+      "ty_idx": 73,
+      "prefix": {
+        "prefix_num": 1282097996,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "index",
+          "ty_idx": 48
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "destination",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "LockSweptEvent",
+      "ty_idx": 75,
+      "prefix": {
+        "prefix_num": 1282102103,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "index",
+          "ty_idx": 48
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "destination",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "LockExtendedEvent",
+      "ty_idx": 74,
+      "prefix": {
+        "prefix_num": 1282098520,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "index",
+          "ty_idx": 48
+        },
+        {
+          "name": "permanent",
+          "ty_idx": 5
+        },
+        {
+          "name": "schedule",
+          "ty_idx": 22
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "LockCancelledEvent",
+      "ty_idx": 70,
+      "prefix": {
+        "prefix_num": 1282097988,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "index",
+          "ty_idx": 48
+        },
+        {
+          "name": "reason",
+          "ty_idx": 39
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "LockInfo",
+      "ty_idx": 66,
+      "fields": [
+        {
+          "name": "status",
+          "ty_idx": 1
+        },
+        {
+          "name": "index",
+          "ty_idx": 1
+        },
+        {
+          "name": "collection",
+          "ty_idx": 7
+        },
+        {
+          "name": "owner",
+          "ty_idx": 16
+        },
+        {
+          "name": "jettonMaster",
+          "ty_idx": 16
+        },
+        {
+          "name": "jettonWallet",
+          "ty_idx": 16
+        },
+        {
+          "name": "creator",
+          "ty_idx": 16
+        },
+        {
+          "name": "createdAt",
+          "ty_idx": 1
+        },
+        {
+          "name": "cliff",
+          "ty_idx": 1
+        },
+        {
+          "name": "end",
+          "ty_idx": 1
+        },
+        {
+          "name": "step",
+          "ty_idx": 1
+        },
+        {
+          "name": "initialBps",
+          "ty_idx": 1
+        },
+        {
+          "name": "permanent",
+          "ty_idx": 5
+        },
+        {
+          "name": "totalAmount",
+          "ty_idx": 1
+        },
+        {
+          "name": "expectedAmount",
+          "ty_idx": 1
+        },
+        {
+          "name": "claimed",
+          "ty_idx": 1
+        },
+        {
+          "name": "freeBalance",
+          "ty_idx": 1
+        },
+        {
+          "name": "claimableNow",
+          "ty_idx": 1
+        },
+        {
+          "name": "topUpFlatFee",
+          "ty_idx": 1
+        },
+        {
+          "name": "feeBps",
+          "ty_idx": 1
+        },
+        {
+          "name": "version",
+          "ty_idx": 1
+        },
+        {
+          "name": "lastDepositLt",
+          "ty_idx": 1
+        },
+        {
+          "name": "createBefore",
+          "ty_idx": 1
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CustodyInfo",
+      "ty_idx": 67,
+      "fields": [
+        {
+          "name": "till",
+          "ty_idx": 16
+        },
+        {
+          "name": "feesAttested",
+          "ty_idx": 5
+        },
+        {
+          "name": "pendingAmount",
+          "ty_idx": 1
+        },
+        {
+          "name": "feeOwed",
+          "ty_idx": 1
+        },
+        {
+          "name": "flatFee",
+          "ty_idx": 1
+        },
+        {
+          "name": "setupExtra",
+          "ty_idx": 1
+        },
+        {
+          "name": "setupDeadline",
+          "ty_idx": 1
+        },
+        {
+          "name": "cancelReason",
+          "ty_idx": 1
+        },
+        {
+          "name": "sweepFrom",
+          "ty_idx": 1
+        },
+        {
+          "name": "recoverFrom",
+          "ty_idx": 1
+        },
+        {
+          "name": "walletPaidUntil",
+          "ty_idx": 1
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "LockInitData",
+      "ty_idx": 53,
+      "fields": [
+        {
+          "name": "collection",
+          "ty_idx": 7
+        },
+        {
+          "name": "index",
+          "ty_idx": 48
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "JettonTransfer",
+      "ty_idx": 54,
+      "prefix": {
+        "prefix_num": 260734629,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "destination",
+          "ty_idx": 7
+        },
+        {
+          "name": "responseDestination",
+          "ty_idx": 16
+        },
+        {
+          "name": "customPayload",
+          "ty_idx": 20
+        },
+        {
+          "name": "forwardTonAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 17
+        }
+      ]
+    },
+    {
+      "kind": "alias",
+      "name": "NotificationSender",
+      "ty_idx": 15,
+      "target_ty_idx": 16,
+      "custom_pack_unpack": {
+        "pack_to_builder": true,
+        "unpack_from_slice": true
+      }
+    },
+    {
+      "kind": "struct",
+      "name": "TransferNotification",
+      "ty_idx": 14,
+      "prefix": {
+        "prefix_num": 1935855772,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "sender",
+          "ty_idx": 15
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 17
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Excesses",
+      "ty_idx": 43,
+      "prefix": {
+        "prefix_num": 3576854235,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "NftTransfer",
+      "ty_idx": 29,
+      "prefix": {
+        "prefix_num": 1607220500,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "newOwner",
+          "ty_idx": 7
+        },
+        {
+          "name": "responseDestination",
+          "ty_idx": 16
+        },
+        {
+          "name": "customPayload",
+          "ty_idx": 20
+        },
+        {
+          "name": "forwardAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 17
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "OwnershipAssigned",
+      "ty_idx": 57,
+      "prefix": {
+        "prefix_num": 85167505,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "prevOwner",
+          "ty_idx": 7
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 17
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "GetStaticData",
+      "ty_idx": 30,
+      "prefix": {
+        "prefix_num": 801842850,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ReportStaticData",
+      "ty_idx": 58,
+      "prefix": {
+        "prefix_num": 2339837749,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "index",
+          "ty_idx": 48
+        },
+        {
+          "name": "collection",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ProveOwnership",
+      "ty_idx": 31,
+      "prefix": {
+        "prefix_num": 81711432,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "dest",
+          "ty_idx": 7
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 3
+        },
+        {
+          "name": "withContent",
+          "ty_idx": 5
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "OwnershipProof",
+      "ty_idx": 59,
+      "prefix": {
+        "prefix_num": 86296494,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "itemId",
+          "ty_idx": 48
+        },
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "data",
+          "ty_idx": 3
+        },
+        {
+          "name": "revokedAt",
+          "ty_idx": 11
+        },
+        {
+          "name": "content",
+          "ty_idx": 20
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "RequestOwner",
+      "ty_idx": 32,
+      "prefix": {
+        "prefix_num": 3502489578,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "dest",
+          "ty_idx": 7
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 3
+        },
+        {
+          "name": "withContent",
+          "ty_idx": 5
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "OwnerInfo",
+      "ty_idx": 60,
+      "prefix": {
+        "prefix_num": 232130531,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "itemId",
+          "ty_idx": 48
+        },
+        {
+          "name": "initiator",
+          "ty_idx": 7
+        },
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "data",
+          "ty_idx": 3
+        },
+        {
+          "name": "revokedAt",
+          "ty_idx": 11
+        },
+        {
+          "name": "content",
+          "ty_idx": 20
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "OwnershipProofBounced",
+      "ty_idx": 61,
+      "prefix": {
+        "prefix_num": 3247343314,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Destroy",
+      "ty_idx": 33,
+      "prefix": {
+        "prefix_num": 520377210,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Revoke",
+      "ty_idx": 34,
+      "prefix": {
+        "prefix_num": 1871312355,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Schedule",
+      "ty_idx": 22,
+      "fields": [
+        {
+          "name": "cliff",
+          "ty_idx": 23
+        },
+        {
+          "name": "end",
+          "ty_idx": 23
+        },
+        {
+          "name": "step",
+          "ty_idx": 9
+        },
+        {
+          "name": "initialBps",
+          "ty_idx": 13
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "LockParties",
+      "ty_idx": 40,
+      "fields": [
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "creator",
+          "ty_idx": 7
+        },
+        {
+          "name": "salt",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "LockTerms",
+      "ty_idx": 38,
+      "fields": [
+        {
+          "name": "version",
+          "ty_idx": 39
+        },
+        {
+          "name": "soulbound",
+          "ty_idx": 5
+        },
+        {
+          "name": "permanent",
+          "ty_idx": 5
+        },
+        {
+          "name": "jettonMaster",
+          "ty_idx": 16
+        },
+        {
+          "name": "schedule",
+          "ty_idx": 22
+        },
+        {
+          "name": "expectedAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "maxFlatFee",
+          "ty_idx": 6
+        },
+        {
+          "name": "maxTopUpFlatFee",
+          "ty_idx": 6
+        },
+        {
+          "name": "maxFeeBps",
+          "ty_idx": 13
+        },
+        {
+          "name": "createBefore",
+          "ty_idx": 23
+        },
+        {
+          "name": "parties",
+          "ty_idx": 41
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "RetryFunding",
+      "ty_idx": 27,
+      "prefix": {
+        "prefix_num": 2139197445,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CancelCreation",
+      "ty_idx": 28,
+      "prefix": {
+        "prefix_num": 135810726,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "StorageTopUp",
+      "ty_idx": 35,
+      "prefix": {
+        "prefix_num": 2584021279,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "RequestLockState",
+      "ty_idx": 36,
+      "prefix": {
+        "prefix_num": 869890461,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "LockStateParties",
+      "ty_idx": 63,
+      "fields": [
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "jettonMaster",
+          "ty_idx": 16
+        },
+        {
+          "name": "jettonWallet",
+          "ty_idx": 16
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "LockState",
+      "ty_idx": 62,
+      "prefix": {
+        "prefix_num": 110776235,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "index",
+          "ty_idx": 48
+        },
+        {
+          "name": "status",
+          "ty_idx": 39
+        },
+        {
+          "name": "permanent",
+          "ty_idx": 5
+        },
+        {
+          "name": "schedule",
+          "ty_idx": 22
+        },
+        {
+          "name": "totalAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "claimed",
+          "ty_idx": 6
+        },
+        {
+          "name": "freeBalance",
+          "ty_idx": 6
+        },
+        {
+          "name": "parties",
+          "ty_idx": 64
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ExtendLock",
+      "ty_idx": 21,
+      "prefix": {
+        "prefix_num": 954310646,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "makePermanent",
+          "ty_idx": 5
+        },
+        {
+          "name": "schedule",
+          "ty_idx": 22
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ClaimForeign",
+      "ty_idx": 24,
+      "prefix": {
+        "prefix_num": 1837493206,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "wallet",
+          "ty_idx": 7
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "destination",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ClaimForeignNft",
+      "ty_idx": 25,
+      "prefix": {
+        "prefix_num": 1205073705,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "nft",
+          "ty_idx": 7
+        },
+        {
+          "name": "newOwner",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "InitGramLock",
+      "ty_idx": 37,
+      "prefix": {
+        "prefix_num": 1927908952,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "terms",
+          "ty_idx": 42
+        },
+        {
+          "name": "tillCode",
+          "ty_idx": 3
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "TopUpGram",
+      "ty_idx": 18,
+      "prefix": {
+        "prefix_num": 1044314361,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ClaimGram",
+      "ty_idx": 19,
+      "prefix": {
+        "prefix_num": 864538986,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        },
+        {
+          "name": "destination",
+          "ty_idx": 7
+        },
+        {
+          "name": "comment",
+          "ty_idx": 20
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "SweepGram",
+      "ty_idx": 26,
+      "prefix": {
+        "prefix_num": 3323918821,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "destination",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "AttestFees",
+      "ty_idx": 55,
+      "prefix": {
+        "prefix_num": 2965874957,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "FeesAttested",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 86584893,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "enabled",
+          "ty_idx": 5
+        },
+        {
+          "name": "flatFee",
+          "ty_idx": 6
+        },
+        {
+          "name": "topUpFlatFee",
+          "ty_idx": 6
+        },
+        {
+          "name": "feeBps",
+          "ty_idx": 13
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "FeeNotice",
+      "ty_idx": 56,
+      "prefix": {
+        "prefix_num": 2138285727,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "index",
+          "ty_idx": 48
+        },
+        {
+          "name": "master",
+          "ty_idx": 16
+        },
+        {
+          "name": "kind",
+          "ty_idx": 39
+        },
+        {
+          "name": "amount",
+          "ty_idx": 6
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 47,
+    "storage_at_deployment_ty_idx": 53
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 14
+    },
+    {
+      "body_ty_idx": 18
+    },
+    {
+      "body_ty_idx": 19
+    },
+    {
+      "body_ty_idx": 21
+    },
+    {
+      "body_ty_idx": 24
+    },
+    {
+      "body_ty_idx": 25
+    },
+    {
+      "body_ty_idx": 26
+    },
+    {
+      "body_ty_idx": 27
+    },
+    {
+      "body_ty_idx": 28
+    },
+    {
+      "body_ty_idx": 29
+    },
+    {
+      "body_ty_idx": 30
+    },
+    {
+      "body_ty_idx": 31
+    },
+    {
+      "body_ty_idx": 32
+    },
+    {
+      "body_ty_idx": 33
+    },
+    {
+      "body_ty_idx": 34
+    },
+    {
+      "body_ty_idx": 35
+    },
+    {
+      "body_ty_idx": 36
+    },
+    {
+      "body_ty_idx": 37
+    },
+    {
+      "body_ty_idx": 43
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 54
+    },
+    {
+      "body_ty_idx": 55
+    },
+    {
+      "body_ty_idx": 56
+    },
+    {
+      "body_ty_idx": 43
+    },
+    {
+      "body_ty_idx": 57
+    },
+    {
+      "body_ty_idx": 58
+    },
+    {
+      "body_ty_idx": 59
+    },
+    {
+      "body_ty_idx": 60
+    },
+    {
+      "body_ty_idx": 29
+    },
+    {
+      "body_ty_idx": 61
+    },
+    {
+      "body_ty_idx": 3
+    },
+    {
+      "body_ty_idx": 62
+    }
+  ],
+  "emitted_events": [
+    {
+      "body_ty_idx": 69
+    },
+    {
+      "body_ty_idx": 70
+    },
+    {
+      "body_ty_idx": 71
+    },
+    {
+      "body_ty_idx": 72
+    },
+    {
+      "body_ty_idx": 73
+    },
+    {
+      "body_ty_idx": 74
+    },
+    {
+      "body_ty_idx": 75
+    }
+  ],
+  "get_methods": [
+    {
+      "tvm_method_id": 102351,
+      "name": "get_nft_data",
+      "parameters": [],
+      "return_ty_idx": 65
+    },
+    {
+      "tvm_method_id": 82909,
+      "name": "get_lock_data",
+      "parameters": [],
+      "return_ty_idx": 66
+    },
+    {
+      "tvm_method_id": 73996,
+      "name": "get_custody_data",
+      "parameters": [],
+      "return_ty_idx": 67
+    },
+    {
+      "tvm_method_id": 119349,
+      "name": "get_lock_terms",
+      "parameters": [],
+      "return_ty_idx": 3
+    },
+    {
+      "tvm_method_id": 69921,
+      "name": "get_unlocked_at",
+      "parameters": [
+        {
+          "name": "t",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 106361,
+      "name": "get_claimable",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 94258,
+      "name": "get_claim_cost",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 120231,
+      "name": "get_claim_cost_with_comment",
+      "parameters": [
+        {
+          "name": "comment",
+          "ty_idx": 3
+        }
+      ],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 127678,
+      "name": "get_top_up_cost",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 117657,
+      "name": "get_sweep_gram_cost",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 90734,
+      "name": "get_sweep_gram_amount",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 104329,
+      "name": "get_claim_foreign_cost",
+      "parameters": [
+        {
+          "name": "walletWorkchain",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 122008,
+      "name": "get_extend_cost",
+      "parameters": [
+        {
+          "name": "permanent",
+          "ty_idx": 5
+        },
+        {
+          "name": "end",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 124468,
+      "name": "get_cancel_cost",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 70676,
+      "name": "get_retry_funding_cost",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 111877,
+      "name": "get_answer_cost",
+      "parameters": [
+        {
+          "name": "workchain",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 96990,
+      "name": "get_answer_cost_with_payload",
+      "parameters": [
+        {
+          "name": "workchain",
+          "ty_idx": 1
+        },
+        {
+          "name": "withContent",
+          "ty_idx": 5
+        },
+        {
+          "name": "payload",
+          "ty_idx": 3
+        }
+      ],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 79140,
+      "name": "get_sworn_version",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 84760,
+      "name": "get_authority_address",
+      "parameters": [],
+      "return_ty_idx": 68
+    },
+    {
+      "tvm_method_id": 97667,
+      "name": "get_revoked_time",
+      "parameters": [],
+      "return_ty_idx": 1
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "LockErrors.NotOwner",
+      "err_code": 401
+    },
+    {
+      "kind": "enum_member",
+      "name": "LockErrors.NotFunded",
+      "err_code": 402
+    },
+    {
+      "kind": "enum_member",
+      "name": "LockErrors.ZeroAmount",
+      "err_code": 403
+    },
+    {
+      "kind": "enum_member",
+      "name": "LockErrors.AmountTooHigh",
+      "err_code": 404
+    },
+    {
+      "kind": "enum_member",
+      "name": "LockErrors.InsufficientValue",
+      "err_code": 405
+    },
+    {
+      "kind": "enum_member",
+      "name": "LockErrors.InvalidExtension",
+      "err_code": 406
+    },
+    {
+      "kind": "enum_member",
+      "name": "LockErrors.Soulbound",
+      "err_code": 407
+    },
+    {
+      "kind": "enum_member",
+      "name": "LockErrors.WrongWorkchain",
+      "err_code": 408
+    },
+    {
+      "kind": "enum_member",
+      "name": "LockErrors.ForbiddenAccount",
+      "err_code": 409
+    },
+    {
+      "kind": "enum_member",
+      "name": "LockErrors.NotSupported",
+      "err_code": 410
+    },
+    {
+      "kind": "enum_member",
+      "name": "LockErrors.BadStatus",
+      "err_code": 411
+    },
+    {
+      "kind": "enum_member",
+      "name": "LockErrors.NotFinished",
+      "err_code": 412
+    },
+    {
+      "kind": "enum_member",
+      "name": "LockErrors.BadTerms",
+      "err_code": 413
+    },
+    {
+      "kind": "enum_member",
+      "name": "LockErrors.BadTillCode",
+      "err_code": 414
+    },
+    {
+      "kind": "enum_member",
+      "name": "LockErrors.TooEarly",
+      "err_code": 415
+    },
+    {
+      "kind": "enum_member",
+      "name": "LockErrors.NotCreator",
+      "err_code": 416
+    },
+    {
+      "kind": "enum_member",
+      "name": "LockErrors.CreateExpired",
+      "err_code": 417
+    },
+    {
+      "kind": "enum_member",
+      "name": "LockErrors.PayloadTooLarge",
+      "err_code": 418
+    },
+    {
+      "kind": "enum_member",
+      "name": "LockErrors.AlreadyCreated",
+      "err_code": 419
+    },
+    {
+      "kind": "enum_member",
+      "name": "LockErrors.MissingForwardPayload",
+      "err_code": 420
+    },
+    {
+      "kind": "enum_member",
+      "name": "GramErrors.NotParty",
+      "err_code": 423
+    },
+    {
+      "kind": "enum_member",
+      "name": "GramErrors.Finished",
+      "err_code": 424
+    },
+    {
+      "kind": "enum_member",
+      "name": "GramErrors.BadComment",
+      "err_code": 425
+    },
+    {
+      "kind": "enum_member",
+      "name": "LockErrors.UnknownOp",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.5.0"
+}
