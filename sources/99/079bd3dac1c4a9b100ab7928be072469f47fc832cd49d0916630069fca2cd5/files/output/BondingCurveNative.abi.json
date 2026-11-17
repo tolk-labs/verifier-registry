@@ -1,0 +1,296 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        6,
+        6,
+        6,
+        5,
+        7,
+        7,
+        7
+      ]
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        5,
+        7,
+        6,
+        1,
+        7
+      ]
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        7,
+        7,
+        5
+      ]
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        5,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        6,
+        6,
+        1,
+        1
+      ]
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        5,
+        5,
+        5
+      ]
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [],
+  "storage": {},
+  "incoming_messages": [],
+  "incoming_external": [],
+  "outgoing_messages": [],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 79150,
+      "name": "get_curve_data",
+      "parameters": [],
+      "return_ty_idx": 12
+    },
+    {
+      "tvm_method_id": 97082,
+      "name": "get_graduation_data",
+      "parameters": [],
+      "return_ty_idx": 13
+    },
+    {
+      "tvm_method_id": 124600,
+      "name": "get_vaults",
+      "parameters": [],
+      "return_ty_idx": 14
+    },
+    {
+      "tvm_method_id": 117680,
+      "name": "get_holder_pool",
+      "parameters": [],
+      "return_ty_idx": 6
+    },
+    {
+      "tvm_method_id": 93263,
+      "name": "get_creator_pool",
+      "parameters": [],
+      "return_ty_idx": 6
+    },
+    {
+      "tvm_method_id": 74197,
+      "name": "get_fee_to",
+      "parameters": [],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 69132,
+      "name": "get_holder_payout",
+      "parameters": [],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 106791,
+      "name": "get_ops_multisig",
+      "parameters": [],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 115050,
+      "name": "get_self_gas",
+      "parameters": [],
+      "return_ty_idx": 15
+    },
+    {
+      "tvm_method_id": 69002,
+      "name": "get_lp_relay_held",
+      "parameters": [],
+      "return_ty_idx": 6
+    },
+    {
+      "tvm_method_id": 107322,
+      "name": "get_lp_relay_state",
+      "parameters": [],
+      "return_ty_idx": 16
+    },
+    {
+      "tvm_method_id": 130256,
+      "name": "get_lp_pool",
+      "parameters": [],
+      "return_ty_idx": 6
+    },
+    {
+      "tvm_method_id": 97574,
+      "name": "get_quote_out",
+      "parameters": [
+        {
+          "name": "memeIn",
+          "ty_idx": 6
+        }
+      ],
+      "return_ty_idx": 6
+    },
+    {
+      "tvm_method_id": 122700,
+      "name": "get_meme_out",
+      "parameters": [
+        {
+          "name": "quoteIn",
+          "ty_idx": 6
+        }
+      ],
+      "return_ty_idx": 6
+    },
+    {
+      "tvm_method_id": 85305,
+      "name": "get_fee_bps",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 77376,
+      "name": "get_seed_state",
+      "parameters": [],
+      "return_ty_idx": 17
+    },
+    {
+      "tvm_method_id": 90859,
+      "name": "get_fee_config",
+      "parameters": [],
+      "return_ty_idx": 18
+    },
+    {
+      "tvm_method_id": 88793,
+      "name": "get_round31_state",
+      "parameters": [],
+      "return_ty_idx": 19
+    },
+    {
+      "tvm_method_id": 103266,
+      "name": "get_whale_cap",
+      "parameters": [],
+      "return_ty_idx": 5
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "constant",
+      "name": "ERR_NOT_MASTER",
+      "err_code": 200
+    },
+    {
+      "kind": "constant",
+      "name": "ERR_GRADUATED",
+      "err_code": 204
+    },
+    {
+      "kind": "constant",
+      "name": "ERR_NOT_READY",
+      "err_code": 205
+    },
+    {
+      "kind": "constant",
+      "name": "ERR_NOT_ALLOWED",
+      "err_code": 206
+    },
+    {
+      "kind": "constant",
+      "name": "ERR_NOTHING",
+      "err_code": 207
+    },
+    {
+      "kind": "constant",
+      "name": "ERR_ALREADY_INIT",
+      "err_code": 208
+    },
+    {
+      "kind": "constant",
+      "name": "ERR_LOW_GAS",
+      "err_code": 209
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.4.2"
+}
