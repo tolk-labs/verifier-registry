@@ -1,0 +1,24 @@
+{
+  "code_hash": "53284191a943e739e4f963c51edfefaabd20b918a63c92fae7c1adc36ddb7319",
+  "source_bundle_hash": "ec0212cf70d57a4d079f8e43bd33569ce8401835f901444d50bc16c714bc7638",
+  "payment_tx_hash": "a252dceef0a5fd55f17f1ecb1ed40b300349adcd91adfc34cb8d2d88b651bb3d",
+  "verified_at": 1795035616,
+  "compiler": {
+    "language": "tolk",
+    "version": "1.2.0",
+    "entrypoint": "ckj-jetton-wallet.tolk",
+    "params": {
+      "compiler_version": "1.2.0"
+    }
+  },
+  "source_map": null,
+  "files": [
+    {
+      "path": "ckj-jetton-wallet.tolk",
+      "content_hash": "14ad9e755c35cc7ac7f2aef6cf497311fdb954d7413d7c63b2c278fc1e5c6cf7",
+      "include_in_command": true,
+      "is_stdlib": false,
+      "has_include_directives": true
+    }
+  ]
+}
