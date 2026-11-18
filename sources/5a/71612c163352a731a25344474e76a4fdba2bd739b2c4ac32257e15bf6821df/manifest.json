@@ -1,0 +1,24 @@
+{
+  "code_hash": "5a71612c163352a731a25344474e76a4fdba2bd739b2c4ac32257e15bf6821df",
+  "source_bundle_hash": "9849ef93b77e7ac35e9ccbb839baaf41461c32c9e6e811fabe2673cf06c52b45",
+  "payment_tx_hash": "99a469d053f26b5db2eca75714e2515441851baca72058852243ce552a986504",
+  "verified_at": 1795035610,
+  "compiler": {
+    "language": "tolk",
+    "version": "1.2.0",
+    "entrypoint": "ckj-jetton-minter.tolk",
+    "params": {
+      "compiler_version": "1.2.0"
+    }
+  },
+  "source_map": null,
+  "files": [
+    {
+      "path": "ckj-jetton-minter.tolk",
+      "content_hash": "d93c8962b646d2de7a651e5e729a0734301e6685c9643e185bbcd1d85d6ceee5",
+      "include_in_command": true,
+      "is_stdlib": false,
+      "has_include_directives": true
+    }
+  ]
+}
