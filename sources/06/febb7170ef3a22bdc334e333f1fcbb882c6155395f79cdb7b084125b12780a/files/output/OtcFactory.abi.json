@@ -1,0 +1,369 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "OtcFactory",
+  "author": "GroypFi",
+  "version": "2.0.0",
+  "description": "GroypFi OTC desk factory: deploys isolated sell orders; admin can only pause new orders or raise the cap",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CreateOrder"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OrderRequest"
+    },
+    {
+      "kind": "addressOpt"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 13
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SetPaused"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RaiseCap"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ProposeAdmin"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ClaimAdmin"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "FactoryStorage"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "InitOrder"
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "OrderRequest",
+      "ty_idx": 13,
+      "fields": [
+        {
+          "name": "jettonMaster",
+          "ty_idx": 7
+        },
+        {
+          "name": "amountTotal",
+          "ty_idx": 6
+        },
+        {
+          "name": "totalPrice",
+          "ty_idx": 6
+        },
+        {
+          "name": "minFill",
+          "ty_idx": 6
+        },
+        {
+          "name": "privateTaker",
+          "ty_idx": 14
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CreateOrder",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 1330922289,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "nonce",
+          "ty_idx": 11
+        },
+        {
+          "name": "request",
+          "ty_idx": 15
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "InitOrder",
+      "ty_idx": 21,
+      "prefix": {
+        "prefix_num": 1330922290,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "feeWallet",
+          "ty_idx": 7
+        },
+        {
+          "name": "request",
+          "ty_idx": 15
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "SetPaused",
+      "ty_idx": 16,
+      "prefix": {
+        "prefix_num": 1330922305,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "paused",
+          "ty_idx": 5
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "RaiseCap",
+      "ty_idx": 17,
+      "prefix": {
+        "prefix_num": 1330922306,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "newMaxOrderNano",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ProposeAdmin",
+      "ty_idx": 18,
+      "prefix": {
+        "prefix_num": 1330922307,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "newAdmin",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ClaimAdmin",
+      "ty_idx": 19,
+      "prefix": {
+        "prefix_num": 1330922308,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "FactoryStorage",
+      "ty_idx": 20,
+      "fields": [
+        {
+          "name": "admin",
+          "ty_idx": 7
+        },
+        {
+          "name": "pendingAdmin",
+          "ty_idx": 14
+        },
+        {
+          "name": "feeWallet",
+          "ty_idx": 7
+        },
+        {
+          "name": "maxOrderNano",
+          "ty_idx": 6
+        },
+        {
+          "name": "paused",
+          "ty_idx": 5
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 20
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 16
+    },
+    {
+      "body_ty_idx": 17
+    },
+    {
+      "body_ty_idx": 18
+    },
+    {
+      "body_ty_idx": 19
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 21
+    }
+  ],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 76063,
+      "name": "get_factory_data",
+      "parameters": [],
+      "return_ty_idx": 20
+    },
+    {
+      "tvm_method_id": 111399,
+      "name": "get_order_address",
+      "parameters": [
+        {
+          "name": "maker",
+          "ty_idx": 7
+        },
+        {
+          "name": "nonce",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 69513,
+      "name": "get_order_code_hash",
+      "parameters": [],
+      "return_ty_idx": 1
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "OtcErrors.NotAdmin",
+      "err_code": 403
+    },
+    {
+      "kind": "enum_member",
+      "name": "OtcErrors.BadAmount",
+      "err_code": 410
+    },
+    {
+      "kind": "enum_member",
+      "name": "OtcErrors.NotEnoughValue",
+      "err_code": 412
+    },
+    {
+      "kind": "enum_member",
+      "name": "OtcErrors.Paused",
+      "err_code": 413
+    },
+    {
+      "kind": "enum_member",
+      "name": "OtcErrors.AboveCap",
+      "err_code": 414
+    },
+    {
+      "kind": "enum_member",
+      "name": "OtcErrors.BelowMinPrice",
+      "err_code": 415
+    },
+    {
+      "kind": "enum_member",
+      "name": "OtcErrors.WrongWorkchain",
+      "err_code": 417
+    },
+    {
+      "kind": "enum_member",
+      "name": "OtcErrors.CapCanOnlyRise",
+      "err_code": 418
+    },
+    {
+      "kind": "enum_member",
+      "name": "OtcErrors.UnknownOp",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.5.0"
+}
