@@ -1,0 +1,661 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "PlushCollection",
+  "author": "Chilled Cat",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "MintWithVoucher"
+    },
+    {
+      "kind": "bitsN",
+      "n": 512
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "MintVoucher"
+    },
+    {
+      "kind": "string"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 14
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RequestRoyaltyParams"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "AdminMint"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ChangeCollectionAdmin"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ChangeCollectionContent"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CollectionContent"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 21
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RoyaltyParams"
+    },
+    {
+      "kind": "uintN",
+      "n": 16
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 23
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SetSignerKey"
+    },
+    {
+      "kind": "uintN",
+      "n": 256
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "WithdrawSurplus"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "PlushCollectionStorage"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "NftItemInitAtDeployment"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CatBirth"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 31
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ReturnExcessesBack"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ResponseRoyaltyParams"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CollectionDataReply"
+    },
+    {
+      "kind": "AliasRef",
+      "alias_name": "string_prefixed0x"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "MintDataReply"
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "PlushCollectionStorage",
+      "ty_idx": 29,
+      "fields": [
+        {
+          "name": "adminAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "minted",
+          "ty_idx": 11
+        },
+        {
+          "name": "lastSerial",
+          "ty_idx": 11
+        },
+        {
+          "name": "signerKey",
+          "ty_idx": 27
+        },
+        {
+          "name": "content",
+          "ty_idx": 22
+        },
+        {
+          "name": "nftItemCode",
+          "ty_idx": 3
+        },
+        {
+          "name": "royaltyParams",
+          "ty_idx": 25
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "MintVoucher",
+      "ty_idx": 14,
+      "fields": [
+        {
+          "name": "collection",
+          "ty_idx": 7
+        },
+        {
+          "name": "catId",
+          "ty_idx": 11
+        },
+        {
+          "name": "owner",
+          "ty_idx": 7
+        },
+        {
+          "name": "validUntil",
+          "ty_idx": 9
+        },
+        {
+          "name": "content",
+          "ty_idx": 15
+        },
+        {
+          "name": "recipe",
+          "ty_idx": 15
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "MintWithVoucher",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 1835626100,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "signature",
+          "ty_idx": 13
+        },
+        {
+          "name": "voucher",
+          "ty_idx": 16
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "AdminMint",
+      "ty_idx": 18,
+      "prefix": {
+        "prefix_num": 1,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "itemIndex",
+          "ty_idx": 11
+        },
+        {
+          "name": "attachTonAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "ownerAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "content",
+          "ty_idx": 15
+        },
+        {
+          "name": "recipe",
+          "ty_idx": 15
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ChangeCollectionContent",
+      "ty_idx": 20,
+      "prefix": {
+        "prefix_num": 4,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "content",
+          "ty_idx": 22
+        },
+        {
+          "name": "royaltyParams",
+          "ty_idx": 25
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "SetSignerKey",
+      "ty_idx": 26,
+      "prefix": {
+        "prefix_num": 5,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "signerKey",
+          "ty_idx": 27
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "WithdrawSurplus",
+      "ty_idx": 28,
+      "prefix": {
+        "prefix_num": 6,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CollectionDataReply",
+      "ty_idx": 35,
+      "fields": [
+        {
+          "name": "nextItemIndex",
+          "ty_idx": 1
+        },
+        {
+          "name": "collectionMetadata",
+          "ty_idx": 3
+        },
+        {
+          "name": "adminAddress",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "MintDataReply",
+      "ty_idx": 37,
+      "fields": [
+        {
+          "name": "minted",
+          "ty_idx": 1
+        },
+        {
+          "name": "lastSerial",
+          "ty_idx": 1
+        },
+        {
+          "name": "signerKey",
+          "ty_idx": 27
+        },
+        {
+          "name": "minMintValue",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "alias",
+      "name": "string_prefixed0x",
+      "ty_idx": 36,
+      "target_ty_idx": 15,
+      "description": "A string, which contents starts with 0x00/0x01 byte.\nBy standard, offchain explorers/APIs may treat contents of a string based on 0xXX prefixes:\n- 0x00 + \"str\" — means \"this is a regular snake-encoded string\"\n- 0x01 + \"str\" — means \"this is an off-chain content URL\"\nUsed in jettons and NFTs for responses from GET methods to comply with TEPs (token standards)."
+    },
+    {
+      "kind": "struct",
+      "name": "RoyaltyParams",
+      "ty_idx": 23,
+      "fields": [
+        {
+          "name": "numerator",
+          "ty_idx": 24
+        },
+        {
+          "name": "denominator",
+          "ty_idx": 24
+        },
+        {
+          "name": "royaltyAddress",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CollectionContent",
+      "ty_idx": 21,
+      "fields": [
+        {
+          "name": "collectionMetadata",
+          "ty_idx": 3
+        },
+        {
+          "name": "commonContent",
+          "ty_idx": 15
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CatBirth",
+      "ty_idx": 31,
+      "fields": [
+        {
+          "name": "builder",
+          "ty_idx": 7
+        },
+        {
+          "name": "serial",
+          "ty_idx": 11
+        },
+        {
+          "name": "mintedAt",
+          "ty_idx": 9
+        },
+        {
+          "name": "recipe",
+          "ty_idx": 15
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "NftItemInitAtDeployment",
+      "ty_idx": 30,
+      "fields": [
+        {
+          "name": "ownerAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "content",
+          "ty_idx": 15
+        },
+        {
+          "name": "birth",
+          "ty_idx": 32
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "RequestRoyaltyParams",
+      "ty_idx": 17,
+      "prefix": {
+        "prefix_num": 1765620048,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ResponseRoyaltyParams",
+      "ty_idx": 34,
+      "prefix": {
+        "prefix_num": 2831876269,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "royaltyParams",
+          "ty_idx": 23
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ChangeCollectionAdmin",
+      "ty_idx": 19,
+      "prefix": {
+        "prefix_num": 3,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "newAdminAddress",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ReturnExcessesBack",
+      "ty_idx": 33,
+      "prefix": {
+        "prefix_num": 3576854235,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 29
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 17
+    },
+    {
+      "body_ty_idx": 18
+    },
+    {
+      "body_ty_idx": 19
+    },
+    {
+      "body_ty_idx": 20
+    },
+    {
+      "body_ty_idx": 26
+    },
+    {
+      "body_ty_idx": 28
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 30
+    },
+    {
+      "body_ty_idx": 33
+    },
+    {
+      "body_ty_idx": 34
+    }
+  ],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 102491,
+      "name": "get_collection_data",
+      "parameters": [],
+      "return_ty_idx": 35
+    },
+    {
+      "tvm_method_id": 92067,
+      "name": "get_nft_address_by_index",
+      "parameters": [
+        {
+          "name": "itemIndex",
+          "ty_idx": 1
+        }
+      ],
+      "return_ty_idx": 7
+    },
+    {
+      "tvm_method_id": 85719,
+      "name": "royalty_params",
+      "parameters": [],
+      "return_ty_idx": 23
+    },
+    {
+      "tvm_method_id": 68445,
+      "name": "get_nft_content",
+      "parameters": [
+        {
+          "name": "itemIndex",
+          "ty_idx": 1
+        },
+        {
+          "name": "individualNftContent",
+          "ty_idx": 15
+        }
+      ],
+      "return_ty_idx": 36
+    },
+    {
+      "tvm_method_id": 73144,
+      "name": "get_mint_data",
+      "parameters": [],
+      "return_ty_idx": 37
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "constant",
+      "name": "ERROR_INVALID_WORKCHAIN",
+      "err_code": 333
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_NOT_FROM_ADMIN",
+      "err_code": 401
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_MINTING_CLOSED",
+      "err_code": 410
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_BAD_SIGNATURE",
+      "err_code": 411
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_WRONG_COLLECTION",
+      "err_code": 412
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_VOUCHER_EXPIRED",
+      "err_code": 413
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_NOT_ENOUGH_VALUE",
+      "err_code": 414
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_NOTHING_TO_WITHDRAW",
+      "err_code": 415
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.5.0"
+}
