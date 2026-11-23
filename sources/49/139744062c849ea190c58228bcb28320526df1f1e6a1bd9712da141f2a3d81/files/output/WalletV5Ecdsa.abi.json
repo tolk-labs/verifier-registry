@@ -1,0 +1,549 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "WalletV5Ecdsa",
+  "author": "wallet-v5-ecdsa",
+  "version": "1.0.0",
+  "description": "Wallet V5 R1 with hybrid Ed25519 + ECDSA (secp256k1) authorization",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ExtensionActionRequest"
+    },
+    {
+      "kind": "AliasRef",
+      "alias_name": "OutActionsCell"
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 13
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OutActionWithSendMessageOnly"
+    },
+    {
+      "kind": "AliasRef",
+      "alias_name": "OutActionWithSendMessageOnlyOrEmpty"
+    },
+    {
+      "kind": "union",
+      "variants": [
+        {
+          "variant_ty_idx": 15,
+          "prefix_num": 247711853,
+          "prefix_len": 32,
+          "stack_type_id": 129,
+          "stack_width": 3
+        },
+        {
+          "variant_ty_idx": 0,
+          "prefix_num": 0,
+          "prefix_len": 0,
+          "stack_type_id": 10,
+          "stack_width": 0
+        }
+      ],
+      "stack_width": 4
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 16
+    },
+    {
+      "kind": "uintN",
+      "n": 8
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 15
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 20
+    },
+    {
+      "kind": "AliasRef",
+      "alias_name": "SnakedExtraActions"
+    },
+    {
+      "kind": "remaining"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "InternalSignedRequest"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "InternalSignedRequestEcdsa"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ExternalSignedRequest"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ExternalSignedRequestEcdsa"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Storage"
+    },
+    {
+      "kind": "uintN",
+      "n": 256
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        1,
+        1
+      ]
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 3
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "Storage",
+      "ty_idx": 28,
+      "fields": [
+        {
+          "name": "isSignatureAllowed",
+          "ty_idx": 5
+        },
+        {
+          "name": "seqno",
+          "ty_idx": 9
+        },
+        {
+          "name": "subwalletId",
+          "ty_idx": 9
+        },
+        {
+          "name": "publicKey",
+          "ty_idx": 29
+        },
+        {
+          "name": "ecdsaPublicKeyX",
+          "ty_idx": 29
+        },
+        {
+          "name": "ecdsaPublicKeyY",
+          "ty_idx": 29
+        }
+      ]
+    },
+    {
+      "kind": "alias",
+      "name": "OutActionsCell",
+      "ty_idx": 13,
+      "target_ty_idx": 3
+    },
+    {
+      "kind": "alias",
+      "name": "SnakedExtraActions",
+      "ty_idx": 22,
+      "target_ty_idx": 23
+    },
+    {
+      "kind": "struct",
+      "name": "ExtensionActionRequest",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 1702392942,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "outActions",
+          "ty_idx": 14,
+          "client_ty_idx": 21
+        },
+        {
+          "name": "hasExtraActions",
+          "ty_idx": 5
+        },
+        {
+          "name": "extraActions",
+          "ty_idx": 22
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ExternalSignedRequest",
+      "ty_idx": 26,
+      "prefix": {
+        "prefix_num": 1936287598,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "walletId",
+          "ty_idx": 9
+        },
+        {
+          "name": "validUntil",
+          "ty_idx": 9
+        },
+        {
+          "name": "seqno",
+          "ty_idx": 9
+        },
+        {
+          "name": "outActions",
+          "ty_idx": 14,
+          "client_ty_idx": 21
+        },
+        {
+          "name": "hasExtraActions",
+          "ty_idx": 5
+        },
+        {
+          "name": "extraActions",
+          "ty_idx": 22
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ExternalSignedRequestEcdsa",
+      "ty_idx": 27,
+      "prefix": {
+        "prefix_num": 1936287589,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "walletId",
+          "ty_idx": 9
+        },
+        {
+          "name": "validUntil",
+          "ty_idx": 9
+        },
+        {
+          "name": "seqno",
+          "ty_idx": 9
+        },
+        {
+          "name": "outActions",
+          "ty_idx": 14,
+          "client_ty_idx": 21
+        },
+        {
+          "name": "hasExtraActions",
+          "ty_idx": 5
+        },
+        {
+          "name": "extraActions",
+          "ty_idx": 22
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "InternalSignedRequest",
+      "ty_idx": 24,
+      "prefix": {
+        "prefix_num": 1936289396,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "walletId",
+          "ty_idx": 9
+        },
+        {
+          "name": "validUntil",
+          "ty_idx": 9
+        },
+        {
+          "name": "seqno",
+          "ty_idx": 9
+        },
+        {
+          "name": "outActions",
+          "ty_idx": 14,
+          "client_ty_idx": 21
+        },
+        {
+          "name": "hasExtraActions",
+          "ty_idx": 5
+        },
+        {
+          "name": "extraActions",
+          "ty_idx": 22
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "InternalSignedRequestEcdsa",
+      "ty_idx": 25,
+      "prefix": {
+        "prefix_num": 1936289381,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "walletId",
+          "ty_idx": 9
+        },
+        {
+          "name": "validUntil",
+          "ty_idx": 9
+        },
+        {
+          "name": "seqno",
+          "ty_idx": 9
+        },
+        {
+          "name": "outActions",
+          "ty_idx": 14,
+          "client_ty_idx": 21
+        },
+        {
+          "name": "hasExtraActions",
+          "ty_idx": 5
+        },
+        {
+          "name": "extraActions",
+          "ty_idx": 22
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "OutActionWithSendMessageOnly",
+      "ty_idx": 15,
+      "prefix": {
+        "prefix_num": 247711853,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "prev",
+          "ty_idx": 18
+        },
+        {
+          "name": "sendMode",
+          "ty_idx": 19
+        },
+        {
+          "name": "outMsg",
+          "ty_idx": 3
+        }
+      ],
+      "description": "\"OutActionList\" is what's pushed to c5."
+    },
+    {
+      "kind": "alias",
+      "name": "OutActionWithSendMessageOnlyOrEmpty",
+      "ty_idx": 16,
+      "target_ty_idx": 17
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 28
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 24
+    },
+    {
+      "body_ty_idx": 25
+    }
+  ],
+  "incoming_external": [
+    {
+      "body_ty_idx": 26
+    },
+    {
+      "body_ty_idx": 27
+    }
+  ],
+  "outgoing_messages": [],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 88459,
+      "name": "is_signature_allowed",
+      "parameters": [],
+      "return_ty_idx": 5
+    },
+    {
+      "tvm_method_id": 85143,
+      "name": "seqno",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 81467,
+      "name": "get_subwallet_id",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 78748,
+      "name": "get_public_key",
+      "parameters": [],
+      "return_ty_idx": 1
+    },
+    {
+      "tvm_method_id": 123740,
+      "name": "get_ecdsa_public_key",
+      "parameters": [],
+      "return_ty_idx": 30,
+      "description": "Returns the stored ECDSA (secp256k1) public key as an uncompressed curve point (x, y).\n(0, 0) means that the ECDSA key is not set."
+    },
+    {
+      "tvm_method_id": 117729,
+      "name": "get_extensions",
+      "parameters": [],
+      "return_ty_idx": 31,
+      "description": "Returns the raw dictionary (or null if empty) where keys are address hashes.\nWorkchains of extensions are the same as the wallet smart contract workchain."
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "Errors.SignatureDisabled",
+      "err_code": 132
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidSeqno",
+      "err_code": 133
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidWalletId",
+      "err_code": 134
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidSignature",
+      "err_code": 135
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.Expired",
+      "err_code": 136
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.ExternalSendMessageMustHaveIgnoreErrorsSendMode",
+      "err_code": 137
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidMessageOperation",
+      "err_code": 138
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.AddExtension",
+      "err_code": 139
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.RemoveExtension",
+      "err_code": 140
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.UnsupportedAction",
+      "err_code": 141
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.DisableSignatureWhenExtensionsIsEmpty",
+      "err_code": 142
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.ThisSignatureModeAlreadySet",
+      "err_code": 143
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.RemoveLastExtensionWhenSignatureDisabled",
+      "err_code": 144
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.ExtensionWrongWorkchain",
+      "err_code": 145
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.OnlyExtensionCanChangeSignatureMode",
+      "err_code": 146
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidC5",
+      "err_code": 147
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.EcdsaKeyNotSet",
+      "err_code": 148
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.5.0"
+}
