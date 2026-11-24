@@ -1,0 +1,436 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "NftItem",
+  "author": "Chilled Cat, from the Tolk Team's NFT item",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "AskToChangeOwnership"
+    },
+    {
+      "kind": "addressOpt"
+    },
+    {
+      "kind": "AliasRef",
+      "alias_name": "dict"
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 3
+    },
+    {
+      "kind": "remaining"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "RequestStaticData"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "NftItemStorage"
+    },
+    {
+      "kind": "string"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CatBirth"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 20
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "NftItemStorageNotInitialized"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "NotificationForNewOwner"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ReturnExcessesBack"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ResponseStaticData"
+    },
+    {
+      "kind": "uintN",
+      "n": 256
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "NftDataReply"
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 19
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CatDataReply"
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "alias",
+      "name": "dict",
+      "ty_idx": 14,
+      "target_ty_idx": 15,
+      "description": "Think of it as \"a map with unknown keys and unknown values\".\nPrefer using `map<K, V>`, not `dict`."
+    },
+    {
+      "kind": "struct",
+      "name": "NftDataReply",
+      "ty_idx": 27,
+      "fields": [
+        {
+          "name": "isInitialized",
+          "ty_idx": 5
+        },
+        {
+          "name": "itemIndex",
+          "ty_idx": 1
+        },
+        {
+          "name": "collectionAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "ownerAddress",
+          "ty_idx": 13,
+          "default_value": {
+            "kind": "null"
+          }
+        },
+        {
+          "name": "content",
+          "ty_idx": 28,
+          "default_value": {
+            "kind": "null"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CatDataReply",
+      "ty_idx": 29,
+      "fields": [
+        {
+          "name": "builder",
+          "ty_idx": 7
+        },
+        {
+          "name": "serial",
+          "ty_idx": 1
+        },
+        {
+          "name": "mintedAt",
+          "ty_idx": 1
+        },
+        {
+          "name": "recipe",
+          "ty_idx": 19
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CatBirth",
+      "ty_idx": 20,
+      "fields": [
+        {
+          "name": "builder",
+          "ty_idx": 7
+        },
+        {
+          "name": "serial",
+          "ty_idx": 11
+        },
+        {
+          "name": "mintedAt",
+          "ty_idx": 9
+        },
+        {
+          "name": "recipe",
+          "ty_idx": 19
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "NftItemStorage",
+      "ty_idx": 18,
+      "fields": [
+        {
+          "name": "itemIndex",
+          "ty_idx": 11
+        },
+        {
+          "name": "collectionAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "ownerAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "content",
+          "ty_idx": 19
+        },
+        {
+          "name": "birth",
+          "ty_idx": 21
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "NftItemStorageNotInitialized",
+      "ty_idx": 22,
+      "fields": [
+        {
+          "name": "itemIndex",
+          "ty_idx": 11
+        },
+        {
+          "name": "collectionAddress",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "RequestStaticData",
+      "ty_idx": 17,
+      "prefix": {
+        "prefix_num": 801842850,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ResponseStaticData",
+      "ty_idx": 25,
+      "prefix": {
+        "prefix_num": 2339837749,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "itemIndex",
+          "ty_idx": 26
+        },
+        {
+          "name": "collectionAddress",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "NotificationForNewOwner",
+      "ty_idx": 23,
+      "prefix": {
+        "prefix_num": 85167505,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "oldOwnerAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "payload",
+          "ty_idx": 16
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ReturnExcessesBack",
+      "ty_idx": 24,
+      "prefix": {
+        "prefix_num": 3576854235,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "AskToChangeOwnership",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 1607220500,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "newOwnerAddress",
+          "ty_idx": 7
+        },
+        {
+          "name": "sendExcessesTo",
+          "ty_idx": 13
+        },
+        {
+          "name": "customPayload",
+          "ty_idx": 14
+        },
+        {
+          "name": "forwardTonAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 16
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 18,
+    "storage_at_deployment_ty_idx": 22
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 17
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 23
+    },
+    {
+      "body_ty_idx": 24
+    },
+    {
+      "body_ty_idx": 25
+    }
+  ],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 102351,
+      "name": "get_nft_data",
+      "parameters": [],
+      "return_ty_idx": 27
+    },
+    {
+      "tvm_method_id": 114927,
+      "name": "get_cat_data",
+      "parameters": [],
+      "return_ty_idx": 29
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "constant",
+      "name": "ERROR_INVALID_WORKCHAIN",
+      "err_code": 333
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_NOT_FROM_OWNER",
+      "err_code": 401
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_TOO_SMALL_REST_AMOUNT",
+      "err_code": 402
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_NOT_FROM_COLLECTION",
+      "err_code": 405
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_NOT_INITIALIZED",
+      "err_code": 406
+    },
+    {
+      "kind": "constant",
+      "name": "ERROR_INCORRECT_FORWARD_PAYLOAD",
+      "err_code": 708
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.5.0"
+}
