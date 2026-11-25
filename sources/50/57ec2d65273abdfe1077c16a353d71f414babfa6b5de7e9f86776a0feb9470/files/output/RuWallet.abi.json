@@ -1,0 +1,207 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "RuWallet",
+  "author": "None",
+  "version": "1.0.0",
+  "description": "ECDSA secp256k1 owner verification for RuToken",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "AliasRef",
+      "alias_name": "AllowedMessage"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "WalletMessage"
+    },
+    {
+      "kind": "uintN",
+      "n": 256
+    },
+    {
+      "kind": "uintN",
+      "n": 8
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Storage"
+    },
+    {
+      "kind": "tensor",
+      "items_ty_idx": [
+        14,
+        14
+      ]
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "alias",
+      "name": "AllowedMessage",
+      "ty_idx": 12,
+      "target_ty_idx": 13
+    },
+    {
+      "kind": "struct",
+      "name": "Storage",
+      "ty_idx": 16,
+      "fields": [
+        {
+          "name": "seqno",
+          "ty_idx": 9
+        },
+        {
+          "name": "subwalletId",
+          "ty_idx": 9
+        },
+        {
+          "name": "pubKeyX",
+          "ty_idx": 14
+        },
+        {
+          "name": "pubKeyY",
+          "ty_idx": 14
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "WalletMessage",
+      "ty_idx": 13,
+      "prefix": {
+        "prefix_num": 1936287598,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "r",
+          "ty_idx": 14
+        },
+        {
+          "name": "s",
+          "ty_idx": 14
+        },
+        {
+          "name": "v",
+          "ty_idx": 15
+        },
+        {
+          "name": "subwalletId",
+          "ty_idx": 9
+        },
+        {
+          "name": "validUntil",
+          "ty_idx": 9
+        },
+        {
+          "name": "seqno",
+          "ty_idx": 9
+        },
+        {
+          "name": "payload",
+          "ty_idx": 3
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 16
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    }
+  ],
+  "incoming_external": [
+    {
+      "body_ty_idx": 2
+    }
+  ],
+  "outgoing_messages": [],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 85143,
+      "name": "seqno",
+      "parameters": [],
+      "return_ty_idx": 9
+    },
+    {
+      "tvm_method_id": 127631,
+      "name": "getSubwalletId",
+      "parameters": [],
+      "return_ty_idx": 9
+    },
+    {
+      "tvm_method_id": 88250,
+      "name": "getPublicKey",
+      "parameters": [],
+      "return_ty_idx": 17
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "plain_int",
+      "err_code": 30
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 31
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 32
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 33
+    },
+    {
+      "kind": "plain_int",
+      "err_code": 34
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.5.0"
+}
