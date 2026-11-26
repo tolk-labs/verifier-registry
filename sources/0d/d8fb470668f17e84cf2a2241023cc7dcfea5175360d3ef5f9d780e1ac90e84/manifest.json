@@ -1,0 +1,487 @@
+{
+  "code_hash": "0dd8fb470668f17e84cf2a2241023cc7dcfea5175360d3ef5f9d780e1ac90e84",
+  "source_bundle_hash": "bb51c31dc665670a421f82a5586d57f8c30827f43d8474a5e0af52012889b26f",
+  "payment_tx_hash": "f95a9b5148e3efaacb9930d1efe45299da4d66e1c9e52f2d9031091b815c103a",
+  "verified_at": 1795683302,
+  "compiler": {
+    "language": "tolk",
+    "version": "1.5.0",
+    "entrypoint": "contracts/Hello.tolk",
+    "params": {
+      "compiler_version": "1.5.0",
+      "import_mappings": {
+        "@acton": ".acton",
+        "@contracts": "contracts",
+        "@gen": "gen",
+        "@tests": "tests",
+        "@wrappers": "wrappers"
+      }
+    }
+  },
+  "source_map": {
+    "code_boc64": "te6ccgEBBAEAJAABFP8A9KQT9LzyyAsBAgFiAgMADNAw+JHyQAAPoGNV2omhqaM=",
+    "symbol_types_json": {
+      "alias_instantiations": [],
+      "declarations": [
+        {
+          "fields": [
+            {
+              "name": "assertEndAfterReading",
+              "ty_idx": 5
+            },
+            {
+              "name": "throwIfOpcodeDoesNotMatch",
+              "ty_idx": 1
+            }
+          ],
+          "ident_loc": [
+            0,
+            448,
+            8,
+            448,
+            21
+          ],
+          "kind": "struct",
+          "name": "UnpackOptions",
+          "ty_idx": 14
+        },
+        {
+          "fields": [
+            {
+              "name": "greeting",
+              "ty_idx": 13
+            }
+          ],
+          "ident_loc": [
+            1,
+            1,
+            8,
+            1,
+            15
+          ],
+          "kind": "struct",
+          "name": "Storage",
+          "ty_idx": 12
+        }
+      ],
+      "files": [
+        {
+          "file_id": 0,
+          "file_name": "@stdlib/common.tolk",
+          "imports": [],
+          "size_chars": 77804
+        },
+        {
+          "file_id": 1,
+          "file_name": "contracts/Hello.tolk",
+          "imports": [],
+          "size_chars": 294
+        }
+      ],
+      "functions": [
+        {
+          "end_loc": [
+            1,
+            12,
+            40,
+            12,
+            41
+          ],
+          "f_idx": 0,
+          "ident_loc": [
+            1,
+            12,
+            5,
+            12,
+            22
+          ],
+          "name": "onInternalMessage",
+          "num_params": 1,
+          "params": [
+            {
+              "name": "in.body",
+              "ty_idx": 2
+            }
+          ],
+          "return_ty_idx": 0
+        },
+        {
+          "end_loc": [
+            1,
+            16,
+            1,
+            16,
+            2
+          ],
+          "f_idx": 1,
+          "ident_loc": [
+            1,
+            14,
+            9,
+            14,
+            17
+          ],
+          "name": "greeting",
+          "num_params": 0,
+          "params": [],
+          "return_ty_idx": 13
+        },
+        {
+          "end_loc": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "f_idx": 2,
+          "ident_loc": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "name": "Storage.fromCell",
+          "num_params": 2,
+          "params": [
+            {
+              "name": "packedCell",
+              "ty_idx": 3
+            },
+            {
+              "name": "options",
+              "ty_idx": 14
+            }
+          ],
+          "return_ty_idx": 12
+        }
+      ],
+      "struct_instantiations": [],
+      "unique_types": [
+        {
+          "kind": "void"
+        },
+        {
+          "kind": "int"
+        },
+        {
+          "kind": "slice"
+        },
+        {
+          "kind": "cell"
+        },
+        {
+          "kind": "builder"
+        },
+        {
+          "kind": "bool"
+        },
+        {
+          "kind": "coins"
+        },
+        {
+          "kind": "address"
+        },
+        {
+          "kind": "intN",
+          "n": 32
+        },
+        {
+          "kind": "uintN",
+          "n": 32
+        },
+        {
+          "kind": "intN",
+          "n": 64
+        },
+        {
+          "kind": "uintN",
+          "n": 64
+        },
+        {
+          "kind": "StructRef",
+          "struct_name": "Storage"
+        },
+        {
+          "kind": "string"
+        },
+        {
+          "kind": "StructRef",
+          "struct_name": "UnpackOptions"
+        }
+      ]
+    },
+    "debug_marks_json": [
+      {
+        "f_idx": 0,
+        "f_name": "onInternalMessage",
+        "ir_import": [
+          0
+        ],
+        "is_builtin": false,
+        "is_inlined": false,
+        "kind": "enter_fun",
+        "mark_id": 0,
+        "range": [
+          1,
+          12,
+          5,
+          12,
+          22
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 1,
+        "stack": [
+          0
+        ]
+      },
+      {
+        "ir_slots": [
+          0
+        ],
+        "is_parameter": true,
+        "kind": "var",
+        "mark_id": 2,
+        "ty_idx": 2,
+        "var_name": "in.body"
+      },
+      {
+        "kind": "stack",
+        "mark_id": 3,
+        "stack": []
+      },
+      {
+        "kind": "loc",
+        "mark_id": 4,
+        "range": [
+          1,
+          12,
+          5,
+          12,
+          22
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 5,
+        "stack": [
+          1
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 6,
+        "range": [
+          1,
+          12,
+          5,
+          12,
+          22
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 7,
+        "stack": []
+      },
+      {
+        "f_idx": 0,
+        "f_name": "onInternalMessage",
+        "ir_return": [],
+        "kind": "leave_fun",
+        "mark_id": 8,
+        "range": [
+          1,
+          12,
+          40,
+          12,
+          41
+        ]
+      },
+      {
+        "f_idx": 1,
+        "f_name": "greeting",
+        "ir_import": [],
+        "is_builtin": false,
+        "is_inlined": false,
+        "kind": "enter_fun",
+        "mark_id": 9,
+        "range": [
+          1,
+          14,
+          9,
+          14,
+          17
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 10,
+        "stack": []
+      },
+      {
+        "kind": "loc",
+        "mark_id": 11,
+        "range": [
+          1,
+          15,
+          29,
+          15,
+          47
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 12,
+        "stack": [
+          0
+        ]
+      },
+      {
+        "f_idx": 2,
+        "f_name": "Storage.fromCell",
+        "ir_import": [
+          0,
+          1,
+          2
+        ],
+        "is_builtin": true,
+        "is_inlined": true,
+        "kind": "enter_fun",
+        "mark_id": 13,
+        "range": [
+          1,
+          15,
+          12,
+          15,
+          48
+        ]
+      },
+      {
+        "ir_slots": [
+          0
+        ],
+        "is_parameter": true,
+        "kind": "var",
+        "mark_id": 14,
+        "ty_idx": 3,
+        "var_name": "packedCell"
+      },
+      {
+        "ir_slots": [
+          1,
+          2
+        ],
+        "is_parameter": true,
+        "kind": "var",
+        "mark_id": 15,
+        "ty_idx": 14,
+        "var_name": "options"
+      },
+      {
+        "kind": "loc",
+        "mark_id": 16,
+        "range": [
+          1,
+          15,
+          12,
+          15,
+          48
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 17,
+        "stack": [
+          3
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 18,
+        "range": [
+          1,
+          15,
+          12,
+          15,
+          48
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 19,
+        "stack": [
+          4,
+          3
+        ]
+      },
+      {
+        "kind": "loc",
+        "mark_id": 20,
+        "range": [
+          1,
+          15,
+          12,
+          15,
+          48
+        ]
+      },
+      {
+        "kind": "stack",
+        "mark_id": 21,
+        "stack": [
+          4
+        ]
+      },
+      {
+        "f_idx": 2,
+        "f_name": "Storage.fromCell",
+        "ir_return": [
+          4
+        ],
+        "kind": "leave_fun",
+        "mark_id": 22,
+        "range": [
+          1,
+          15,
+          12,
+          15,
+          48
+        ]
+      },
+      {
+        "f_idx": 1,
+        "f_name": "greeting",
+        "ir_return": [
+          4
+        ],
+        "kind": "leave_fun",
+        "mark_id": 23,
+        "range": [
+          1,
+          15,
+          5,
+          15,
+          57
+        ]
+      }
+    ],
+    "debug_marks_base64": "te6ccgEBJQEA7AACASABAgFDv8QjRh+hhdjihhzI8HsMEDFC3b2iOxIDlxZ7/ZztJYUdMAMBQ7/oWcrbT1/OPHf3T/Z4onsmKiyyFztHzeZP6xvk6v7z1LANAgPOQAQFAgEgBgcBAdwkAgEgEwgCASAJCgIBIBQLAgEgCx0CASAdIwEBIAwABKgIAgPNwA4PAgFYEBECAUgXGAIBIBITAgEgFhYBAVgVAgEgFBQBASAVAAHVAgEgGxsCASAZGgIBIB8gAgEgGx0CASAdIQEBIBwABKgQAQEgHgAEqBgCASAhIwIBICMjAQEgIgAEqCABASAkAASoKA=="
+  },
+  "files": [
+    {
+      "path": "contracts/Hello.tolk",
+      "content_hash": "14ddbf5797c792489e2937309edf183062dc4aaa8d16e3f03f30b2edfe4b45cd",
+      "include_in_command": true,
+      "is_stdlib": false,
+      "has_include_directives": true
+    },
+    {
+      "path": "output/Hello.abi.json",
+      "content_hash": "805e1737fe365c9d2ec744ffbbe0ff986f9ef952a50458090b34e3e049c560a0"
+    }
+  ]
+}

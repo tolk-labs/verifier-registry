@@ -1,0 +1,89 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "Hello",
+  "author": "hello",
+  "version": "0.1.0",
+  "description": "Hello-world contract",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Storage"
+    },
+    {
+      "kind": "string"
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "Storage",
+      "ty_idx": 12,
+      "fields": [
+        {
+          "name": "greeting",
+          "ty_idx": 13
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 12
+  },
+  "incoming_messages": [],
+  "incoming_external": [],
+  "outgoing_messages": [],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 78250,
+      "name": "greeting",
+      "parameters": [],
+      "return_ty_idx": 13
+    }
+  ],
+  "thrown_errors": [],
+  "compiler_name": "tolk",
+  "compiler_version": "1.5.0"
+}
