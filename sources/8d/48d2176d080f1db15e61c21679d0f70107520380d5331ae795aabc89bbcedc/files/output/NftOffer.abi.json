@@ -1,0 +1,380 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "NftOffer",
+  "author": "Telegram",
+  "version": "0.6.0",
+  "description": "Expiring single-NFT offer with permissionless external cancellation",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OwnershipAssigned"
+    },
+    {
+      "kind": "remaining"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CancelByBuyer"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CancelNftOffer"
+    },
+    {
+      "kind": "bitsN",
+      "n": 512
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 16
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "NftOfferStorage"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "NftOfferConfig"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "NftOfferParties"
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 20
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "NftOfferRoyalty"
+    },
+    {
+      "kind": "uintN",
+      "n": 16
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 22
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 19
+    },
+    {
+      "kind": "uintN",
+      "n": 256
+    },
+    {
+      "kind": "EnumRef",
+      "enum_name": "NftOfferPhase"
+    },
+    {
+      "kind": "uintN",
+      "n": 8
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "NftTransfer"
+    },
+    {
+      "kind": "addressOpt"
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 3
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "struct",
+      "name": "NftTransfer",
+      "ty_idx": 29,
+      "prefix": {
+        "prefix_num": 1607220500,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "newOwner",
+          "ty_idx": 7
+        },
+        {
+          "name": "responseDestination",
+          "ty_idx": 30
+        },
+        {
+          "name": "customPayload",
+          "ty_idx": 31
+        },
+        {
+          "name": "forwardAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 13
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "OwnershipAssigned",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 85167505,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "previousOwner",
+          "ty_idx": 7
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 13
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CancelNftOffer",
+      "ty_idx": 15,
+      "prefix": {
+        "prefix_num": 1196229120,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "sign",
+          "ty_idx": 17
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CancelByBuyer",
+      "ty_idx": 14,
+      "prefix": {
+        "prefix_num": 1774999329,
+        "prefix_len": 32
+      },
+      "fields": []
+    },
+    {
+      "kind": "struct",
+      "name": "NftOfferRoyalty",
+      "ty_idx": 22,
+      "fields": [
+        {
+          "name": "recipient",
+          "ty_idx": 7
+        },
+        {
+          "name": "bps",
+          "ty_idx": 23
+        },
+        {
+          "name": "fineBps",
+          "ty_idx": 23
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "NftOfferParties",
+      "ty_idx": 20,
+      "fields": [
+        {
+          "name": "buyer",
+          "ty_idx": 7
+        },
+        {
+          "name": "recipient",
+          "ty_idx": 7
+        },
+        {
+          "name": "seller",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "NftOfferConfig",
+      "ty_idx": 19,
+      "fields": [
+        {
+          "name": "nft",
+          "ty_idx": 7
+        },
+        {
+          "name": "price",
+          "ty_idx": 6
+        },
+        {
+          "name": "salt",
+          "ty_idx": 11
+        },
+        {
+          "name": "expiresAt",
+          "ty_idx": 9
+        },
+        {
+          "name": "parties",
+          "ty_idx": 21
+        },
+        {
+          "name": "royalty",
+          "ty_idx": 24
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": "NftOfferPhase",
+      "ty_idx": 27,
+      "encoded_as_ty_idx": 28,
+      "members": [
+        {
+          "name": "Funding",
+          "value": "0"
+        },
+        {
+          "name": "Ready",
+          "value": "1"
+        },
+        {
+          "name": "Filled",
+          "value": "2"
+        },
+        {
+          "name": "Expired",
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "NftOfferStorage",
+      "ty_idx": 18,
+      "fields": [
+        {
+          "name": "config",
+          "ty_idx": 25
+        },
+        {
+          "name": "public",
+          "ty_idx": 26
+        },
+        {
+          "name": "phase",
+          "ty_idx": 27
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 18
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 14
+    }
+  ],
+  "incoming_external": [
+    {
+      "body_ty_idx": 15
+    }
+  ],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 29
+    }
+  ],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 123752,
+      "name": "nftOfferData",
+      "parameters": [],
+      "return_ty_idx": 18
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "NftOfferError.InsufficientFunds",
+      "err_code": 453
+    },
+    {
+      "kind": "enum_member",
+      "name": "NftOfferError.InvalidNft",
+      "err_code": 455
+    },
+    {
+      "kind": "enum_member",
+      "name": "NftOfferError.Expired",
+      "err_code": 457
+    },
+    {
+      "kind": "enum_member",
+      "name": "NftOfferError.InvalidMessage",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.5.0"
+}
