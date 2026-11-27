@@ -1,0 +1,386 @@
+{
+  "abi_schema_version": "1.0",
+  "contract_name": "FixedSale",
+  "author": "Telegram",
+  "version": "0.2.0",
+  "description": "NFT fixed sale with upfront settlement, royalty and NFT excess cashback",
+  "unique_types": [
+    {
+      "kind": "void"
+    },
+    {
+      "kind": "int"
+    },
+    {
+      "kind": "slice"
+    },
+    {
+      "kind": "cell"
+    },
+    {
+      "kind": "builder"
+    },
+    {
+      "kind": "bool"
+    },
+    {
+      "kind": "coins"
+    },
+    {
+      "kind": "address"
+    },
+    {
+      "kind": "intN",
+      "n": 32
+    },
+    {
+      "kind": "uintN",
+      "n": 32
+    },
+    {
+      "kind": "intN",
+      "n": 64
+    },
+    {
+      "kind": "uintN",
+      "n": 64
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "OwnershipAssigned"
+    },
+    {
+      "kind": "remaining"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "Buy"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "ChangePrice"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "CancelSale"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SaleStorage"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SaleConfig"
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "SaleRoyalty"
+    },
+    {
+      "kind": "uintN",
+      "n": 16
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 19
+    },
+    {
+      "kind": "cellOf",
+      "inner_ty_idx": 18
+    },
+    {
+      "kind": "EnumRef",
+      "enum_name": "SalePhase"
+    },
+    {
+      "kind": "uintN",
+      "n": 8
+    },
+    {
+      "kind": "StructRef",
+      "struct_name": "NftTransfer"
+    },
+    {
+      "kind": "addressOpt"
+    },
+    {
+      "kind": "nullable",
+      "inner_ty_idx": 3
+    }
+  ],
+  "struct_instantiations": [],
+  "alias_instantiations": [],
+  "declarations": [
+    {
+      "kind": "enum",
+      "name": "SalePhase",
+      "ty_idx": 23,
+      "encoded_as_ty_idx": 24,
+      "members": [
+        {
+          "name": "Waiting",
+          "value": "0"
+        },
+        {
+          "name": "Active",
+          "value": "1"
+        },
+        {
+          "name": "Sold",
+          "value": "3"
+        },
+        {
+          "name": "Cancelled",
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "NftTransfer",
+      "ty_idx": 25,
+      "prefix": {
+        "prefix_num": 1607220500,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "newOwner",
+          "ty_idx": 7
+        },
+        {
+          "name": "responseDestination",
+          "ty_idx": 26
+        },
+        {
+          "name": "customPayload",
+          "ty_idx": 27
+        },
+        {
+          "name": "forwardAmount",
+          "ty_idx": 6
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 13
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "OwnershipAssigned",
+      "ty_idx": 12,
+      "prefix": {
+        "prefix_num": 85167505,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "previousOwner",
+          "ty_idx": 7
+        },
+        {
+          "name": "forwardPayload",
+          "ty_idx": 13
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "Buy",
+      "ty_idx": 14,
+      "prefix": {
+        "prefix_num": 1196228609,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "expectedPrice",
+          "ty_idx": 6
+        },
+        {
+          "name": "recipient",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "ChangePrice",
+      "ty_idx": 15,
+      "prefix": {
+        "prefix_num": 1196228610,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "price",
+          "ty_idx": 6
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "CancelSale",
+      "ty_idx": 16,
+      "prefix": {
+        "prefix_num": 1196228611,
+        "prefix_len": 32
+      },
+      "fields": [
+        {
+          "name": "queryId",
+          "ty_idx": 11
+        },
+        {
+          "name": "feeRecipient",
+          "ty_idx": 7
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "SaleRoyalty",
+      "ty_idx": 19,
+      "fields": [
+        {
+          "name": "recipient",
+          "ty_idx": 7
+        },
+        {
+          "name": "bps",
+          "ty_idx": 20
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "SaleConfig",
+      "ty_idx": 18,
+      "fields": [
+        {
+          "name": "seller",
+          "ty_idx": 7
+        },
+        {
+          "name": "nft",
+          "ty_idx": 7
+        },
+        {
+          "name": "initialPrice",
+          "ty_idx": 6
+        },
+        {
+          "name": "salt",
+          "ty_idx": 11
+        },
+        {
+          "name": "royalty",
+          "ty_idx": 21
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "SaleStorage",
+      "ty_idx": 17,
+      "fields": [
+        {
+          "name": "config",
+          "ty_idx": 22
+        },
+        {
+          "name": "price",
+          "ty_idx": 6
+        },
+        {
+          "name": "phase",
+          "ty_idx": 23
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "storage_ty_idx": 17
+  },
+  "incoming_messages": [
+    {
+      "body_ty_idx": 12
+    },
+    {
+      "body_ty_idx": 14
+    },
+    {
+      "body_ty_idx": 15
+    },
+    {
+      "body_ty_idx": 16
+    }
+  ],
+  "incoming_external": [],
+  "outgoing_messages": [
+    {
+      "body_ty_idx": 25
+    }
+  ],
+  "emitted_events": [],
+  "get_methods": [
+    {
+      "tvm_method_id": 109918,
+      "name": "saleData",
+      "parameters": [],
+      "return_ty_idx": 17
+    }
+  ],
+  "thrown_errors": [
+    {
+      "kind": "enum_member",
+      "name": "Errors.Unauthorized",
+      "err_code": 401
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.WrongState",
+      "err_code": 402
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.PriceChanged",
+      "err_code": 403
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidNft",
+      "err_code": 404
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InsufficientFunds",
+      "err_code": 405
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidRequest",
+      "err_code": 410
+    },
+    {
+      "kind": "enum_member",
+      "name": "Errors.InvalidMessage",
+      "err_code": 65535
+    }
+  ],
+  "compiler_name": "tolk",
+  "compiler_version": "1.5.0"
+}
