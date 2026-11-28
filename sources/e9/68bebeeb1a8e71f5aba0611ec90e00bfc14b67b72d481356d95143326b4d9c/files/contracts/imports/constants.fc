@@ -1,0 +1,307 @@
+#pragma version >=0.4.4;
+
+
+const int err::insufficient_fee = 101;
+const int err::insufficient_funds = 102;
+const int err::access_denied = 103;
+const int err::only_basechain_allowed = 104;
+const int err::receiver_is_sender = 105;
+const int err::stopped = 106;
+const int err::invalid_op = 107;
+const int err::invalid_comment = 108;
+const int err::invalid_parameters = 109;
+const int err::deposit_too_small = 110;
+const int err::deciding_loans = 111;
+
+const int err::not_accepting_loan_requests = 201;
+const int err::unable_to_participate = 202;
+const int err::too_soon_to_participate = 203;
+const int err::not_ready_to_finish_participation = 204;
+const int err::too_soon_to_finish_participation = 205;
+const int err::vset_not_changed = 206;
+const int err::vset_not_changeable = 207;
+const int err::not_ready_to_burn_all = 208;
+
+const int err::unexpected_validator_set_format = 304;
+
+
+const int participation::open = 0;
+const int participation::distributing = 1;
+const int participation::staked = 2;
+const int participation::validating = 3;
+const int participation::held = 4;
+const int participation::recovering = 5;
+;; A round that settled while an older round could still add its reward to total_coins. It keeps
+;; holding its bills until every older round has booked its reward, and is then moved to burning.
+const int participation::ready_to_burn = 6;
+const int participation::burning = 7;
+
+
+const int unstake::auto = 0;
+const int unstake::instant = 1;
+const int unstake::best = 2;
+
+
+const int op::new_stake = 0x4e73744b;
+const int op::new_stake_error = 0xee6f454c;
+const int op::new_stake_ok = 0xf374484c;
+const int op::recover_stake = 0x47657424;
+const int op::recover_stake_error = 0xfffffffe;
+const int op::recover_stake_ok = 0xf96f7324;
+
+const int op::ownership_assigned = 0x05138d91;
+const int op::get_static_data = 0x2fcb26a2;
+const int op::report_static_data = 0x8b771735;
+
+const int op::send_tokens = 0x0f8a7ea5;
+const int op::receive_tokens = 0x178d4519;
+const int op::transfer_notification = 0x7362d09c;
+const int op::gas_excess = 0xd53276db;
+const int op::unstake_tokens = 0x595f07bc;
+
+const int op::provide_wallet_address = 0x2c76b973;
+const int op::take_wallet_address = 0xd1735400;
+
+const int op::prove_ownership = 0x04ded148;
+const int op::ownership_proof = 0x0524c7ae;
+const int op::ownership_proof_bounced = 0xc18e86d2;
+const int op::request_owner = 0xd0c3bfea;
+const int op::owner_info = 0x0dd607e3;
+const int op::destroy = 0x1f04537a;
+const int op::burn_bill = 0x6f89f5e3;
+
+const int op::provide_current_quote = 0xad83913f;
+const int op::take_current_quote = 0x0a420458;
+
+const int op::deposit_coins = 0x3d3761a6;
+const int op::send_unstake_all = 0x45baeda9;
+const int op::reserve_tokens = 0x386a358b;
+const int op::mint_tokens = 0x42684479;
+const int op::burn_tokens = 0x7cffe1ee;
+const int op::request_loan = 0x36335da9;
+const int op::participate_in_election = 0x574a297b;
+const int op::decide_loan_requests = 0x6a31d344;
+const int op::process_loan_requests = 0x071d07cc;
+const int op::vset_changed = 0x2f0b5b3b;
+const int op::finish_participation = 0x23274435;
+const int op::recover_stakes = 0x4f173d3e;
+const int op::recover_stake_result = 0x0fca4c86;
+const int op::last_bill_burned = 0xc6d8b51f;
+const int op::propose_governor = 0x76ff2956;
+const int op::accept_governance = 0x06e237e3;
+const int op::set_halter = 0x16bb5b17;
+const int op::set_stopped = 0x0e5e9773;
+;; 0x535b09d2 was op::set_instant_mint, removed when instant minting became the only mode. Retired:
+;; never reuse it.
+const int op::set_governance_fee = 0x470fe5f6;
+const int op::set_borrower_fee = 0x3b9a4c17;
+const int op::set_reward_share = 0x5e2c7a08;
+const int op::set_auction_floors = 0x499d2e25;
+const int op::set_rounds_imbalance = 0x1b4463b6;
+const int op::set_deficit = 0x75be0d1a;
+const int op::send_message_to_loan = 0x0e93f65b;
+const int op::retry_recover_stakes = 0x2b7ad9e8;
+const int op::retry_mint_bill = 0x654de488;
+const int op::retry_burn_all = 0x106b8001;
+const int op::retry_burn_ready = 0x2a7b64f1;
+const int op::set_parent = 0x4f6f6eed;
+const int op::proxy_set_content = 0x2b1c8e37;
+const int op::withdraw_surplus = 0x23355ffb;
+const int op::proxy_withdraw_surplus = 0x77a0bf77;
+const int op::upgrade_code = 0x3d6a29b5;
+const int op::proxy_upgrade_code = 0x78570010;
+const int op::send_upgrade_wallet = 0x7ade1ed8;
+const int op::migrate_wallet = 0x325aacfa;
+const int op::proxy_add_library = 0x31cb87f7;
+const int op::proxy_remove_library = 0x747bf3a2;
+const int op::gift_coins = 0x3496db80;
+const int op::top_up = 0x5372158c;
+
+const int op::proxy_tokens_minted = 0x5be57626;
+const int op::proxy_save_coins = 0x47daa10f;
+const int op::proxy_reserve_tokens = 0x688b0213;
+const int op::proxy_rollback_unstake = 0x32b67194;
+const int op::proxy_tokens_burned = 0x4476fde0;
+const int op::proxy_unstake_all = 0x76bd2760;
+const int op::proxy_upgrade_wallet = 0x4664bc68;
+const int op::proxy_migrate_wallet = 0x0cb246bb;
+const int op::proxy_merge_wallet = 0x6833d7d0;
+const int op::set_content = 0x04dc78b7;
+
+const int op::tokens_minted = 0x5445efee;
+const int op::save_coins = 0x4cce0e74;
+const int op::rollback_unstake = 0x1b77fd1a;
+const int op::tokens_burned = 0x5b512e25;
+const int op::unstake_all = 0x5ae30148;
+const int op::upgrade_wallet = 0x01d9ae1c;
+const int op::merge_wallet = 0x63d3a76c;
+const int op::withdraw_jettons = 0x768a50b2;
+
+const int op::mint_bill = 0x4b2d7871;
+const int op::bill_burned = 0x840f6369;
+const int op::burn_all = 0x639d400a;
+
+const int op::assign_bill = 0x3275dfc2;
+
+const int op::proxy_new_stake = 0x089cd4d0;
+const int op::proxy_recover_stake = 0x407cb243;
+
+const int op::request_rejected = 0xcd0f2116;
+const int op::loan_result = 0xfaaa8366;
+const int op::take_profit = 0x8b556813;
+const int op::take_borrower_fee = 0x5e2d81f4;
+
+const int op::withdrawal_notification = 0xf0fa223b;
+
+const int op::add_library = 0x53d0473e;
+const int op::remove_library = 0x6bd0ce52;
+
+
+;; Every gas::* below is what its op costs, and fee functions add them up to decide what a caller must
+;; attach. Four of them cannot be changed, because the Wallet compiles them in; one of those is short
+;; of what its op burns today and carries a `_cost` twin that is:
+;;
+;;   gas::migrate_wallet  -- summed by upgrade_wallet_fee()
+;;
+;; The other three are frozen too but cover their ops again: gas::burn_tokens (unstake_tokens_fee()) and
+;; gas::send_unstake_all (unstake_all_fee()) since the loan config release took four fields out of the
+;; extension every such op parses, and gas::reserve_tokens (unstake_tokens_fee()) since the release in
+;; which deposits stopped minting bills made the treasury's code smaller, so their twins were dropped.
+;;
+;; All three of those fee functions are compiled into wallet.fc. Raising a constant they read changes the
+;; Wallet code cell, and then this repo no longer compiles to the wallet deployed on mainnet, which is
+;; worth more than the gas: a wallet already deployed carries its own frozen copy of the fee either
+;; way, so raising the number here would not repair a single one of them. So the constant the fee is
+;; built from stays FROZEN at the value the deployed wallet was compiled with, and `<op>_cost` carries
+;; what the op actually burns today. MaxGas.spec.ts checks the measurement against `_cost` where one
+;; exists, and checks that `_cost` is never below the frozen basis.
+;;
+;; Two tests in MinGas.spec.ts answer the question the gap raises -- whether the fee the wallet demands
+;; still covers the chain -- on both the instant and the deferred unstake path, with exactly that fee
+;; attached and every transaction in the trace required to succeed. Raise the frozen constants, delete
+;; their twins, and re-check the Wallet code hash when the next wallet version ships.
+
+const int gas::send_tokens = 10678;
+const int gas::receive_tokens = 11691;
+;; The worst of both routes into deposit_coins with eight owing rounds in a deep participations dict,
+;; measured by MaxGas.spec.ts: 26452 by the "d" text comment, which compares every op before it
+;; reaches deposit_coins (19636 by op). Raised by 10% and rounded up to a thousand, as the loan ops are.
+const int gas::deposit_coins = 30000;
+const int gas::mint_bill = 7757;
+const int gas::assign_bill = 5960;
+const int gas::burn_bill = 6558;
+const int gas::bill_burned = 12316;
+const int gas::proxy_tokens_minted = 6841;
+const int gas::tokens_minted = 13453;
+const int gas::unstake_tokens = 9040;
+const int gas::proxy_reserve_tokens = 6538;
+const int gas::reserve_tokens = 15798; ;; frozen, see above
+const int gas::burn_tokens = 17738; ;; frozen, see above
+const int gas::proxy_tokens_burned = 7307;
+const int gas::tokens_burned = 7179;
+const int gas::send_unstake_all = 14031; ;; frozen, see above
+const int gas::proxy_unstake_all = 6553;
+const int gas::unstake_all = 7423;
+const int gas::upgrade_wallet = 7618;
+const int gas::proxy_migrate_wallet = 7978;
+const int gas::migrate_wallet = 12802; ;; frozen, see above
+const int gas::migrate_wallet_cost = 14796;
+const int gas::proxy_merge_wallet = 7841;
+const int gas::merge_wallet = 7443;
+
+const int gas::request_loan = 50000;
+const int gas::participate_in_election = 29000;
+const int gas::decide_loan_requests = 24000;
+const int gas::process_loan_requests = 32000;
+const int gas::proxy_new_stake = 8000;
+const int gas::vset_changed = 11000;
+const int gas::finish_participation = 13000;
+const int gas::recover_stakes = 22000;
+const int gas::proxy_recover_stake = 5000;
+const int gas::recover_stake_result = 56000;
+const int gas::burn_all = 8000;
+const int gas::last_bill_burned = 19000;
+const int gas::new_stake = 18000;
+const int gas::new_stake_error = 6000;
+const int gas::new_stake_ok = 2000;
+const int gas::recover_stake = 11000;
+const int gas::recover_stake_ok = 6000;
+
+
+const int fee::treasury_storage = 10000000000; ;; 10 GRAM
+const int fee::librarian_storage = 1000000000; ;; 1 GRAM
+const int fee::new_stake_confirmation = 1000000000; ;; 1 GRAM
+;; Smallest burn a borrower fee can produce, so that every accepted loan burns something even when
+;; the borrower contracted for no reward at all (borrower_reward_share = 0) or the round was
+;; punished. Only ever charged while borrower_fee > 0, and always clamped to the funds the
+;; borrower actually has left, so it can never drive the loan_result payout negative.
+const int fee::min_burn = 1000000000; ;; 1 GRAM
+
+;; The auction floors' stakes are stored in whole GRAM; this turns them into nanoGRAM.
+const int one_gram = 1000000000;
+
+;; The soft close of the loan auction, in seconds. New bids stop at participate_since minus
+;; base_close_before; an accepted bid in the last `extension` seconds before the close moves it to
+;; now + extension, never past participate_since. After the close only shrink revisions are taken.
+;; See docs/specs/2026-11-17-soft-close-four-hours.md.
+const int auction::base_close_before = 14400; ;; 4 hours
+const int auction::extension = 900; ;; 15 minutes
+
+
+;; Recipient of the borrower fee: EQDcjZDWvotoVE0X4HSdt2pR3b2sBZ4XikzSVSdPiqdQMLRK, the deployed
+;; burner contract, which buys HPO with the GRAM it receives and burns it. Its source is the sibling
+;; `burner` repository; it treats op::take_borrower_fee as a payment rather than a known op, so the
+;; treasury needs no cooperation from it beyond the address.
+;;
+;; A constant rather than a stored field because the extension cell has all four refs taken and an
+;; inline address would not fit its bit budget either. Changing it is therefore a treasury upgrade.
+;; See docs/specs/2026-08-31-borrower-fee-hpo-burn.md.
+;;
+;; Repointed 2026-09-09 from EQAGPJMxJ73OLpHUgQhI5YeQe2ZuAuUQ-4f_zfN4rV2Fl6Jp, the first burner. That
+;; one had no set_code, so improving it meant redeploying it, and the address that identifies the
+;; burn to every outside tracker moved with it. The one named here can be upgraded in place, so this
+;; should be the last time a treasury upgrade is spent on following the burner.
+;; See scripts/upgrade_treasury.md, "Repoint the Burner".
+const int burner::wc = 0; ;; basechain -- chain::base is declared further down this file
+const int burner::addr = 0xdc8d90d6be8b68544d17e0749db76a51ddbdac059e178a4cd255274f8aa75030;
+
+
+const int log::loan = 0x1;
+const int log::repayment = 0x2;
+const int log::finish = 0x3;
+const int log::failed_burning_tokens = 0x4;
+const int log::deficit = 0x5;
+
+
+const int config::elector_address = 1;
+const int config::election = 15;
+const int config::validators = 16;
+const int config::stake = 17;
+const int config::previous_validators = 32;
+const int config::current_validators = 34;
+const int config::next_validators = 36;
+const int config::misbehaviour_punishment = 40;
+
+
+const int send::regular = 0;
+const int send::pay_gas_separately = 1;
+const int send::ignore_errors = 2;
+const int send::bounce_if_failed = 16;
+const int send::destroy_if_zero = 32;
+const int send::remaining_value = 64;
+const int send::unreserved_balance = 128;
+
+
+const int reserve::exact = 0;
+const int reserve::all_but_amount = 1;
+const int reserve::at_most = 2;
+const int reserve::add_original_balance = 4;
+const int reserve::negate = 8;
+const int reserve::bounce_if_failed = 16;
+
+
+const int chain::main = -1;
+const int chain::base = 0;
+
+
+const int gas_limit = 1000000;
